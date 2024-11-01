@@ -14,6 +14,8 @@ namespace GUI
 {
     public partial class fSanPham : Form
     {
+        private List<Product> listProducts = new List<Product>();
+
         public fSanPham()
         {
             InitializeComponent();
@@ -26,7 +28,12 @@ namespace GUI
 
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            fChiTietSanPham fChiTietSanPham = new fChiTietSanPham();
+            // Lấy thông tin hàng đang được chọn
+            var selectedIndex = data_DSDonHang.SelectedCells[0].RowIndex;
+            // Lấy dữ liệu ở hàng selectedIndex
+            Product product = this.listProducts[selectedIndex];
+
+            fChiTietSanPham fChiTietSanPham = new fChiTietSanPham(product);
             fChiTietSanPham.ShowDialog();
         }
 
@@ -44,15 +51,15 @@ namespace GUI
             try
             {
                 // Gọi qua Product BUS để thực hiện tìm kiếm
-                List<Product> result = ProductBUS.Instance.SearchProductByName(text);
-                if (result.Count > 0)
+                this.listProducts = ProductBUS.Instance.SearchProductByName(text);
+                if (this.listProducts.Count > 0)
                 {
-                    this.data_DSDonHang.DataSource = result;
-                    foreach (Product product in result)
+                    this.data_DSDonHang.DataSource = this.listProducts;
+                    foreach (Product product in this.listProducts)
                     {
                         Console.WriteLine(product.Name);
                     }
-                    MessageBox.Show($"Đã tìm thấy {result.Count} sản phẩm");
+                    MessageBox.Show($"Đã tìm thấy {this.listProducts.Count} sản phẩm");
                 }
             }
             catch (Exception ex) 

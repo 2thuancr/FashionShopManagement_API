@@ -33,10 +33,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox_ChiTietSanPham = new ReaLTaiizor.Controls.CyberRichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_KichCo = new System.Windows.Forms.Label();
+            this.label_SoLuong = new System.Windows.Forms.Label();
+            this.label_LoaiSanPham = new System.Windows.Forms.Label();
+            this.label_GiaSanPham = new System.Windows.Forms.Label();
             this.label_TenSanPham = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_SanPham)).BeginInit();
@@ -76,10 +76,10 @@
             this.panel1.BackColor = System.Drawing.Color.MistyRose;
             this.panel1.Controls.Add(this.textBox_ChiTietSanPham);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label_KichCo);
+            this.panel1.Controls.Add(this.label_SoLuong);
+            this.panel1.Controls.Add(this.label_LoaiSanPham);
+            this.panel1.Controls.Add(this.label_GiaSanPham);
             this.panel1.Controls.Add(this.label_TenSanPham);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(410, 3);
@@ -130,53 +130,53 @@
             this.label5.Text = "Chi tiết sản phẩm:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // label_KichCo
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Sienna;
-            this.label4.Location = new System.Drawing.Point(0, 225);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(580, 48);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Kích cỡ: M/L/XL";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_KichCo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_KichCo.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_KichCo.ForeColor = System.Drawing.Color.Sienna;
+            this.label_KichCo.Location = new System.Drawing.Point(0, 225);
+            this.label_KichCo.Name = "label_KichCo";
+            this.label_KichCo.Size = new System.Drawing.Size(580, 48);
+            this.label_KichCo.TabIndex = 4;
+            this.label_KichCo.Text = "Kích cỡ: M/L/XL";
+            this.label_KichCo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // label_SoLuong
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Sienna;
-            this.label3.Location = new System.Drawing.Point(0, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(580, 48);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Số lượng: 121";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_SoLuong.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_SoLuong.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SoLuong.ForeColor = System.Drawing.Color.Sienna;
+            this.label_SoLuong.Location = new System.Drawing.Point(0, 177);
+            this.label_SoLuong.Name = "label_SoLuong";
+            this.label_SoLuong.Size = new System.Drawing.Size(580, 48);
+            this.label_SoLuong.TabIndex = 3;
+            this.label_SoLuong.Text = "Số lượng: 121";
+            this.label_SoLuong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // label_LoaiSanPham
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Sienna;
-            this.label2.Location = new System.Drawing.Point(0, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(580, 48);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Loại sản phẩm: Áo len";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_LoaiSanPham.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_LoaiSanPham.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LoaiSanPham.ForeColor = System.Drawing.Color.Sienna;
+            this.label_LoaiSanPham.Location = new System.Drawing.Point(0, 129);
+            this.label_LoaiSanPham.Name = "label_LoaiSanPham";
+            this.label_LoaiSanPham.Size = new System.Drawing.Size(580, 48);
+            this.label_LoaiSanPham.TabIndex = 2;
+            this.label_LoaiSanPham.Text = "Loại sản phẩm: Áo len";
+            this.label_LoaiSanPham.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // label_GiaSanPham
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(0, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(580, 48);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "1.000.000 VNĐ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_GiaSanPham.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_GiaSanPham.Font = new System.Drawing.Font("SVN-Book Antiqua", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_GiaSanPham.ForeColor = System.Drawing.Color.Red;
+            this.label_GiaSanPham.Location = new System.Drawing.Point(0, 81);
+            this.label_GiaSanPham.Name = "label_GiaSanPham";
+            this.label_GiaSanPham.Size = new System.Drawing.Size(580, 48);
+            this.label_GiaSanPham.TabIndex = 1;
+            this.label_GiaSanPham.Text = "1.000.000 VNĐ";
+            this.label_GiaSanPham.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_TenSanPham
             // 
@@ -211,10 +211,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label_TenSanPham;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_GiaSanPham;
+        private System.Windows.Forms.Label label_KichCo;
+        private System.Windows.Forms.Label label_SoLuong;
+        private System.Windows.Forms.Label label_LoaiSanPham;
         private ReaLTaiizor.Controls.CyberRichTextBox textBox_ChiTietSanPham;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox picture_SanPham;

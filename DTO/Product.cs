@@ -13,6 +13,8 @@ namespace DTO
         public string Size { get; set; }
         public string Image { get; set; }
 
+        public Product() { }
+
         public Product(string name, decimal price, decimal discount, string category, int quantity, string size, string image)
         {
             this.Name = name;

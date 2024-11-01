@@ -59,6 +59,19 @@ namespace DAO
             }
         }
 
+        public DataTable GetProductById(int id)
+        {
+            string query = string.Format("USP_GetProductById @id");
+            try
+            {
+                return DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool InsertProduct(Product newProduct)
         {
             string query = string.Format("USP_InsertProduct @Name , @Price, @Discount, @Category , @Quantity, @Size, @Image");

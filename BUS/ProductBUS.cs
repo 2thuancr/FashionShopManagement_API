@@ -4,6 +4,7 @@ using System.Data;
 
 using DTO;
 using DAO;
+using System.Linq;
 
 namespace BUS
 {
@@ -72,6 +73,33 @@ namespace BUS
                 lstProduct.Add(product);
             }
             return lstProduct;
+        }
+
+        public Product GetProductById(int id)
+        {
+            if (id <= 0)
+            {
+                //throw new ArgumentNullException("name");
+                throw new Exception("Lỗi tìm kiếm");
+            }
+
+            DataTable table;
+            try
+            {
+                table = ProductDAO.Instance.GetProductById(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Product> lstProduct = new List<Product>();
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                lstProduct.Add(product);
+            }
+            return lstProduct.First();
         }
 
         public bool InsertProduct(Product newProduct)
