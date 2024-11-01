@@ -74,7 +74,8 @@ namespace DAO
 
         public bool InsertProduct(Product newProduct)
         {
-            string query = string.Format("USP_InsertProduct @Name , @Price, @Discount, @Category , @Quantity, @Size, @Image");
+            //string query = string.Format("USP_InsertProduct '@Name', '@Price', '@Discount', '@Category', '@Quantity', '@Size', '@Image', '@Description'");
+            string query = $"USP_InsertProduct '{newProduct.Name}', '{newProduct.Price}', '{newProduct.Discount}', '{newProduct.Category}', '{newProduct.Quantity}', '{newProduct.Size}', '{newProduct.Image}', '{newProduct.Description}'";
             int result;
             try
             {
@@ -88,6 +89,7 @@ namespace DAO
                         newProduct.Quantity,
                         newProduct.Size,
                         newProduct.Image,
+                        newProduct.Description,
                     }
                 );
             }
@@ -100,7 +102,7 @@ namespace DAO
 
         public bool UpdateProduct(Product product)
         {
-            string query = string.Format("USP_UpdateFood @Id , @Name , @Price, @Discount, @Category , @Quantity, @Size, @Image");
+            string query = string.Format("USP_UpdateFood @Id , @Name , @Price, @Discount, @Category , @Quantity, @Size, @Image, @Description");
             int result;
             try
             {
@@ -113,7 +115,8 @@ namespace DAO
                         product.Category, 
                         product.Quantity,
                         product.Size,
-                        product.Image
+                        product.Image,
+                        product.Description,
                     }
                 );
             }

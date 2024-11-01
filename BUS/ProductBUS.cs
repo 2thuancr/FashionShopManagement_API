@@ -24,16 +24,25 @@ namespace BUS
 
         private ProductBUS() { }
 
-        public DataTable GetAllProduct()
+        public List<Product> GetAllProduct()
         {
+            DataTable table = new DataTable();
             try
             {
-                return ProductDAO.Instance.GetAllProduct();
+                table = ProductDAO.Instance.GetAllProduct();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            List<Product> lstProduct = new List<Product>();
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                lstProduct.Add(product);
+            }
+            return lstProduct;
         }
 
         public DataTable GetListProductByCategory(string category)

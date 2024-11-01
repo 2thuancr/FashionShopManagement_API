@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace DTO
 {
@@ -12,10 +13,11 @@ namespace DTO
         public int Quantity { get; set; }
         public string Size { get; set; }
         public string Image { get; set; }
-
+         
+        public string Description { get; set; }
         public Product() { }
 
-        public Product(string name, decimal price, decimal discount, string category, int quantity, string size, string image)
+        public Product(string name, decimal price, decimal discount, string category, int quantity, string size, string image, string description)
         {
             this.Name = name;
             this.Price = price;
@@ -24,8 +26,9 @@ namespace DTO
             this.Quantity = quantity;
             this.Size = size;
             this.Image = image;
+            Description = description;
         }
-        public Product(int id, string name, decimal price, decimal discount, string category, int quantity, string size, string image)
+        public Product(int id, string name, decimal price, decimal discount, string category, int quantity, string size, string image, string description)
         {
             this.Id = id;
             this.Name = name;
@@ -35,18 +38,27 @@ namespace DTO
             this.Quantity = quantity;
             this.Size = size;
             this.Image = image;
+            this.Description = description;
         }
 
         public Product(DataRow row)
         {
-            this.Id = (int)row["Id"];
-            this.Name = row["Name"].ToString();
-            this.Price = (decimal)row["Price"];
-            this.Discount = (decimal)row["Discount"];
-            this.Category = (string)row["Category"];
-            this.Quantity = (int)row["Quantity"];
-            this.Size = (string)row["Size"];
-            this.Image = (string)row["Image"];
+            try
+            {
+                this.Id = Convert.ToInt32(row["Id"]);
+                this.Name = Convert.ToString(row["Name"]);
+                this.Price = Convert.ToDecimal(row["Price"]);
+                this.Discount = Convert.ToDecimal(row["Discount"]);
+                this.Category = Convert.ToString(row["Category"]);
+                this.Quantity =Convert.ToInt32(row["Quantity"]);
+                this.Size = Convert.ToString(row["Size"]);
+                this.Image = Convert.ToString(row["Image"]);
+                this.Description = Convert.ToString(row["Description"]);
+            }
+            catch 
+            {
+
+            }
         }
     }
 }

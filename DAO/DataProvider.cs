@@ -74,6 +74,7 @@ namespace DAO
                         }
                     }
                 }
+
                 row = command.ExecuteNonQuery();
                 connection.Close();
             }

@@ -34,10 +34,18 @@ namespace GUI
 
         private void ShowProduct()
         {
-            this.picture_SanPham.Load(this.product.Image);
-            this.picture_SanPham.SizeMode = PictureBoxSizeMode.StretchImage;
+            try
+            {
+                this.picture_SanPham.Load(this.product.Image);
+                this.picture_SanPham.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
             this.label_TenSanPham.Text = this.product.Name;
-            this.label_LoaiSanPham.Text = this.product.Category;
+            this.label_LoaiSanPham.Text = "Loại sản phẩm: " + this.product.Category;
             this.label_GiaSanPham.Text = this.product.Price.ToString();
             this.label_SoLuong.Text = this.product.Quantity.ToString();
             this.label_KichCo.Text = this.product.Size;

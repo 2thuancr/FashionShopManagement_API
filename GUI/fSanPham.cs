@@ -23,7 +23,23 @@ namespace GUI
 
         private void fSanPham_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                // Gọi qua Product BUS để thực hiện tìm kiếm
+                this.listProducts = ProductBUS.Instance.GetAllProduct();
+                if (this.listProducts.Count > 0)
+                {
+                    this.data_DSDonHang.DataSource = this.listProducts;
+                    foreach (Product product in this.listProducts)
+                    {
+                        Console.WriteLine(product.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi !");
+            }
         }
 
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -41,6 +57,9 @@ namespace GUI
         {
             fThemSanPham fThemSanPham = new fThemSanPham();
             fThemSanPham.ShowDialog();
+
+            // Load lại form
+            this.fSanPham_Load(null, null);
         }
 
         private void btn_TimKiem_Click(object sender, EventArgs e)
