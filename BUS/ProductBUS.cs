@@ -45,16 +45,25 @@ namespace BUS
             return lstProduct;
         }
 
-        public DataTable GetListProductByCategory(string category)
+        public List<Product> GetListProductByCategory(string category)
         {
+            DataTable table;
             try
             {
-                return ProductDAO.Instance.GetListProductByCategory(category);
+                table = ProductDAO.Instance.GetListProductByCategory(category);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            List<Product> lstProduct = new List<Product>();
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                lstProduct.Add(product);
+            }
+            return lstProduct;
         }
 
         public List<Product> SearchProductByName(string name)

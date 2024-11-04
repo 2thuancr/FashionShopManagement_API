@@ -14,6 +14,14 @@ namespace API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,10 +33,13 @@ namespace API
 
             app.UseHttpsRedirection();
 
+            app.UseCors("AllowAllOrigins");
+
             app.UseAuthorization();
 
-
             app.MapControllers();
+
+            
 
             app.Run();
         }

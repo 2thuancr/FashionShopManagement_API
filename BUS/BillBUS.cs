@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 using DAO;
@@ -64,16 +65,25 @@ namespace BUS
             catch { }
         }
 
-        public DataTable GetListBillByDate(DateTime fromDate, DateTime toDate)
+        public List<Bill> GetListBillByDate(DateTime fromDate, DateTime toDate)
         {
+            DataTable table;
             try
             {
-                return BillDAO.Instance.GetListBillByDate(fromDate, toDate);
+                table = BillDAO.Instance.GetListBillByDate(fromDate, toDate);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            List<Bill> listBill = new List<Bill>();
+            foreach (DataRow row in table.Rows)
+            {
+                Bill bill = new Bill(row);
+                listBill.Add(bill);
+            }
+            return listBill;
         }
 
         public bool DeleteBill(int id)
