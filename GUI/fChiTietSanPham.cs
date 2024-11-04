@@ -46,9 +46,9 @@ namespace GUI
 
             this.label_TenSanPham.Text = this.product.Name;
             this.label_LoaiSanPham.Text = "Loại sản phẩm: " + this.product.Category;
-            this.label_GiaSanPham.Text = this.product.Price.ToString();
-            this.label_SoLuong.Text = this.product.Quantity.ToString();
-            this.label_KichCo.Text = this.product.Size;
+            this.label_GiaSanPham.Text = "Giá: " + this.product.Price.ToString() + "VNĐ";
+            this.label_SoLuong.Text = "Số lượng: "+ this.product.Quantity.ToString();
+            this.label_KichCo.Text = "Kích cỡ: " + this.product.Size;
         }
     }
 }
