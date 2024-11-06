@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 using DTO;
@@ -44,6 +45,20 @@ namespace DAO
                 return bill.ID;
             }
             return -1;
+        }
+
+        public DataTable GetAllBills()
+        {
+            DataTable table;
+            try
+            {
+                table = DataProvider.Instance.ExecuteQuery("USP_GetAllBills", new object[] { });
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void InsertBill(int tableID)
@@ -107,5 +122,6 @@ namespace DAO
             }
             return result > 0;
         }
+
     }
 }

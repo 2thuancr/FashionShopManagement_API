@@ -22,11 +22,11 @@ namespace BUS
 
         private BillInfoBUS() { }
 
-        public void InsertBillInfo(int billID, int foodID, int amount)
+        public void InsertBillInfo(int billID, int productID, int amount)
         {
             try
             {
-                BillInfoDAO.Instance.InsertBillInfo(billID, foodID, amount);
+                BillInfoDAO.Instance.InsertBillInfo(billID, productID, amount);
             }
             catch { }
         }

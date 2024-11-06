@@ -29,11 +29,7 @@ namespace GUI
                 this.listProducts = ProductBUS.Instance.GetAllProduct();
                 if (this.listProducts.Count > 0)
                 {
-                    this.data_DSDonHang.DataSource = this.listProducts;
-                    foreach (Product product in this.listProducts)
-                    {
-                        Console.WriteLine(product.Name);
-                    }
+                    this.data_DSDonHang.DataSource = this.listProducts;                    
                 }
             }
             catch (Exception ex)

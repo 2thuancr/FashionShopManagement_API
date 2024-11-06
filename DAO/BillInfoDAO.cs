@@ -21,12 +21,12 @@ namespace DAO
 
         private BillInfoDAO() { }
 
-        public void InsertBillInfo(int billID, int foodID, int amount)
+        public void InsertBillInfo(int billID, int productID, int amount)
         {
-            string query = "USP_InsertBillInfo @BillID , @FoodID , @Amount";
+            string query = "USP_InsertBillInfo @BillID , @ProductID , @Amount";
             try
             {
-                DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, foodID, amount });
+                DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, productID, amount });
             }
             catch { }
         }

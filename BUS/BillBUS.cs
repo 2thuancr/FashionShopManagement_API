@@ -86,6 +86,27 @@ namespace BUS
             return listBill;
         }
 
+        public List<Bill> GetAllBills()
+        {
+            DataTable table;
+            try
+            {
+                table = BillDAO.Instance.GetAllBills();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Bill> listBill = new List<Bill>();
+            foreach (DataRow row in table.Rows)
+            {
+                Bill bill = new Bill(row);
+                listBill.Add(bill);
+            }
+            return listBill;
+        }
+
         public bool DeleteBill(int id)
         {
             try
