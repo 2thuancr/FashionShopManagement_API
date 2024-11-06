@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-
+using System.Runtime.InteropServices.WindowsRuntime;
 using DAO;
 using DTO;
 
@@ -105,6 +105,26 @@ namespace BUS
                 listBill.Add(bill);
             }
             return listBill;
+        }
+
+        public Bill GetBillById(int Id)
+        {
+            DataTable table;
+            try
+            {
+                table = BillDAO.Instance.GetBillById(Id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            Bill bill = new Bill();
+            if(table != null && table.Rows.Count > 0)
+            {
+                bill = new Bill(table.Rows[0]);
+            }
+            return bill;
         }
 
         public bool DeleteBill(int id)

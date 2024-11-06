@@ -111,13 +111,12 @@ namespace BUS
                 throw ex;
             }
 
-            List<Product> lstProduct = new List<Product>();
-            foreach (DataRow row in table.Rows)
+            Product product = new Product();
+            if(table != null && table.Rows.Count > 0)
             {
-                Product product = new Product(row);
-                lstProduct.Add(product);
+                product = new Product(table.Rows[0]);
             }
-            return lstProduct.First();
+            return product;
         }
 
         public bool InsertProduct(Product newProduct)

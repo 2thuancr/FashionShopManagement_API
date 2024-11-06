@@ -45,10 +45,12 @@ namespace GUI
 
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lấy thông tin row được chọn
-            //var selectedRow = (sender as DataGridViewRow).Selected;
-
-            fChiTietHoaDon fChiTietHoaDon = new fChiTietHoaDon();
+            // Lấy id được click
+            var selectedIndex = data_DSDonHang.SelectedCells[0].RowIndex;
+            // GetBillById
+            Bill bill = this.listBills[selectedIndex];
+            // Hiển thị form
+            fChiTietHoaDon fChiTietHoaDon = new fChiTietHoaDon(bill);
             fChiTietHoaDon.ShowDialog();
         }
 
