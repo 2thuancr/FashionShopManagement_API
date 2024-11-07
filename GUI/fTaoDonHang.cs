@@ -14,9 +14,17 @@ namespace GUI
 {
     public partial class fTaoDonHang : Form
     {
+        // Dùng để load lên comboBox
         private List<Product> listProducts = new List<Product>();
+        //Lưu thông tin sản phẩm đang được chọn
         private Product selectedProduct = new Product();
+        // Lưu các sản phẩm có trong đơn hàng
+        private List<Product> listProductsInBill = new List<Product>();
         private Customer customer = new Customer();
+        private Bill bill = new Bill();
+
+        private decimal totalPrice = 0;
+        private decimal totalDiscount = 0;
         public fTaoDonHang()
         {
             InitializeComponent();
@@ -31,6 +39,7 @@ namespace GUI
         {
             this.LoadLoginAccount();
             this.LoadProducts();
+
 
         }
 
@@ -86,6 +95,24 @@ namespace GUI
             // hiện thị lên giao diện
             this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
             this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
+        }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            // lấy thông tin từ this.selectedProduct luu vào dataGrid
+            this.listProductsInBill.Add(this.selectedProduct);
+            this.data_DSSanPham.DataSource = this.listProductsInBill;
+            this.data_DSSanPham.Refresh();
+
+            this.data_DSSanPham.Invalidate();
+
+            // cập nhật lại tổng tiền, mã giảm giá và thành tiền
+            this.totalPrice = this.listProductsInBill.Sum(x => x.Price);
+            this.totalDiscount = this.listProductsInBill.Sum(x => x.Discount);
+
+            this.textBox_TongTien.TextButton = this.totalPrice.ToString();
+            this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
+            this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
         }
     }
 }

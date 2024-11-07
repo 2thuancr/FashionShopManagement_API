@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_MaHoaDon = new ReaLTaiizor.Controls.CyberTextBox();
@@ -42,7 +39,6 @@
             this.label_SDT = new System.Windows.Forms.Label();
             this.label_Ho = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.data_DSSanPham = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox_GiamGia = new ReaLTaiizor.Controls.CyberTextBox();
@@ -69,14 +65,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.comboBox_SanPham = new System.Windows.Forms.ComboBox();
+            this.data_DSSanPham = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.data_DSSanPham)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.data_DSSanPham)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -299,53 +296,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(552, 309);
             this.panel2.TabIndex = 37;
-            // 
-            // data_DSSanPham
-            // 
-            this.data_DSSanPham.AllowUserToResizeRows = false;
-            this.data_DSSanPham.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.data_DSSanPham.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.data_DSSanPham.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.data_DSSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DSSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.data_DSSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data_DSSanPham.DefaultCellStyle = dataGridViewCellStyle11;
-            this.data_DSSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.data_DSSanPham.EnableHeadersVisualStyles = false;
-            this.data_DSSanPham.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.data_DSSanPham.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.data_DSSanPham.Location = new System.Drawing.Point(0, 0);
-            this.data_DSSanPham.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.data_DSSanPham.Name = "data_DSSanPham";
-            this.data_DSSanPham.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DSSanPham.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.data_DSSanPham.RowHeadersWidth = 62;
-            this.data_DSSanPham.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.data_DSSanPham.RowTemplate.Height = 28;
-            this.data_DSSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_DSSanPham.Size = new System.Drawing.Size(552, 309);
-            this.data_DSSanPham.TabIndex = 39;
             // 
             // tableLayoutPanel2
             // 
@@ -755,6 +705,7 @@
             this.btn_Them.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Them.UseAccentColor = false;
             this.btn_Them.UseVisualStyleBackColor = true;
+            this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // btn_CapNhat
             // 
@@ -849,6 +800,17 @@
             this.comboBox_SanPham.TabIndex = 92;
             this.comboBox_SanPham.SelectedIndexChanged += new System.EventHandler(this.comboBox_SanPham_SelectedIndexChanged);
             // 
+            // data_DSSanPham
+            // 
+            this.data_DSSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_DSSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.data_DSSanPham.Location = new System.Drawing.Point(0, 0);
+            this.data_DSSanPham.Name = "data_DSSanPham";
+            this.data_DSSanPham.RowHeadersWidth = 62;
+            this.data_DSSanPham.RowTemplate.Height = 28;
+            this.data_DSSanPham.Size = new System.Drawing.Size(552, 309);
+            this.data_DSSanPham.TabIndex = 0;
+            // 
             // fTaoDonHang
             // 
             this.BackColor = System.Drawing.Color.MistyRose;
@@ -857,11 +819,11 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "fTaoDonHang";
             this.Text = "Tạo đơn hàng";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fTaoDonHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.data_DSSanPham)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -869,6 +831,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.data_DSSanPham)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -886,7 +849,6 @@
         private ReaLTaiizor.Controls.CyberTextBox textBox_NhanVien;
         private System.Windows.Forms.Label label_SDT;
         private System.Windows.Forms.Label label_Ho;
-        private ReaLTaiizor.Controls.PoisonDataGridView data_DSSanPham;
         private System.Windows.Forms.Panel panel3;
         private ReaLTaiizor.Controls.MaterialButton btn_Them;
         private ReaLTaiizor.Controls.MaterialButton btn_CapNhat;
@@ -912,5 +874,6 @@
         private System.Windows.Forms.Label label7;
         private ReaLTaiizor.Controls.CyberTextBox textBox_MaHoaDon;
         private System.Windows.Forms.ComboBox comboBox_SanPham;
+        private System.Windows.Forms.DataGridView data_DSSanPham;
     }
 }
