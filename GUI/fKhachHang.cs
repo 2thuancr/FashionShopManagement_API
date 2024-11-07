@@ -37,28 +37,6 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void dungeonHeaderLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aloneTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_Ho_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
         private void btn_TaoDon_Click(object sender, EventArgs e)
         {
             fTaoDonHang fTaoDonHang = new fTaoDonHang();
@@ -74,6 +52,23 @@ namespace GUI
             // Hiển thị form
             fChiTietKhachHang fChiTietKhachHang = new fChiTietKhachHang(customer);
             fChiTietKhachHang.ShowDialog();
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy số điện thoại được ghi
+                string phone = textBox_TimKiem.TextButton;
+                // Gọi GetCustomerByPhone từ BUS
+                this.listCustomer = CustomerBUS.Instance.GetCustomerByPhone(phone);
+                // Hiện thị ra danh sách khách hàng với số điện thoại đã nhập
+                this.data_DSKhachHang.DataSource = this.listCustomer;
+            }
+           catch(Exception ex)
+            {
+                MessageBox.Show("Không tìm thấy");
+            }
         }
     }
 }

@@ -48,7 +48,20 @@ namespace DAO
                 throw ex;
             }
         }
-        
+        public DataTable GetCustomerByPhone(string phoneNumber)
+        {
+            DataTable table;
+            try
+            {
+                table = DataProvider.Instance.ExecuteQuery("USP_GetCustomerByPhone @PhoneNumber", new object[] { phoneNumber });
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
 
 

@@ -43,6 +43,30 @@ namespace BUS
             }
             return listCustomer;
         }
+
+        /// <summary>
+        /// Lấy danh sách khách hàng từ số điện thoại
+        /// </summary>
+        /// <returns></returns>
+        public List<Customer> GetCustomerByPhone(string phoneNumber)
+        {
+            DataTable table;
+            try
+            {
+                table = CustomerDAO.Instance.GetCustomerByPhone(phoneNumber);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            List<Customer> listCustomer = new List<Customer>();
+            foreach (DataRow row in table.Rows)
+            {
+                Customer customer = new Customer(row);
+                listCustomer.Add(customer);
+            }
+            return listCustomer;
+        }
         public Customer GetCustomerById(int customerId)
         {
             DataTable table;
