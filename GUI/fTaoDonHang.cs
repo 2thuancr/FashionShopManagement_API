@@ -15,6 +15,7 @@ namespace GUI
     public partial class fTaoDonHang : Form
     {
         private List<Product> listProducts = new List<Product>();
+        private Product selectedProduct = new Product();
         private Customer customer = new Customer();
         public fTaoDonHang()
         {
@@ -72,6 +73,19 @@ namespace GUI
             }
 
 
+        }
+
+        private void comboBox_SanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Lấy ra index sản phẩm đang đc chọn
+            var selectedIndex = this.comboBox_SanPham.SelectedIndex;
+
+            // Lấy ra sản phẩm tại index trong list
+            this.selectedProduct = this.listProducts[selectedIndex];
+
+            // hiện thị lên giao diện
+            this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
+            this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
         }
     }
 }
