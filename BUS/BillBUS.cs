@@ -107,6 +107,27 @@ namespace BUS
             return listBill;
         }
 
+        public List<Bill> GetBillByCustomerId(int customerId)
+        {
+            DataTable table;
+            try
+            {
+                table = BillDAO.Instance.GetBillByCustomerId(customerId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Bill> listBill = new List<Bill>();
+            foreach (DataRow row in table.Rows)
+            {
+                Bill bill = new Bill(row);
+                listBill.Add(bill);
+            }
+            return listBill;
+        }
+
         public Bill GetBillById(int Id)
         {
             DataTable table;

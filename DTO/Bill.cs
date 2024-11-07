@@ -7,18 +7,29 @@ namespace DTO
     {
         public int ID { get; set; }
         public DateTime BusinessTime { get; set; }
-        public int Status { get; set; }
+        public string Status { get; set; }
+
+        public int CustomerId { get; set; }
         public int Discount { get; set; }
 
         public int TotalPrice { get; set; }
 
-        public Bill(int id, DateTime businessTime, int status, int discount = 0, int totalPrice = 0)
+        public Bill(int id, DateTime businessTime, int status, int customerId, int discount = 0, int totalPrice = 0)
         {
             this.ID = id;
             this.BusinessTime = businessTime;
-            this.Status = status;
+            //this.Status = status;
+            if (status == 1)
+            {
+                this.Status = "Đã thanh toán";
+            }
+            else
+            {
+                this.Status = "Chưa thanh toán";
+            }
             this.Discount = discount;
             this.TotalPrice = totalPrice;
+            this.CustomerId = customerId;
         }
 
         public Bill(DataRow row)
@@ -27,14 +38,24 @@ namespace DTO
             {
                 this.ID = Convert.ToInt32(row["id"]);
                 this.BusinessTime = Convert.ToDateTime(row["businessTime"]);
-                this.Status = Convert.ToInt32(row["status"]);
+                var status = Convert.ToInt32(row["status"]);
+                if (status == 1)
+                {
+                    this.Status = "Đã thanh toán";
+                }
+                else
+                {
+                    this.Status = "Chưa thanh toán";
+                }
                 this.Discount = Convert.ToInt32(row["discount"]);
                 this.TotalPrice = Convert.ToInt32(row["totalPrice"]);
+                this.CustomerId = Convert.ToInt32(row["customerId"]);
             }
-            catch
+            catch(Exception ex) 
             {
-
+                
             }
+           
         }
         public Bill()
         {

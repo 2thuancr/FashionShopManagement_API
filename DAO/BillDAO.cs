@@ -75,6 +75,20 @@ namespace DAO
             }
         }
 
+        public DataTable GetBillByCustomerId(int CustomerId)
+        {
+            DataTable table;
+            try
+            {
+                table = DataProvider.Instance.ExecuteQuery("USP_GetBillByCustomerId @CustomerId", new object[] { CustomerId });
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void InsertBill(int tableID)
         {
             try
@@ -136,6 +150,7 @@ namespace DAO
             }
             return result > 0;
         }
+        
 
     }
 }

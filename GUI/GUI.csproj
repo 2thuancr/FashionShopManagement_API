@@ -226,6 +226,12 @@
     <Compile Include="fChiTietHoaDon.Designer.cs">
       <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="fChiTietKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fChiTietKhachHang.Designer.cs">
+      <DependentUpon>fChiTietKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="fChiTietSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     <None Include="Resources\customer-satisfaction.png" />
     <EmbeddedResource Include="fChiTietHoaDon.resx">
       <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fChiTietKhachHang.resx">
+      <DependentUpon>fChiTietKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fChiTietSanPham.resx">
       <DependentUpon>fChiTietSanPham.cs</DependentUpon>

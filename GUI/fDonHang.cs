@@ -39,8 +39,7 @@ namespace GUI
 
         private void btn_TaoDon_Click(object sender, EventArgs e)
         {
-            fTaoDonHang fTaoDonHang = new fTaoDonHang();
-            fTaoDonHang.ShowDialog();
+            
         }
 
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)

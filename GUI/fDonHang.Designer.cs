@@ -32,9 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_TaoDon = new ReaLTaiizor.Controls.MaterialButton();
             this.textBox_TimKiem = new ReaLTaiizor.Controls.CyberTextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_TimKiem = new ReaLTaiizor.Controls.MaterialButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,7 +41,6 @@
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.data_DSDonHang = new ReaLTaiizor.Controls.PoisonDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -60,30 +57,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(222, 135);
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
-            // 
-            // btn_TaoDon
-            // 
-            this.btn_TaoDon.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_TaoDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_TaoDon.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btn_TaoDon.Depth = 0;
-            this.btn_TaoDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_TaoDon.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.btn_TaoDon.HighEmphasis = true;
-            this.btn_TaoDon.Icon = null;
-            this.btn_TaoDon.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_TaoDon.Location = new System.Drawing.Point(25, 0);
-            this.btn_TaoDon.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.btn_TaoDon.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.btn_TaoDon.Name = "btn_TaoDon";
-            this.btn_TaoDon.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_TaoDon.Size = new System.Drawing.Size(168, 54);
-            this.btn_TaoDon.TabIndex = 52;
-            this.btn_TaoDon.Text = "Tạo đơn";
-            this.btn_TaoDon.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btn_TaoDon.UseAccentColor = true;
-            this.btn_TaoDon.UseVisualStyleBackColor = true;
-            this.btn_TaoDon.Click += new System.EventHandler(this.btn_TaoDon_Click);
             // 
             // textBox_TimKiem
             // 
@@ -109,7 +82,7 @@
             this.textBox_TimKiem.RGB = false;
             this.textBox_TimKiem.Rounding = true;
             this.textBox_TimKiem.RoundingInt = 60;
-            this.textBox_TimKiem.Size = new System.Drawing.Size(577, 54);
+            this.textBox_TimKiem.Size = new System.Drawing.Size(746, 54);
             this.textBox_TimKiem.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.textBox_TimKiem.TabIndex = 49;
             this.textBox_TimKiem.Tag = "Cyber";
@@ -117,24 +90,14 @@
             this.textBox_TimKiem.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.textBox_TimKiem.Timer_RGB = 300;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btn_TaoDon);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(905, 13);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
-            this.panel2.Size = new System.Drawing.Size(218, 54);
-            this.panel2.TabIndex = 37;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.textBox_TimKiem);
             this.panel1.Controls.Add(this.btn_TimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(236, 13);
+            this.panel1.Location = new System.Drawing.Point(292, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 54);
+            this.panel1.Size = new System.Drawing.Size(831, 54);
             this.panel1.TabIndex = 36;
             // 
             // btn_TimKiem
@@ -147,12 +110,12 @@
             this.btn_TimKiem.HighEmphasis = true;
             this.btn_TimKiem.Icon = null;
             this.btn_TimKiem.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_TimKiem.Location = new System.Drawing.Point(577, 0);
+            this.btn_TimKiem.Location = new System.Drawing.Point(746, 0);
             this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(20, 8, 5, 8);
             this.btn_TimKiem.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_TimKiem.Size = new System.Drawing.Size(86, 54);
+            this.btn_TimKiem.Size = new System.Drawing.Size(85, 54);
             this.btn_TimKiem.TabIndex = 53;
             this.btn_TimKiem.Text = "Tìm kiếm";
             this.btn_TimKiem.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -161,12 +124,11 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Controls.Add(this.aloneComboBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 141);
@@ -188,7 +150,7 @@
             this.aloneComboBox1.ItemHeight = 20;
             this.aloneComboBox1.Location = new System.Drawing.Point(13, 13);
             this.aloneComboBox1.Name = "aloneComboBox1";
-            this.aloneComboBox1.Size = new System.Drawing.Size(217, 26);
+            this.aloneComboBox1.Size = new System.Drawing.Size(273, 26);
             this.aloneComboBox1.TabIndex = 42;
             // 
             // tableLayoutPanel1
@@ -282,8 +244,6 @@
             this.Text = "Danh sách ";
             this.Load += new System.EventHandler(this.fDonHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -296,9 +256,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private ReaLTaiizor.Controls.MaterialButton btn_TaoDon;
         private ReaLTaiizor.Controls.CyberTextBox textBox_TimKiem;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
