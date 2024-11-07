@@ -22,35 +22,15 @@ namespace GUI
 
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        private Account loginAccount;
-        public Account LoginAccount
-        {
-            get { return loginAccount; }
-            set { loginAccount = value; }
-        }
 
-        public fHome(Account loginAccount)
+        public static Account LoginAccount { get; set; }
+
+        public fHome()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.LoginAccount = loginAccount;
         }
 
-        private void SCANT_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MINIMIZEB_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void CLOSEB_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-            Environment.Exit(1);
-        }
         private void MOVE_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)

@@ -41,9 +41,11 @@ namespace GUI
                 {
                     Log.WriteLog("----------" + account.UserName + " log in ----------");
 
-                    Account acc = AccountBUS.Instance.GetAccountByUserName(account.UserName);
+                    Account loginAccount = AccountBUS.Instance.GetAccountByUserName(account.UserName);
 
-                    fHome form = new fHome(acc);
+                    fHome form = new fHome();
+                    // Gán thông tin tài khoản đã đăng nhập vào form Home.
+                    fHome.LoginAccount = loginAccount;
                     this.Hide();
                     form.ShowDialog();
                     this.Show();

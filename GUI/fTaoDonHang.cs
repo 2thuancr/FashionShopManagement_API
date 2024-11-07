@@ -27,7 +27,9 @@ namespace GUI
 
         private void fTaoDonHang_Load(object sender, EventArgs e)
         {
+            this.LoadLoginAccount();
             this.LoadProducts();
+
         }
 
         private void LoadProducts()
@@ -39,6 +41,11 @@ namespace GUI
             this.comboBox_SanPham.DataSource = listProducts;
             this.comboBox_SanPham.ValueMember = "Id";
             this.comboBox_SanPham.DisplayMember = "Name";
+        }
+
+        private void LoadLoginAccount()
+        {
+            this.textBox_NhanVien.TextButton = fHome.LoginAccount.DisplayName;
         }
     }
 }
