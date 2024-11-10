@@ -52,7 +52,22 @@ namespace BUS
             {
                 BillInfoDAO.Instance.DeleteBillInfoByBillID(billID);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void DeleteBillInfo(int billID, int productID)
+        {
+            try
+            {
+                BillInfoDAO.Instance.DeleteBillInfo(billID, productID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

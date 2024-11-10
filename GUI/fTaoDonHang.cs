@@ -310,7 +310,53 @@ namespace GUI
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
+            if (this.selectedProduct != null)
+            {
+                try
+                {
+                    if (this.bill != null && this.bill.ID > 0)
+                    {
+                        // Gọi BUS để xóa product khỏi BillInfo
+                        BillInfoBUS.Instance.DeleteBillInfo(this.bill.ID, this.selectedProduct.Id);
+                    }
+                   
+                    // Cập nhật giao diện
+                    this.productsInBill.Remove(this.selectedProduct);
+                    var index = this.listProductInBillDetails.FindIndex(x => x.ProductId == this.selectedProduct.Id);
+                    if (index > -1)
+                    {
+                        this.listProductInBillDetails.RemoveAt(index);
+                    }
+                    this.data_DSSanPham.DataSource = null;
+                    this.data_DSSanPham.DataSource = this.listProductInBillDetails;
+                    this.Invalidate();
+                    this.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi");
+                }
+            }
+        }
 
+        private void data_DSSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lấy thông tin hàng đang được chọn
+            var selectedIndex = data_DSSanPham.SelectedCells[0].RowIndex;
+            // Lấy dữ liệu ở hàng selectedIndex
+            var productInBillDetail = this.listProductInBillDetails[selectedIndex];
+
+            var product = this.listProducts.FirstOrDefault(x => x.Id == productInBillDetail.ProductId);
+            var productAmount = this.productsInBill[product];
+            if (product != null)
+            {
+                this.selectedProduct = product;
+                // hiện thị lên giao diện
+                this.comboBox_SanPham.Text = this.selectedProduct.Name;
+                this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
+                this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
+                this.textbox_SoLuong.TextButton = productAmount.ToString();
+            }
         }
     }
 }
