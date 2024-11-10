@@ -310,7 +310,19 @@ namespace GUI
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-
+            if (this.selectedProduct != null)
+            {
+                this.productsInBill.Remove(this.selectedProduct);
+                var index = this.listProductInBillDetails.FindIndex(x => x.ProductId == this.selectedProduct.Id);
+                if (index > -1)
+                {
+                    this.listProductInBillDetails.RemoveAt(index);
+                }
+                this.data_DSSanPham.DataSource = null;
+                this.data_DSSanPham.DataSource = this.listProductInBillDetails;
+                this.Invalidate();
+                this.Refresh();
+            }
         }
 
         private void data_DSSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -326,6 +338,7 @@ namespace GUI
             {
                 this.selectedProduct = product;
                 // hiện thị lên giao diện
+                this.comboBox_SanPham.Text = this.selectedProduct.Name;
                 this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
                 this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
                 this.textbox_SoLuong.TextButton = productAmount.ToString();
