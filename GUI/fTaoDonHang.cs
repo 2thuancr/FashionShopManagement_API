@@ -382,6 +382,9 @@ namespace GUI
                 MessageBox.Show("Vui lòng thanh toán trước khi in hóa đơn");
                 return;
             }
+
+            fInHoaDon inHoaDon = new fInHoaDon(this.bill);
+            inHoaDon.Show();
         }
     }
 }

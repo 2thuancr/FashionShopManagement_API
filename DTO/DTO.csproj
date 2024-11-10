@@ -43,6 +43,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountType.cs" />
     <Compile Include="Bill.cs" />
+    <Compile Include="BillInfoDetail.cs" />
     <Compile Include="BillInfo.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Customer.cs" />

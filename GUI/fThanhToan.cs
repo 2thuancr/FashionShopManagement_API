@@ -36,7 +36,7 @@ namespace GUI
             string amount = (bill.TotalPrice - bill.Discount).ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
-            var url = BillBUS.Instance.GetQrPayment(bill, bankName, bankAccountID, bankAccountName, addInfo, amount);
+            var url = BillBUS.Instance.GetQrPayment("print", bankName, bankAccountID, bankAccountName, addInfo, amount);
             try
             {
                 this.picture_QRCode.Load(url);

@@ -35,6 +35,20 @@ namespace DAO
             }
         }
 
+        public DataTable GetBillInfoDetailByBillId(int billId)
+        {
+            DataTable table;
+            try
+            {
+                table = DataProvider.Instance.ExecuteQuery("[USP_GetBillInfoDetailByBillId] @CustomerId", new object[] { billId });
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void DeleteBillInfoByBillID(int billID)
         {
             string query = string.Format("USP_DeleteBillInfoByBillID @BillID");

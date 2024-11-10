@@ -203,10 +203,10 @@ namespace BUS
         /// Trả ra link QR code thanh toán
         /// </summary>
         /// <param name="bill"></param>
-        public string GetQrPayment(Bill bill, string bankName, string bankAccountID, string bankAccountName, string addInfo, string amount)
+        public string GetQrPayment(string qrType, string bankName, string bankAccountID, string bankAccountName, string addInfo, string amount)
         {
           
-            string url = $"https://img.vietqr.io/image/{bankName}-{bankAccountID}-print.png?amount={amount}&accountName={bankAccountName}&addInfo={addInfo}";
+            string url = $"https://img.vietqr.io/image/{bankName}-{bankAccountID}-{qrType}.png?amount={amount}&accountName={bankAccountName}&addInfo={addInfo}";
             return url;
         }
     }
