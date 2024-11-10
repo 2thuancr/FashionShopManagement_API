@@ -51,6 +51,7 @@
     <Compile Include="FoodDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityDAO.cs" />
+    <Compile Include="StaffDAO.cs" />
     <Compile Include="TableDAO.cs" />
     <Compile Include="TempBillDAO.cs" />
   </ItemGroup>

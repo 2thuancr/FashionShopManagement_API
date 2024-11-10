@@ -99,7 +99,7 @@
             this.textBox_TimKiem.RGB = false;
             this.textBox_TimKiem.Rounding = true;
             this.textBox_TimKiem.RoundingInt = 60;
-            this.textBox_TimKiem.Size = new System.Drawing.Size(536, 54);
+            this.textBox_TimKiem.Size = new System.Drawing.Size(535, 54);
             this.textBox_TimKiem.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.textBox_TimKiem.TabIndex = 49;
             this.textBox_TimKiem.Tag = "Cyber";
@@ -127,12 +127,12 @@
             this.btn_TimKiem.HighEmphasis = true;
             this.btn_TimKiem.Icon = null;
             this.btn_TimKiem.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_TimKiem.Location = new System.Drawing.Point(536, 0);
+            this.btn_TimKiem.Location = new System.Drawing.Point(535, 0);
             this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(20, 8, 5, 8);
             this.btn_TimKiem.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_TimKiem.Size = new System.Drawing.Size(85, 54);
+            this.btn_TimKiem.Size = new System.Drawing.Size(86, 54);
             this.btn_TimKiem.TabIndex = 53;
             this.btn_TimKiem.Text = "Tìm kiếm";
             this.btn_TimKiem.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
