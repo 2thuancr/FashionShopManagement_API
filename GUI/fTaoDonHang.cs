@@ -123,6 +123,11 @@ namespace GUI
                 this.productsInBill[selectedProduct] = amount;
             }
 
+            this.CapNhatBillInfo();
+        }
+
+        private void CapNhatBillInfo()
+        {
             // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
             decimal totalPrice = 0;
             decimal totalDiscount = 0;
@@ -146,7 +151,7 @@ namespace GUI
                 p.Size = product.Size;
                 p.Image = product.Image;
                 p.Description = product.Description;
-                
+
                 listProductInBillDetails.Add(p);
             }
 
@@ -172,6 +177,12 @@ namespace GUI
             {
                 MessageBox.Show("Chưa chọn thông tin Khách hàng");
                 this.textBox_SDT.Focus();
+                return;
+            }
+
+            if (this.bill == null || !this.listProductInBillDetails.Any())
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm trước khi lưu hóa đơn");
                 return;
             }
 
@@ -286,6 +297,7 @@ namespace GUI
                 {
                     // Update Status = 1 (Đã thanh toán)
                     this.bill.Status = 1;
+                    this.bill.PaymentStatus = paymentStatus;
                     try
                     {
                         BillBUS.Instance.UpdateBillStatus(this.bill);
@@ -327,10 +339,8 @@ namespace GUI
                     {
                         this.listProductInBillDetails.RemoveAt(index);
                     }
-                    this.data_DSSanPham.DataSource = null;
-                    this.data_DSSanPham.DataSource = this.listProductInBillDetails;
-                    this.Invalidate();
-                    this.Refresh();
+
+                    this.CapNhatBillInfo();
                 }
                 catch (Exception ex)
                 {
@@ -356,6 +366,21 @@ namespace GUI
                 this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
                 this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
                 this.textbox_SoLuong.TextButton = productAmount.ToString();
+            }
+        }
+
+        private void btn_InHoaDon_Click(object sender, EventArgs e)
+        {
+            if (this.bill == null || this.bill.ID <= 0)
+            {
+                MessageBox.Show("Vui lòng tạo hóa đơn");
+                return;
+            }
+
+            if (this.bill.Status == 0)
+            {
+                MessageBox.Show("Vui lòng thanh toán trước khi in hóa đơn");
+                return;
             }
         }
     }
