@@ -22,7 +22,7 @@ namespace DAO
 
         private BillInfoDAO() { }
 
-        public void InsertBillInfo(int billID, int productID, int amount)
+        public void InsertUpdateBillInfo(int billID, int productID, int amount)
         {
             string query = "USP_InsertBillInfo @BillID , @ProductID , @Amount";
             try
