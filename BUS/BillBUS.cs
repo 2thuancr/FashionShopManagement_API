@@ -59,6 +59,18 @@ namespace BUS
             } 
         }
 
+        public void UpdateBillStatus(Bill bill)
+        {
+            try
+            {
+                BillDAO.Instance.UpdateBillStatus(bill);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int GetMaxBillID()
         {
             try
@@ -173,6 +185,17 @@ namespace BUS
             {
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// Trả ra link QR code thanh toán
+        /// </summary>
+        /// <param name="bill"></param>
+        public string GetQrPayment(Bill bill, string bankName, string bankAccountID, string bankAccountName, string addInfo, string amount)
+        {
+          
+            string url = $"https://img.vietqr.io/image/{bankName}-{bankAccountID}-print.png?amount={amount}&accountName={bankAccountName}&addInfo={addInfo}";
+            return url;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace DTO
         {
             try
             {
-                this.ProductId = Convert.ToInt32(row["Id"]);
+                this.ProductId = Convert.ToInt32(row[" Id"]);
                 this.Name = Convert.ToString(row["Name"]);
                 this.Amount = Convert.ToInt32(row["Amount"]);
                 this.Price = Convert.ToDecimal(row["Price"]);

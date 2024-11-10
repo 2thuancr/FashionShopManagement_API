@@ -41,8 +41,8 @@ namespace DTO
             try
             {
                 this.ID = Convert.ToInt32(row["id"]);
-                this.BusinessTime = Convert.ToDateTime(row["businessTime"]);
-                this.Status = Convert.ToInt32(row["status"]);
+                this.BusinessTime = (row["businessTime"] != DBNull.Value) ? Convert.ToDateTime(row["businessTime"]) : DateTime.MinValue;
+                this.Status = (row["status"] != DBNull.Value) ? Convert.ToInt32(row["status"]) : 0;
                 if (this.Status == 1)
                 {
                     this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
@@ -51,10 +51,10 @@ namespace DTO
                 {
                     this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
                 }
-                this.Discount = Convert.ToDecimal(row["discount"]);
-                this.TotalPrice = Convert.ToDecimal(row["totalPrice"]);
-                this.CustomerId = Convert.ToInt32(row["customerId"]);
-                this.StaffId = Convert.ToInt32(row["StaffId"]);
+                this.Discount = (row["discount"] != DBNull.Value) ? Convert.ToDecimal(row["discount"]) : 0;
+                this.TotalPrice = (row["totalPrice"] != DBNull.Value) ? Convert.ToDecimal(row["totalPrice"]) : 0;
+                this.CustomerId = (row["customerId"] != DBNull.Value) ? Convert.ToInt32(row["customerId"]) : 0;
+                this.StaffId = (row["staffId"] != DBNull.Value) ? Convert.ToInt32(row["staffId"]) : 0;
             }
             catch (Exception ex) 
             {
