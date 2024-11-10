@@ -312,5 +312,24 @@ namespace GUI
         {
 
         }
+
+        private void data_DSSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lấy thông tin hàng đang được chọn
+            var selectedIndex = data_DSSanPham.SelectedCells[0].RowIndex;
+            // Lấy dữ liệu ở hàng selectedIndex
+            var productInBillDetail = this.listProductInBillDetails[selectedIndex];
+
+            var product = this.listProducts.FirstOrDefault(x => x.Id == productInBillDetail.ProductId);
+            var productAmount = this.productsInBill[product];
+            if (product != null)
+            {
+                this.selectedProduct = product;
+                // hiện thị lên giao diện
+                this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
+                this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
+                this.textbox_SoLuong.TextButton = productAmount.ToString();
+            }
+        }
     }
 }

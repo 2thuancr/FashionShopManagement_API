@@ -346,6 +346,7 @@
             this.data_DSSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_DSSanPham.Size = new System.Drawing.Size(552, 309);
             this.data_DSSanPham.TabIndex = 0;
+            this.data_DSSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DSSanPham_CellClick);
             // 
             // tableLayoutPanel2
             // 
