@@ -142,19 +142,29 @@ namespace DAO
         {
             try
             {
-                var parameters = new object[]
-                {
-                    bill.CustomerId,
-                    bill.StaffId,
-                    bill.Discount,
-                    bill.TotalPrice,
-                    bill.Status,
-                };
                 string query = $@"[USP_UpdateBillStatus] 
                     @BillID = {bill.ID},
                     @Status = {bill.Status}
                     ";
-                DataProvider.Instance.ExecuteScalar(query, parameters);
+                DataProvider.Instance.ExecuteScalar(query, null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void UpdateBill(Bill bill)
+        {
+            try
+            {
+                string query = $@"[USP_UpdateBill] 
+                    @ID = {bill.ID},
+                    @Discount = {bill.Discount},
+                    @TotalPrice = {bill.TotalPrice},
+                    @Status = {bill.Status}
+                    ";
+                DataProvider.Instance.ExecuteScalar(query, null);
             }
             catch (Exception ex)
             {

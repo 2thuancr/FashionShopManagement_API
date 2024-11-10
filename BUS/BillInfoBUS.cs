@@ -26,7 +26,7 @@ namespace BUS
         {
             try
             {
-                BillInfoDAO.Instance.InsertBillInfo(billID, productID, amount);
+                BillInfoDAO.Instance.InsertUpdateBillInfo(billID, productID, amount);
             }
             catch (Exception ex)
             {
@@ -34,11 +34,11 @@ namespace BUS
             }
         }
 
-        public void InsertBillInfo(BillInfo billInfo)
+        public void InsertUpdateBillInfo(BillInfo billInfo)
         {
             try
             {
-                BillInfoDAO.Instance.InsertBillInfo(billInfo.BillID, billInfo.ProductID, billInfo.Amount);
+                BillInfoDAO.Instance.InsertUpdateBillInfo(billInfo.BillID, billInfo.ProductID, billInfo.Amount);
             }
             catch (Exception ex)
             {

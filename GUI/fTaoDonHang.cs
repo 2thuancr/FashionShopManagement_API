@@ -175,6 +175,18 @@ namespace GUI
                 return;
             }
 
+            if (this.bill != null && this.bill.ID > 0)
+            {
+                UpdateBill();
+            }
+            else
+            {
+                InsertBill();
+            }
+        }
+
+        private void InsertBill()
+        {
             // Lưu Bill
             this.bill = new Bill();
             this.bill.CustomerId = this.customer.CustomerId;
@@ -208,15 +220,56 @@ namespace GUI
                         BillID = billID,
                     };
 
-                    BillInfoBUS.Instance.InsertBillInfo(billInfo);
+                    BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);
                 }
 
-                this.btn_Luu.Enabled = false;
+                //this.btn_Luu.Enabled = false;
                 MessageBox.Show("Lưu hóa đơn thành công");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lỗi khi tạo Chi tiết hóa đơn");
+            }
+        }
+
+        private void UpdateBill()
+        {
+            // Lưu Bill
+            this.bill.TotalPrice = this.totalPrice;
+            this.bill.Discount = this.totalDiscount;
+
+            try
+            {
+                BillBUS.Instance.UpdateBill(bill);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cập nhật đơn thất bại");
+                return;
+            }
+
+
+            // Lưu BillInfo
+            try
+            {
+                foreach (var product in this.listProductInBillDetails)
+                {
+                    BillInfo billInfo = new BillInfo()
+                    {
+                        ProductID = product.ProductId,
+                        Amount = product.Amount,
+                        BillID = this.bill.ID,
+                    };
+
+                    BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);
+                }
+
+                //this.btn_Luu.Enabled = false;
+                MessageBox.Show("Lưu hóa đơn thành công");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi khi cập nhật Chi tiết hóa đơn");
             }
         }
 
@@ -253,6 +306,11 @@ namespace GUI
             {
                 MessageBox.Show("Vui lòng lưu hóa đơn");
             }
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -71,6 +71,18 @@ namespace BUS
             }
         }
 
+        public void UpdateBill(Bill bill)
+        {
+            try
+            {
+                BillDAO.Instance.UpdateBill(bill);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int GetMaxBillID()
         {
             try
