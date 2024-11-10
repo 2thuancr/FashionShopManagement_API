@@ -98,6 +98,7 @@ namespace GUI
             // hiện thị lên giao diện
             this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
             this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
+            this.textbox_SoLuong.TextButton = "1";
         }
 
         private void btn_Them_Click(object sender, EventArgs e)
@@ -121,8 +122,6 @@ namespace GUI
             {
                 this.productsInBill[selectedProduct] = amount;
             }
-
-         
 
             // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
             decimal totalPrice = 0;
@@ -169,19 +168,32 @@ namespace GUI
 
         private void btn_Luu_Click(object sender, EventArgs e)
         {
+            if (this.customer == null || this.customer.CustomerId <= 0)
+            {
+                MessageBox.Show("Chưa chọn thông tin Khách hàng");
+                this.textBox_SDT.Focus();
+                return;
+            }
+
             // Lưu Bill
-            var bill = new Bill();
-            bill.CustomerId = this.customer.CustomerId;
-            bill.StaffId = fHome.LoginAccount.Id;
-            bill.TotalPrice = this.totalPrice;
-            bill.Discount = this.totalDiscount;
-            bill.Status = 0;
-            bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
+            this.bill = new Bill();
+            this.bill.CustomerId = this.customer.CustomerId;
+            this.bill.StaffId = fHome.LoginAccount.Id;
+            this.bill.TotalPrice = this.totalPrice;
+            this.bill.Discount = this.totalDiscount;
+            this.bill.Status = 0;
+            this.bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
 
             int billID = BillBUS.Instance.InsertBill(bill);
             if (billID <= 0)
             {
                 MessageBox.Show("Tạo đơn thất bại");
+                return;
+            }
+            else
+            {
+                this.bill.ID = billID;
+                this.textBox_MaHoaDon.TextButton = billID.ToString();
             }
 
             // Lưu BillInfo
@@ -199,6 +211,7 @@ namespace GUI
                     BillInfoBUS.Instance.InsertBillInfo(billInfo);
                 }
 
+                this.btn_Luu.Enabled = false;
                 MessageBox.Show("Lưu hóa đơn thành công");
             }
             catch (Exception ex)
