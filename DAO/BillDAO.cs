@@ -89,11 +89,48 @@ namespace DAO
             }
         }
 
-        public void InsertBill(int tableID)
+        public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
             try
             {
-                DataProvider.Instance.ExecuteNonQuery("USP_InsertBill @TableID", new object[] { tableID });
+                var parameters = new object[]
+                {
+                    customerId,
+                    staffId,
+                    discount,
+                    totalPrice,
+                    status,
+                };
+                var result = DataProvider.Instance.ExecuteScalar("[USP_InsertBill] @CustomerID, @StaffID, @Discount, @TotalPrice, @Status", parameters);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int InsertBill(Bill bill)
+        {
+            try
+            {
+                var parameters = new object[]
+                {
+                    bill.CustomerId,
+                    bill.StaffId,
+                    bill.Discount,
+                    bill.TotalPrice,
+                    bill.Status,
+                };
+                string query = $@"[USP_InsertBill] 
+                    @CustomerID = {bill.CustomerId}, 
+                    @StaffID = {bill.StaffId}, 
+                    @Discount = {bill.Discount}, 
+                    @TotalPrice = {bill.TotalPrice}, 
+                    @Status = {bill.Status}
+                    ";
+                var result = DataProvider.Instance.ExecuteScalar(query, parameters);
+                return Convert.ToInt32(result);
             }
             catch (Exception ex)
             {

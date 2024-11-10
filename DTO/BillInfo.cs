@@ -10,6 +10,8 @@ namespace DTO
         public int ProductID { get; set; }
         public int Amount { get; set; }
 
+        public BillInfo() { }
+
         public BillInfo(int id, int billID, int productID, int amount)
         {
             this.ID = id;

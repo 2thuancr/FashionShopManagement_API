@@ -35,13 +35,28 @@ namespace BUS
             }
         }
 
-        public void InsertBill(int tableID)
+        public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
             try
             {
-                BillDAO.Instance.InsertBill(tableID);
+                return BillDAO.Instance.InsertBill(customerId, staffId, discount, totalPrice, status);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int InsertBill(Bill bill)
+        {
+            try
+            {
+                return BillDAO.Instance.InsertBill(bill);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } 
         }
 
         public int GetMaxBillID()

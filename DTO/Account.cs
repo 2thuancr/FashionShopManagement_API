@@ -1,9 +1,11 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace DTO
 {
     public class Account
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string DisplayName { get; set; }
         public string Password { get; set; }
@@ -15,8 +17,9 @@ namespace DTO
             this.Password = password;
         }
 
-        public Account(string userName, string displayName, int typeID, string password = null)
+        public Account(int id, string userName, string displayName, int typeID, string password = null)
         {
+            this.Id = id;
             this.UserName = userName;
             this.DisplayName = displayName;
             this.TypeID = typeID;
@@ -25,10 +28,11 @@ namespace DTO
 
         public Account(DataRow row)
         {
-            this.UserName = row["UserName"].ToString();
-            this.DisplayName = row["DisplayName"].ToString();
-            this.TypeID = (int)row["TypeID"];
-            this.Password = row["Password"].ToString();
+            this.Id = Convert.ToInt32(row["Id"]);
+            this.UserName = Convert.ToString(row["UserName"]);
+            this.DisplayName = Convert.ToString(row["DisplayName"]);
+            this.TypeID = Convert.ToInt32(row["TypeID"]);
+            this.Password = Convert.ToString(row["Password"]);
         }
     }
 }

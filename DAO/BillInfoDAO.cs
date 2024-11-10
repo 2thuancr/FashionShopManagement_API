@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 using DTO;
@@ -28,7 +29,10 @@ namespace DAO
             {
                 DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, productID, amount });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void DeleteBillInfoByBillID(int billID)
@@ -38,7 +42,10 @@ namespace DAO
             {
                 DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

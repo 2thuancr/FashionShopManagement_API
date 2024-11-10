@@ -166,5 +166,45 @@ namespace GUI
             this.data_DSSanPham.Refresh();
             this.data_DSSanPham.Invalidate();
         }
+
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            // Lưu Bill
+            var bill = new Bill();
+            bill.CustomerId = this.customer.CustomerId;
+            bill.StaffId = fHome.LoginAccount.Id;
+            bill.TotalPrice = this.totalPrice;
+            bill.Discount = this.totalDiscount;
+            bill.Status = 0;
+            bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
+
+            int billID = BillBUS.Instance.InsertBill(bill);
+            if (billID <= 0)
+            {
+                MessageBox.Show("Tạo đơn thất bại");
+            }
+
+            // Lưu BillInfo
+            try
+            {
+                foreach (var product in this.listProductInBillDetails)
+                {
+                    BillInfo billInfo = new BillInfo()
+                    {
+                        ProductID = product.ProductId,
+                        Amount = product.Amount,
+                        BillID = billID,
+                    };
+
+                    BillInfoBUS.Instance.InsertBillInfo(billInfo);
+                }
+
+                MessageBox.Show("Lưu hóa đơn thành công");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi khi tạo Chi tiết hóa đơn");
+            }
+        }
     }
 }
