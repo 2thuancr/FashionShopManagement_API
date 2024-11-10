@@ -31,12 +31,61 @@ namespace GUI
             this.bill = bill;
         }
 
-        private void fThanhToan_Load(object sender, EventArgs e)
+        private void fInHoaDon_Load(object sender, EventArgs e)
+        {
+            LoadBill();
+            LoadBillInfo();
+            LoadQR();
+        }
+
+        private void LoadBill()
+        {
+            this.textbox_MaHoaDon.Text = this.bill.ID.ToString();
+            
+        }
+
+        private void LoadBillInfo()
+        {
+            var result = BillInfoBUS.Instance.GetBillInfoDetailByBillId(this.bill.ID);
+
+            if (result != null && result.Count > 0)
+            {
+                // Bill
+                string customerName = result[0].CustomerName;
+                string staffName = result[0].StaffName;
+                string businessTime = result[0].BusinessTime.ToString();
+                decimal totalPrice = result[0].TotalPrice;
+                decimal discount = result[0].Discount;
+
+                this.textbox_KhachHang.Text = customerName;
+                this.textbox_NhanVien.Text = staffName;
+                this.textbox_NgayMua.Text = businessTime;
+                this.textbox_TongHoaDon.Text = (totalPrice - discount).ToString();
+
+                // BillInfo
+                List<ProductInBill> listProductInBills = new List<ProductInBill>();
+                foreach (var item in result)
+                {
+                    var productInBill = new ProductInBill();
+                    productInBill.ProductId = item.ProductId;
+                    productInBill.Name = item.ProductName;
+                    productInBill.Price = item.ProductPrice;
+                    productInBill.Discount = item.ProductDiscount;
+                    productInBill.Amount = item.Amount;
+
+                    listProductInBills.Add(productInBill);
+                }
+                this.data_DSSanPham.DataSource = null;
+                this.data_DSSanPham.DataSource = listProductInBills;
+            }
+        }
+
+        private void LoadQR()
         {
             string amount = (bill.TotalPrice - bill.Discount).ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
-            var url = BillBUS.Instance.GetQrPayment(bill, bankName, bankAccountID, bankAccountName, addInfo, amount);
+            var url = BillBUS.Instance.GetQrPayment("qr_only", bankName, bankAccountID, bankAccountName, addInfo, amount);
             try
             {
                 this.picture_QRCode.Load(url);
@@ -48,14 +97,14 @@ namespace GUI
             }
         }
 
-        private void btn_Done_Click(object sender, EventArgs e)
+        private void btn_Huy_Click(object sender, EventArgs e)
         {
-            this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
             this.Close();
         }
 
-        private void btn_Huy_Click(object sender, EventArgs e)
+        private void btn_Print_Click(object sender, EventArgs e)
         {
+            this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
             this.Close();
         }
     }

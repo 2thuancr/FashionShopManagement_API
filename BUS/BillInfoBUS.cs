@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Data;
 using DAO;
 using DTO;
 
@@ -68,6 +68,28 @@ namespace BUS
             {
                 throw ex;
             }
+        }
+        public List<BillInfoDetail> GetBillInfoDetailByBillId(int billId)
+        {
+            DataTable table;
+            try
+            {
+                table = BillInfoDAO.Instance.GetBillInfoDetailByBillId(billId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<BillInfoDetail> result = new List<BillInfoDetail>();
+            if (table != null && table.Rows.Count > 0)
+            {
+                foreach (DataRow row  in table.Rows)
+                {
+                    result.Add(new BillInfoDetail(row));
+                }
+            }
+            return result;
         }
     }
 }
