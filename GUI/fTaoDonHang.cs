@@ -18,9 +18,11 @@ namespace GUI
         private List<Product> listProducts = new List<Product>();
         //Lưu thông tin sản phẩm đang được chọn
         private Product selectedProduct = new Product();
+
         // Lưu các sản phẩm có trong đơn hàng
         private Dictionary<Product, int> productsInBill = new Dictionary<Product, int>();
-        private List<BillInfo> listBillInfo = new List<BillInfo>();
+        private List<ProductInBill> listProductInBillDetails = new List<ProductInBill>();
+
         private Customer customer = new Customer();
         private Bill bill = new Bill();
 
@@ -100,11 +102,19 @@ namespace GUI
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.textbox_SoLuong.TextButton))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng cho sản phẩm");
+            }
             // lấy thông tin từ this.selectedProduct luu vào dataGrid
             int amount = Convert.ToInt32(this.textbox_SoLuong.TextButton);
+            if (amount <= 0)
+            {
+                MessageBox.Show("Số lượng không hợp lệ");
+            }
+
             if (this.productsInBill.ContainsKey(selectedProduct))
             {
-
                 this.productsInBill[selectedProduct] += amount;
             }
             else
@@ -114,29 +124,46 @@ namespace GUI
 
          
 
-            // cập nhật lại tổng tiền, mã giảm giá và thành tiền
-            this.totalPrice = 0;
-            this.totalDiscount = 0;
-            this.listBillInfo = new List<BillInfo>();
+            // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
+            decimal totalPrice = 0;
+            decimal totalDiscount = 0;
+            var listProductInBillDetails = new List<ProductInBill>();
             foreach (var product in this.productsInBill.Keys)
             {
+                // Lấy thông tin amount của sản phẩm trong đơn hàng
                 var productAmount = this.productsInBill[product];
-                this.totalPrice += product.Price * productAmount;
-                this.totalDiscount += product.Discount * productAmount;
 
-                var billInfo = new BillInfo(0, 0, product.Id, productAmount);
-                this.listBillInfo.Add(billInfo);
+
+                totalPrice += product.Price * productAmount;
+                totalDiscount += product.Discount * productAmount;
+
+                var p = new ProductInBill();
+                p.ProductId = product.Id;
+                p.Name = product.Name;
+                p.Amount = productAmount;
+                p.Price = product.Price;
+                p.Discount = product.Discount;
+                p.Category = product.Category;
+                p.Size = product.Size;
+                p.Image = product.Image;
+                p.Description = product.Description;
+                
+                listProductInBillDetails.Add(p);
             }
-            this.data_DSSanPham.DataSource = null;
-            this.data_DSSanPham.DataSource = this.listBillInfo;
+
+            // Cập nhật lại Bill
+            this.totalPrice = totalPrice;
+            this.totalDiscount = totalDiscount;
             this.textBox_TongTien.TextButton = this.totalPrice.ToString();
             this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
             this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
 
-            // Để cập nhật giao diện dataGridView thì cần phải thay đổi datasource
+            // Cập nhật lại BillInfo
+            this.listProductInBillDetails = listProductInBillDetails;
+            this.data_DSSanPham.DataSource = null;
+            this.data_DSSanPham.DataSource = this.listProductInBillDetails;
 
             this.data_DSSanPham.Refresh();
-
             this.data_DSSanPham.Invalidate();
         }
     }

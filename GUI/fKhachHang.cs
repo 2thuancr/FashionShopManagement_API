@@ -70,5 +70,10 @@ namespace GUI
                 MessageBox.Show("Không tìm thấy");
             }
         }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

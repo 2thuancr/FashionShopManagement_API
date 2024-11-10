@@ -65,7 +65,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.comboBox_SanPham = new System.Windows.Forms.ComboBox();
-            this.data_DSSanPham = new System.Windows.Forms.DataGridView();
+            this.data_DSSanPham = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -874,6 +874,6 @@
         private System.Windows.Forms.Label label7;
         private ReaLTaiizor.Controls.CyberTextBox textBox_MaHoaDon;
         private System.Windows.Forms.ComboBox comboBox_SanPham;
-        private System.Windows.Forms.DataGridView data_DSSanPham;
+        private ReaLTaiizor.Controls.PoisonDataGridView data_DSSanPham;
     }
 }
