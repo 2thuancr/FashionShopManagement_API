@@ -28,7 +28,22 @@ namespace BUS
             {
                 BillInfoDAO.Instance.InsertBillInfo(billID, productID, amount);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void InsertBillInfo(BillInfo billInfo)
+        {
+            try
+            {
+                BillInfoDAO.Instance.InsertBillInfo(billInfo.BillID, billInfo.ProductID, billInfo.Amount);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void DeleteBillInfoByBillID(int billID)
