@@ -219,5 +219,40 @@ namespace GUI
                 MessageBox.Show(ex.Message, "Lỗi khi tạo Chi tiết hóa đơn");
             }
         }
+
+        private void btn_ThanhToan_Click(object sender, EventArgs e)
+        {
+            if (this.bill != null && this.bill.ID > 0)
+            {
+                fThanhToan fThanhToan = new fThanhToan(this.bill);
+                fThanhToan.ShowDialog();
+
+                string paymentStatus = fThanhToan.PaymentStatus;
+                
+                if (paymentStatus == Bill.BILL_DA_THANH_TOAN)
+                {
+                    // Update Status = 1 (Đã thanh toán)
+                    this.bill.Status = 1;
+                    try
+                    {
+                        BillBUS.Instance.UpdateBillStatus(this.bill);
+                        MessageBox.Show(paymentStatus);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Lỗi");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(paymentStatus);
+                }
+                
+            }
+           else
+            {
+                MessageBox.Show("Vui lòng lưu hóa đơn");
+            }
+        }
     }
 }

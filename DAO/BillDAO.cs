@@ -138,6 +138,30 @@ namespace DAO
             }
         }
 
+        public void UpdateBillStatus(Bill bill)
+        {
+            try
+            {
+                var parameters = new object[]
+                {
+                    bill.CustomerId,
+                    bill.StaffId,
+                    bill.Discount,
+                    bill.TotalPrice,
+                    bill.Status,
+                };
+                string query = $@"[USP_UpdateBillStatus] 
+                    @BillID = {bill.ID},
+                    @Status = {bill.Status}
+                    ";
+                DataProvider.Instance.ExecuteScalar(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int GetMaxBillID()
         {
             try
