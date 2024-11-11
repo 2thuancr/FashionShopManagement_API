@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,6 +91,36 @@ namespace GUI
             {
                 MessageBox.Show("Lỗi");
             }
+        }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            Staff staff = new Staff();
+            staff.StaffId = Convert.ToInt32(textBox_MaNV.Text);
+            staff.SurNameStaff = textBox_Ho.Text;
+            staff.NameStaff = textBox_Ten.Text;
+            staff.DoB = Convert.ToDateTime(dateTime_NgaySinh.Text);
+            staff.Sex = comboBox_GioiTinh.Text;
+            staff.RecruitmentDay = Convert.ToDateTime(dateTime_NgayTuyenDung.Text);
+            staff.Address = textBox_DiaChi.Text;
+            staff.JobId = Convert.ToInt32(textBox_MaCV.Text);
+            staff.NoS = Convert.ToInt32(textBox_SoCa.Text);
+            staff.PhoneNumber = textBox_SDT.Text;
+
+            var result = StaffBUS.Instance.InsertStaff(staff);
+            if (result == true)
+            {
+                MessageBox.Show("Thêm thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

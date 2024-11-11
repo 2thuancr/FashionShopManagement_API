@@ -196,7 +196,7 @@
             this.textBox_ChiTietSanPham.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.textBox_ChiTietSanPham.TabIndex = 7;
             this.textBox_ChiTietSanPham.Tag = "Cyber";
-            this.textBox_ChiTietSanPham.TextButton = "Vải chính 100% len";
+            this.textBox_ChiTietSanPham.TextButton = "";
             this.textBox_ChiTietSanPham.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.textBox_ChiTietSanPham.Timer_RGB = 300;
             // 
