@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fInHoaDon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Huy = new ReaLTaiizor.Controls.MaterialButton();
             this.btn_Print = new ReaLTaiizor.Controls.MaterialButton();
@@ -49,11 +49,11 @@
             this.parrotGroupBox1 = new ReaLTaiizor.Controls.ParrotGroupBox();
             this.textbox_MaHoaDon = new ReaLTaiizor.Controls.MetroTextBox();
             this.picture_QRCode = new System.Windows.Forms.PictureBox();
-            this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.smallLabel1 = new ReaLTaiizor.Controls.SmallLabel();
             this.parrotGroupBox5 = new ReaLTaiizor.Controls.ParrotGroupBox();
             this.textbox_TongHoaDon = new ReaLTaiizor.Controls.MetroTextBox();
+            this.smallLabel1 = new ReaLTaiizor.Controls.SmallLabel();
+            this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_Print.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -75,11 +75,11 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_Huy, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_Print, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 676);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 712);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(518, 67);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(534, 67);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
             // btn_Huy
@@ -96,12 +96,12 @@
             this.btn_Huy.HighEmphasis = true;
             this.btn_Huy.Icon = null;
             this.btn_Huy.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Huy.Location = new System.Drawing.Point(265, 9);
+            this.btn_Huy.Location = new System.Drawing.Point(273, 9);
             this.btn_Huy.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btn_Huy.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Huy.Name = "btn_Huy";
             this.btn_Huy.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Huy.Size = new System.Drawing.Size(247, 49);
+            this.btn_Huy.Size = new System.Drawing.Size(255, 49);
             this.btn_Huy.TabIndex = 23;
             this.btn_Huy.Text = "Hủy";
             this.btn_Huy.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -128,7 +128,7 @@
             this.btn_Print.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Print.Name = "btn_Print";
             this.btn_Print.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Print.Size = new System.Drawing.Size(247, 49);
+            this.btn_Print.Size = new System.Drawing.Size(255, 49);
             this.btn_Print.TabIndex = 22;
             this.btn_Print.Text = "In";
             this.btn_Print.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -153,7 +153,7 @@
             this.panel_Print.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Print.Location = new System.Drawing.Point(0, 0);
             this.panel_Print.Name = "panel_Print";
-            this.panel_Print.Size = new System.Drawing.Size(518, 676);
+            this.panel_Print.Size = new System.Drawing.Size(534, 712);
             this.panel_Print.TabIndex = 23;
             // 
             // tableLayoutPanel2
@@ -177,7 +177,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(518, 613);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(534, 649);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // data_DSSanPham
@@ -187,24 +187,24 @@
             this.data_DSSanPham.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.data_DSSanPham.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.data_DSSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DSSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DSSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.data_DSSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel2.SetColumnSpan(this.data_DSSanPham, 2);
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data_DSSanPham.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.data_DSSanPham.DefaultCellStyle = dataGridViewCellStyle2;
             this.data_DSSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data_DSSanPham.Enabled = false;
             this.data_DSSanPham.EnableHeadersVisualStyles = false;
@@ -215,19 +215,19 @@
             this.data_DSSanPham.Name = "data_DSSanPham";
             this.data_DSSanPham.ReadOnly = true;
             this.data_DSSanPham.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DSSanPham.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DSSanPham.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.data_DSSanPham.RowHeadersWidth = 62;
             this.data_DSSanPham.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.data_DSSanPham.RowTemplate.Height = 28;
             this.data_DSSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_DSSanPham.Size = new System.Drawing.Size(510, 226);
+            this.data_DSSanPham.Size = new System.Drawing.Size(526, 244);
             this.data_DSSanPham.TabIndex = 39;
             // 
             // parrotGroupBox4
@@ -236,10 +236,10 @@
             this.parrotGroupBox4.BorderWidth = 1;
             this.parrotGroupBox4.Controls.Add(this.textbox_KhachHang);
             this.parrotGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parrotGroupBox4.Location = new System.Drawing.Point(262, 73);
+            this.parrotGroupBox4.Location = new System.Drawing.Point(270, 73);
             this.parrotGroupBox4.Name = "parrotGroupBox4";
             this.parrotGroupBox4.ShowText = true;
-            this.parrotGroupBox4.Size = new System.Drawing.Size(253, 64);
+            this.parrotGroupBox4.Size = new System.Drawing.Size(261, 64);
             this.parrotGroupBox4.TabIndex = 3;
             this.parrotGroupBox4.TabStop = false;
             this.parrotGroupBox4.Text = "Khách hàng";
@@ -266,7 +266,7 @@
             this.textbox_KhachHang.Multiline = false;
             this.textbox_KhachHang.Name = "textbox_KhachHang";
             this.textbox_KhachHang.ReadOnly = false;
-            this.textbox_KhachHang.Size = new System.Drawing.Size(247, 39);
+            this.textbox_KhachHang.Size = new System.Drawing.Size(255, 39);
             this.textbox_KhachHang.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.textbox_KhachHang.StyleManager = null;
             this.textbox_KhachHang.TabIndex = 1;
@@ -286,7 +286,7 @@
             this.parrotGroupBox3.Location = new System.Drawing.Point(3, 73);
             this.parrotGroupBox3.Name = "parrotGroupBox3";
             this.parrotGroupBox3.ShowText = true;
-            this.parrotGroupBox3.Size = new System.Drawing.Size(253, 64);
+            this.parrotGroupBox3.Size = new System.Drawing.Size(261, 64);
             this.parrotGroupBox3.TabIndex = 2;
             this.parrotGroupBox3.TabStop = false;
             this.parrotGroupBox3.Text = "Ngày mua";
@@ -313,7 +313,7 @@
             this.textbox_NgayMua.Multiline = false;
             this.textbox_NgayMua.Name = "textbox_NgayMua";
             this.textbox_NgayMua.ReadOnly = false;
-            this.textbox_NgayMua.Size = new System.Drawing.Size(247, 39);
+            this.textbox_NgayMua.Size = new System.Drawing.Size(255, 39);
             this.textbox_NgayMua.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.textbox_NgayMua.StyleManager = null;
             this.textbox_NgayMua.TabIndex = 1;
@@ -330,10 +330,10 @@
             this.parrotGroupBox2.BorderWidth = 1;
             this.parrotGroupBox2.Controls.Add(this.textbox_NhanVien);
             this.parrotGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.parrotGroupBox2.Location = new System.Drawing.Point(262, 3);
+            this.parrotGroupBox2.Location = new System.Drawing.Point(270, 3);
             this.parrotGroupBox2.Name = "parrotGroupBox2";
             this.parrotGroupBox2.ShowText = true;
-            this.parrotGroupBox2.Size = new System.Drawing.Size(253, 64);
+            this.parrotGroupBox2.Size = new System.Drawing.Size(261, 64);
             this.parrotGroupBox2.TabIndex = 1;
             this.parrotGroupBox2.TabStop = false;
             this.parrotGroupBox2.Text = "Nhân viên";
@@ -360,7 +360,7 @@
             this.textbox_NhanVien.Multiline = false;
             this.textbox_NhanVien.Name = "textbox_NhanVien";
             this.textbox_NhanVien.ReadOnly = false;
-            this.textbox_NhanVien.Size = new System.Drawing.Size(247, 39);
+            this.textbox_NhanVien.Size = new System.Drawing.Size(255, 39);
             this.textbox_NhanVien.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.textbox_NhanVien.StyleManager = null;
             this.textbox_NhanVien.TabIndex = 1;
@@ -380,7 +380,7 @@
             this.parrotGroupBox1.Location = new System.Drawing.Point(3, 3);
             this.parrotGroupBox1.Name = "parrotGroupBox1";
             this.parrotGroupBox1.ShowText = true;
-            this.parrotGroupBox1.Size = new System.Drawing.Size(253, 64);
+            this.parrotGroupBox1.Size = new System.Drawing.Size(261, 64);
             this.parrotGroupBox1.TabIndex = 0;
             this.parrotGroupBox1.TabStop = false;
             this.parrotGroupBox1.Text = "Mã hóa đơn";
@@ -407,7 +407,7 @@
             this.textbox_MaHoaDon.Multiline = false;
             this.textbox_MaHoaDon.Name = "textbox_MaHoaDon";
             this.textbox_MaHoaDon.ReadOnly = false;
-            this.textbox_MaHoaDon.Size = new System.Drawing.Size(247, 39);
+            this.textbox_MaHoaDon.Size = new System.Drawing.Size(255, 39);
             this.textbox_MaHoaDon.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.textbox_MaHoaDon.StyleManager = null;
             this.textbox_MaHoaDon.TabIndex = 1;
@@ -422,47 +422,21 @@
             // 
             this.picture_QRCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picture_QRCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picture_QRCode.Location = new System.Drawing.Point(262, 379);
+            this.picture_QRCode.Location = new System.Drawing.Point(270, 397);
             this.picture_QRCode.Name = "picture_QRCode";
-            this.picture_QRCode.Size = new System.Drawing.Size(253, 231);
+            this.picture_QRCode.Size = new System.Drawing.Size(261, 249);
             this.picture_QRCode.TabIndex = 41;
             this.picture_QRCode.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("SVN-Blog Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(518, 63);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "FASHION SHOP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.parrotGroupBox5);
             this.panel1.Controls.Add(this.smallLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 379);
+            this.panel1.Location = new System.Drawing.Point(3, 397);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(253, 231);
+            this.panel1.Size = new System.Drawing.Size(261, 249);
             this.panel1.TabIndex = 42;
-            // 
-            // smallLabel1
-            // 
-            this.smallLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.smallLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.smallLabel1.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.smallLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.smallLabel1.Location = new System.Drawing.Point(0, 75);
-            this.smallLabel1.Name = "smallLabel1";
-            this.smallLabel1.Size = new System.Drawing.Size(253, 156);
-            this.smallLabel1.TabIndex = 41;
-            this.smallLabel1.Text = resources.GetString("smallLabel1.Text");
             // 
             // parrotGroupBox5
             // 
@@ -473,7 +447,7 @@
             this.parrotGroupBox5.Location = new System.Drawing.Point(0, 0);
             this.parrotGroupBox5.Name = "parrotGroupBox5";
             this.parrotGroupBox5.ShowText = true;
-            this.parrotGroupBox5.Size = new System.Drawing.Size(253, 64);
+            this.parrotGroupBox5.Size = new System.Drawing.Size(261, 64);
             this.parrotGroupBox5.TabIndex = 42;
             this.parrotGroupBox5.TabStop = false;
             this.parrotGroupBox5.Text = "Tổng hóa đơn";
@@ -500,7 +474,7 @@
             this.textbox_TongHoaDon.Multiline = false;
             this.textbox_TongHoaDon.Name = "textbox_TongHoaDon";
             this.textbox_TongHoaDon.ReadOnly = true;
-            this.textbox_TongHoaDon.Size = new System.Drawing.Size(247, 39);
+            this.textbox_TongHoaDon.Size = new System.Drawing.Size(255, 39);
             this.textbox_TongHoaDon.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.textbox_TongHoaDon.StyleManager = null;
             this.textbox_TongHoaDon.TabIndex = 1;
@@ -511,11 +485,37 @@
             this.textbox_TongHoaDon.UseSystemPasswordChar = false;
             this.textbox_TongHoaDon.WatermarkText = "";
             // 
+            // smallLabel1
+            // 
+            this.smallLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.smallLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.smallLabel1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.smallLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.smallLabel1.Location = new System.Drawing.Point(0, 93);
+            this.smallLabel1.Name = "smallLabel1";
+            this.smallLabel1.Size = new System.Drawing.Size(261, 156);
+            this.smallLabel1.TabIndex = 41;
+            this.smallLabel1.Text = resources.GetString("smallLabel1.Text");
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightPink;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("SVN-Blog Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(534, 63);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "FASHION SHOP";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // fInHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 743);
+            this.ClientSize = new System.Drawing.Size(534, 779);
             this.Controls.Add(this.panel_Print);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
