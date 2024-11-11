@@ -320,6 +320,51 @@ namespace GUI
             }
         }
 
+        private void btn_CapNhat_Click(object sender, EventArgs e)
+        {
+            if (this.selectedProduct != null)
+            {
+                try
+                {
+                    int amount = Convert.ToInt32(textbox_SoLuong.TextButton);
+                    if (amount <= 0) 
+                    {
+                        MessageBox.Show("Số lượng không hợp lệ. Bạn phải chọn tối thiểu 1 sản phẩm!");
+                        return;
+                    }
+                    else 
+                    {
+                        // Cập nhật giao diện
+                        this.productsInBill[this.selectedProduct] = amount;
+
+                        var index = this.listProductInBillDetails.FindIndex(x => x.ProductId == this.selectedProduct.Id);
+                        if (index > -1)
+                        {
+                            this.listProductInBillDetails[index].Amount = amount;
+                        }
+
+                        this.CapNhatBillInfo();
+
+                        if (this.bill != null && this.bill.ID > 0)
+                        {
+                            var billInfo = new BillInfo();
+                            //billInfo.ID = ...;
+                            billInfo.BillID = this.bill.ID;
+                            billInfo.ProductID = this.selectedProduct.Id;
+                            billInfo.Amount = amount;
+                            // Gọi BUS để xóa product khỏi BillInfo
+                            BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi");
+                }
+            }
+        }
+
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             if (this.selectedProduct != null)
