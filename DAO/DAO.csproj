@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AccountDAO.cs" />
     <Compile Include="AccountTypeDAO.cs" />
+    <Compile Include="AccountTypePermissionDAO.cs" />
     <Compile Include="BillDAO.cs" />
     <Compile Include="BillInfoDAO.cs" />
     <Compile Include="CategoryDAO.cs" />

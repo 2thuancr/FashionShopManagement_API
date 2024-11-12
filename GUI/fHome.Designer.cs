@@ -116,6 +116,7 @@
             this.btn_CaiDat.UseSelectable = true;
             this.btn_CaiDat.UseStyleColors = true;
             this.btn_CaiDat.UseTileImage = true;
+            this.btn_CaiDat.Click += new System.EventHandler(this.btn_CaiDat_Click);
             // 
             // btn_SanPham
             // 
@@ -162,6 +163,7 @@
             this.btn_BaoCao.UseSelectable = true;
             this.btn_BaoCao.UseStyleColors = true;
             this.btn_BaoCao.UseTileImage = true;
+            this.btn_BaoCao.Click += new System.EventHandler(this.btn_BaoCao_Click);
             // 
             // btn_KhachHang
             // 
