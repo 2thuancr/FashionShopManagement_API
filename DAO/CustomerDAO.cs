@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -60,6 +61,25 @@ namespace DAO
             {
                 throw ex;
             }
+        }
+        public bool InsertCustomer(Customer newCustomer)
+        {
+
+            string query = $@"USP_InsertCustomer 
+                @CustomerName = '{newCustomer.CustomerName}',
+                @DoB = '{newCustomer.DoB}', 
+                @Address = '{newCustomer.Address}', 
+                @PhoneNumber = '{newCustomer.PhoneNumber}'";
+            int result;
+            try
+            {
+                result = DataProvider.Instance.ExecuteNonQuery(query, null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result > 0;
         }
 
 

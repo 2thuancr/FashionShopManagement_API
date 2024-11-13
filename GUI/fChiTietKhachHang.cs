@@ -32,7 +32,6 @@ namespace GUI
             this.textBox_HoVaTen.TextButton = this.customer.CustomerName.ToString();
             this.textBox_DiaChi.TextButton = this.customer.Address.ToString();
             this.textBox_SDT.TextButton = this.customer.PhoneNumber.ToString();
-            this.textBox_MaGiamGia.TextButton = this.customer.Discount.ToString();
         }
 
         private void poisonDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -53,9 +52,19 @@ namespace GUI
             }
             catch(Exception ex) 
             {
-                MessageBox.Show(ex.Message, "Lỗi");
+                MessageBox.Show( "Lỗi hiển thị danh sách đơn hàng");
             }
             
+        }
+
+        private void btn_CapNhat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

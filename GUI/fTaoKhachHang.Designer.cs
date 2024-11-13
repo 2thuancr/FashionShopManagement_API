@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class fChiTietKhachHang
+    partial class fTaoKhachHang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.date_NgaySinh = new System.Windows.Forms.DateTimePicker();
             this.textBox_HoVaTen = new ReaLTaiizor.Controls.CyberTextBox();
             this.textBox_MaKH = new ReaLTaiizor.Controls.CyberTextBox();
             this.label_NgaySinh = new System.Windows.Forms.Label();
@@ -50,22 +47,20 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
-            this.data_DonHangCuaKhachHang = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.data_DonHangCuaKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // date_NgaySinh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(163, 158);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(380, 26);
-            this.dateTimePicker1.TabIndex = 51;
+            this.date_NgaySinh.Location = new System.Drawing.Point(163, 158);
+            this.date_NgaySinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.date_NgaySinh.Name = "date_NgaySinh";
+            this.date_NgaySinh.Size = new System.Drawing.Size(380, 26);
+            this.date_NgaySinh.TabIndex = 51;
             // 
             // textBox_HoVaTen
             // 
@@ -157,7 +152,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MistyRose;
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.date_NgaySinh);
             this.panel1.Controls.Add(this.textBox_HoVaTen);
             this.panel1.Controls.Add(this.textBox_MaKH);
             this.panel1.Controls.Add(this.label_NgaySinh);
@@ -191,12 +186,12 @@
             this.btn_Luu.HighEmphasis = true;
             this.btn_Luu.Icon = null;
             this.btn_Luu.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Luu.Location = new System.Drawing.Point(65, 158);
+            this.btn_Luu.Location = new System.Drawing.Point(64, 162);
             this.btn_Luu.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Luu.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Luu.Size = new System.Drawing.Size(88, 51);
+            this.btn_Luu.Size = new System.Drawing.Size(83, 51);
             this.btn_Luu.TabIndex = 57;
             this.btn_Luu.Text = "Lưu";
             this.btn_Luu.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -269,12 +264,12 @@
             this.btn_CapNhat.HighEmphasis = true;
             this.btn_CapNhat.Icon = null;
             this.btn_CapNhat.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_CapNhat.Location = new System.Drawing.Point(253, 162);
+            this.btn_CapNhat.Location = new System.Drawing.Point(243, 162);
             this.btn_CapNhat.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_CapNhat.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_CapNhat.Name = "btn_CapNhat";
             this.btn_CapNhat.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_CapNhat.Size = new System.Drawing.Size(105, 51);
+            this.btn_CapNhat.Size = new System.Drawing.Size(106, 51);
             this.btn_CapNhat.TabIndex = 51;
             this.btn_CapNhat.Text = "Cập nhật";
             this.btn_CapNhat.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -292,17 +287,18 @@
             this.btn_Xoa.HighEmphasis = true;
             this.btn_Xoa.Icon = null;
             this.btn_Xoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Xoa.Location = new System.Drawing.Point(446, 162);
+            this.btn_Xoa.Location = new System.Drawing.Point(450, 162);
             this.btn_Xoa.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Xoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Xoa.Size = new System.Drawing.Size(84, 51);
+            this.btn_Xoa.Size = new System.Drawing.Size(79, 51);
             this.btn_Xoa.TabIndex = 52;
             this.btn_Xoa.Text = "Xóa";
             this.btn_Xoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Xoa.UseAccentColor = false;
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // textBox_SDT
             // 
@@ -405,67 +401,18 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(893, 141);
             this.label1.TabIndex = 15;
-            this.label1.Text = "CHI TIẾT KHÁCH HÀNG";
+            this.label1.Text = "Khách Hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // data_DonHangCuaKhachHang
-            // 
-            this.data_DonHangCuaKhachHang.AllowUserToResizeRows = false;
-            this.data_DonHangCuaKhachHang.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.data_DonHangCuaKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.data_DonHangCuaKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.data_DonHangCuaKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.data_DonHangCuaKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data_DonHangCuaKhachHang.DefaultCellStyle = dataGridViewCellStyle14;
-            this.data_DonHangCuaKhachHang.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.data_DonHangCuaKhachHang.EnableHeadersVisualStyles = false;
-            this.data_DonHangCuaKhachHang.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.data_DonHangCuaKhachHang.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.data_DonHangCuaKhachHang.Location = new System.Drawing.Point(0, 390);
-            this.data_DonHangCuaKhachHang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.data_DonHangCuaKhachHang.Name = "data_DonHangCuaKhachHang";
-            this.data_DonHangCuaKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.data_DonHangCuaKhachHang.RowHeadersWidth = 62;
-            this.data_DonHangCuaKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.data_DonHangCuaKhachHang.RowTemplate.Height = 28;
-            this.data_DonHangCuaKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_DonHangCuaKhachHang.Size = new System.Drawing.Size(1127, 270);
-            this.data_DonHangCuaKhachHang.TabIndex = 38;
-            this.data_DonHangCuaKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellContentClick);
-            // 
-            // fChiTietKhachHang
+            // fTaoKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 660);
+            this.ClientSize = new System.Drawing.Size(1127, 403);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.data_DonHangCuaKhachHang);
-            this.Name = "fChiTietKhachHang";
-            this.Text = "fChiTietKhachHang";
+            this.Name = "fTaoKhachHang";
+            this.Text = "Khách Hàng";
             this.Load += new System.EventHandler(this.fChiTietKhachHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -474,14 +421,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.data_DonHangCuaKhachHang)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker date_NgaySinh;
         private ReaLTaiizor.Controls.CyberTextBox textBox_HoVaTen;
         private ReaLTaiizor.Controls.CyberTextBox textBox_MaKH;
         private System.Windows.Forms.Label label_NgaySinh;
@@ -500,6 +446,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ReaLTaiizor.Controls.DungeonHeaderLabel label1;
-        private ReaLTaiizor.Controls.PoisonDataGridView data_DonHangCuaKhachHang;
     }
 }
