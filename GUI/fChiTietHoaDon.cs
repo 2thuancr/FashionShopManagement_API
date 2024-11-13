@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using BUS;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,11 +27,30 @@ namespace GUI
         }
         private void ShowBill()
         {
-           //this.textBox_NhanVien.TextButton = this.
+
             this.textBox_MaHoaDon.TextButton = this.bill.ID.ToString();
             this.textBox_TongTien.TextButton = this.bill.TotalPrice.ToString();
             this.textBox_GiamGia.TextButton = this.bill.Discount.ToString();
             this.textBox_ThanhTien.TextButton = (this.bill.TotalPrice -  this.bill.Discount).ToString();
+
+
+            try
+            {
+                List<BillInfoDetail> listBillInfoDetails = BillInfoBUS.Instance.GetBillInfoDetailByBillId(bill.ID);
+                if (listBillInfoDetails != null && listBillInfoDetails.Count > 0)
+                {
+                    var item = listBillInfoDetails.First();
+                    this.textBox_NhanVien.TextButton = item.StaffName;
+                    this.textBox_TenKhachHang.TextButton = item.CustomerName;
+                    this.data_ChiTietHoaDon.DataSource = null;
+                    this.data_ChiTietHoaDon.DataSource = listBillInfoDetails;
+                }    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy danh sách chi tiết hóa đơn");
+            }
         }
+
     }
 }

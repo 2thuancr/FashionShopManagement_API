@@ -37,11 +37,6 @@ namespace GUI
             
         }
 
-        private void btn_TaoDon_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Lấy id được click
@@ -55,11 +50,7 @@ namespace GUI
 
         private void data_DSDonHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lấy thông tin row được chọn
-            //var selectedRow = (sender as DataGridViewRow).Selected;
-
-            fChiTietHoaDon fChiTietHoaDon = new fChiTietHoaDon();
-            fChiTietHoaDon.ShowDialog();
+           
         }
     }
 }
