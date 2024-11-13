@@ -34,5 +34,12 @@ namespace DTO
             this.TypeID = Convert.ToInt32(row["TypeID"]);
             this.Password = Convert.ToString(row["Password"]);
         }
+        public static string ConnectionString { get; set; }
+
+        // Kết nối tới DB
+        //public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
+        public static string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
+        public static string connectionStringManager = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
+
     }
 }

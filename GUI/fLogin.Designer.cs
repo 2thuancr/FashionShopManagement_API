@@ -34,6 +34,7 @@
             this.nightControlBox1 = new ReaLTaiizor.Controls.NightControlBox();
             this.parrotFormHandle2 = new ReaLTaiizor.Controls.ParrotFormHandle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel_Quyen = new System.Windows.Forms.Panel();
             this.skyLabel2 = new ReaLTaiizor.Controls.SkyLabel();
             this.skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -41,8 +42,11 @@
             this.label_QuenMatKhau = new ReaLTaiizor.Controls.DungeonLinkLabel();
             this.textBox_MatKhau = new ReaLTaiizor.Controls.HopeTextBox();
             this.textBox_Email = new ReaLTaiizor.Controls.HopeTextBox();
+            this.radio_Staff = new System.Windows.Forms.RadioButton();
+            this.radio_Manager = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel_Quyen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +70,7 @@
             this.panel1.Location = new System.Drawing.Point(420, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(661, 584);
+            this.panel1.Size = new System.Drawing.Size(661, 592);
             this.panel1.TabIndex = 2;
             // 
             // nightControlBox1
@@ -101,6 +105,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightPink;
+            this.panel2.Controls.Add(this.panel_Quyen);
             this.panel2.Controls.Add(this.skyLabel2);
             this.panel2.Controls.Add(this.skyLabel1);
             this.panel2.Controls.Add(this.pictureBox1);
@@ -112,15 +117,24 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(420, 584);
+            this.panel2.Size = new System.Drawing.Size(420, 592);
             this.panel2.TabIndex = 3;
+            // 
+            // panel_Quyen
+            // 
+            this.panel_Quyen.Controls.Add(this.radio_Manager);
+            this.panel_Quyen.Controls.Add(this.radio_Staff);
+            this.panel_Quyen.Location = new System.Drawing.Point(47, 386);
+            this.panel_Quyen.Name = "panel_Quyen";
+            this.panel_Quyen.Size = new System.Drawing.Size(336, 53);
+            this.panel_Quyen.TabIndex = 27;
             // 
             // skyLabel2
             // 
             this.skyLabel2.AutoSize = true;
             this.skyLabel2.Font = new System.Drawing.Font("Verdana", 6.75F, System.Drawing.FontStyle.Bold);
             this.skyLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
-            this.skyLabel2.Location = new System.Drawing.Point(12, 336);
+            this.skyLabel2.Location = new System.Drawing.Point(10, 306);
             this.skyLabel2.Name = "skyLabel2";
             this.skyLabel2.Size = new System.Drawing.Size(79, 17);
             this.skyLabel2.TabIndex = 24;
@@ -131,7 +145,7 @@
             this.skyLabel1.AutoSize = true;
             this.skyLabel1.Font = new System.Drawing.Font("Verdana", 6.75F, System.Drawing.FontStyle.Bold);
             this.skyLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
-            this.skyLabel1.Location = new System.Drawing.Point(12, 244);
+            this.skyLabel1.Location = new System.Drawing.Point(10, 214);
             this.skyLabel1.Name = "skyLabel1";
             this.skyLabel1.Size = new System.Drawing.Size(125, 17);
             this.skyLabel1.TabIndex = 23;
@@ -161,7 +175,7 @@
             this.btn_DangNhap.HighEmphasis = true;
             this.btn_DangNhap.Icon = null;
             this.btn_DangNhap.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_DangNhap.Location = new System.Drawing.Point(118, 485);
+            this.btn_DangNhap.Location = new System.Drawing.Point(118, 504);
             this.btn_DangNhap.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.btn_DangNhap.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_DangNhap.Name = "btn_DangNhap";
@@ -183,7 +197,7 @@
             this.label_QuenMatKhau.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.label_QuenMatKhau.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
             this.label_QuenMatKhau.LinkColor = System.Drawing.Color.Black;
-            this.label_QuenMatKhau.Location = new System.Drawing.Point(113, 423);
+            this.label_QuenMatKhau.Location = new System.Drawing.Point(113, 461);
             this.label_QuenMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_QuenMatKhau.Name = "label_QuenMatKhau";
             this.label_QuenMatKhau.Size = new System.Drawing.Size(171, 30);
@@ -202,7 +216,7 @@
             this.textBox_MatKhau.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBox_MatKhau.ForeColor = System.Drawing.Color.Black;
             this.textBox_MatKhau.Hint = "";
-            this.textBox_MatKhau.Location = new System.Drawing.Point(15, 357);
+            this.textBox_MatKhau.Location = new System.Drawing.Point(13, 331);
             this.textBox_MatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_MatKhau.MaxLength = 128;
             this.textBox_MatKhau.Multiline = false;
@@ -228,7 +242,7 @@
             this.textBox_Email.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBox_Email.ForeColor = System.Drawing.Color.Black;
             this.textBox_Email.Hint = "";
-            this.textBox_Email.Location = new System.Drawing.Point(13, 265);
+            this.textBox_Email.Location = new System.Drawing.Point(11, 239);
             this.textBox_Email.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Email.MaxLength = 128;
             this.textBox_Email.Multiline = false;
@@ -243,11 +257,41 @@
             this.textBox_Email.TabStop = false;
             this.textBox_Email.UseSystemPasswordChar = false;
             // 
+            // radio_Staff
+            // 
+            this.radio_Staff.AutoSize = true;
+            this.radio_Staff.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radio_Staff.Font = new System.Drawing.Font("SVN-Adam Gorry", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_Staff.ForeColor = System.Drawing.Color.White;
+            this.radio_Staff.Location = new System.Drawing.Point(0, 0);
+            this.radio_Staff.Name = "radio_Staff";
+            this.radio_Staff.Size = new System.Drawing.Size(139, 53);
+            this.radio_Staff.TabIndex = 28;
+            this.radio_Staff.TabStop = true;
+            this.radio_Staff.Text = "Nhân Viên";
+            this.radio_Staff.UseVisualStyleBackColor = true;
+            this.radio_Staff.Click += new System.EventHandler(this.radio_Staff_Click_1);
+            // 
+            // radio_Manager
+            // 
+            this.radio_Manager.AutoSize = true;
+            this.radio_Manager.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radio_Manager.Font = new System.Drawing.Font("SVN-Adam Gorry", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_Manager.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.radio_Manager.Location = new System.Drawing.Point(207, 0);
+            this.radio_Manager.Name = "radio_Manager";
+            this.radio_Manager.Size = new System.Drawing.Size(129, 53);
+            this.radio_Manager.TabIndex = 29;
+            this.radio_Manager.TabStop = true;
+            this.radio_Manager.Text = "Quản lý";
+            this.radio_Manager.UseVisualStyleBackColor = true;
+            this.radio_Manager.Click += new System.EventHandler(this.radio_Manager_Click);
+            // 
             // fLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 584);
+            this.ClientSize = new System.Drawing.Size(1081, 592);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.DoubleBuffered = true;
@@ -259,6 +303,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel_Quyen.ResumeLayout(false);
+            this.panel_Quyen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -279,5 +325,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private ReaLTaiizor.Controls.SkyLabel skyLabel2;
         private ReaLTaiizor.Controls.SkyLabel skyLabel1;
+        private System.Windows.Forms.Panel panel_Quyen;
+        private System.Windows.Forms.RadioButton radio_Manager;
+        private System.Windows.Forms.RadioButton radio_Staff;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,6 +8,7 @@ namespace DAO
 {
     public class DataProvider
     {
+        
         private static DataProvider instance;
         public static DataProvider Instance
         {
@@ -20,16 +22,11 @@ namespace DAO
 
         // Hàm khởi tao
         private DataProvider() { }
-
-        // Kết nối tới DB
-        //private string connectionString = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
-        //private string connectionString = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
-        private string connectionString = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
-
+        
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable table = new DataTable();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
@@ -58,7 +55,7 @@ namespace DAO
         public int ExecuteNonQuery(string query, object[] parameter = null)
         {
             int row = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
@@ -86,7 +83,7 @@ namespace DAO
         public object ExecuteScalar(string query, object[] parameter = null)
         {
             object data = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);

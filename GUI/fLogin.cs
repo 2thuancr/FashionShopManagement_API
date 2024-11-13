@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.Design.WebControls;
 using System.Windows.Forms;
 
 namespace GUI
@@ -17,11 +18,12 @@ namespace GUI
         public fLogin()
         {
             InitializeComponent();
+            radio_Staff.Checked = true;
         }
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
-        {
-            DangNhap();
+        { 
+                DangNhap();  
         }
 
         private void fLogin_KeyDown(object sender, KeyEventArgs e)
@@ -34,6 +36,14 @@ namespace GUI
 
         private void DangNhap()
         {
+            if(radio_Manager.Checked)
+            {
+                Account.ConnectionString = Account.connectionStringManager;
+            }
+            else
+            {
+                Account.ConnectionString = Account.connectionStringStaff;
+            }
             Account account = new Account(textBox_Email.Text, textBox_MatKhau.Text);
             try
             {
@@ -50,10 +60,11 @@ namespace GUI
                     form.ShowDialog();
                     this.Show();
                 }
-                else
+                else 
                 {
                     MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
                 }
+                
             }
             catch (Exception ex)
             {
@@ -66,6 +77,22 @@ namespace GUI
             if (e.KeyCode == Keys.Enter)
             {
                 DangNhap();
+            }
+        }
+
+        private void radio_Staff_Click_1(object sender, EventArgs e)
+        {
+            if (radio_Manager.Checked)
+            {
+                radio_Staff.Checked = false;
+            }
+        }
+
+        private void radio_Manager_Click(object sender, EventArgs e)
+        {
+            if (radio_Staff.Checked)
+            {
+                radio_Manager.Checked = false;
             }
         }
     }
