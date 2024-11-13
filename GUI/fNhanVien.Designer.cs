@@ -593,7 +593,7 @@
             this.data_DSNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_DSNhanVien.Size = new System.Drawing.Size(1167, 245);
             this.data_DSNhanVien.TabIndex = 21;
-            this.data_DSNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellContentClick);
+            this.data_DSNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DSNhanVien_CellClick);
             // 
             // tableLayoutPanel1
             // 
