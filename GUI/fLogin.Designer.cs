@@ -35,6 +35,8 @@
             this.parrotFormHandle2 = new ReaLTaiizor.Controls.ParrotFormHandle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_Quyen = new System.Windows.Forms.Panel();
+            this.radio_Manager = new System.Windows.Forms.RadioButton();
+            this.radio_Staff = new System.Windows.Forms.RadioButton();
             this.skyLabel2 = new ReaLTaiizor.Controls.SkyLabel();
             this.skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,8 +44,6 @@
             this.label_QuenMatKhau = new ReaLTaiizor.Controls.DungeonLinkLabel();
             this.textBox_MatKhau = new ReaLTaiizor.Controls.HopeTextBox();
             this.textBox_Email = new ReaLTaiizor.Controls.HopeTextBox();
-            this.radio_Staff = new System.Windows.Forms.RadioButton();
-            this.radio_Manager = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_Quyen.SuspendLayout();
@@ -128,6 +128,36 @@
             this.panel_Quyen.Name = "panel_Quyen";
             this.panel_Quyen.Size = new System.Drawing.Size(336, 53);
             this.panel_Quyen.TabIndex = 27;
+            // 
+            // radio_Manager
+            // 
+            this.radio_Manager.AutoSize = true;
+            this.radio_Manager.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radio_Manager.Font = new System.Drawing.Font("SVN-Adam Gorry", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_Manager.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.radio_Manager.Location = new System.Drawing.Point(218, 0);
+            this.radio_Manager.Name = "radio_Manager";
+            this.radio_Manager.Size = new System.Drawing.Size(118, 53);
+            this.radio_Manager.TabIndex = 29;
+            this.radio_Manager.TabStop = true;
+            this.radio_Manager.Text = "Quản lý";
+            this.radio_Manager.UseVisualStyleBackColor = true;
+            this.radio_Manager.Click += new System.EventHandler(this.radio_Manager_Click);
+            // 
+            // radio_Staff
+            // 
+            this.radio_Staff.AutoSize = true;
+            this.radio_Staff.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radio_Staff.Font = new System.Drawing.Font("SVN-Adam Gorry", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radio_Staff.ForeColor = System.Drawing.Color.White;
+            this.radio_Staff.Location = new System.Drawing.Point(0, 0);
+            this.radio_Staff.Name = "radio_Staff";
+            this.radio_Staff.Size = new System.Drawing.Size(139, 53);
+            this.radio_Staff.TabIndex = 28;
+            this.radio_Staff.TabStop = true;
+            this.radio_Staff.Text = "Nhân Viên";
+            this.radio_Staff.UseVisualStyleBackColor = true;
+            this.radio_Staff.Click += new System.EventHandler(this.radio_Staff_Click_1);
             // 
             // skyLabel2
             // 
@@ -256,36 +286,6 @@
             this.textBox_Email.TabIndex = 7;
             this.textBox_Email.TabStop = false;
             this.textBox_Email.UseSystemPasswordChar = false;
-            // 
-            // radio_Staff
-            // 
-            this.radio_Staff.AutoSize = true;
-            this.radio_Staff.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radio_Staff.Font = new System.Drawing.Font("SVN-Adam Gorry", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_Staff.ForeColor = System.Drawing.Color.White;
-            this.radio_Staff.Location = new System.Drawing.Point(0, 0);
-            this.radio_Staff.Name = "radio_Staff";
-            this.radio_Staff.Size = new System.Drawing.Size(139, 53);
-            this.radio_Staff.TabIndex = 28;
-            this.radio_Staff.TabStop = true;
-            this.radio_Staff.Text = "Nhân Viên";
-            this.radio_Staff.UseVisualStyleBackColor = true;
-            this.radio_Staff.Click += new System.EventHandler(this.radio_Staff_Click_1);
-            // 
-            // radio_Manager
-            // 
-            this.radio_Manager.AutoSize = true;
-            this.radio_Manager.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radio_Manager.Font = new System.Drawing.Font("SVN-Adam Gorry", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radio_Manager.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.radio_Manager.Location = new System.Drawing.Point(207, 0);
-            this.radio_Manager.Name = "radio_Manager";
-            this.radio_Manager.Size = new System.Drawing.Size(129, 53);
-            this.radio_Manager.TabIndex = 29;
-            this.radio_Manager.TabStop = true;
-            this.radio_Manager.Text = "Quản lý";
-            this.radio_Manager.UseVisualStyleBackColor = true;
-            this.radio_Manager.Click += new System.EventHandler(this.radio_Manager_Click);
             // 
             // fLogin
             // 

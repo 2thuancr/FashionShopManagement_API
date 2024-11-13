@@ -26,6 +26,7 @@ namespace GUI
         }
         private void ShowBill()
         {
+           //this.textBox_NhanVien.TextButton = this.
             this.textBox_MaHoaDon.TextButton = this.bill.ID.ToString();
             this.textBox_TongTien.TextButton = this.bill.TotalPrice.ToString();
             this.textBox_GiamGia.TextButton = this.bill.Discount.ToString();

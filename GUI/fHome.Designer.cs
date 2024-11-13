@@ -44,9 +44,9 @@
             this.CONTACTT = new ReaLTaiizor.Controls.MetroTile();
             this.SETTINGT = new ReaLTaiizor.Controls.MetroTile();
             this.MESSAGET = new ReaLTaiizor.Controls.MetroTile();
-            this.MAILLLE = new ReaLTaiizor.Controls.LinkLabelEdit();
+            this.label_UserName = new ReaLTaiizor.Controls.LinkLabelEdit();
             this.BOTPLSR = new ReaLTaiizor.Controls.LostSeparator();
-            this.STATELLE = new ReaLTaiizor.Controls.LinkLabelEdit();
+            this.label_Role = new ReaLTaiizor.Controls.LinkLabelEdit();
             this.MIDPL.SuspendLayout();
             this.FILLPL.SuspendLayout();
             this.panel_Top.SuspendLayout();
@@ -274,9 +274,9 @@
             this.BOTPL.Controls.Add(this.CONTACTT);
             this.BOTPL.Controls.Add(this.SETTINGT);
             this.BOTPL.Controls.Add(this.MESSAGET);
-            this.BOTPL.Controls.Add(this.MAILLLE);
+            this.BOTPL.Controls.Add(this.label_UserName);
             this.BOTPL.Controls.Add(this.BOTPLSR);
-            this.BOTPL.Controls.Add(this.STATELLE);
+            this.BOTPL.Controls.Add(this.label_Role);
             this.BOTPL.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BOTPL.Location = new System.Drawing.Point(0, 634);
             this.BOTPL.Margin = new System.Windows.Forms.Padding(0);
@@ -392,25 +392,25 @@
             this.MESSAGET.ThemeName = "MetroLight";
             this.MESSAGET.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
             // 
-            // MAILLLE
+            // label_UserName
             // 
-            this.MAILLLE.ActiveLinkColor = System.Drawing.Color.DarkGreen;
-            this.MAILLLE.BackColor = System.Drawing.Color.Transparent;
-            this.MAILLLE.Cursor = System.Windows.Forms.Cursors.Default;
-            this.MAILLLE.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MAILLLE.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MAILLLE.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MAILLLE.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.MAILLLE.LinkColor = System.Drawing.Color.SeaGreen;
-            this.MAILLLE.Location = new System.Drawing.Point(602, 0);
-            this.MAILLLE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.MAILLLE.Name = "MAILLLE";
-            this.MAILLLE.Size = new System.Drawing.Size(189, 48);
-            this.MAILLLE.TabIndex = 4;
-            this.MAILLLE.TabStop = true;
-            this.MAILLLE.Text = "fashion@shop.com";
-            this.MAILLLE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MAILLLE.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.label_UserName.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.label_UserName.BackColor = System.Drawing.Color.Transparent;
+            this.label_UserName.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label_UserName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_UserName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_UserName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_UserName.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.label_UserName.LinkColor = System.Drawing.Color.SeaGreen;
+            this.label_UserName.Location = new System.Drawing.Point(403, 0);
+            this.label_UserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_UserName.Name = "label_UserName";
+            this.label_UserName.Size = new System.Drawing.Size(216, 48);
+            this.label_UserName.TabIndex = 4;
+            this.label_UserName.TabStop = true;
+            this.label_UserName.Text = "UserName";
+            this.label_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_UserName.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             // 
             // BOTPLSR
             // 
@@ -424,25 +424,25 @@
             this.BOTPLSR.TabIndex = 3;
             this.BOTPLSR.Text = "lostSeparator1";
             // 
-            // STATELLE
+            // label_Role
             // 
-            this.STATELLE.ActiveLinkColor = System.Drawing.Color.DarkGreen;
-            this.STATELLE.BackColor = System.Drawing.Color.Transparent;
-            this.STATELLE.Cursor = System.Windows.Forms.Cursors.Default;
-            this.STATELLE.Dock = System.Windows.Forms.DockStyle.Right;
-            this.STATELLE.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.STATELLE.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.STATELLE.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.STATELLE.LinkColor = System.Drawing.Color.SeaGreen;
-            this.STATELLE.Location = new System.Drawing.Point(791, 0);
-            this.STATELLE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.STATELLE.Name = "STATELLE";
-            this.STATELLE.Size = new System.Drawing.Size(82, 48);
-            this.STATELLE.TabIndex = 5;
-            this.STATELLE.TabStop = true;
-            this.STATELLE.Text = "Active";
-            this.STATELLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.STATELLE.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.label_Role.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.label_Role.BackColor = System.Drawing.Color.Transparent;
+            this.label_Role.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label_Role.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Role.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_Role.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_Role.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.label_Role.LinkColor = System.Drawing.Color.SeaGreen;
+            this.label_Role.Location = new System.Drawing.Point(619, 0);
+            this.label_Role.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Role.Name = "label_Role";
+            this.label_Role.Size = new System.Drawing.Size(254, 48);
+            this.label_Role.TabIndex = 5;
+            this.label_Role.TabStop = true;
+            this.label_Role.Text = "Role";
+            this.label_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Role.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             // 
             // fHome
             // 
@@ -454,6 +454,7 @@
             this.Name = "fHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý cửa hàng thời trang";
+            this.Load += new System.EventHandler(this.fHome_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MOVE_MouseDown);
             this.MIDPL.ResumeLayout(false);
             this.FILLPL.ResumeLayout(false);
@@ -481,8 +482,8 @@
         private ReaLTaiizor.Controls.MetroTile CONTACTT;
         private ReaLTaiizor.Controls.MetroTile SETTINGT;
         private ReaLTaiizor.Controls.MetroTile MESSAGET;
-        private ReaLTaiizor.Controls.LinkLabelEdit MAILLLE;
+        private ReaLTaiizor.Controls.LinkLabelEdit label_UserName;
         private ReaLTaiizor.Controls.LostSeparator BOTPLSR;
-        private ReaLTaiizor.Controls.LinkLabelEdit STATELLE;
+        private ReaLTaiizor.Controls.LinkLabelEdit label_Role;
     }
 }

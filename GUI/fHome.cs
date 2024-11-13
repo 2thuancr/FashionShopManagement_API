@@ -124,5 +124,29 @@ namespace GUI
                 return;
             }
         }
+
+        private void fHome_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (LoginAccount != null)
+                {
+                    var accountType = AccountTypeBUS.Instance.GetAccountTypeById(LoginAccount.TypeID);
+                    if (accountType != null)
+                    {
+                        this.label_UserName.Text = $"{LoginAccount.UserName} ({accountType.TypeName})";
+                    }
+                    else
+                    {
+                        this.label_UserName.Text = $"{LoginAccount.UserName} ({LoginAccount.TypeID})";
+                    }
+
+                    this.label_Role.Text = Account.ConnectionName;
+                }
+            }
+           catch(Exception) {
+                MessageBox.Show("Có lỗi phát sinh");
+            }
+        }
     }
 }
