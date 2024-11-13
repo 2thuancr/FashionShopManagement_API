@@ -60,6 +60,8 @@ GRANT EXECUTE ON OBJECT::dbo.USP_SearchProductByName TO role_staff;
 GRANT EXECUTE ON OBJECT::dbo.USP_UpdateAccount TO role_staff;
 GRANT EXECUTE ON OBJECT::dbo.USP_UpdateBill TO role_staff;
 GRANT EXECUTE ON OBJECT::dbo.USP_UpdateBillStatus TO role_staff;
+GRANT EXECUTE ON OBJECT::dbo.USP_InsertCustomer TO role_staff;
+
 GO
 
 

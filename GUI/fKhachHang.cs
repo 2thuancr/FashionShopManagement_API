@@ -28,7 +28,7 @@ namespace GUI
             }
             catch
             {
-                MessageBox.Show("lỗi");
+                MessageBox.Show("lỗi lấy danh sách khách hàng");
             }
         }
         
@@ -73,7 +73,10 @@ namespace GUI
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            fTaoKhachHang fTaoKhachHang = new fTaoKhachHang();
+            fTaoKhachHang.ShowDialog();
 
+            this.fKhachHang_Load(null, null);
         }
     }
 }

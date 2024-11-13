@@ -32,9 +32,9 @@ namespace GUI
                     this.data_DSDonHang.DataSource = this.listProducts;                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show(ex.Message, "Lỗi !");
+                MessageBox.Show("Lỗi hiển thị danh sách đơn hàng!");
             }
         }
 
@@ -77,9 +77,9 @@ namespace GUI
                     MessageBox.Show($"Đã tìm thấy {this.listProducts.Count} sản phẩm");
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ) 
             {
-                MessageBox.Show(ex.Message, "Lỗi !");
+                MessageBox.Show("Lỗi tìm kiếm sản phẩm!");
             }
         }
     }

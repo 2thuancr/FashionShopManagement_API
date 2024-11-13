@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox_HoVaTen = new ReaLTaiizor.Controls.CyberTextBox();
             this.textBox_MaKH = new ReaLTaiizor.Controls.CyberTextBox();
@@ -42,9 +42,7 @@
             this.textBox_DiaChi = new ReaLTaiizor.Controls.CyberTextBox();
             this.label_DiaChi = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label_Cccd = new System.Windows.Forms.Label();
             this.btn_CapNhat = new ReaLTaiizor.Controls.MaterialButton();
-            this.textBox_MaGiamGia = new ReaLTaiizor.Controls.CyberTextBox();
             this.btn_Xoa = new ReaLTaiizor.Controls.MaterialButton();
             this.textBox_SDT = new ReaLTaiizor.Controls.CyberTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -53,6 +51,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.data_DonHangCuaKhachHang = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.btn_XoaDon = new ReaLTaiizor.Controls.MaterialButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -112,6 +111,7 @@
             this.textBox_MaKH.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
             this.textBox_MaKH.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.textBox_MaKH.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            this.textBox_MaKH.Enabled = false;
             this.textBox_MaKH.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.textBox_MaKH.ForeColor = System.Drawing.Color.Black;
             this.textBox_MaKH.Lighting = false;
@@ -184,6 +184,7 @@
             // 
             // btn_Luu
             // 
+            this.btn_Luu.AutoSize = false;
             this.btn_Luu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Luu.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btn_Luu.Depth = 0;
@@ -191,17 +192,18 @@
             this.btn_Luu.HighEmphasis = true;
             this.btn_Luu.Icon = null;
             this.btn_Luu.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Luu.Location = new System.Drawing.Point(63, 197);
+            this.btn_Luu.Location = new System.Drawing.Point(39, 162);
             this.btn_Luu.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Luu.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Luu.Size = new System.Drawing.Size(64, 36);
+            this.btn_Luu.Size = new System.Drawing.Size(88, 51);
             this.btn_Luu.TabIndex = 57;
             this.btn_Luu.Text = "Lưu";
             this.btn_Luu.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Luu.UseAccentColor = false;
             this.btn_Luu.UseVisualStyleBackColor = true;
+            this.btn_Luu.Click += new System.EventHandler(this.btn_Luu_Click);
             // 
             // textBox_DiaChi
             // 
@@ -258,20 +260,9 @@
             this.label3.TabIndex = 55;
             this.label3.Text = "Địa chỉ:";
             // 
-            // label_Cccd
-            // 
-            this.label_Cccd.AutoSize = true;
-            this.label_Cccd.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Cccd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_Cccd.Location = new System.Drawing.Point(34, 151);
-            this.label_Cccd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_Cccd.Name = "label_Cccd";
-            this.label_Cccd.Size = new System.Drawing.Size(120, 23);
-            this.label_Cccd.TabIndex = 50;
-            this.label_Cccd.Text = "Mã giảm giá:";
-            // 
             // btn_CapNhat
             // 
+            this.btn_CapNhat.AutoSize = false;
             this.btn_CapNhat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_CapNhat.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btn_CapNhat.Depth = 0;
@@ -279,51 +270,22 @@
             this.btn_CapNhat.HighEmphasis = true;
             this.btn_CapNhat.Icon = null;
             this.btn_CapNhat.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_CapNhat.Location = new System.Drawing.Point(240, 197);
+            this.btn_CapNhat.Location = new System.Drawing.Point(174, 162);
             this.btn_CapNhat.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_CapNhat.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_CapNhat.Name = "btn_CapNhat";
             this.btn_CapNhat.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_CapNhat.Size = new System.Drawing.Size(93, 36);
+            this.btn_CapNhat.Size = new System.Drawing.Size(105, 51);
             this.btn_CapNhat.TabIndex = 51;
             this.btn_CapNhat.Text = "Cập nhật";
             this.btn_CapNhat.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_CapNhat.UseAccentColor = false;
             this.btn_CapNhat.UseVisualStyleBackColor = true;
-            // 
-            // textBox_MaGiamGia
-            // 
-            this.textBox_MaGiamGia.Alpha = 20;
-            this.textBox_MaGiamGia.BackColor = System.Drawing.Color.Transparent;
-            this.textBox_MaGiamGia.Background_WidthPen = 3F;
-            this.textBox_MaGiamGia.BackgroundPen = true;
-            this.textBox_MaGiamGia.ColorBackground = System.Drawing.Color.White;
-            this.textBox_MaGiamGia.ColorBackground_Pen = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.textBox_MaGiamGia.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.textBox_MaGiamGia.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.textBox_MaGiamGia.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            this.textBox_MaGiamGia.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.textBox_MaGiamGia.Font = new System.Drawing.Font("Arial", 12F);
-            this.textBox_MaGiamGia.ForeColor = System.Drawing.Color.Black;
-            this.textBox_MaGiamGia.Lighting = false;
-            this.textBox_MaGiamGia.LinearGradientPen = false;
-            this.textBox_MaGiamGia.Location = new System.Drawing.Point(155, 134);
-            this.textBox_MaGiamGia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox_MaGiamGia.Name = "textBox_MaGiamGia";
-            this.textBox_MaGiamGia.PenWidth = 15;
-            this.textBox_MaGiamGia.RGB = false;
-            this.textBox_MaGiamGia.Rounding = true;
-            this.textBox_MaGiamGia.RoundingInt = 60;
-            this.textBox_MaGiamGia.Size = new System.Drawing.Size(392, 50);
-            this.textBox_MaGiamGia.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.textBox_MaGiamGia.TabIndex = 54;
-            this.textBox_MaGiamGia.Tag = "Cyber";
-            this.textBox_MaGiamGia.TextButton = "";
-            this.textBox_MaGiamGia.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.textBox_MaGiamGia.Timer_RGB = 300;
+            this.btn_CapNhat.Click += new System.EventHandler(this.btn_CapNhat_Click);
             // 
             // btn_Xoa
             // 
+            this.btn_Xoa.AutoSize = false;
             this.btn_Xoa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Xoa.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btn_Xoa.Depth = 0;
@@ -331,14 +293,14 @@
             this.btn_Xoa.HighEmphasis = true;
             this.btn_Xoa.Icon = null;
             this.btn_Xoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Xoa.Location = new System.Drawing.Point(464, 197);
+            this.btn_Xoa.Location = new System.Drawing.Point(321, 162);
             this.btn_Xoa.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Xoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Xoa.Size = new System.Drawing.Size(64, 36);
+            this.btn_Xoa.Size = new System.Drawing.Size(84, 51);
             this.btn_Xoa.TabIndex = 52;
-            this.btn_Xoa.Text = "Xóa";
+            this.btn_Xoa.Text = "Xóa KH";
             this.btn_Xoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Xoa.UseAccentColor = false;
             this.btn_Xoa.UseVisualStyleBackColor = true;
@@ -377,13 +339,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MistyRose;
+            this.panel2.Controls.Add(this.btn_XoaDon);
             this.panel2.Controls.Add(this.btn_Luu);
             this.panel2.Controls.Add(this.textBox_DiaChi);
             this.panel2.Controls.Add(this.label_DiaChi);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label_Cccd);
             this.panel2.Controls.Add(this.btn_CapNhat);
-            this.panel2.Controls.Add(this.textBox_MaGiamGia);
             this.panel2.Controls.Add(this.btn_Xoa);
             this.panel2.Controls.Add(this.textBox_SDT);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -456,23 +417,23 @@
             this.data_DonHangCuaKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.data_DonHangCuaKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.data_DonHangCuaKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DonHangCuaKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.data_DonHangCuaKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data_DonHangCuaKhachHang.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.data_DonHangCuaKhachHang.DefaultCellStyle = dataGridViewCellStyle2;
             this.data_DonHangCuaKhachHang.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.data_DonHangCuaKhachHang.EnableHeadersVisualStyles = false;
             this.data_DonHangCuaKhachHang.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -481,21 +442,44 @@
             this.data_DonHangCuaKhachHang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.data_DonHangCuaKhachHang.Name = "data_DonHangCuaKhachHang";
             this.data_DonHangCuaKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DonHangCuaKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.data_DonHangCuaKhachHang.RowHeadersWidth = 62;
             this.data_DonHangCuaKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.data_DonHangCuaKhachHang.RowTemplate.Height = 28;
             this.data_DonHangCuaKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_DonHangCuaKhachHang.Size = new System.Drawing.Size(1127, 270);
             this.data_DonHangCuaKhachHang.TabIndex = 38;
-            this.data_DonHangCuaKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellContentClick);
+            this.data_DonHangCuaKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DonHangCuaKhachHang_CellClick);
+            // 
+            // btn_XoaDon
+            // 
+            this.btn_XoaDon.AutoSize = false;
+            this.btn_XoaDon.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_XoaDon.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_XoaDon.Depth = 0;
+            this.btn_XoaDon.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_XoaDon.HighEmphasis = true;
+            this.btn_XoaDon.Icon = null;
+            this.btn_XoaDon.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btn_XoaDon.Location = new System.Drawing.Point(437, 162);
+            this.btn_XoaDon.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.btn_XoaDon.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btn_XoaDon.Name = "btn_XoaDon";
+            this.btn_XoaDon.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_XoaDon.Size = new System.Drawing.Size(96, 51);
+            this.btn_XoaDon.TabIndex = 58;
+            this.btn_XoaDon.Text = "Xóa đơn";
+            this.btn_XoaDon.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_XoaDon.UseAccentColor = false;
+            this.btn_XoaDon.UseVisualStyleBackColor = true;
+            this.btn_XoaDon.Click += new System.EventHandler(this.btn_XoaDon_Click);
             // 
             // fChiTietKhachHang
             // 
@@ -533,9 +517,7 @@
         private ReaLTaiizor.Controls.CyberTextBox textBox_DiaChi;
         private System.Windows.Forms.Label label_DiaChi;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_Cccd;
         private ReaLTaiizor.Controls.MaterialButton btn_CapNhat;
-        private ReaLTaiizor.Controls.CyberTextBox textBox_MaGiamGia;
         private ReaLTaiizor.Controls.MaterialButton btn_Xoa;
         private ReaLTaiizor.Controls.CyberTextBox textBox_SDT;
         private System.Windows.Forms.Panel panel2;
@@ -544,5 +526,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ReaLTaiizor.Controls.DungeonHeaderLabel label1;
         private ReaLTaiizor.Controls.PoisonDataGridView data_DonHangCuaKhachHang;
+        private ReaLTaiizor.Controls.MaterialButton btn_XoaDon;
     }
 }

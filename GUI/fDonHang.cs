@@ -22,24 +22,24 @@ namespace GUI
 
         private void fDonHang_Load(object sender, EventArgs e)
         {
+            LoadDanhSachDonHang();
+            
+        }
+
+        private void LoadDanhSachDonHang()
+        {
             try
             {
                 this.listBills = BillBUS.Instance.GetAllBills();
-                if(this.listBills.Count > 0 )
+                if (this.listBills.Count > 0)
                 {
                     this.data_DSDonHang.DataSource = this.listBills;
                 }
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Lỗi");
+                MessageBox.Show("Lỗi lấy danh sách đơn hàng");
             }
-            
-        }
-
-        private void btn_TaoDon_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void data_DSDonHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -51,15 +51,13 @@ namespace GUI
             // Hiển thị form
             fChiTietHoaDon fChiTietHoaDon = new fChiTietHoaDon(bill);
             fChiTietHoaDon.ShowDialog();
+
+            LoadDanhSachDonHang();
         }
 
         private void data_DSDonHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lấy thông tin row được chọn
-            //var selectedRow = (sender as DataGridViewRow).Selected;
-
-            fChiTietHoaDon fChiTietHoaDon = new fChiTietHoaDon();
-            fChiTietHoaDon.ShowDialog();
+           
         }
     }
 }

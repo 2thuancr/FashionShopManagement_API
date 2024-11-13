@@ -86,5 +86,9 @@ namespace BUS
             }
             return customer;
         }
+        public bool InsertCustomer(Customer newCustomer)
+        {
+            return CustomerDAO.Instance.InsertCustomer(newCustomer);
+        }
     }
 }
