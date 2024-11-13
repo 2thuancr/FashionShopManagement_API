@@ -1,4 +1,7 @@
-﻿namespace DTO
+﻿using System;
+using System.Data;
+
+namespace DTO
 {
     public class AccountType
     {
@@ -11,6 +14,12 @@
         {
             this.ID = id;
             this.TypeName = typeName;
+        }
+
+        public AccountType(DataRow row)
+        {
+            this.ID = Convert.ToInt32(row["ID"]);
+            this.TypeName = Convert.ToString(row["TypeName"]);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
-
+using System.Linq;
 using DAO;
+using DTO;
 
 namespace BUS
 {
@@ -21,16 +23,31 @@ namespace BUS
 
         public AccountTypeBUS() { }
 
-        public DataTable GetAllAccountType()
+        public List<AccountType> GetAllAccountType()
         {
+            DataTable table = new DataTable();
             try
             {
-                return AccountTypeDAO.Instance.GetAllAccountType();
+                table =  AccountTypeDAO.Instance.GetAllAccountType();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            List<AccountType> accountTypes = new List<AccountType>();
+            foreach (DataRow row in table.Rows)
+            {
+                accountTypes.Add(new AccountType(row));
+            }
+            return accountTypes;
+        }
+
+        public AccountType GetAccountTypeById(int accountTypeId)
+        {
+            List<AccountType> listAccountTypes = GetAllAccountType();
+
+            var accountType = listAccountTypes.FirstOrDefault(x => x.ID == accountTypeId);
+            return accountType;
         }
     }
 }

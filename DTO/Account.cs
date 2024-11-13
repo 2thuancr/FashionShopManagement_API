@@ -5,6 +5,17 @@ namespace DTO
 {
     public class Account
     {
+        public static string ConnectionName { get; set; }
+        public const string connectionNameManager = "Connection: role_manager";
+        public const string connectionNameStaff = "Connection: role_staff";
+
+        // Kết nối tới DB
+        public static string ConnectionString { get; set; }
+        public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
+        public const string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
+        public const string connectionStringManager = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
+
+
         public int Id { get; set; }
         public string UserName { get; set; }
         public string DisplayName { get; set; }
@@ -34,12 +45,6 @@ namespace DTO
             this.TypeID = Convert.ToInt32(row["TypeID"]);
             this.Password = Convert.ToString(row["Password"]);
         }
-        public static string ConnectionString { get; set; }
-
-        // Kết nối tới DB
-        //public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
-        public static string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
-        public static string connectionStringManager = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
 
     }
 }

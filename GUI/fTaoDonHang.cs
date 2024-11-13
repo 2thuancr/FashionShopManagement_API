@@ -2,12 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -70,7 +65,7 @@ namespace GUI
             var listCustomer = CustomerBUS.Instance.GetCustomerByPhone(phone);
             if (listCustomer.Count == 0)
             {
-                
+
                 MessageBox.Show("Không tìm thấy khách hàng");
                 this.textBox_SDT.TextButton = "";
                 this.textBox_TenKhachHang.TextButton = "";
@@ -106,12 +101,25 @@ namespace GUI
             if (string.IsNullOrEmpty(this.textbox_SoLuong.TextButton))
             {
                 MessageBox.Show("Vui lòng nhập số lượng cho sản phẩm");
+                return;
             }
             // lấy thông tin từ this.selectedProduct luu vào dataGrid
-            int amount = Convert.ToInt32(this.textbox_SoLuong.TextButton);
+            int amount = 1;
+            try
+            {
+
+                amount = Convert.ToInt32(this.textbox_SoLuong.TextButton);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng");
+                return;
+            }
             if (amount <= 0)
             {
                 MessageBox.Show("Số lượng không hợp lệ");
+                return;
             }
 
             if (this.productsInBill.ContainsKey(selectedProduct))
@@ -128,47 +136,55 @@ namespace GUI
 
         private void CapNhatBillInfo()
         {
-            // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
-            decimal totalPrice = 0;
-            decimal totalDiscount = 0;
-            var listProductInBillDetails = new List<ProductInBill>();
-            foreach (var product in this.productsInBill.Keys)
+            try
             {
-                // Lấy thông tin amount của sản phẩm trong đơn hàng
-                var productAmount = this.productsInBill[product];
+                // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
+                decimal totalPrice = 0;
+                decimal totalDiscount = 0;
+                var listProductInBillDetails = new List<ProductInBill>();
+                foreach (var product in this.productsInBill.Keys)
+                {
+                    // Lấy thông tin amount của sản phẩm trong đơn hàng
+                    var productAmount = this.productsInBill[product];
 
 
-                totalPrice += product.Price * productAmount;
-                totalDiscount += product.Discount * productAmount;
+                    totalPrice += product.Price * productAmount;
+                    totalDiscount += product.Discount * productAmount;
 
-                var p = new ProductInBill();
-                p.ProductId = product.Id;
-                p.Name = product.Name;
-                p.Amount = productAmount;
-                p.Price = product.Price;
-                p.Discount = product.Discount;
-                p.Category = product.Category;
-                p.Size = product.Size;
-                p.Image = product.Image;
-                p.Description = product.Description;
+                    var p = new ProductInBill();
+                    p.ProductId = product.Id;
+                    p.Name = product.Name;
+                    p.Amount = productAmount;
+                    p.Price = product.Price;
+                    p.Discount = product.Discount;
+                    p.Category = product.Category;
+                    p.Size = product.Size;
+                    p.Image = product.Image;
+                    p.Description = product.Description;
 
-                listProductInBillDetails.Add(p);
+                    listProductInBillDetails.Add(p);
+                }
+
+                // Cập nhật lại Bill
+                this.totalPrice = totalPrice;
+                this.totalDiscount = totalDiscount;
+                this.textBox_TongTien.TextButton = this.totalPrice.ToString();
+                this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
+                this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
+
+                // Cập nhật lại BillInfo
+                this.listProductInBillDetails = listProductInBillDetails;
+                this.data_DSSanPham.DataSource = null;
+                this.data_DSSanPham.DataSource = this.listProductInBillDetails;
+
+                this.data_DSSanPham.Refresh();
+                this.data_DSSanPham.Invalidate();
             }
-
-            // Cập nhật lại Bill
-            this.totalPrice = totalPrice;
-            this.totalDiscount = totalDiscount;
-            this.textBox_TongTien.TextButton = this.totalPrice.ToString();
-            this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
-            this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
-
-            // Cập nhật lại BillInfo
-            this.listProductInBillDetails = listProductInBillDetails;
-            this.data_DSSanPham.DataSource = null;
-            this.data_DSSanPham.DataSource = this.listProductInBillDetails;
-
-            this.data_DSSanPham.Refresh();
-            this.data_DSSanPham.Invalidate();
+           catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi phát sinh");
+                return;
+            }
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
@@ -198,6 +214,7 @@ namespace GUI
 
         private void InsertBill()
         {
+            int billID = 0;
             // Lưu Bill
             this.bill = new Bill();
             this.bill.CustomerId = this.customer.CustomerId;
@@ -207,7 +224,16 @@ namespace GUI
             this.bill.Status = 0;
             this.bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
 
-            int billID = BillBUS.Instance.InsertBill(bill);
+            try 
+            {
+                billID = BillBUS.Instance.InsertBill(bill);
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Lỗi tạo hóa đơn");
+                return;
+            }
+
             if (billID <= 0)
             {
                 MessageBox.Show("Tạo đơn thất bại");
@@ -237,9 +263,10 @@ namespace GUI
                 //this.btn_Luu.Enabled = false;
                 MessageBox.Show("Lưu hóa đơn thành công");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Lỗi khi tạo Chi tiết hóa đơn");
+                MessageBox.Show("Lỗi khi tạo Chi tiết hóa đơn");
+                return;
             }
         }
 
@@ -278,9 +305,9 @@ namespace GUI
                 //this.btn_Luu.Enabled = false;
                 MessageBox.Show("Lưu hóa đơn thành công");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Lỗi khi cập nhật Chi tiết hóa đơn");
+                MessageBox.Show( "Lỗi khi cập nhật Chi tiết hóa đơn");
             }
         }
 
@@ -292,7 +319,7 @@ namespace GUI
                 fThanhToan.ShowDialog();
 
                 string paymentStatus = fThanhToan.PaymentStatus;
-                
+
                 if (paymentStatus == Bill.BILL_DA_THANH_TOAN)
                 {
                     // Update Status = 1 (Đã thanh toán)
@@ -303,18 +330,18 @@ namespace GUI
                         BillBUS.Instance.UpdateBillStatus(this.bill);
                         MessageBox.Show(paymentStatus);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message, "Lỗi");
+                        MessageBox.Show( "Lỗi cập nhật trạng thái thanh toán hóa đơn");
                     }
                 }
                 else
                 {
                     MessageBox.Show(paymentStatus);
                 }
-                
+
             }
-           else
+            else
             {
                 MessageBox.Show("Vui lòng lưu hóa đơn");
             }
@@ -327,12 +354,12 @@ namespace GUI
                 try
                 {
                     int amount = Convert.ToInt32(textbox_SoLuong.TextButton);
-                    if (amount <= 0) 
+                    if (amount <= 0)
                     {
                         MessageBox.Show("Số lượng không hợp lệ. Bạn phải chọn tối thiểu 1 sản phẩm!");
                         return;
                     }
-                    else 
+                    else
                     {
                         // Cập nhật giao diện
                         this.productsInBill[this.selectedProduct] = amount;
@@ -358,9 +385,9 @@ namespace GUI
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message, "Lỗi");
+                    MessageBox.Show( "Lỗi cập nhật chi tiết hóa đơn");
                 }
             }
         }
@@ -376,7 +403,7 @@ namespace GUI
                         // Gọi BUS để xóa product khỏi BillInfo
                         BillInfoBUS.Instance.DeleteBillInfo(this.bill.ID, this.selectedProduct.Id);
                     }
-                   
+
                     // Cập nhật giao diện
                     this.productsInBill.Remove(this.selectedProduct);
                     var index = this.listProductInBillDetails.FindIndex(x => x.ProductId == this.selectedProduct.Id);
@@ -387,30 +414,36 @@ namespace GUI
 
                     this.CapNhatBillInfo();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message, "Lỗi");
+                    MessageBox.Show( "Lỗi xóa hóa đơn");
                 }
             }
         }
 
         private void data_DSSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Lấy thông tin hàng đang được chọn
-            var selectedIndex = data_DSSanPham.SelectedCells[0].RowIndex;
-            // Lấy dữ liệu ở hàng selectedIndex
-            var productInBillDetail = this.listProductInBillDetails[selectedIndex];
-
-            var product = this.listProducts.FirstOrDefault(x => x.Id == productInBillDetail.ProductId);
-            var productAmount = this.productsInBill[product];
-            if (product != null)
+            try
             {
-                this.selectedProduct = product;
-                // hiện thị lên giao diện
-                this.comboBox_SanPham.Text = this.selectedProduct.Name;
-                this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
-                this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
-                this.textbox_SoLuong.TextButton = productAmount.ToString();
+                // Lấy thông tin hàng đang được chọn
+                var selectedIndex = data_DSSanPham.SelectedCells[0].RowIndex;
+                // Lấy dữ liệu ở hàng selectedIndex
+                var productInBillDetail = this.listProductInBillDetails[selectedIndex];
+
+                var product = this.listProducts.FirstOrDefault(x => x.Id == productInBillDetail.ProductId);
+                var productAmount = this.productsInBill[product];
+                if (product != null)
+                {
+                    this.selectedProduct = product;
+                    // hiện thị lên giao diện
+                    this.comboBox_SanPham.Text = this.selectedProduct.Name;
+                    this.textBox_DonGia.TextButton = this.selectedProduct.Price.ToString();
+                    this.textbox_KhuyenMai.TextButton = this.selectedProduct.Discount.ToString();
+                    this.textbox_SoLuong.TextButton = productAmount.ToString();
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("Lỗi chọn sản phẩm");
             }
         }
 
