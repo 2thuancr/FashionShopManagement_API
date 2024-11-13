@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox_HoVaTen = new ReaLTaiizor.Controls.CyberTextBox();
             this.textBox_MaKH = new ReaLTaiizor.Controls.CyberTextBox();
@@ -51,6 +51,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new ReaLTaiizor.Controls.DungeonHeaderLabel();
             this.data_DonHangCuaKhachHang = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.btn_XoaDon = new ReaLTaiizor.Controls.MaterialButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -191,7 +192,7 @@
             this.btn_Luu.HighEmphasis = true;
             this.btn_Luu.Icon = null;
             this.btn_Luu.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Luu.Location = new System.Drawing.Point(65, 158);
+            this.btn_Luu.Location = new System.Drawing.Point(39, 162);
             this.btn_Luu.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Luu.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Luu.Name = "btn_Luu";
@@ -269,7 +270,7 @@
             this.btn_CapNhat.HighEmphasis = true;
             this.btn_CapNhat.Icon = null;
             this.btn_CapNhat.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_CapNhat.Location = new System.Drawing.Point(253, 162);
+            this.btn_CapNhat.Location = new System.Drawing.Point(174, 162);
             this.btn_CapNhat.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_CapNhat.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_CapNhat.Name = "btn_CapNhat";
@@ -292,14 +293,14 @@
             this.btn_Xoa.HighEmphasis = true;
             this.btn_Xoa.Icon = null;
             this.btn_Xoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_Xoa.Location = new System.Drawing.Point(446, 162);
+            this.btn_Xoa.Location = new System.Drawing.Point(321, 162);
             this.btn_Xoa.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.btn_Xoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btn_Xoa.Size = new System.Drawing.Size(84, 51);
             this.btn_Xoa.TabIndex = 52;
-            this.btn_Xoa.Text = "Xóa";
+            this.btn_Xoa.Text = "Xóa KH";
             this.btn_Xoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Xoa.UseAccentColor = false;
             this.btn_Xoa.UseVisualStyleBackColor = true;
@@ -338,6 +339,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MistyRose;
+            this.panel2.Controls.Add(this.btn_XoaDon);
             this.panel2.Controls.Add(this.btn_Luu);
             this.panel2.Controls.Add(this.textBox_DiaChi);
             this.panel2.Controls.Add(this.label_DiaChi);
@@ -415,23 +417,23 @@
             this.data_DonHangCuaKhachHang.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.data_DonHangCuaKhachHang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.data_DonHangCuaKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DonHangCuaKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.data_DonHangCuaKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.data_DonHangCuaKhachHang.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.data_DonHangCuaKhachHang.DefaultCellStyle = dataGridViewCellStyle2;
             this.data_DonHangCuaKhachHang.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.data_DonHangCuaKhachHang.EnableHeadersVisualStyles = false;
             this.data_DonHangCuaKhachHang.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -440,21 +442,44 @@
             this.data_DonHangCuaKhachHang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.data_DonHangCuaKhachHang.Name = "data_DonHangCuaKhachHang";
             this.data_DonHangCuaKhachHang.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_DonHangCuaKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_DonHangCuaKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.data_DonHangCuaKhachHang.RowHeadersWidth = 62;
             this.data_DonHangCuaKhachHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.data_DonHangCuaKhachHang.RowTemplate.Height = 28;
             this.data_DonHangCuaKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_DonHangCuaKhachHang.Size = new System.Drawing.Size(1127, 270);
             this.data_DonHangCuaKhachHang.TabIndex = 38;
-            this.data_DonHangCuaKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.poisonDataGridView1_CellContentClick);
+            this.data_DonHangCuaKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DonHangCuaKhachHang_CellClick);
+            // 
+            // btn_XoaDon
+            // 
+            this.btn_XoaDon.AutoSize = false;
+            this.btn_XoaDon.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_XoaDon.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_XoaDon.Depth = 0;
+            this.btn_XoaDon.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_XoaDon.HighEmphasis = true;
+            this.btn_XoaDon.Icon = null;
+            this.btn_XoaDon.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btn_XoaDon.Location = new System.Drawing.Point(437, 162);
+            this.btn_XoaDon.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.btn_XoaDon.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btn_XoaDon.Name = "btn_XoaDon";
+            this.btn_XoaDon.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_XoaDon.Size = new System.Drawing.Size(96, 51);
+            this.btn_XoaDon.TabIndex = 58;
+            this.btn_XoaDon.Text = "Xóa đơn";
+            this.btn_XoaDon.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_XoaDon.UseAccentColor = false;
+            this.btn_XoaDon.UseVisualStyleBackColor = true;
+            this.btn_XoaDon.Click += new System.EventHandler(this.btn_XoaDon_Click);
             // 
             // fChiTietKhachHang
             // 
@@ -501,5 +526,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ReaLTaiizor.Controls.DungeonHeaderLabel label1;
         private ReaLTaiizor.Controls.PoisonDataGridView data_DonHangCuaKhachHang;
+        private ReaLTaiizor.Controls.MaterialButton btn_XoaDon;
     }
 }

@@ -52,5 +52,33 @@ namespace GUI
             }
         }
 
+        private void btn_XoaDon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.bill != null)
+                {
+                    var billId = this.bill.ID;
+                    var result = BillBUS.Instance.DeleteBill(this.bill.ID);
+                    if (result == true)
+                    {
+                        MessageBox.Show("Đã xóa đơn thành công");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đã xóa đơn thất bại");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn đơn hàng để xóa");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi xóa đơn");
+            }
+        }
     }
 }
