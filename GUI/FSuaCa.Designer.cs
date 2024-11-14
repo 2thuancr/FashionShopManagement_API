@@ -28,92 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.dtpNgayLam = new System.Windows.Forms.DateTimePicker();
-            this.lblNgayLam = new System.Windows.Forms.Label();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
+            this.btn_Luu = new System.Windows.Forms.Button();
+            this.txt_TenNhanVien = new System.Windows.Forms.TextBox();
             this.lblMaNV = new System.Windows.Forms.Label();
-            this.txtMaCa = new System.Windows.Forms.TextBox();
             this.lblMaCa = new System.Windows.Forms.Label();
+            this.comboBox_MaCa = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // btnCancel
+            // btn_Luu
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.Red;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.Location = new System.Drawing.Point(239, 200);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(114, 38);
-            this.btnCancel.TabIndex = 15;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btn_Luu.BackColor = System.Drawing.Color.Blue;
+            this.btn_Luu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Luu.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_Luu.Location = new System.Drawing.Point(149, 208);
+            this.btn_Luu.Name = "btn_Luu";
+            this.btn_Luu.Size = new System.Drawing.Size(114, 38);
+            this.btn_Luu.TabIndex = 14;
+            this.btn_Luu.Text = "Lưu";
+            this.btn_Luu.UseVisualStyleBackColor = false;
+            this.btn_Luu.Click += new System.EventHandler(this.btn_Luu_Click);
             // 
-            // btnSave
+            // txt_TenNhanVien
             // 
-            this.btnSave.BackColor = System.Drawing.Color.Blue;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSave.Location = new System.Drawing.Point(37, 200);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(114, 38);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // dtpNgayLam
-            // 
-            this.dtpNgayLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayLam.Location = new System.Drawing.Point(153, 145);
-            this.dtpNgayLam.Name = "dtpNgayLam";
-            this.dtpNgayLam.Size = new System.Drawing.Size(200, 26);
-            this.dtpNgayLam.TabIndex = 13;
-            // 
-            // lblNgayLam
-            // 
-            this.lblNgayLam.AutoSize = true;
-            this.lblNgayLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayLam.Location = new System.Drawing.Point(21, 151);
-            this.lblNgayLam.Name = "lblNgayLam";
-            this.lblNgayLam.Size = new System.Drawing.Size(93, 20);
-            this.lblNgayLam.TabIndex = 12;
-            this.lblNgayLam.Text = "Ngày Làm:";
-            // 
-            // txtMaNV
-            // 
-            this.txtMaNV.Location = new System.Drawing.Point(153, 74);
-            this.txtMaNV.Multiline = true;
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(200, 33);
-            this.txtMaNV.TabIndex = 11;
+            this.txt_TenNhanVien.Enabled = false;
+            this.txt_TenNhanVien.Location = new System.Drawing.Point(169, 109);
+            this.txt_TenNhanVien.Multiline = true;
+            this.txt_TenNhanVien.Name = "txt_TenNhanVien";
+            this.txt_TenNhanVien.Size = new System.Drawing.Size(200, 33);
+            this.txt_TenNhanVien.TabIndex = 11;
             // 
             // lblMaNV
             // 
             this.lblMaNV.AutoSize = true;
             this.lblMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaNV.Location = new System.Drawing.Point(21, 87);
+            this.lblMaNV.Location = new System.Drawing.Point(31, 122);
             this.lblMaNV.Name = "lblMaNV";
-            this.lblMaNV.Size = new System.Drawing.Size(126, 20);
+            this.lblMaNV.Size = new System.Drawing.Size(132, 20);
             this.lblMaNV.TabIndex = 10;
-            this.lblMaNV.Text = "Mã Nhân Viên:";
-            // 
-            // txtMaCa
-            // 
-            this.txtMaCa.Location = new System.Drawing.Point(153, 27);
-            this.txtMaCa.Name = "txtMaCa";
-            this.txtMaCa.Size = new System.Drawing.Size(200, 26);
-            this.txtMaCa.TabIndex = 9;
+            this.lblMaNV.Text = "Tên Nhân Viên:";
             // 
             // lblMaCa
             // 
             this.lblMaCa.AutoSize = true;
             this.lblMaCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaCa.Location = new System.Drawing.Point(21, 33);
+            this.lblMaCa.Location = new System.Drawing.Point(37, 68);
             this.lblMaCa.Name = "lblMaCa";
             this.lblMaCa.Size = new System.Drawing.Size(65, 20);
             this.lblMaCa.TabIndex = 8;
             this.lblMaCa.Text = "Mã Ca:";
+            // 
+            // comboBox_MaCa
+            // 
+            this.comboBox_MaCa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_MaCa.FormattingEnabled = true;
+            this.comboBox_MaCa.Location = new System.Drawing.Point(169, 60);
+            this.comboBox_MaCa.Name = "comboBox_MaCa";
+            this.comboBox_MaCa.Size = new System.Drawing.Size(200, 28);
+            this.comboBox_MaCa.TabIndex = 16;
             // 
             // FSuaCa
             // 
@@ -121,30 +92,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(406, 285);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtpNgayLam);
-            this.Controls.Add(this.lblNgayLam);
-            this.Controls.Add(this.txtMaNV);
+            this.Controls.Add(this.comboBox_MaCa);
+            this.Controls.Add(this.btn_Luu);
+            this.Controls.Add(this.txt_TenNhanVien);
             this.Controls.Add(this.lblMaNV);
-            this.Controls.Add(this.txtMaCa);
             this.Controls.Add(this.lblMaCa);
             this.Name = "FSuaCa";
             this.Text = "FSuaCa";
+            this.Load += new System.EventHandler(this.FSuaCa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DateTimePicker dtpNgayLam;
-        private System.Windows.Forms.Label lblNgayLam;
-        private System.Windows.Forms.TextBox txtMaNV;
+        private System.Windows.Forms.Button btn_Luu;
+        private System.Windows.Forms.TextBox txt_TenNhanVien;
         private System.Windows.Forms.Label lblMaNV;
-        private System.Windows.Forms.TextBox txtMaCa;
         private System.Windows.Forms.Label lblMaCa;
+        private System.Windows.Forms.ComboBox comboBox_MaCa;
     }
 }
