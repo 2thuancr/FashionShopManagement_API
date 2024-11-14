@@ -123,6 +123,8 @@ namespace GUI
                 MessageBox.Show("Bạn không có quyền thực hiện chức năng này!");
                 return;
             }
+            FPhanCa fPhanCa = new FPhanCa();
+            fPhanCa.Show();
         }
 
         private void fHome_Load(object sender, EventArgs e)

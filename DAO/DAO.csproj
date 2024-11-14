@@ -45,16 +45,11 @@
     <Compile Include="AccountTypePermissionDAO.cs" />
     <Compile Include="BillDAO.cs" />
     <Compile Include="BillInfoDAO.cs" />
-    <Compile Include="CategoryDAO.cs" />
     <Compile Include="CustomerDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="ProductDAO.cs" />
-    <Compile Include="FoodDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityDAO.cs" />
     <Compile Include="StaffDAO.cs" />
-    <Compile Include="TableDAO.cs" />
-    <Compile Include="TempBillDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
