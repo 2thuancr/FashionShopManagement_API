@@ -147,6 +147,7 @@
             this.textBox_MaNV.BaseColor = System.Drawing.Color.Transparent;
             this.textBox_MaNV.BorderColorA = System.Drawing.Color.DodgerBlue;
             this.textBox_MaNV.BorderColorB = System.Drawing.Color.DarkGray;
+            this.textBox_MaNV.Enabled = false;
             this.textBox_MaNV.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBox_MaNV.ForeColor = System.Drawing.Color.Black;
             this.textBox_MaNV.Hint = "";

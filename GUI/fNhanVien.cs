@@ -101,15 +101,6 @@ namespace GUI
             try
             {
                 Staff staff = new Staff();
-                try
-                {
-                    staff.StaffId = Convert.ToInt32(textBox_MaNV.Text);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Nhập sai kiểu dữ liệu! Vui lòng nhập lại.");
-                    return;
-                }
                 staff.SurNameStaff = textBox_Ho.Text;
                 staff.NameStaff = textBox_Ten.Text;
                 try
