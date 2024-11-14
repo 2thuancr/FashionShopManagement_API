@@ -111,6 +111,9 @@ namespace GUI
                 MessageBox.Show("Bạn không có quyền thực hiện chức năng này!");
                 return;
             }
+
+            fBaoCao fBaoCao = new fBaoCao();
+            fBaoCao.ShowDialog();
         }
 
         private void btn_CaiDat_Click(object sender, EventArgs e)

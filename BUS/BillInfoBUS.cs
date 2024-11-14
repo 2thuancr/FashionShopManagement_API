@@ -91,5 +91,28 @@ namespace BUS
             }
             return result;
         }
+
+        public List<BillInfoDetail> GetBillInfoDetailByMonth(int year, int month)
+        {
+            DataTable table;
+            try
+            {
+                table = BillInfoDAO.Instance.GetBillInfoDetailByMonth(year, month);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<BillInfoDetail> result = new List<BillInfoDetail>();
+            if (table != null && table.Rows.Count > 0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    result.Add(new BillInfoDetail(row));
+                }
+            }
+            return result;
+        }
     }
 }

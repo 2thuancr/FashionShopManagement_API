@@ -49,6 +49,20 @@ namespace DAO
             }
         }
 
+        public DataTable GetBillInfoDetailByMonth(int year, int month)
+        {
+            DataTable table;
+            try
+            {
+                table = DataProvider.Instance.ExecuteQuery($"[USP_GetBillInfoDetailByMonth] @year = {year}, @month = {month}");
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void DeleteBillInfoByBillID(int billID)
         {
             string query = string.Format("USP_DeleteBillInfoByBillID @BillID");
