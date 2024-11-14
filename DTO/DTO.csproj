@@ -53,6 +53,7 @@
     <Compile Include="SendEmailBySMTPInput.cs" />
     <Compile Include="SendEmailBySMTPOutput.cs" />
     <Compile Include="Shift.cs" />
+    <Compile Include="StaffShift.cs" />
     <Compile Include="Staff.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

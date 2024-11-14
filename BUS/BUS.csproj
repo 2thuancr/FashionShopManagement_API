@@ -50,6 +50,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShiftBUS.cs" />
     <Compile Include="StaffBUS.cs" />
   </ItemGroup>
   <ItemGroup>

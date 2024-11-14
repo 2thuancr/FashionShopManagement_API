@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using NPOI.XSSF.Extractor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,7 @@ namespace GUI
 {
     public partial class FPhanCa : Form
     {
+        private List<StaffShift> lstStaffShift = new List<StaffShift>();
         public FPhanCa()
         {
             InitializeComponent();
@@ -21,6 +25,37 @@ namespace GUI
         {
             FSuaCa fSuaCa = new FSuaCa();
             fSuaCa.Show();
+        }
+
+        private void FPhanCa_Load(object sender, EventArgs e)
+        {
+           this.LoadData();
+        }
+
+        private void LoadData()
+        {
+            this.lstStaffShift = ShiftBUS.Instance.GetAllStaffShift();
+            this.data_CaLamViec.DataSource = null;
+            this.data_CaLamViec.DataSource = this.lstStaffShift;
+        }
+
+        private void data_CaLamViec_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Xacs ddinhj index dang duoc chon 
+                var selectedIndex = data_CaLamViec.SelectedCells[0].RowIndex;
+                var staffShift = this.lstStaffShift[selectedIndex];
+                // show form sua ca len
+                FSuaCa fSuaCa = new FSuaCa(staffShift);
+                fSuaCa.ShowDialog();
+                // load lai data
+                this.LoadData();
+            }
+            catch (Exception) {
+                MessageBox.Show("Lỗi lấy thông tin ca làm việc");
+            }
+
         }
     }
 }

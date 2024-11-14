@@ -49,6 +49,7 @@
     <Compile Include="DataProvider.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShiftDAO.cs" />
     <Compile Include="StaffDAO.cs" />
   </ItemGroup>
   <ItemGroup>

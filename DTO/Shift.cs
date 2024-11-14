@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,28 @@ namespace DTO
 {
     public class Shift
     {
-        public string MaCa { get; set; }
-        public string MaNV { get; set; }
-        public DateTime NgayLam { get; set; }
-        public TimeSpan GioBatDau { get; set; }
-        public TimeSpan GioKetThuc { get; set; }
-        public string HoTenNV { get; set; }
-    }
+        public int ShiftId { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
+        public string Code { get; set; }
 
+        public Shift()
+        {
+
+        }
+        public Shift(int shiftId, TimeSpan startTime, TimeSpan endTime, string code)
+        {
+            this.ShiftId = shiftId;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.Code = code;
+        }
+        public Shift(DataRow row)
+        {
+            this.ShiftId = Convert.ToInt32(row["shiftId"]);
+            this.StartTime = TimeSpan.Parse(Convert.ToString(row["StartTime"]));
+            this.EndTime = TimeSpan.Parse(Convert.ToString(row["EndTime"]));
+            this.Code = Convert.ToString(row["Code"]);
+        }
+    }
 }
