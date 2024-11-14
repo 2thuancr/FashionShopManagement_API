@@ -226,6 +226,18 @@
     <Compile Include="fChiTietHoaDon.Designer.cs">
       <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="FPhanCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPhanCa.Designer.cs">
+      <DependentUpon>FPhanCa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSuaCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaCa.Designer.cs">
+      <DependentUpon>FSuaCa.cs</DependentUpon>
+    </Compile>
     <Compile Include="fTaoKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +345,12 @@
     <None Include="Resources\customer-satisfaction.png" />
     <EmbeddedResource Include="fChiTietHoaDon.resx">
       <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPhanCa.resx">
+      <DependentUpon>FPhanCa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSuaCa.resx">
+      <DependentUpon>FSuaCa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTaoKhachHang.resx">
       <DependentUpon>fTaoKhachHang.cs</DependentUpon>
