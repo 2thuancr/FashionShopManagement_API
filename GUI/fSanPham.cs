@@ -82,5 +82,10 @@ namespace GUI
                 MessageBox.Show("Lỗi tìm kiếm sản phẩm!");
             }
         }
+
+        private void textBox_TimKiem_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
