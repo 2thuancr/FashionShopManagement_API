@@ -153,6 +153,7 @@
             this.textBox_TimKiem.TextButton = "";
             this.textBox_TimKiem.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.textBox_TimKiem.Timer_RGB = 300;
+            this.textBox_TimKiem.Load += new System.EventHandler(this.textBox_TimKiem_Load);
             // 
             // panel2
             // 

@@ -106,9 +106,9 @@
             this.btn_CaiDat.Size = new System.Drawing.Size(260, 176);
             this.btn_CaiDat.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
             this.btn_CaiDat.TabIndex = 10;
-            this.btn_CaiDat.Text = "Cài đặt";
+            this.btn_CaiDat.Text = "Phân Ca";
             this.btn_CaiDat.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_CaiDat.TileImage = global::GUI.Properties.Resources.cogwheel;
+            this.btn_CaiDat.TileImage = global::GUI.Properties.Resources.working;
             this.btn_CaiDat.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_CaiDat.TileTextFontWeight = ReaLTaiizor.Extension.Poison.PoisonTileTextWeight.Bold;
             this.btn_CaiDat.UseCustomBackColor = true;

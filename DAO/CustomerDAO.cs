@@ -28,7 +28,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("USP_GetAllCustomer", new object[] { } );
+                table = DataProvider.Instance.ExecuteQuery("SELECT * FROM [dbo].[ViewAllCustomers]", new object[] { } );
                 return table;
             }
             catch( Exception ex) 
@@ -54,7 +54,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("USP_GetCustomerByPhone @PhoneNumber", new object[] { phoneNumber });
+                table = DataProvider.Instance.ExecuteQuery($"select * from SearchCustomers('{phoneNumber}')");
                 return table;
             }
             catch (Exception ex)

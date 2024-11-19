@@ -107,9 +107,7 @@ namespace GUI
             int amount = 1;
             try
             {
-
                 amount = Convert.ToInt32(this.textbox_SoLuong.TextButton);
-
             }
             catch (Exception)
             {
@@ -275,16 +273,16 @@ namespace GUI
             // Lưu Bill
             this.bill.TotalPrice = this.totalPrice;
             this.bill.Discount = this.totalDiscount;
-
-            try
-            {
-                BillBUS.Instance.UpdateBill(bill);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Cập nhật đơn thất bại");
-                return;
-            }
+            // Nếu đúng thì tự cập nhật 
+            //try
+            //{
+            //    BillBUS.Instance.UpdateBill(bill);
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Cập nhật đơn thất bại");
+            //    return;
+            //}
 
 
             // Lưu BillInfo

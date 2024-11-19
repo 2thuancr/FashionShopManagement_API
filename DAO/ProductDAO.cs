@@ -22,7 +22,7 @@ namespace DAO
 
         public DataTable GetAllProduct()
         {
-            string query = "USP_GetAllProduct";
+            string query = "Select * from [dbo].[ViewAllProducts]";
             try
             {
                 return DataProvider.Instance.ExecuteQuery(query);

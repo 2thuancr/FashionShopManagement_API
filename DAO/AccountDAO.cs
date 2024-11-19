@@ -39,7 +39,7 @@ namespace DAO
         {
             try
             {
-                return DataProvider.Instance.ExecuteQuery("USP_GetAllAccount");
+                return DataProvider.Instance.ExecuteQuery("Select * from [dbo].[ViewAllAccounts]");
             }
             catch (Exception ex)
             {
