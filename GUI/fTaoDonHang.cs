@@ -230,6 +230,7 @@ namespace GUI
                     this.textBox_TongTien.TextButton = this.billPriceInfo.TongTien.ToString();
                     this.textBox_GiamGia.TextButton = this.billPriceInfo.GiamGia.ToString();
                     this.textBox_ThanhTien.TextButton = this.billPriceInfo.ThanhTien.ToString();
+                    this.bill.TotalPrice = this.billPriceInfo.ThanhTien;
                 }
             }
             catch (SqlException ex)

@@ -52,7 +52,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("Select * from [dbo].[ViewAllBills]", new object[] { });
+                table = DataProvider.Instance.ExecuteQuery("Select * from ViewAllBills", new object[] { });
                 return table;
             }
             catch (Exception ex)

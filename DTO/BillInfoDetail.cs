@@ -7,7 +7,7 @@ namespace DTO
     {
         public int ID { get; set; }
         public DateTime BusinessTime { get; set; }
-        public decimal Discount { get; set; }
+        //public decimal Discount { get; set; }
         public decimal TotalPrice { get; set; }
         public string PaymentStatus { get; set; }
         public int Status { get; set; }
@@ -25,11 +25,10 @@ namespace DTO
 
         public BillInfoDetail(DataRow row)
         {
-            try 
-            {
+           
                 this.ID = Convert.ToInt32(row["ID"]);
                 this.BusinessTime = (row["BusinessTime"] != DBNull.Value) ? Convert.ToDateTime(row["BusinessTime"]) : DateTime.MinValue;
-                this.Discount = (row["Discount"] != DBNull.Value) ? Convert.ToDecimal(row["Discount"]) : 0;
+                //this.Discount = (row["Discount"] != DBNull.Value) ? Convert.ToDecimal(row["Discount"]) : 0;
                 this.TotalPrice = (row["TotalPrice"] != DBNull.Value) ? Convert.ToDecimal(row["TotalPrice"]) : 0;
                 this.Status = (row["Status"] != DBNull.Value) ? Convert.ToInt32(row["Status"]) : 0;
                 this.ProductId = (row["ProductId"] != DBNull.Value) ? Convert.ToInt32(row["ProductId"]) : 0;
@@ -49,11 +48,7 @@ namespace DTO
                 {
                     this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
                 }
-            }
-            catch
-            {
-
-            }
+            
            
         }
     }

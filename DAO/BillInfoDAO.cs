@@ -46,7 +46,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("[USP_GetBillInfoDetailByBillId] @CustomerId", new object[] { billId });
+                table = DataProvider.Instance.ExecuteQuery($"[USP_GetBillInfoDetailByBillId] @BillId = {billId}");
                 return table;
             }
             catch (Exception ex)
