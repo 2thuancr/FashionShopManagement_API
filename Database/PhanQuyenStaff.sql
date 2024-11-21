@@ -30,6 +30,14 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON [Customer] TO [role_staff];
 GRANT SELECT ON [Permission] TO [role_staff];
 GRANT SELECT ON [Product] TO [role_staff];
 GRANT SELECT, UPDATE ON [Staff] TO [role_staff];
+GRANT SELECT ON [ViewAllCustomers] TO [role_staff];
+GRANT SELECT ON [ViewAllCampaigns] TO [role_staff];
+GRANT SELECT ON [ViewAllBills] TO [role_staff];
+GRANT SELECT ON [ViewAllAccounts] TO [role_staff];
+GRANT SELECT ON [ViewAllPermissions] TO [role_staff];
+GRANT SELECT ON [ViewAllProducts] TO [role_staff];
+GRANT SELECT ON [ViewAllShifts] TO [role_staff];
+GRANT SELECT ON [ViewAllStaffs] TO [role_staff];
 
 --3. Gán quyền cụ thể cho vai trò trên các stored procedures
 GRANT EXECUTE ON OBJECT::dbo.USP_DeleteBill TO role_staff;
