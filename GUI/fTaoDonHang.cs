@@ -218,7 +218,6 @@ namespace GUI
             this.bill.CustomerId = this.customer.CustomerId;
             this.bill.StaffId = fHome.LoginAccount.Id;
             this.bill.TotalPrice = this.totalPrice;
-            this.bill.Discount = this.totalDiscount;
             this.bill.Status = 0;
             this.bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
 
@@ -253,6 +252,8 @@ namespace GUI
                         ProductID = product.ProductId,
                         Amount = product.Amount,
                         BillID = billID,
+                        Price = product.Price,
+                        Discount = product.Discount
                     };
 
                     BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);
@@ -272,7 +273,6 @@ namespace GUI
         {
             // Lưu Bill
             this.bill.TotalPrice = this.totalPrice;
-            this.bill.Discount = this.totalDiscount;
             // Nếu đúng thì tự cập nhật 
             //try
             //{
@@ -295,6 +295,8 @@ namespace GUI
                         ProductID = product.ProductId,
                         Amount = product.Amount,
                         BillID = this.bill.ID,
+                        Price = product.Price,
+                        Discount = product.Discount
                     };
 
                     BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);

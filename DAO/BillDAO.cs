@@ -118,14 +118,12 @@ namespace DAO
                 {
                     bill.CustomerId,
                     bill.StaffId,
-                    bill.Discount,
                     bill.TotalPrice,
                     bill.Status,
                 };
                 string query = $@"[USP_InsertBill] 
                     @CustomerID = {bill.CustomerId}, 
                     @StaffID = {bill.StaffId}, 
-                    @Discount = {bill.Discount}, 
                     @TotalPrice = {bill.TotalPrice}, 
                     @Status = {bill.Status}
                     ";
@@ -160,7 +158,6 @@ namespace DAO
             {
                 string query = $@"[USP_UpdateBill] 
                     @ID = {bill.ID},
-                    @Discount = {bill.Discount},
                     @TotalPrice = {bill.TotalPrice},
                     @Status = {bill.Status}
                     ";

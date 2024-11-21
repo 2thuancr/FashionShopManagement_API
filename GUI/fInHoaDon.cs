@@ -82,7 +82,7 @@ namespace GUI
 
         private void LoadQR()
         {
-            string amount = (bill.TotalPrice - bill.Discount).ToString();
+            string amount = (bill.TotalPrice).ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
             var url = BillBUS.Instance.GetQrPayment("qr_only", bankName, bankAccountID, bankAccountName, addInfo, amount);

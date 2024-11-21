@@ -33,7 +33,7 @@ namespace GUI
 
         private void fThanhToan_Load(object sender, EventArgs e)
         {
-            string amount = (bill.TotalPrice - bill.Discount).ToString();
+            string amount = (bill.TotalPrice).ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
             var url = BillBUS.Instance.GetQrPayment("print", bankName, bankAccountID, bankAccountName, addInfo, amount);

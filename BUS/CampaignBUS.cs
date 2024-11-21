@@ -25,7 +25,7 @@ namespace BUS
             }
         }
         private CampaignBUS() { }
-        public List<Campaign> GetAllCampaign()
+        public List<CampaignView> GetAllCampaign()
         {
             DataTable table;
             try
@@ -36,10 +36,10 @@ namespace BUS
             {
                 throw ex;
             }
-            List<Campaign> listCampaign = new List<Campaign>();
+            List<CampaignView> listCampaign = new List<CampaignView>();
             foreach (DataRow row in table.Rows)
             {
-                Campaign campaign = new Campaign(row);
+                CampaignView campaign = new CampaignView(row);
                 listCampaign.Add(campaign);
             }
             return listCampaign;

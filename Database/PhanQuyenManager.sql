@@ -32,7 +32,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON [Customer] TO [role_manager];
 GRANT SELECT, INSERT, UPDATE, DELETE ON [Permission] TO [role_manager];
 GRANT SELECT, INSERT, UPDATE, DELETE ON [Product] TO [role_manager];
 GRANT SELECT, INSERT, UPDATE, DELETE ON [Staff] TO [role_manager];
-
+GRANT SELECT, INSERT, UPDATE, DELETE ON [Campaign] TO [role_manager];
 
 --3. Gán quyền cụ thể cho vai trò trên các stored procedures
 GRANT EXECUTE ON SCHEMA::dbo TO [role_manager];

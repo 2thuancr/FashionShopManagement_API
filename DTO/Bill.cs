@@ -12,12 +12,11 @@ namespace DTO
         public DateTime BusinessTime { get; set; }
         public int CustomerId { get; set; }
         public int StaffId { get; set; }
-        public decimal Discount { get; set; }
         public decimal TotalPrice { get; set; }
         public string PaymentStatus { get; set; }
         public int Status { get; set; }
 
-        public Bill(int id, DateTime businessTime, int status, int customerId, int staffId, decimal discount = 0, decimal totalPrice = 0)
+        public Bill(int id, DateTime businessTime, int status, int customerId, int staffId, decimal totalPrice = 0)
         {
             this.ID = id;
             this.BusinessTime = businessTime;
@@ -30,7 +29,6 @@ namespace DTO
             {
                 this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
             }
-            this.Discount = discount;
             this.TotalPrice = totalPrice;
             this.CustomerId = customerId;
             this.StaffId = staffId;
@@ -51,7 +49,6 @@ namespace DTO
                 {
                     this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
                 }
-                this.Discount = (row["discount"] != DBNull.Value) ? Convert.ToDecimal(row["discount"]) : 0;
                 this.TotalPrice = (row["totalPrice"] != DBNull.Value) ? Convert.ToDecimal(row["totalPrice"]) : 0;
                 this.CustomerId = (row["customerId"] != DBNull.Value) ? Convert.ToInt32(row["customerId"]) : 0;
                 this.StaffId = (row["staffId"] != DBNull.Value) ? Convert.ToInt32(row["staffId"]) : 0;

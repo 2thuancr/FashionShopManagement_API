@@ -22,23 +22,11 @@ namespace BUS
 
         private BillInfoBUS() { }
 
-        public void InsertBillInfo(int billID, int productID, int amount)
-        {
-            try
-            {
-                BillInfoDAO.Instance.InsertUpdateBillInfo(billID, productID, amount);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public void InsertUpdateBillInfo(BillInfo billInfo)
         {
             try
             {
-                BillInfoDAO.Instance.InsertUpdateBillInfo(billInfo.BillID, billInfo.ProductID, billInfo.Amount);
+                BillInfoDAO.Instance.InsertUpdateBillInfo(billInfo);
             }
             catch (Exception ex)
             {

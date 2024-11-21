@@ -30,8 +30,7 @@ namespace GUI
 
             this.textBox_MaHoaDon.TextButton = this.bill.ID.ToString();
             this.textBox_TongTien.TextButton = this.bill.TotalPrice.ToString();
-            this.textBox_GiamGia.TextButton = this.bill.Discount.ToString();
-            this.textBox_ThanhTien.TextButton = (this.bill.TotalPrice -  this.bill.Discount).ToString();
+            this.textBox_ThanhTien.TextButton = (this.bill.TotalPrice).ToString();
 
 
             try
