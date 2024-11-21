@@ -167,6 +167,30 @@ namespace BUS
             return listBill;
         }
 
+        public BillPriceInfo GetBillPriceInfo(int billId)
+        {
+            DataTable table;
+            try
+            {
+                table = BillDAO.Instance.GetBillPriceInfo(billId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            if (table != null && table.Rows.Count > 0)
+            {
+                var firstRow = table.Rows[0];
+                BillPriceInfo billPriceInfo = new BillPriceInfo(firstRow);
+                return billPriceInfo;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
         public Bill GetBillById(int Id)
         {
             DataTable table;

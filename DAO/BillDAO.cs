@@ -136,6 +136,18 @@ namespace DAO
             }
         }
 
+        public DataTable GetBillPriceInfo(int billId)
+        {
+            try
+            {
+                return DataProvider.Instance.ExecuteQuery($"select * from GetBillPriceInfo({billId})");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void UpdateBillStatus(Bill bill)
         {
             try

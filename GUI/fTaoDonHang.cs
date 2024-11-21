@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,6 +21,7 @@ namespace GUI
 
         private Customer customer = new Customer();
         private Bill bill = new Bill();
+        private BillPriceInfo billPriceInfo = new BillPriceInfo();
 
         private decimal totalPrice = 0;
         private decimal totalDiscount = 0;
@@ -132,8 +134,12 @@ namespace GUI
             this.CapNhatBillInfo();
         }
 
+        /// <summary>
+        /// Không dùng tới nữa, dùng trigger
+        /// </summary>
         private void CapNhatBillInfo()
         {
+
             try
             {
                 // Tính lại tổng tiền, tổng giảm giá và danh sách sản phẩm trong đơn hàng
@@ -166,9 +172,9 @@ namespace GUI
                 // Cập nhật lại Bill
                 this.totalPrice = totalPrice;
                 this.totalDiscount = totalDiscount;
-                this.textBox_TongTien.TextButton = this.totalPrice.ToString();
-                this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
-                this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
+                //this.textBox_TongTien.TextButton = this.totalPrice.ToString();
+                //this.textBox_GiamGia.TextButton = this.totalDiscount.ToString();
+                //this.textBox_ThanhTien.TextButton = (this.totalPrice - this.totalDiscount).ToString();
 
                 // Cập nhật lại BillInfo
                 this.listProductInBillDetails = listProductInBillDetails;
@@ -207,6 +213,28 @@ namespace GUI
             else
             {
                 InsertBill();
+            }
+
+            ReloadBillPrice();
+        }
+
+        private void ReloadBillPrice()
+        {
+            try
+            {
+                if (this.bill != null && this.bill.ID > 0)
+                {
+
+                    this.billPriceInfo = BillBUS.Instance.GetBillPriceInfo(this.bill.ID);
+
+                    this.textBox_TongTien.TextButton = this.billPriceInfo.TongTien.ToString();
+                    this.textBox_GiamGia.TextButton = this.billPriceInfo.GiamGia.ToString();
+                    this.textBox_ThanhTien.TextButton = this.billPriceInfo.ThanhTien.ToString();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Có lỗi phát sinh khi lấy thông tin từ database");
             }
         }
 
