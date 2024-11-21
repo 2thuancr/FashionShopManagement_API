@@ -29,16 +29,7 @@
         private void InitializeComponent()
         {
             this.MIDPL = new System.Windows.Forms.Panel();
-            this.btn_NhanVien = new ReaLTaiizor.Controls.PoisonTile();
-            this.btn_CaiDat = new ReaLTaiizor.Controls.PoisonTile();
-            this.btn_SanPham = new ReaLTaiizor.Controls.PoisonTile();
-            this.btn_BaoCao = new ReaLTaiizor.Controls.PoisonTile();
-            this.btn_KhachHang = new ReaLTaiizor.Controls.PoisonTile();
-            this.btn_DonHang = new ReaLTaiizor.Controls.PoisonTile();
             this.FILLPL = new System.Windows.Forms.Panel();
-            this.panel_Top = new System.Windows.Forms.Panel();
-            this.image_Banner = new System.Windows.Forms.PictureBox();
-            this.PROTECTLE = new ReaLTaiizor.Controls.LabelEdit();
             this.BOTPL = new System.Windows.Forms.Panel();
             this.CONNECTT = new ReaLTaiizor.Controls.MetroTile();
             this.CONTACTT = new ReaLTaiizor.Controls.MetroTile();
@@ -47,16 +38,28 @@
             this.label_UserName = new ReaLTaiizor.Controls.LinkLabelEdit();
             this.BOTPLSR = new ReaLTaiizor.Controls.LostSeparator();
             this.label_Role = new ReaLTaiizor.Controls.LinkLabelEdit();
+            this.crownContextMenuStrip1 = new ReaLTaiizor.Controls.CrownContextMenuStrip();
+            this.btn_ChienDich = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_NhanVien = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_CaiDat = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_SanPham = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_BaoCao = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_KhachHang = new ReaLTaiizor.Controls.PoisonTile();
+            this.btn_DonHang = new ReaLTaiizor.Controls.PoisonTile();
+            this.panel_Top = new System.Windows.Forms.Panel();
+            this.image_Banner = new System.Windows.Forms.PictureBox();
+            this.PROTECTLE = new ReaLTaiizor.Controls.LabelEdit();
             this.MIDPL.SuspendLayout();
             this.FILLPL.SuspendLayout();
+            this.BOTPL.SuspendLayout();
             this.panel_Top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_Banner)).BeginInit();
-            this.BOTPL.SuspendLayout();
             this.SuspendLayout();
             // 
             // MIDPL
             // 
             this.MIDPL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MIDPL.Controls.Add(this.btn_ChienDich);
             this.MIDPL.Controls.Add(this.btn_NhanVien);
             this.MIDPL.Controls.Add(this.btn_CaiDat);
             this.MIDPL.Controls.Add(this.btn_SanPham);
@@ -67,8 +70,231 @@
             this.MIDPL.Location = new System.Drawing.Point(0, 201);
             this.MIDPL.Margin = new System.Windows.Forms.Padding(0);
             this.MIDPL.Name = "MIDPL";
-            this.MIDPL.Size = new System.Drawing.Size(873, 433);
+            this.MIDPL.Size = new System.Drawing.Size(1132, 433);
             this.MIDPL.TabIndex = 6;
+            // 
+            // FILLPL
+            // 
+            this.FILLPL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.FILLPL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.FILLPL.Controls.Add(this.MIDPL);
+            this.FILLPL.Controls.Add(this.panel_Top);
+            this.FILLPL.Controls.Add(this.BOTPL);
+            this.FILLPL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FILLPL.Location = new System.Drawing.Point(0, 0);
+            this.FILLPL.Margin = new System.Windows.Forms.Padding(0);
+            this.FILLPL.Name = "FILLPL";
+            this.FILLPL.Size = new System.Drawing.Size(1132, 682);
+            this.FILLPL.TabIndex = 5;
+            // 
+            // BOTPL
+            // 
+            this.BOTPL.BackColor = System.Drawing.Color.White;
+            this.BOTPL.Controls.Add(this.CONNECTT);
+            this.BOTPL.Controls.Add(this.CONTACTT);
+            this.BOTPL.Controls.Add(this.SETTINGT);
+            this.BOTPL.Controls.Add(this.MESSAGET);
+            this.BOTPL.Controls.Add(this.label_UserName);
+            this.BOTPL.Controls.Add(this.BOTPLSR);
+            this.BOTPL.Controls.Add(this.label_Role);
+            this.BOTPL.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BOTPL.Location = new System.Drawing.Point(0, 634);
+            this.BOTPL.Margin = new System.Windows.Forms.Padding(0);
+            this.BOTPL.Name = "BOTPL";
+            this.BOTPL.Size = new System.Drawing.Size(1132, 48);
+            this.BOTPL.TabIndex = 0;
+            // 
+            // CONNECTT
+            // 
+            this.CONNECTT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.CONNECTT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.CONNECTT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.CONNECTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CONNECTT.HoverBorderColor = System.Drawing.Color.Transparent;
+            this.CONNECTT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
+            this.CONNECTT.HoverTextColor = System.Drawing.Color.White;
+            this.CONNECTT.IsDerivedStyle = true;
+            this.CONNECTT.Location = new System.Drawing.Point(200, 12);
+            this.CONNECTT.Margin = new System.Windows.Forms.Padding(4);
+            this.CONNECTT.Name = "CONNECTT";
+            this.CONNECTT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CONNECTT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CONNECTT.NormalTextColor = System.Drawing.Color.White;
+            this.CONNECTT.PressBorderColor = System.Drawing.Color.Transparent;
+            this.CONNECTT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.CONNECTT.PressTextColor = System.Drawing.Color.White;
+            this.CONNECTT.Size = new System.Drawing.Size(24, 24);
+            this.CONNECTT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
+            this.CONNECTT.StyleManager = null;
+            this.CONNECTT.TabIndex = 8;
+            this.CONNECTT.ThemeAuthor = "Taiizor";
+            this.CONNECTT.ThemeName = "MetroLight";
+            this.CONNECTT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
+            // 
+            // CONTACTT
+            // 
+            this.CONTACTT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.CONTACTT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.CONTACTT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.CONTACTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CONTACTT.HoverBorderColor = System.Drawing.Color.Transparent;
+            this.CONTACTT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
+            this.CONTACTT.HoverTextColor = System.Drawing.Color.White;
+            this.CONTACTT.IsDerivedStyle = true;
+            this.CONTACTT.Location = new System.Drawing.Point(120, 12);
+            this.CONTACTT.Margin = new System.Windows.Forms.Padding(4);
+            this.CONTACTT.Name = "CONTACTT";
+            this.CONTACTT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CONTACTT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CONTACTT.NormalTextColor = System.Drawing.Color.White;
+            this.CONTACTT.PressBorderColor = System.Drawing.Color.Transparent;
+            this.CONTACTT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.CONTACTT.PressTextColor = System.Drawing.Color.White;
+            this.CONTACTT.Size = new System.Drawing.Size(22, 24);
+            this.CONTACTT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
+            this.CONTACTT.StyleManager = null;
+            this.CONTACTT.TabIndex = 7;
+            this.CONTACTT.ThemeAuthor = "Taiizor";
+            this.CONTACTT.ThemeName = "MetroLight";
+            this.CONTACTT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
+            // 
+            // SETTINGT
+            // 
+            this.SETTINGT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.SETTINGT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.SETTINGT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.SETTINGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.SETTINGT.HoverBorderColor = System.Drawing.Color.Transparent;
+            this.SETTINGT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
+            this.SETTINGT.HoverTextColor = System.Drawing.Color.White;
+            this.SETTINGT.IsDerivedStyle = true;
+            this.SETTINGT.Location = new System.Drawing.Point(72, 14);
+            this.SETTINGT.Margin = new System.Windows.Forms.Padding(4);
+            this.SETTINGT.Name = "SETTINGT";
+            this.SETTINGT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.SETTINGT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.SETTINGT.NormalTextColor = System.Drawing.Color.White;
+            this.SETTINGT.PressBorderColor = System.Drawing.Color.Transparent;
+            this.SETTINGT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.SETTINGT.PressTextColor = System.Drawing.Color.White;
+            this.SETTINGT.Size = new System.Drawing.Size(24, 22);
+            this.SETTINGT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
+            this.SETTINGT.StyleManager = null;
+            this.SETTINGT.TabIndex = 6;
+            this.SETTINGT.ThemeAuthor = "Taiizor";
+            this.SETTINGT.ThemeName = "MetroLight";
+            this.SETTINGT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
+            // 
+            // MESSAGET
+            // 
+            this.MESSAGET.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.MESSAGET.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.MESSAGET.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.MESSAGET.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.MESSAGET.HoverBorderColor = System.Drawing.Color.Transparent;
+            this.MESSAGET.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
+            this.MESSAGET.HoverTextColor = System.Drawing.Color.White;
+            this.MESSAGET.IsDerivedStyle = true;
+            this.MESSAGET.Location = new System.Drawing.Point(22, 15);
+            this.MESSAGET.Margin = new System.Windows.Forms.Padding(4);
+            this.MESSAGET.Name = "MESSAGET";
+            this.MESSAGET.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.MESSAGET.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.MESSAGET.NormalTextColor = System.Drawing.Color.White;
+            this.MESSAGET.PressBorderColor = System.Drawing.Color.Transparent;
+            this.MESSAGET.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.MESSAGET.PressTextColor = System.Drawing.Color.White;
+            this.MESSAGET.Size = new System.Drawing.Size(24, 20);
+            this.MESSAGET.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
+            this.MESSAGET.StyleManager = null;
+            this.MESSAGET.TabIndex = 1;
+            this.MESSAGET.ThemeAuthor = "Taiizor";
+            this.MESSAGET.ThemeName = "MetroLight";
+            this.MESSAGET.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
+            // 
+            // label_UserName
+            // 
+            this.label_UserName.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.label_UserName.BackColor = System.Drawing.Color.Transparent;
+            this.label_UserName.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label_UserName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_UserName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_UserName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_UserName.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.label_UserName.LinkColor = System.Drawing.Color.SeaGreen;
+            this.label_UserName.Location = new System.Drawing.Point(662, 0);
+            this.label_UserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_UserName.Name = "label_UserName";
+            this.label_UserName.Size = new System.Drawing.Size(216, 48);
+            this.label_UserName.TabIndex = 4;
+            this.label_UserName.TabStop = true;
+            this.label_UserName.Text = "UserName";
+            this.label_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_UserName.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            // 
+            // BOTPLSR
+            // 
+            this.BOTPLSR.BackColor = System.Drawing.Color.White;
+            this.BOTPLSR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BOTPLSR.Horizontal = false;
+            this.BOTPLSR.Location = new System.Drawing.Point(166, 6);
+            this.BOTPLSR.Margin = new System.Windows.Forms.Padding(0);
+            this.BOTPLSR.Name = "BOTPLSR";
+            this.BOTPLSR.Size = new System.Drawing.Size(15, 36);
+            this.BOTPLSR.TabIndex = 3;
+            this.BOTPLSR.Text = "lostSeparator1";
+            // 
+            // label_Role
+            // 
+            this.label_Role.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.label_Role.BackColor = System.Drawing.Color.Transparent;
+            this.label_Role.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label_Role.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label_Role.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_Role.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_Role.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.label_Role.LinkColor = System.Drawing.Color.SeaGreen;
+            this.label_Role.Location = new System.Drawing.Point(878, 0);
+            this.label_Role.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Role.Name = "label_Role";
+            this.label_Role.Size = new System.Drawing.Size(254, 48);
+            this.label_Role.TabIndex = 5;
+            this.label_Role.TabStop = true;
+            this.label_Role.Text = "Role";
+            this.label_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Role.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            // 
+            // crownContextMenuStrip1
+            // 
+            this.crownContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.crownContextMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.crownContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.crownContextMenuStrip1.Name = "crownContextMenuStrip1";
+            this.crownContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // btn_ChienDich
+            // 
+            this.btn_ChienDich.ActiveControl = null;
+            this.btn_ChienDich.BackColor = System.Drawing.Color.White;
+            this.btn_ChienDich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ChienDich.ForeColor = System.Drawing.Color.Black;
+            this.btn_ChienDich.Location = new System.Drawing.Point(853, 38);
+            this.btn_ChienDich.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ChienDich.Name = "btn_ChienDich";
+            this.btn_ChienDich.Size = new System.Drawing.Size(259, 176);
+            this.btn_ChienDich.Style = ReaLTaiizor.Enum.Poison.ColorStyle.White;
+            this.btn_ChienDich.TabIndex = 13;
+            this.btn_ChienDich.Text = "Chiến dịch";
+            this.btn_ChienDich.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_ChienDich.TileImage = global::GUI.Properties.Resources.campaign_18189674__2_;
+            this.btn_ChienDich.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_ChienDich.TileTextFontWeight = ReaLTaiizor.Extension.Poison.PoisonTileTextWeight.Bold;
+            this.btn_ChienDich.UseCustomBackColor = true;
+            this.btn_ChienDich.UseCustomForeColor = true;
+            this.btn_ChienDich.UseSelectable = true;
+            this.btn_ChienDich.UseStyleColors = true;
+            this.btn_ChienDich.UseTileImage = true;
+            this.btn_ChienDich.Click += new System.EventHandler(this.btn_ChienDich_Click);
             // 
             // btn_NhanVien
             // 
@@ -212,20 +438,6 @@
             this.btn_DonHang.UseTileImage = true;
             this.btn_DonHang.Click += new System.EventHandler(this.btn_DonHang_Click);
             // 
-            // FILLPL
-            // 
-            this.FILLPL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.FILLPL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.FILLPL.Controls.Add(this.MIDPL);
-            this.FILLPL.Controls.Add(this.panel_Top);
-            this.FILLPL.Controls.Add(this.BOTPL);
-            this.FILLPL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FILLPL.Location = new System.Drawing.Point(0, 0);
-            this.FILLPL.Margin = new System.Windows.Forms.Padding(0);
-            this.FILLPL.Name = "FILLPL";
-            this.FILLPL.Size = new System.Drawing.Size(873, 682);
-            this.FILLPL.TabIndex = 5;
-            // 
             // panel_Top
             // 
             this.panel_Top.BackColor = System.Drawing.Color.White;
@@ -237,7 +449,7 @@
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(873, 201);
+            this.panel_Top.Size = new System.Drawing.Size(1132, 201);
             this.panel_Top.TabIndex = 1;
             this.panel_Top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MOVE_MouseDown);
             // 
@@ -267,188 +479,11 @@
             this.PROTECTLE.Text = "Hi ! Chào bạn đến với Fashion Shop";
             this.PROTECTLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BOTPL
-            // 
-            this.BOTPL.BackColor = System.Drawing.Color.White;
-            this.BOTPL.Controls.Add(this.CONNECTT);
-            this.BOTPL.Controls.Add(this.CONTACTT);
-            this.BOTPL.Controls.Add(this.SETTINGT);
-            this.BOTPL.Controls.Add(this.MESSAGET);
-            this.BOTPL.Controls.Add(this.label_UserName);
-            this.BOTPL.Controls.Add(this.BOTPLSR);
-            this.BOTPL.Controls.Add(this.label_Role);
-            this.BOTPL.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BOTPL.Location = new System.Drawing.Point(0, 634);
-            this.BOTPL.Margin = new System.Windows.Forms.Padding(0);
-            this.BOTPL.Name = "BOTPL";
-            this.BOTPL.Size = new System.Drawing.Size(873, 48);
-            this.BOTPL.TabIndex = 0;
-            // 
-            // CONNECTT
-            // 
-            this.CONNECTT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.CONNECTT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.CONNECTT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.CONNECTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CONNECTT.HoverBorderColor = System.Drawing.Color.Transparent;
-            this.CONNECTT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.CONNECTT.HoverTextColor = System.Drawing.Color.White;
-            this.CONNECTT.IsDerivedStyle = true;
-            this.CONNECTT.Location = new System.Drawing.Point(200, 12);
-            this.CONNECTT.Margin = new System.Windows.Forms.Padding(4);
-            this.CONNECTT.Name = "CONNECTT";
-            this.CONNECTT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.CONNECTT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.CONNECTT.NormalTextColor = System.Drawing.Color.White;
-            this.CONNECTT.PressBorderColor = System.Drawing.Color.Transparent;
-            this.CONNECTT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.CONNECTT.PressTextColor = System.Drawing.Color.White;
-            this.CONNECTT.Size = new System.Drawing.Size(24, 24);
-            this.CONNECTT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
-            this.CONNECTT.StyleManager = null;
-            this.CONNECTT.TabIndex = 8;
-            this.CONNECTT.ThemeAuthor = "Taiizor";
-            this.CONNECTT.ThemeName = "MetroLight";
-            this.CONNECTT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
-            // 
-            // CONTACTT
-            // 
-            this.CONTACTT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.CONTACTT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.CONTACTT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.CONTACTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CONTACTT.HoverBorderColor = System.Drawing.Color.Transparent;
-            this.CONTACTT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.CONTACTT.HoverTextColor = System.Drawing.Color.White;
-            this.CONTACTT.IsDerivedStyle = true;
-            this.CONTACTT.Location = new System.Drawing.Point(120, 12);
-            this.CONTACTT.Margin = new System.Windows.Forms.Padding(4);
-            this.CONTACTT.Name = "CONTACTT";
-            this.CONTACTT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.CONTACTT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.CONTACTT.NormalTextColor = System.Drawing.Color.White;
-            this.CONTACTT.PressBorderColor = System.Drawing.Color.Transparent;
-            this.CONTACTT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.CONTACTT.PressTextColor = System.Drawing.Color.White;
-            this.CONTACTT.Size = new System.Drawing.Size(22, 24);
-            this.CONTACTT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
-            this.CONTACTT.StyleManager = null;
-            this.CONTACTT.TabIndex = 7;
-            this.CONTACTT.ThemeAuthor = "Taiizor";
-            this.CONTACTT.ThemeName = "MetroLight";
-            this.CONTACTT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
-            // 
-            // SETTINGT
-            // 
-            this.SETTINGT.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SETTINGT.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.SETTINGT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.SETTINGT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.SETTINGT.HoverBorderColor = System.Drawing.Color.Transparent;
-            this.SETTINGT.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.SETTINGT.HoverTextColor = System.Drawing.Color.White;
-            this.SETTINGT.IsDerivedStyle = true;
-            this.SETTINGT.Location = new System.Drawing.Point(72, 14);
-            this.SETTINGT.Margin = new System.Windows.Forms.Padding(4);
-            this.SETTINGT.Name = "SETTINGT";
-            this.SETTINGT.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.SETTINGT.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.SETTINGT.NormalTextColor = System.Drawing.Color.White;
-            this.SETTINGT.PressBorderColor = System.Drawing.Color.Transparent;
-            this.SETTINGT.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.SETTINGT.PressTextColor = System.Drawing.Color.White;
-            this.SETTINGT.Size = new System.Drawing.Size(24, 22);
-            this.SETTINGT.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
-            this.SETTINGT.StyleManager = null;
-            this.SETTINGT.TabIndex = 6;
-            this.SETTINGT.ThemeAuthor = "Taiizor";
-            this.SETTINGT.ThemeName = "MetroLight";
-            this.SETTINGT.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
-            // 
-            // MESSAGET
-            // 
-            this.MESSAGET.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.MESSAGET.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.MESSAGET.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.MESSAGET.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.MESSAGET.HoverBorderColor = System.Drawing.Color.Transparent;
-            this.MESSAGET.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(111)))));
-            this.MESSAGET.HoverTextColor = System.Drawing.Color.White;
-            this.MESSAGET.IsDerivedStyle = true;
-            this.MESSAGET.Location = new System.Drawing.Point(22, 15);
-            this.MESSAGET.Margin = new System.Windows.Forms.Padding(4);
-            this.MESSAGET.Name = "MESSAGET";
-            this.MESSAGET.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.MESSAGET.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.MESSAGET.NormalTextColor = System.Drawing.Color.White;
-            this.MESSAGET.PressBorderColor = System.Drawing.Color.Transparent;
-            this.MESSAGET.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.MESSAGET.PressTextColor = System.Drawing.Color.White;
-            this.MESSAGET.Size = new System.Drawing.Size(24, 20);
-            this.MESSAGET.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
-            this.MESSAGET.StyleManager = null;
-            this.MESSAGET.TabIndex = 1;
-            this.MESSAGET.ThemeAuthor = "Taiizor";
-            this.MESSAGET.ThemeName = "MetroLight";
-            this.MESSAGET.TileAlign = ReaLTaiizor.Enum.Metro.TileAlign.Topleft;
-            // 
-            // label_UserName
-            // 
-            this.label_UserName.ActiveLinkColor = System.Drawing.Color.DarkGreen;
-            this.label_UserName.BackColor = System.Drawing.Color.Transparent;
-            this.label_UserName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label_UserName.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_UserName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_UserName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label_UserName.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.label_UserName.LinkColor = System.Drawing.Color.SeaGreen;
-            this.label_UserName.Location = new System.Drawing.Point(403, 0);
-            this.label_UserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_UserName.Name = "label_UserName";
-            this.label_UserName.Size = new System.Drawing.Size(216, 48);
-            this.label_UserName.TabIndex = 4;
-            this.label_UserName.TabStop = true;
-            this.label_UserName.Text = "UserName";
-            this.label_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label_UserName.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            // 
-            // BOTPLSR
-            // 
-            this.BOTPLSR.BackColor = System.Drawing.Color.White;
-            this.BOTPLSR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BOTPLSR.Horizontal = false;
-            this.BOTPLSR.Location = new System.Drawing.Point(166, 6);
-            this.BOTPLSR.Margin = new System.Windows.Forms.Padding(0);
-            this.BOTPLSR.Name = "BOTPLSR";
-            this.BOTPLSR.Size = new System.Drawing.Size(15, 36);
-            this.BOTPLSR.TabIndex = 3;
-            this.BOTPLSR.Text = "lostSeparator1";
-            // 
-            // label_Role
-            // 
-            this.label_Role.ActiveLinkColor = System.Drawing.Color.DarkGreen;
-            this.label_Role.BackColor = System.Drawing.Color.Transparent;
-            this.label_Role.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label_Role.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label_Role.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_Role.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label_Role.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.label_Role.LinkColor = System.Drawing.Color.SeaGreen;
-            this.label_Role.Location = new System.Drawing.Point(619, 0);
-            this.label_Role.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_Role.Name = "label_Role";
-            this.label_Role.Size = new System.Drawing.Size(254, 48);
-            this.label_Role.TabIndex = 5;
-            this.label_Role.TabStop = true;
-            this.label_Role.Text = "Role";
-            this.label_Role.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_Role.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            // 
             // fHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 682);
+            this.ClientSize = new System.Drawing.Size(1132, 682);
             this.Controls.Add(this.FILLPL);
             this.DoubleBuffered = true;
             this.Name = "fHome";
@@ -458,9 +493,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MOVE_MouseDown);
             this.MIDPL.ResumeLayout(false);
             this.FILLPL.ResumeLayout(false);
+            this.BOTPL.ResumeLayout(false);
             this.panel_Top.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.image_Banner)).EndInit();
-            this.BOTPL.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -485,5 +520,7 @@
         private ReaLTaiizor.Controls.LinkLabelEdit label_UserName;
         private ReaLTaiizor.Controls.LostSeparator BOTPLSR;
         private ReaLTaiizor.Controls.LinkLabelEdit label_Role;
+        private ReaLTaiizor.Controls.PoisonTile btn_ChienDich;
+        private ReaLTaiizor.Controls.CrownContextMenuStrip crownContextMenuStrip1;
     }
 }

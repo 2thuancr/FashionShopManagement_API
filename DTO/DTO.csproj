@@ -46,6 +46,7 @@
     <Compile Include="Bill.cs" />
     <Compile Include="BillInfoDetail.cs" />
     <Compile Include="BillInfo.cs" />
+    <Compile Include="Campaign.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="ProductInBill.cs" />
     <Compile Include="Product.cs" />

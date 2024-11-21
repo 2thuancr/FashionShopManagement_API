@@ -253,6 +253,36 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap campaign_18189674 {
+            get {
+                object obj = ResourceManager.GetObject("campaign_18189674", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap campaign_18189674__1_ {
+            get {
+                object obj = ResourceManager.GetObject("campaign_18189674 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap campaign_18189674__2_ {
+            get {
+                object obj = ResourceManager.GetObject("campaign_18189674 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cash_icon {
             get {
                 object obj = ResourceManager.GetObject("Cash-icon", resourceCulture);
