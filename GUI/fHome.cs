@@ -153,5 +153,11 @@ namespace GUI
                 MessageBox.Show("Có lỗi phát sinh");
             }
         }
+
+        private void btn_ChienDich_Click(object sender, EventArgs e)
+        {
+            fCampaign fCampaign = new fCampaign();
+            fCampaign.Show();
+        }
     }
 }

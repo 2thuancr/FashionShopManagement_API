@@ -226,6 +226,13 @@
     <Compile Include="fBaoCao.Designer.cs">
       <DependentUpon>fBaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="fCampaign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCampaign.Designer.cs">
+      <DependentUpon>fCampaign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCampaign1.cs" />
     <Compile Include="fChiTietHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +244,12 @@
     </Compile>
     <Compile Include="FPhanCa.Designer.cs">
       <DependentUpon>FPhanCa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSetCampaign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSetCampaign.Designer.cs">
+      <DependentUpon>fSetCampaign.cs</DependentUpon>
     </Compile>
     <Compile Include="FSuaCa.cs">
       <SubType>Form</SubType>
@@ -342,6 +355,9 @@
     </Compile>
     <Compile Include="UC\WordHelper.cs" />
     <Content Include="Properties\expired.licenses.licx.txt" />
+    <None Include="Resources\campaign_18189674 %282%29.png" />
+    <None Include="Resources\campaign_18189674 %281%29.png" />
+    <None Include="Resources\campaign_18189674.png" />
     <None Include="Resources\ao-len~1.jpg" />
     <None Include="Resources\ao-len.jpg" />
     <None Include="Resources\Remove-bg.ai_17295999734172.png" />
@@ -352,11 +368,17 @@
     <EmbeddedResource Include="fBaoCao.resx">
       <DependentUpon>fBaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fCampaign.resx">
+      <DependentUpon>fCampaign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fChiTietHoaDon.resx">
       <DependentUpon>fChiTietHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FPhanCa.resx">
       <DependentUpon>FPhanCa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSetCampaign.resx">
+      <DependentUpon>fSetCampaign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaCa.resx">
       <DependentUpon>FSuaCa.cs</DependentUpon>
