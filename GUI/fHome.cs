@@ -156,6 +156,14 @@ namespace GUI
 
         private void btn_ChienDich_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem Account này có quyền mở Menu hay không
+            int accountTypeId = fHome.LoginAccount.TypeID;
+            bool isHasPermission = AccountTypePermissionBUS.Instance.CheckPermissionByAccountTypeId(accountTypeId, "MenuChienDich");
+            if (isHasPermission == false)
+            {
+                MessageBox.Show("Bạn không có quyền thực hiện chức năng này!");
+                return;
+            }
             fCampaign fCampaign = new fCampaign();
             fCampaign.Show();
         }

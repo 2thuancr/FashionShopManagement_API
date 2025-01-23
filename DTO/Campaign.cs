@@ -15,22 +15,24 @@ namespace DTO
 
         public string Name { get; set; }
 
-        public DateTime Startdate { get; set; }
-        public DateTime Enddate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public decimal DiscountPercentage { get; set; }
         public int MinimumQuantity { get; set; }
         public int ProductId { get; set; }
+        public int StaffId { get; set; }
 
         public Campaign(int campaignId, string name, DateTime startdate, DateTime enddate, decimal discountPercentage,
-                        int minimumQuantity, int productId)
+                        int minimumQuantity, int productId, int staffId)
         {
             this.CampaignId = campaignId;
             this.Name = name;
-            this.Startdate = startdate;
-            this.Enddate = enddate;
+            this.StartDate = startdate;
+            this.EndDate = enddate;
             this.DiscountPercentage = discountPercentage;
             this.MinimumQuantity = minimumQuantity;
             this.ProductId = productId;
+            this.StaffId = staffId;
         }
         public Campaign(DataRow row)
         {
@@ -38,11 +40,12 @@ namespace DTO
             {
                 this.CampaignId = Convert.ToInt32(row["campaignId"]);
                 this.Name = Convert.ToString(row["name"]);
-                this.Startdate = Convert.ToDateTime(row["startdate"]);
-                this.Enddate = Convert.ToDateTime(row["enddate"]);
+                this.StartDate = Convert.ToDateTime(row["startdate"]);
+                this.EndDate = Convert.ToDateTime(row["enddate"]);
                 this.DiscountPercentage = Convert.ToDecimal(row["discountPercentage"]);
                 this.MinimumQuantity = Convert.ToInt32(row["minimumQuantity"]);
                 this.ProductId = Convert.ToInt32(row["productId"]);
+                this.StaffId = Convert.ToInt32(row["staffId"]);
             }
             catch
             {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,16 +43,21 @@ namespace DAO
 
             string query = $@"USP_InsertCampaign
                 @Name = '{newCampaign.Name}',
-                @Startdate = '{newCampaign.Startdate}', 
-                @Enddate = '{newCampaign.Enddate}', 
-                @ProductId = '{newCampaign.ProductId}'
-                @DiscountPercentage = '{newCampaign.DiscountPercentage}'
-                @MinimumQuantity = '{newCampaign.MinimumQuantity}'";
+                @StartDate = '{newCampaign.StartDate.ToString("yyyy-MM-dd")}', 
+                @EndDate = '{newCampaign.EndDate.ToString("yyyy-MM-dd")}', 
+                @ProductId = '{newCampaign.ProductId}',
+                @DiscountPercentage = '{newCampaign.DiscountPercentage}',
+                @MinimumQuantity = '{newCampaign.MinimumQuantity}',
+                @StaffId = '{newCampaign.StaffId}'";
 
             int result;
             try
             {
                 result = DataProvider.Instance.ExecuteNonQuery(query, null);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {

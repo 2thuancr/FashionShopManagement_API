@@ -22,12 +22,18 @@ namespace DAO
 
         private BillInfoDAO() { }
 
-        public void InsertUpdateBillInfo(int billID, int productID, int amount)
+        public void InsertUpdateBillInfo(BillInfo billInfo)
         {
-            string query = "[USP_InsertUpdateBillInfo] @BillID , @ProductID , @Amount";
+            string query = $@"[USP_InsertUpdateBillInfo] 
+                @BillID = {billInfo.BillID}, 
+                @ProductID = {billInfo.ProductID}, 
+                @Amount = {billInfo.Amount}, 
+                @Price = {billInfo.Price},
+                @Discount = {billInfo.Discount}";
+
             try
             {
-                DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, productID, amount });
+                DataProvider.Instance.ExecuteNonQuery(query);
             }
             catch (Exception ex)
             {
@@ -40,7 +46,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("[USP_GetBillInfoDetailByBillId] @CustomerId", new object[] { billId });
+                table = DataProvider.Instance.ExecuteQuery($"[USP_GetBillInfoDetailByBillId] @BillId = {billId}");
                 return table;
             }
             catch (Exception ex)

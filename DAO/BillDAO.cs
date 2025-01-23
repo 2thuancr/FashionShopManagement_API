@@ -52,7 +52,7 @@ namespace DAO
             DataTable table;
             try
             {
-                table = DataProvider.Instance.ExecuteQuery("Select * from [dbo].[ViewAllBills]", new object[] { });
+                table = DataProvider.Instance.ExecuteQuery("Select * from ViewAllBills", new object[] { });
                 return table;
             }
             catch (Exception ex)
@@ -118,19 +118,29 @@ namespace DAO
                 {
                     bill.CustomerId,
                     bill.StaffId,
-                    bill.Discount,
                     bill.TotalPrice,
                     bill.Status,
                 };
                 string query = $@"[USP_InsertBill] 
                     @CustomerID = {bill.CustomerId}, 
                     @StaffID = {bill.StaffId}, 
-                    @Discount = {bill.Discount}, 
                     @TotalPrice = {bill.TotalPrice}, 
                     @Status = {bill.Status}
                     ";
                 var result = DataProvider.Instance.ExecuteScalar(query, parameters);
                 return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetBillPriceInfo(int billId)
+        {
+            try
+            {
+                return DataProvider.Instance.ExecuteQuery($"select * from GetBillPriceInfo({billId})");
             }
             catch (Exception ex)
             {
@@ -160,7 +170,6 @@ namespace DAO
             {
                 string query = $@"[USP_UpdateBill] 
                     @ID = {bill.ID},
-                    @Discount = {bill.Discount},
                     @TotalPrice = {bill.TotalPrice},
                     @Status = {bill.Status}
                     ";

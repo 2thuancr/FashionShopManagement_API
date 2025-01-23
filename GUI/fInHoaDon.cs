@@ -55,12 +55,12 @@ namespace GUI
                 string staffName = result[0].StaffName;
                 string businessTime = result[0].BusinessTime.ToString();
                 decimal totalPrice = result[0].TotalPrice;
-                decimal discount = result[0].Discount;
+                //decimal discount = result[0].Discount;
 
                 this.textbox_KhachHang.Text = customerName;
                 this.textbox_NhanVien.Text = staffName;
                 this.textbox_NgayMua.Text = businessTime;
-                this.textbox_TongHoaDon.Text = (totalPrice - discount).ToString();
+                //this.textbox_TongHoaDon.Text = (totalPrice - discount).ToString();
 
                 // BillInfo
                 List<ProductInBill> listProductInBills = new List<ProductInBill>();
@@ -82,7 +82,7 @@ namespace GUI
 
         private void LoadQR()
         {
-            string amount = (bill.TotalPrice - bill.Discount).ToString();
+            string amount = (bill.TotalPrice).ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
             var url = BillBUS.Instance.GetQrPayment("qr_only", bankName, bankAccountID, bankAccountName, addInfo, amount);

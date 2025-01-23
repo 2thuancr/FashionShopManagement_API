@@ -150,6 +150,8 @@
             // 
             // date_NgayKetThuc
             // 
+            this.date_NgayKetThuc.CustomFormat = "dd-MM-yyyy";
+            this.date_NgayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.date_NgayKetThuc.Location = new System.Drawing.Point(172, 87);
             this.date_NgayKetThuc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.date_NgayKetThuc.Name = "date_NgayKetThuc";
@@ -158,6 +160,8 @@
             // 
             // date_NgayBatDau
             // 
+            this.date_NgayBatDau.CustomFormat = "dd-MM-yyyy";
+            this.date_NgayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.date_NgayBatDau.Location = new System.Drawing.Point(172, 24);
             this.date_NgayBatDau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.date_NgayBatDau.Name = "date_NgayBatDau";

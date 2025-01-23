@@ -14,7 +14,7 @@ namespace GUI
 {
     public partial class fCampaign : Form
     {
-        private List<Campaign> listCampaign = new List<Campaign>();
+        private List<CampaignView> listCampaign = new List<CampaignView>();
 
         public fCampaign()
         {
@@ -27,6 +27,7 @@ namespace GUI
             fSetCampaign.Show();
 
             this.fCampaign_Load(null, null);
+            this.Show();
         }
 
         private void fCampaign_Load(object sender, EventArgs e)
@@ -41,7 +42,8 @@ namespace GUI
             }
             catch
             {
-                MessageBox.Show("lỗi lấy danh sách chiến dịch");
+                MessageBox.Show("Lỗi lấy danh sách chiến dịch");
+                return;
             }
         }
 

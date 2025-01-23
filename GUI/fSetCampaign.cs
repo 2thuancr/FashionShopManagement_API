@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,8 +65,12 @@ namespace GUI
                     campaign.Name = Convert.ToString(textBox_TenChienDich.TextButton);
                 }
 
-                campaign.Startdate = date_NgayBatDau.Value;
-                campaign.Enddate = date_NgayKetThuc.Value;
+                campaign.StartDate = date_NgayBatDau.Value;
+                campaign.EndDate = date_NgayKetThuc.Value;
+                campaign.DiscountPercentage =Convert.ToDecimal(textBox_GiamGia.TextButton);
+                campaign.MinimumQuantity = Convert.ToInt32(textBox_Min.TextButton);
+                campaign.ProductId = Convert.ToInt32(comboBox_SanPham.SelectedValue);
+                campaign.StaffId = fHome.LoginAccount.Id;
 
                 var result = CampaignBUS.Instance.InsertCampaign(campaign);
                 if (result == true)
@@ -77,6 +82,10 @@ namespace GUI
                 {
                     MessageBox.Show("Lỗi thêm chiến dịch");
                 }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Có lỗi phát sinh ở database!");
             }
             catch (Exception)
             {
