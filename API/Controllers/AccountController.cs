@@ -39,7 +39,11 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
             }
         }
 
@@ -61,7 +65,11 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
             }
         }
     }
