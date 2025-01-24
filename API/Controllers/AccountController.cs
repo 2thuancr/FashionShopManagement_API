@@ -56,7 +56,7 @@ namespace API.Controllers
                 var account = AccountBUS.Instance.RegisterCustomerAccount(request);
                 if (account == null)
                 {
-                    return BadRequest();
+                    return BadRequest(new AccountGenerateOtpRequest());
                 }
                 else
                 {
@@ -68,6 +68,7 @@ namespace API.Controllers
 
                     var response = new AccountCustomerRegisterResponse
                     {
+                        IsSuccess = true,
                         AccountId = account.AccountId,
                         CustomerId = account.CustomerId,
                         Otp = otpResponse?.OTP,
