@@ -39,7 +39,6 @@ namespace API.Controllers
                 throw new ArgumentNullException("name is required");
             }
 
-            DataTable table;
             try
             {
                 List<Product> listProducts = ProductBUS.Instance.SearchProductByName(name);

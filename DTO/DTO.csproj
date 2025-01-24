@@ -44,6 +44,8 @@
     <Compile Include="Account.cs" />
     <Compile Include="Accounts\AccountCustomerRegisterResponse.cs" />
     <Compile Include="Accounts\AccountCustomerRegisterRequest.cs" />
+    <Compile Include="Accounts\AccountGenerateOtpResponse.cs" />
+    <Compile Include="Accounts\AccountGenerateOtpRequest.cs" />
     <Compile Include="Accounts\AccountLoginRequest.cs" />
     <Compile Include="Accounts\AccountLoginResponse.cs" />
     <Compile Include="AccountType.cs" />

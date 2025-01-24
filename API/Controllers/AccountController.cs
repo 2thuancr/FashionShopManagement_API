@@ -39,7 +39,11 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
             }
         }
 
@@ -52,16 +56,60 @@ namespace API.Controllers
                 var account = AccountBUS.Instance.RegisterCustomerAccount(request);
                 if (account == null)
                 {
-                    return Unauthorized();
+                    return BadRequest(new AccountGenerateOtpRequest());
                 }
                 else
                 {
-                    return Ok(account);
+                    var otpRequest = new AccountGenerateOtpRequest
+                    {
+                        UserName = request.UserName
+                    };
+                    var otpResponse = AccountBUS.Instance.UpdateOTPByUsername(otpRequest);
+
+                    var response = new AccountCustomerRegisterResponse
+                    {
+                        IsSuccess = true,
+                        AccountId = account.AccountId,
+                        CustomerId = account.CustomerId,
+                        Otp = otpResponse?.OTP,
+                        OtpExpiration = otpResponse?.OTPExpiration,
+                    };
+                    return Ok(response);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
+            }
+        }
+
+        [HttpPost]
+        [Route("GenerateOtp")]
+        public IActionResult GenerateOtp(AccountGenerateOtpRequest request)
+        {
+            try
+            {
+                var response = AccountBUS.Instance.UpdateOTPByUsername(request);
+                if (response == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
             }
         }
     }

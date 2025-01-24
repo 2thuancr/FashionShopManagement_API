@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using DTO;
 using DTO.Accounts;
 using System.Data.SqlClient;
+using System.Security.Principal;
 
 namespace DAO
 {
@@ -24,6 +25,12 @@ namespace DAO
 
         public DataTable RegisterCustomerAccount(AccountCustomerRegisterRequest request)
         {
+            var isUserNameExists = this.IsUserNameExists(request.UserName);
+            if (isUserNameExists)
+            {
+                throw new Exception("Username is already exists");
+            }
+
             //string query = $@"USP_RegisterCustomerAccount 
             //    FullName = @FullName , 
             //    PhoneNumber = @PhoneNumber , 
@@ -48,6 +55,10 @@ namespace DAO
             try
             {
                 return result = DataProvider.Instance.ExecuteQuery(query);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -82,6 +93,27 @@ namespace DAO
                 throw ex;
             }
             return result.Rows.Count > 0;
+        }
+
+        public DataTable UpdateOTPByUsername(string username, string otp)
+        {
+            var isUserNameExists = this.IsUserNameExists(username);
+            if (!isUserNameExists)
+            {
+                throw new Exception("Username not found");
+            }
+
+            string query = $"USP_UpdateOTPByUsername @UserName = '{username}', @NewOTP = '{otp}' ";
+            try
+            {
+                DataTable table = DataProvider.Instance.ExecuteQuery(query);
+
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public DataTable GetAllAcount()
@@ -169,6 +201,23 @@ namespace DAO
                 throw ex;
             }
             return result > 0;
+        }
+
+        public bool IsUserNameExists(string username)
+        {
+            try
+            {
+                //var query = $"SELECT dbo.IsUserNameExists('{username}')";
+                //var result = (int)DataProvider.Instance.ExecuteScalar(query);
+                //return result > 0;
+
+                var result = this.SearchAccountByUserName(username);
+                return result.Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public DataTable SearchAccountByUserName(string userName)

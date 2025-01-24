@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using DAO;
 using DTO;
 using DTO.Accounts;
+using Shared.Helpers;
+using System.Data.SqlClient;
 
 namespace BUS
 {
@@ -94,6 +96,34 @@ namespace BUS
             try
             {
                 return AccountDAO.Instance.CheckLogin(account);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public AccountGenerateOtpResponse UpdateOTPByUsername(AccountGenerateOtpRequest input)
+        {
+            try
+            {
+                var otp = CodeHelper.OtpGenerator(6);
+                var table = AccountDAO.Instance.UpdateOTPByUsername(input.UserName, otp);
+
+                if (table.Rows.Count == 0)
+                {
+                    throw new Exception("Cannot update OTP");
+                }    
+
+                var otpObject = table.Rows[0]["OTP"].ToString();
+                var otpExpiration = table.Rows[0]["OTPExpiration"].ToString();
+
+                var response = new AccountGenerateOtpResponse
+                {
+                    OTP = otpObject,
+                    OTPExpiration = otpExpiration
+                };
+                return response;
             }
             catch (Exception ex)
             {

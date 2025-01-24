@@ -31,6 +31,7 @@ namespace DTO
         public string Email { get; set; }
         public string FirebaseId { get; set; }
         public string OTP { get; set; }
+        public DateTime? OTPExpiration { get; set; }
         public int TypeID { get; set; }
 
         public Account()
@@ -66,6 +67,7 @@ namespace DTO
             this.Email = Convert.ToString(row["Email"]);
             this.FirebaseId = Convert.ToString(row["FirebaseId"]);
             this.OTP = Convert.ToString(row["OTP"]);
+            this.OTPExpiration = Convert.ToDateTime(row["OTPExpiration"]);
         }
 
     }
