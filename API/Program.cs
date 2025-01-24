@@ -1,3 +1,4 @@
+﻿using DTO;
 
 namespace API
 {
@@ -5,6 +6,8 @@ namespace API
     {
         public static void Main(string[] args)
         {
+            ConfigDatabase();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -25,11 +28,25 @@ namespace API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
+            });
+
+            //// Redirect root ("/") đến Swagger UI
+            //app.MapGet("/", context =>
+            //{
+            //    context.Response.Redirect("/swagger");
+            //    return Task.CompletedTask;
+            //});
 
             app.UseHttpsRedirection();
 
@@ -39,9 +56,13 @@ namespace API
 
             app.MapControllers();
 
-            
-
             app.Run();
+        }
+
+        private static void ConfigDatabase()
+        {
+            Account.ConnectionString = Account.connectionStringUser;
+            Account.ConnectionName = Account.connectionNameUser;
         }
     }
 }

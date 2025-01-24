@@ -6,14 +6,21 @@ namespace DTO
     public class Account
     {
         public static string ConnectionName { get; set; }
+        public const string connectionNameUser = "Connection: role_user";
         public const string connectionNameManager = "Connection: role_manager";
         public const string connectionNameStaff = "Connection: role_staff";
 
         // Kết nối tới DB
         public static string ConnectionString { get; set; }
-        public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
-        public const string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
-        public const string connectionStringManager = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
+        
+        public static string connectionStringUser = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public static string connectionStringAdmin = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public const string connectionStringStaff = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public const string connectionStringManager = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+        //public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
+        //public const string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
+        //public const string connectionStringManager = "Server=2THUANCR;Database=FashionShopManagement;User Id=manager;Password=DB_manager;";
 
 
         public int Id { get; set; }
@@ -21,6 +28,10 @@ namespace DTO
         public string DisplayName { get; set; }
         public string Password { get; set; }
         public int TypeID { get; set; }
+
+        public Account()
+        {
+        }
 
         public Account(string userName, string password)
         {

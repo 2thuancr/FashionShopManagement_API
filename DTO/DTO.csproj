@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Accounts\AccountCustomerRegisterResponse.cs" />
+    <Compile Include="Accounts\AccountCustomerRegisterRequest.cs" />
+    <Compile Include="Accounts\AccountLoginRequest.cs" />
+    <Compile Include="Accounts\AccountLoginResponse.cs" />
     <Compile Include="AccountType.cs" />
     <Compile Include="AccountTypePermissionDetail.cs" />
     <Compile Include="Bill.cs" />
@@ -59,6 +64,7 @@
     <Compile Include="StaffShift.cs" />
     <Compile Include="Staff.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
