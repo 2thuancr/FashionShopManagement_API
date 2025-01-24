@@ -20,6 +20,20 @@ namespace DAO
             }
         }
 
+        public DataTable Login(Account account)
+        {
+            string query = "USP_Login @UserName , @Password";
+            DataTable result = new DataTable();
+            try
+            {
+                return result = DataProvider.Instance.ExecuteQuery(query, new object[] { account.UserName, account.Password });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool CheckLogin(Account account)
         {
             string query = "USP_Login @UserName , @Password";

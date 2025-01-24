@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using DAO;
 using DTO;
+using DTO.Accounts;
 
 namespace BUS
 {
@@ -22,6 +23,35 @@ namespace BUS
         }
 
         private AccountBUS() { }
+
+        public Account Login(AccountLoginRequest request)
+        {
+            try
+            {
+                DataTable table;
+                try
+                {
+                    var account = new Account
+                    {
+                        UserName = request.UserName,
+                        Password = request.Password
+                    };
+                    table = AccountDAO.Instance.Login(account);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                if (table.Rows.Count == 0)
+                    return null;
+
+                return new Account(table.Rows[0]);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public bool CheckLogin(Account account)
         {

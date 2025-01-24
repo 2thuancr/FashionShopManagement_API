@@ -1,3 +1,4 @@
+using DTO;
 
 namespace API
 {
@@ -5,6 +6,8 @@ namespace API
     {
         public static void Main(string[] args)
         {
+            ConfigDatabase();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -39,9 +42,13 @@ namespace API
 
             app.MapControllers();
 
-            
-
             app.Run();
+        }
+
+        private static void ConfigDatabase()
+        {
+            Account.ConnectionString = Account.connectionStringUser;
+            Account.ConnectionName = Account.connectionNameUser;
         }
     }
 }
