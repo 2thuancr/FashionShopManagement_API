@@ -48,7 +48,7 @@ namespace DAO
 
         public DataTable SearchProductByName(string name)
         {
-            string query = string.Format($"select * from SearchProducts('{name}')");
+            string query = string.Format($"select * from SearchProducts(N'{name}')");
             try
             {
                 return DataProvider.Instance.ExecuteQuery(query, new object[] { name });
