@@ -10,7 +10,7 @@ namespace API.Controllers
     public class AccountController : ControllerBase
     {
         [HttpPost]
-        [Route("api/[controller]/Login")]
+        [Route("Login")]
         public IActionResult Login(AccountLoginRequest request)
         {
             try
@@ -44,7 +44,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]/Register")]
+        [Route("Register")]
         public IActionResult Register(AccountCustomerRegisterRequest request)
         {
             try
