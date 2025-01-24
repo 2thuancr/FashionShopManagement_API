@@ -38,15 +38,15 @@ namespace API
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-                options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
+                //options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
             });
 
-            //// Redirect root ("/") đến Swagger UI
-            //app.MapGet("/", context =>
-            //{
-            //    context.Response.Redirect("/swagger");
-            //    return Task.CompletedTask;
-            //});
+            // Redirect root ("/") đến Swagger UI
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/swagger");
+                return Task.CompletedTask;
+            });
 
             app.UseHttpsRedirection();
 

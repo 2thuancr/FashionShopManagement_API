@@ -1,5 +1,6 @@
 ﻿using DTO;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -23,25 +24,37 @@ namespace DAO
         // Hàm khởi tao
         private DataProvider() { }
         
-        public DataTable ExecuteQuery(string query, object[] parameter = null)
+        public DataTable ExecuteQuery(string query, object[] parameter = null, List<SqlParameter> sqlParameters = null, bool isStoredProcedure = false)
         {
             DataTable table = new DataTable();
             using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
+                var command = new SqlCommand(query, connection);
+                if (isStoredProcedure)
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                }
 
                 if (parameter != null)
                 {
-                    string[] listPara = query.Split(' ');
+                    var listPara = query.Split(' ').Where(x => x.StartsWith("@")).Distinct().ToList();
                     int i = 0;
                     foreach (string item in listPara)
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.AddWithValue(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameter[i] ?? DBNull.Value);
                             i++;
                         }
+                    }
+                }
+
+                if (sqlParameters != null)
+                {
+                    foreach (var item in sqlParameters)
+                    {
+                        command.Parameters.Add(item);
                     }
                 }
 

@@ -16,19 +16,23 @@ namespace DTO
         public string CustomerName { get; set; }
 
         public string PhoneNumber { get; set; }
+
         public DateTime DoB { get; set; }
+
         public string Address { get; set; }
 
+        public string AccountId { get; set; }
 
-        public Customer(int customerId, string customerName, string phoneNumber, 
-                        DateTime doB, string address)
+        public Customer(int customerId, string customerName, string phoneNumber, DateTime doB, string address, string accountId)
         {
             this.CustomerId = customerId;
             this.CustomerName = customerName;
             this.PhoneNumber = phoneNumber;
             this.DoB = doB;
             this.Address = address;
+            this.AccountId = accountId;
         }
+
         public Customer(DataRow row)
         {
             try
@@ -38,12 +42,14 @@ namespace DTO
                 this.PhoneNumber = Convert.ToString(row["phoneNumber"]);
                 this.DoB = Convert.ToDateTime(row["doB"]);
                 this.Address = Convert.ToString(row["address"]);
+                this.AccountId = Convert.ToString(row["accountId"]);
             }
             catch
             {
 
             }
         }
+
         public Customer()
         {
 
