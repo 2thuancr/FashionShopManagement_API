@@ -10,5 +10,7 @@ namespace DTO.Accounts
     {
         public int AccountId { get; set; }
         public int CustomerId { get; set; }
+        public string Otp { get; set; }
+        public string OtpExpiration { get; set; }
     }
 }

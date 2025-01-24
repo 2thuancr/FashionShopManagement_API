@@ -11,9 +11,13 @@ namespace DTO.Accounts
     {
         [Required]
         public string FullName { get; set; }
+
+        [Required]
+        [Phone]
         public string PhoneNumber { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
         public string FirebaseId { get; set; }
         public DateTime? DoB { get; set; }
@@ -24,6 +28,7 @@ namespace DTO.Accounts
 
         [Required]
         [MinLength(6)]
+        [MaxLength(15)]
         public string Password { get; set; }
     }
 }

@@ -60,7 +60,20 @@ namespace API.Controllers
                 }
                 else
                 {
-                    return Ok(account);
+                    var otpRequest = new AccountGenerateOtpRequest
+                    {
+                        UserName = request.UserName
+                    };
+                    var otpResponse = AccountBUS.Instance.UpdateOTPByUsername(otpRequest);
+
+                    var response = new AccountCustomerRegisterResponse
+                    {
+                        AccountId = account.AccountId,
+                        CustomerId = account.CustomerId,
+                        Otp = otpResponse?.OTP,
+                        OtpExpiration = otpResponse?.OTPExpiration,
+                    };
+                    return Ok(response);
                 }
             }
             catch (Exception ex)
@@ -79,14 +92,14 @@ namespace API.Controllers
         {
             try
             {
-                var otp = AccountBUS.Instance.UpdateOTPByUsername(request);
-                if (string.IsNullOrWhiteSpace(otp))
+                var response = AccountBUS.Instance.UpdateOTPByUsername(request);
+                if (response == null)
                 {
                     return BadRequest();
                 }
                 else
                 {
-                    return Ok(otp);
+                    return Ok(response);
                 }
             }
             catch (Exception ex)

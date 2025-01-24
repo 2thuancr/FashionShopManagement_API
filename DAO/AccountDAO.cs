@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using DTO;
 using DTO.Accounts;
 using System.Data.SqlClient;
+using System.Security.Principal;
 
 namespace DAO
 {
@@ -94,7 +95,7 @@ namespace DAO
             return result.Rows.Count > 0;
         }
 
-        public string UpdateOTPByUsername(string username, string otp)
+        public DataTable UpdateOTPByUsername(string username, string otp)
         {
             var isUserNameExists = this.IsUserNameExists(username);
             if (!isUserNameExists)
@@ -105,8 +106,9 @@ namespace DAO
             string query = $"USP_UpdateOTPByUsername @UserName = '{username}', @NewOTP = '{otp}' ";
             try
             {
-                var result = DataProvider.Instance.ExecuteNonQuery(query);
-                return otp;
+                DataTable table = DataProvider.Instance.ExecuteQuery(query);
+
+                return table;
             }
             catch (Exception ex)
             {
