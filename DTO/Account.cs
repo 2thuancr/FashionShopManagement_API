@@ -27,6 +27,10 @@ namespace DTO
         public string UserName { get; set; }
         public string DisplayName { get; set; }
         public string Password { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string FirebaseId { get; set; }
+        public string OTP { get; set; }
         public int TypeID { get; set; }
 
         public Account()
@@ -39,13 +43,16 @@ namespace DTO
             this.Password = password;
         }
 
-        public Account(int id, string userName, string displayName, int typeID, string password = null)
+        public Account(int id, string userName, string displayName, int typeID, string password, string phoneNumber, string email, string firebaseId)
         {
             this.Id = id;
             this.UserName = userName;
             this.DisplayName = displayName;
             this.TypeID = typeID;
             this.Password = password;
+            this.PhoneNumber = phoneNumber;
+            this.Email = email;
+            this.FirebaseId = firebaseId;
         }
 
         public Account(DataRow row)
@@ -55,6 +62,10 @@ namespace DTO
             this.DisplayName = Convert.ToString(row["DisplayName"]);
             this.TypeID = Convert.ToInt32(row["TypeID"]);
             this.Password = Convert.ToString(row["Password"]);
+            this.PhoneNumber = Convert.ToString(row["PhoneNumber"]);
+            this.Email = Convert.ToString(row["Email"]);
+            this.FirebaseId = Convert.ToString(row["FirebaseId"]);
+            this.OTP = Convert.ToString(row["OTP"]);
         }
 
     }

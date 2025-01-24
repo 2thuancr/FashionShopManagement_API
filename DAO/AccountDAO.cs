@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using DTO;
 using DTO.Accounts;
+using System.Data.SqlClient;
 
 namespace DAO
 {
@@ -23,20 +24,30 @@ namespace DAO
 
         public DataTable RegisterCustomerAccount(AccountCustomerRegisterRequest request)
         {
-            string query = "USP_RegisterCustomerAccount @FullName , @PhoneNumber , @DoB , @Address , @UserName , @Password";
+            //string query = $@"USP_RegisterCustomerAccount 
+            //    FullName = @FullName , 
+            //    PhoneNumber = @PhoneNumber , 
+            //    Email = @Email , 
+            //    FirebaseId = @FirebaseId , 
+            //    DoB = @DoB , 
+            //    Address = @Address , 
+            //    UserName = @UserName , 
+            //    Password = @Password";
+
+            var query = "USP_RegisterCustomerAccount ";
+            query += "@FullName = " + (string.IsNullOrWhiteSpace(request.FullName) ? "NULL, " : $"N'{request.FullName}', ");
+            query += "@PhoneNumber = " + (string.IsNullOrWhiteSpace(request.PhoneNumber) ? "NULL, " : $"N'{request.PhoneNumber}', ");
+            query += "@Email = " + (string.IsNullOrWhiteSpace(request.Email) ? "NULL, " : $"N'{request.Email}', ");
+            query += "@FirebaseId = " + (string.IsNullOrWhiteSpace(request.FirebaseId) ? "NULL, " : $"N'{request.FirebaseId}', ");
+            query += "@DoB = " + (request.DoB == null ? "NULL, " : $"'{request.DoB:yyyy-MM-dd}', ");
+            query += "@Address = " + (string.IsNullOrWhiteSpace(request.Address) ? "NULL, " : $"N'{request.Address}', ");
+            query += "@UserName = " + (string.IsNullOrWhiteSpace(request.UserName) ? "NULL, " : $"N'{request.UserName}', ");
+            query += "@Password = " + (string.IsNullOrWhiteSpace(request.Password) ? "NULL" : $"N'{request.Password}'");
+
             DataTable result = new DataTable();
             try
             {
-                var parameter = new object[]
-                {
-                    request.FullName,
-                    request.PhoneNumber,
-                    request.DoB,
-                    request.Address,
-                    request.UserName,
-                    request.Password
-                };
-                return result = DataProvider.Instance.ExecuteQuery(query, parameter);
+                return result = DataProvider.Instance.ExecuteQuery(query);
             }
             catch (Exception ex)
             {
