@@ -42,5 +42,27 @@ namespace API.Controllers
                 throw ex;
             }
         }
+
+        [HttpPost]
+        [Route("api/[controller]/Register")]
+        public IActionResult Register(AccountCustomerRegisterRequest request)
+        {
+            try
+            {
+                var account = AccountBUS.Instance.RegisterCustomerAccount(request);
+                if (account == null)
+                {
+                    return Unauthorized();
+                }
+                else
+                {
+                    return Ok(account);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -41,12 +41,12 @@ namespace API
                 options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
             });
 
-            // Redirect root ("/") đến Swagger UI
-            app.MapGet("/", context =>
-            {
-                context.Response.Redirect("/swagger");
-                return Task.CompletedTask;
-            });
+            //// Redirect root ("/") đến Swagger UI
+            //app.MapGet("/", context =>
+            //{
+            //    context.Response.Redirect("/swagger");
+            //    return Task.CompletedTask;
+            //});
 
             app.UseHttpsRedirection();
 

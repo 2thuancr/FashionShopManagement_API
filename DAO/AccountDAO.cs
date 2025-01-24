@@ -3,6 +3,7 @@ using System.Data;
 using System.Collections.Generic;
 
 using DTO;
+using DTO.Accounts;
 
 namespace DAO
 {
@@ -17,6 +18,29 @@ namespace DAO
                 if (instance == null)
                     instance = new AccountDAO();
                 return AccountDAO.instance;
+            }
+        }
+
+        public DataTable RegisterCustomerAccount(AccountCustomerRegisterRequest request)
+        {
+            string query = "USP_RegisterCustomerAccount @FullName , @PhoneNumber , @DoB , @Address , @UserName , @Password";
+            DataTable result = new DataTable();
+            try
+            {
+                var parameter = new object[]
+                {
+                    request.FullName,
+                    request.PhoneNumber,
+                    request.DoB,
+                    request.Address,
+                    request.UserName,
+                    request.Password
+                };
+                return result = DataProvider.Instance.ExecuteQuery(query, parameter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
