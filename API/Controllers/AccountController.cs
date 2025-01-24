@@ -2,6 +2,7 @@
 using DTO;
 using DTO.Accounts;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Helpers;
 
 namespace API.Controllers
 {
@@ -65,6 +66,14 @@ namespace API.Controllers
                         UserName = request.UserName
                     };
                     var otpResponse = AccountBUS.Instance.UpdateOTPByUsername(otpRequest);
+
+                    var input = new Shared.Dtos.SendEmailBySMTPInput()
+                    {
+                        Title = $"OTP xác minh đăng ký tài khoản",
+                        Content = $"Xin chào {request.UserName}, đây là mã OTP xác minh đăng ký của bạn: {otpResponse?.OTP}",
+                        Recipient = new List<string> { request.Email }
+                    };
+                    MailHelper.SendEmailBySMTPAsync(input);
 
                     var response = new AccountCustomerRegisterResponse
                     {
