@@ -56,11 +56,37 @@ namespace API.Controllers
                 var account = AccountBUS.Instance.RegisterCustomerAccount(request);
                 if (account == null)
                 {
-                    return Unauthorized();
+                    return BadRequest();
                 }
                 else
                 {
                     return Ok(account);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
+            }
+        }
+
+        [HttpPost]
+        [Route("GenerateOtp")]
+        public IActionResult GenerateOtp(AccountGenerateOtpRequest request)
+        {
+            try
+            {
+                var otp = AccountBUS.Instance.UpdateOTPByUsername(request);
+                if (string.IsNullOrWhiteSpace(otp))
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(otp);
                 }
             }
             catch (Exception ex)
