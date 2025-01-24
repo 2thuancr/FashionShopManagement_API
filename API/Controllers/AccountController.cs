@@ -73,7 +73,7 @@ namespace API.Controllers
                         Content = $"Xin chào {request.UserName}, đây là mã OTP xác minh đăng ký của bạn: {otpResponse?.OTP}",
                         Recipient = new List<string> { request.Email }
                     };
-                    MailHelper.SendEmailBySMTPAsync(input);
+                    _ = MailHelper.SendEmailBySMTPAsync(input);
 
                     var response = new AccountCustomerRegisterResponse
                     {
