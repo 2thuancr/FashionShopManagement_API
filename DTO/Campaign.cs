@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO
 {
@@ -34,23 +31,17 @@ namespace DTO
             this.ProductId = productId;
             this.StaffId = staffId;
         }
+
         public Campaign(DataRow row)
         {
-            try
-            {
-                this.CampaignId = Convert.ToInt32(row["campaignId"]);
-                this.Name = Convert.ToString(row["name"]);
-                this.StartDate = Convert.ToDateTime(row["startdate"]);
-                this.EndDate = Convert.ToDateTime(row["enddate"]);
-                this.DiscountPercentage = Convert.ToDecimal(row["discountPercentage"]);
-                this.MinimumQuantity = Convert.ToInt32(row["minimumQuantity"]);
-                this.ProductId = Convert.ToInt32(row["productId"]);
-                this.StaffId = Convert.ToInt32(row["staffId"]);
-            }
-            catch
-            {
-
-            }
+            this.CampaignId = Converter.ToInt32(row["campaignId"]);
+            this.Name = Converter.ToString(row["name"]);
+            this.StartDate = Converter.ToDateTime(row["startdate"]);
+            this.EndDate = Converter.ToDateTime(row["enddate"]);
+            this.DiscountPercentage = Converter.ToDecimal(row["discountPercentage"]);
+            this.MinimumQuantity = Converter.ToInt32(row["minimumQuantity"]);
+            this.ProductId = Converter.ToInt32(row["productId"]);
+            this.StaffId = Converter.ToInt32(row["staffId"]);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace BUS
 
         private AccountBUS() { }
 
-        public AccountCustomerRegisterResponse RegisterCustomerAccount(AccountCustomerRegisterRequest request)
+        public AccountCustomerRegisterResponseDto RegisterCustomerAccount(AccountCustomerRegisterRequest request)
         {
             try
             {
@@ -43,10 +43,10 @@ namespace BUS
                 if (table.Rows.Count == 0)
                     return null;
 
-                var result = new AccountCustomerRegisterResponse
+                var result = new AccountCustomerRegisterResponseDto
                 {
-                    AccountId = Convert.ToInt32(table.Rows[0]["AccountId"]),
-                    CustomerId = Convert.ToInt32(table.Rows[0]["CustomerId"])
+                    AccountId = System.Convert.ToInt32(table.Rows[0]["AccountId"]),
+                    CustomerId = System.Convert.ToInt32(table.Rows[0]["CustomerId"])
                 };
 
                 return result;

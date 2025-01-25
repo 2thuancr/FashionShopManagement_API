@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,7 +21,9 @@ namespace DTO
         {
 
         }
-        public StaffShift(int shiftId, int staffId, TimeSpan startTime, TimeSpan endTime, string shiftCode, string fullNameStaff)
+
+        public StaffShift(int shiftId, int staffId, TimeSpan startTime, TimeSpan endTime, 
+            string shiftCode, string fullNameStaff)
         {
             this.ShiftId = shiftId;
             this.StaffId = staffId;
@@ -29,17 +32,16 @@ namespace DTO
             this.ShiftCode = shiftCode;
             this.FullNameStaff = fullNameStaff;
         }
+
         public StaffShift (DataRow row)
         {
-            this.ShiftId = Convert.ToInt32(row["shiftId"]);
-            this.StaffId = Convert.ToInt32(row["StaffId"]);
-            this.StartTime = TimeSpan.Parse(Convert.ToString(row["StartTime"]));
-            this.EndTime = TimeSpan.Parse(Convert.ToString(row["EndTime"]));
-            this.ShiftCode = Convert.ToString(row["ShiftCode"]);
-            this.FullNameStaff = Convert.ToString(row["FullNameStaff"]);
+            this.ShiftId = Converter.ToInt32(row["shiftId"]);
+            this.StaffId = Converter.ToInt32(row["StaffId"]);
+            this.StartTime = TimeSpan.Parse(Converter.ToString(row["StartTime"]));
+            this.EndTime = TimeSpan.Parse(Converter.ToString(row["EndTime"]));
+            this.ShiftCode = Converter.ToString(row["ShiftCode"]);
+            this.FullNameStaff = Converter.ToString(row["FullNameStaff"]);
         }
-
-
     }
     
 }

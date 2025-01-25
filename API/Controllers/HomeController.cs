@@ -9,11 +9,6 @@ namespace API.Controllers
     [Route("")]
     public class HomeController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -22,30 +17,28 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [Route("")]
+        public IActionResult Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return Ok($"[{DateTime.UtcNow:O}] API is running...");
         }
 
         [HttpPost]
         [Route("SendEmailBySMTP")]
-        public async Task<IActionResult> SendEmailBySMTP(string email, string title, string content)
+        public async Task<IActionResult> SendEmailBySMTP(SendEmailBySMTPInput input)
         {
             try
             {
-                var input = new Shared.Dtos.SendEmailBySMTPInput()
+                if (string.IsNullOrWhiteSpace(input.Title))
                 {
-                    Title = title ?? $"OTP xác minh đăng ký tài khoản",
-                    Content = content ?? $"Xin chào, đây là mail test lúc {DateTime.Now}",
-                    Recipient = new List<string> { email }
-                };
+                    input.Title = $"SendEmailBySMTP - {DateTime.UtcNow:O}";
+                }
+
+                if (string.IsNullOrWhiteSpace(input.Content))
+                {
+                    input.Content = $"Xin chào, đây là mail test lúc {DateTime.Now}";
+                }
+
                 var result = await MailHelper.SendEmailBySMTPAsync(input);
                 return Ok(result);
             }

@@ -1,8 +1,10 @@
 ﻿using BUS;
 using DTO;
 using DTO.Accounts;
+using DTO.ApiResponses;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Helpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace API.Controllers
 {
@@ -75,14 +77,14 @@ namespace API.Controllers
                     };
                     _ = MailHelper.SendEmailBySMTPAsync(input);
 
-                    var response = new AccountCustomerRegisterResponse
+                    var data = new AccountCustomerRegisterResponseDto
                     {
-                        IsSuccess = true,
                         AccountId = account.AccountId,
                         CustomerId = account.CustomerId,
                         Otp = otpResponse?.OTP,
                         OtpExpiration = otpResponse?.OTPExpiration,
                     };
+                    var response = new ApiRepose<AccountCustomerRegisterResponseDto>(isSuccess: true, data);
                     return Ok(response);
                 }
             }

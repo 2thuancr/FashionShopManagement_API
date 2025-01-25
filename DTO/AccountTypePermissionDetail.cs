@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,26 +19,22 @@ namespace DTO
         {
 
         }
-        public AccountTypePermissionDetail(int accountTypeId, int permissionId, string accountTypeName, string permissionName)
+
+        public AccountTypePermissionDetail(int accountTypeId, int permissionId, 
+            string accountTypeName, string permissionName)
         {
             AccountTypeId = accountTypeId;
             PermissionId = permissionId;
             AccountTypeName = accountTypeName;
             PermissionName = permissionName;
         }
+
         public AccountTypePermissionDetail(DataRow row)
         {
-            try
-            {
-                this.AccountTypeId = Convert.ToInt32(row["AccountTypeId"]);
-                this.PermissionId = Convert.ToInt32(row["PermissionId"]);
-                this.AccountTypeName = Convert.ToString(row["AccountTypeName"]);
-                this.PermissionName = Convert.ToString(row["PermissionName"]);
-            }
-            catch(Exception ex) 
-            {
-                throw ex;
-            }
+            this.AccountTypeId = Converter.ToInt32(row["AccountTypeId"]);
+            this.PermissionId = Converter.ToInt32(row["PermissionId"]);
+            this.AccountTypeName = Converter.ToString(row["AccountTypeName"]);
+            this.PermissionName = Converter.ToString(row["PermissionName"]);
         }
     }
 }

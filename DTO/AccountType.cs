@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Shared.Helpers;
 using System.Data;
 
 namespace DTO
@@ -18,8 +18,8 @@ namespace DTO
 
         public AccountType(DataRow row)
         {
-            this.ID = Convert.ToInt32(row["ID"]);
-            this.TypeName = Convert.ToString(row["TypeName"]);
+            this.ID = Converter.ToInt32(row["ID"]);
+            this.TypeName = Converter.ToString(row["TypeName"]);
         }
     }
 }

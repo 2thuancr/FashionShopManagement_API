@@ -78,8 +78,7 @@
             this.data_DSChienDich.EnableHeadersVisualStyles = false;
             this.data_DSChienDich.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.data_DSChienDich.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.data_DSChienDich.Location = new System.Drawing.Point(0, 174);
-            this.data_DSChienDich.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.data_DSChienDich.Location = new System.Drawing.Point(0, 113);
             this.data_DSChienDich.Name = "data_DSChienDich";
             this.data_DSChienDich.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -94,7 +93,7 @@
             this.data_DSChienDich.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.data_DSChienDich.RowTemplate.Height = 28;
             this.data_DSChienDich.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_DSChienDich.Size = new System.Drawing.Size(1040, 420);
+            this.data_DSChienDich.Size = new System.Drawing.Size(693, 273);
             this.data_DSChienDich.TabIndex = 44;
             // 
             // btn_ThemChienDich
@@ -108,12 +107,12 @@
             this.btn_ThemChienDich.HighEmphasis = true;
             this.btn_ThemChienDich.Icon = null;
             this.btn_ThemChienDich.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_ThemChienDich.Location = new System.Drawing.Point(25, 0);
-            this.btn_ThemChienDich.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.btn_ThemChienDich.Location = new System.Drawing.Point(17, 0);
+            this.btn_ThemChienDich.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btn_ThemChienDich.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_ThemChienDich.Name = "btn_ThemChienDich";
             this.btn_ThemChienDich.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_ThemChienDich.Size = new System.Drawing.Size(148, 46);
+            this.btn_ThemChienDich.Size = new System.Drawing.Size(99, 31);
             this.btn_ThemChienDich.TabIndex = 52;
             this.btn_ThemChienDich.Text = "Thêm";
             this.btn_ThemChienDich.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -134,18 +133,17 @@
             this.textBox_TimKiem.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.textBox_TimKiem.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.textBox_TimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_TimKiem.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.textBox_TimKiem.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.textBox_TimKiem.ForeColor = System.Drawing.Color.Black;
             this.textBox_TimKiem.Lighting = false;
             this.textBox_TimKiem.LinearGradientPen = false;
             this.textBox_TimKiem.Location = new System.Drawing.Point(0, 0);
-            this.textBox_TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_TimKiem.Name = "textBox_TimKiem";
             this.textBox_TimKiem.PenWidth = 15;
             this.textBox_TimKiem.RGB = false;
             this.textBox_TimKiem.Rounding = true;
             this.textBox_TimKiem.RoundingInt = 60;
-            this.textBox_TimKiem.Size = new System.Drawing.Size(520, 46);
+            this.textBox_TimKiem.Size = new System.Drawing.Size(317, 31);
             this.textBox_TimKiem.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.textBox_TimKiem.TabIndex = 49;
             this.textBox_TimKiem.Tag = "Cyber";
@@ -157,10 +155,11 @@
             // 
             this.panel2.Controls.Add(this.btn_ThemChienDich);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(829, 13);
+            this.panel2.Location = new System.Drawing.Point(551, 8);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
-            this.panel2.Size = new System.Drawing.Size(198, 46);
+            this.panel2.Padding = new System.Windows.Forms.Padding(17, 0, 17, 0);
+            this.panel2.Size = new System.Drawing.Size(133, 31);
             this.panel2.TabIndex = 37;
             // 
             // panel1
@@ -168,9 +167,10 @@
             this.panel1.Controls.Add(this.textBox_TimKiem);
             this.panel1.Controls.Add(this.btn_TimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(217, 13);
+            this.panel1.Location = new System.Drawing.Point(144, 8);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(606, 46);
+            this.panel1.Size = new System.Drawing.Size(403, 31);
             this.panel1.TabIndex = 36;
             // 
             // btn_TimKiem
@@ -183,12 +183,12 @@
             this.btn_TimKiem.HighEmphasis = true;
             this.btn_TimKiem.Icon = null;
             this.btn_TimKiem.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btn_TimKiem.Location = new System.Drawing.Point(520, 0);
-            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(20, 8, 5, 8);
+            this.btn_TimKiem.Location = new System.Drawing.Point(317, 0);
+            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(13, 5, 3, 5);
             this.btn_TimKiem.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_TimKiem.Size = new System.Drawing.Size(86, 46);
+            this.btn_TimKiem.Size = new System.Drawing.Size(86, 31);
             this.btn_TimKiem.TabIndex = 53;
             this.btn_TimKiem.Text = "Tìm kiếm";
             this.btn_TimKiem.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -205,12 +205,13 @@
             this.tableLayoutPanel2.Controls.Add(this.panel2, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 102);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 66);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1040, 72);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(693, 47);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // aloneComboBox1
@@ -222,9 +223,10 @@
             this.aloneComboBox1.EnabledCalc = true;
             this.aloneComboBox1.FormattingEnabled = true;
             this.aloneComboBox1.ItemHeight = 20;
-            this.aloneComboBox1.Location = new System.Drawing.Point(13, 13);
+            this.aloneComboBox1.Location = new System.Drawing.Point(9, 8);
+            this.aloneComboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.aloneComboBox1.Name = "aloneComboBox1";
-            this.aloneComboBox1.Size = new System.Drawing.Size(198, 26);
+            this.aloneComboBox1.Size = new System.Drawing.Size(131, 26);
             this.aloneComboBox1.TabIndex = 42;
             // 
             // tableLayoutPanel1
@@ -237,22 +239,22 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1040, 102);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 66);
             this.tableLayoutPanel1.TabIndex = 45;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("SVN-Blog Script", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label1.Location = new System.Drawing.Point(213, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(142, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(823, 102);
+            this.label1.Size = new System.Drawing.Size(548, 66);
             this.label1.TabIndex = 15;
             this.label1.Text = "DANH SÁCH CHIẾN DỊCH MARKETING";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,20 +264,22 @@
             this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Remove_bg_ai_1729599973417;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(203, 96);
+            this.pictureBox1.Size = new System.Drawing.Size(135, 62);
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
             // fCampaign
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 594);
+            this.ClientSize = new System.Drawing.Size(693, 386);
             this.Controls.Add(this.data_DSChienDich);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fCampaign";
             this.Text = "fCampaign";
             this.Load += new System.EventHandler(this.fCampaign_Load);

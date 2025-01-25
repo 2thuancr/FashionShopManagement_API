@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace BUS
+namespace Shared.Helpers
 {
-    public class Log
+    public class Logger
     {
         private static string logName = "Log_";
         private static string logExtendtion = ".log";

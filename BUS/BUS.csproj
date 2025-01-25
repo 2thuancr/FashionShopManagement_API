@@ -49,7 +49,6 @@
     <Compile Include="CustomerBUS.cs" />
     <Compile Include="ReportBUS.cs" />
     <Compile Include="ProductBUS.cs" />
-    <Compile Include="Log.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShiftBUS.cs" />

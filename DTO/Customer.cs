@@ -1,11 +1,6 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using Shared.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace DTO
 {
@@ -23,7 +18,8 @@ namespace DTO
 
         public string AccountId { get; set; }
 
-        public Customer(int customerId, string customerName, string phoneNumber, DateTime doB, string address, string accountId)
+        public Customer(int customerId, string customerName, string phoneNumber, DateTime doB,
+            string address, string accountId)
         {
             this.CustomerId = customerId;
             this.CustomerName = customerName;
@@ -35,19 +31,12 @@ namespace DTO
 
         public Customer(DataRow row)
         {
-            try
-            {
-                this.CustomerId = Convert.ToInt32(row["customerId"]);
-                this.CustomerName = Convert.ToString(row["customerName"]);
-                this.PhoneNumber = Convert.ToString(row["phoneNumber"]);
-                this.DoB = Convert.ToDateTime(row["doB"]);
-                this.Address = Convert.ToString(row["address"]);
-                this.AccountId = Convert.ToString(row["accountId"]);
-            }
-            catch
-            {
-
-            }
+            this.CustomerId = Converter.ToInt32(row["customerId"]);
+            this.CustomerName = Converter.ToString(row["customerName"]);
+            this.PhoneNumber = Converter.ToString(row["phoneNumber"]);
+            this.DoB = Converter.ToDateTime(row["doB"]);
+            this.Address = Converter.ToString(row["address"]);
+            this.AccountId = Converter.ToString(row["accountId"]);
         }
 
         public Customer()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
@@ -36,32 +37,25 @@ namespace DTO
 
         public Bill(DataRow row)
         {
-            try
+            this.ID = Converter.ToInt32(row["id"]);
+            this.BusinessTime = Converter.ToDateTime(row["businessTime"]);
+            this.Status = Converter.ToInt32(row["status"]);
+            if (this.Status == 1)
             {
-                this.ID = Convert.ToInt32(row["id"]);
-                this.BusinessTime = (row["businessTime"] != DBNull.Value) ? Convert.ToDateTime(row["businessTime"]) : DateTime.MinValue;
-                this.Status = (row["status"] != DBNull.Value) ? Convert.ToInt32(row["status"]) : 0;
-                if (this.Status == 1)
-                {
-                    this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
-                }
-                else
-                {
-                    this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
-                }
-                this.TotalPrice = (row["totalPrice"] != DBNull.Value) ? Convert.ToDecimal(row["totalPrice"]) : 0;
-                this.CustomerId = (row["customerId"] != DBNull.Value) ? Convert.ToInt32(row["customerId"]) : 0;
-                this.StaffId = (row["staffId"] != DBNull.Value) ? Convert.ToInt32(row["staffId"]) : 0;
+                this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
             }
-            catch (Exception ex) 
+            else
             {
-                throw ex;
+                this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
             }
-           
+            this.TotalPrice = Converter.ToDecimal(row["totalPrice"]);
+            this.CustomerId = Converter.ToInt32(row["customerId"]);
+            this.StaffId = Converter.ToInt32(row["staffId"]);
         }
+
         public Bill()
         {
-            
+
         }
     }
 }

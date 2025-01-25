@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GUI.UC
+namespace Shared.Helpers
 {
     public static class StringHelper
     {
@@ -14,7 +14,7 @@ namespace GUI.UC
 
             var hash = System.Security.Cryptography.MD5.Create();
             var data = hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            return Convert.ToBase64String(data);
+            return System.Convert.ToBase64String(data);
         }
     }
 }

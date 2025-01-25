@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using NPOI.Util.Collections;
 
-namespace FinalProject.Common.Helper
+namespace Shared.Helpers
 {
     public static class WordHelper
     {

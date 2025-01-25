@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
@@ -18,7 +19,8 @@ namespace DTO
         public decimal TotalProductPrice { get; set; }
         public BillInfo() { }
 
-        public BillInfo(int id, int billID, int productID, int amount, decimal price, decimal discount, decimal campaignDiscountPercent, decimal totalProductPrice)
+        public BillInfo(int id, int billID, int productID, int amount, decimal price, 
+            decimal discount, decimal campaignDiscountPercent, decimal totalProductPrice)
         {
             this.ID = id;
             this.BillID = billID;
@@ -32,22 +34,14 @@ namespace DTO
 
         public BillInfo(DataRow row)
         {
-            try 
-            {
-                this.ID = Convert.ToInt32(row["Id"]);
-                this.BillID = Convert.ToInt32(row["billID"]);
-                this.ProductID = Convert.ToInt32(row["productID"]);
-                this.Amount = Convert.ToInt32(row["amount"]);
-                this.Discount = Convert.ToDecimal(row["discount"]);
-                this.Price = Convert.ToDecimal(row["price"]);
-                this.CampaignDiscountPercent = Convert.ToDecimal(row["campaignDiscountPercent"]);
-                this.TotalProductPrice = Convert.ToDecimal(row["totalProductPrice"]);
-            }
-            catch
-            {
-
-            }
-           
+            this.ID = Converter.ToInt32(row["Id"]);
+            this.BillID = Converter.ToInt32(row["billID"]);
+            this.ProductID = Converter.ToInt32(row["productID"]);
+            this.Amount = Converter.ToInt32(row["amount"]);
+            this.Discount = Converter.ToDecimal(row["discount"]);
+            this.Price = Converter.ToDecimal(row["price"]);
+            this.CampaignDiscountPercent = Converter.ToDecimal(row["campaignDiscountPercent"]);
+            this.TotalProductPrice = Converter.ToDecimal(row["totalProductPrice"]);
         }
     }
 }

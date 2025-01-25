@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
 {
-
     public class Staff
     {
         public int StaffId { get; set; }
@@ -18,9 +18,9 @@ namespace DTO
         public int? JobId { get; set; }
         public string PhoneNumber { get; set; }
 
-
         public Staff(int staffId, string surNameStaff, string nameStaff, DateTime? doB,
-       string sex, string address, DateTime? recruitmentDay, int? noS, decimal? reward, int? jobId, string phoneNumber)
+            string sex, string address, DateTime? recruitmentDay, int? noS, 
+            decimal? reward, int? jobId, string phoneNumber)
         {
             this.StaffId = staffId;
             this.SurNameStaff = surNameStaff;
@@ -36,39 +36,19 @@ namespace DTO
 
         public Staff(DataRow row)
         {
-            try
-            {
-                this.StaffId = Convert.ToInt32(row["staffId"]);
-                this.SurNameStaff = Convert.ToString(row["surnameStaff"]);
-                this.NameStaff = Convert.ToString(row["nameStaff"]);
-                this.DoB = Convert.ToDateTime(row["doB"]);
-                this.Sex = Convert.ToString(row["sex"]);
-                this.Address = Convert.ToString(row["address"]);
-                if (row["recruitmentDay"] != null)
-                {
-                    this.RecruitmentDay = Convert.ToDateTime(row["recruitmentDay"]);
-                }
-                if (row["noS"] != null)
-                {
-                    this.NoS = Convert.ToInt32(row["noS"]);
-                }
-                if (row["Reward"] != null)
-                {
-                    this.Reward = Convert.ToDecimal(row["reward"]);
-
-                }
-                if (row["JobId"] != null)
-                {
-                    this.JobId = Convert.ToInt32(row["jobId"]);
-
-                }
-                this.PhoneNumber = Convert.ToString(row["phoneNumber"]);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            this.StaffId = Converter.ToInt32(row["staffId"]);
+            this.SurNameStaff = Converter.ToString(row["surnameStaff"]);
+            this.NameStaff = Converter.ToString(row["nameStaff"]);
+            this.DoB = Converter.ToDateTime(row["doB"]);
+            this.Sex = Converter.ToString(row["sex"]);
+            this.Address = Converter.ToString(row["address"]);
+            this.RecruitmentDay = Converter.ToDateTime(row["recruitmentDay"]);
+            this.NoS = Converter.ToInt32(row["noS"]);
+            this.Reward = Converter.ToDecimal(row["reward"]);
+            this.JobId = Converter.ToInt32(row["jobId"]);
+            this.PhoneNumber = Converter.ToString(row["phoneNumber"]);
         }
+
         public Staff()
         {
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
@@ -25,31 +26,28 @@ namespace DTO
 
         public BillInfoDetail(DataRow row)
         {
-           
-                this.ID = Convert.ToInt32(row["ID"]);
-                this.BusinessTime = (row["BusinessTime"] != DBNull.Value) ? Convert.ToDateTime(row["BusinessTime"]) : DateTime.MinValue;
-                //this.Discount = (row["Discount"] != DBNull.Value) ? Convert.ToDecimal(row["Discount"]) : 0;
-                this.TotalPrice = (row["TotalPrice"] != DBNull.Value) ? Convert.ToDecimal(row["TotalPrice"]) : 0;
-                this.Status = (row["Status"] != DBNull.Value) ? Convert.ToInt32(row["Status"]) : 0;
-                this.ProductId = (row["ProductId"] != DBNull.Value) ? Convert.ToInt32(row["ProductId"]) : 0;
-                this.ProductPrice = (row["ProductPrice"] != DBNull.Value) ? Convert.ToDecimal(row["ProductPrice"]) : 0;
-                this.ProductDiscount = (row["ProductDiscount"] != DBNull.Value) ? Convert.ToDecimal(row["ProductDiscount"]) : 0;
-                this.ProductName = (row["ProductName"] != DBNull.Value) ? Convert.ToString(row["ProductName"]) : null;
-                this.Amount = (row["Amount"] != DBNull.Value) ? Convert.ToInt32(row["Amount"]) : 0;
-                this.CustomerId = (row["CustomerId"] != DBNull.Value) ? Convert.ToInt32(row["CustomerId"]) : 0;
-                this.CustomerName = (row["CustomerName"] != DBNull.Value) ? Convert.ToString(row["CustomerName"]) : null;
-                this.StaffId = (row["StaffId"] != DBNull.Value) ? Convert.ToInt32(row["StaffId"]) : 0;
-                this.StaffName = (row["StaffName"] != DBNull.Value) ? Convert.ToString(row["StaffName"]) : null;
-                if (this.Status == 1)
-                {
-                    this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
-                }
-                else
-                {
-                    this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
-                }
-            
-           
+            this.ID = Converter.ToInt32(row["ID"]);
+            this.BusinessTime = Converter.ToDateTime(row["BusinessTime"]);
+            //this.Discount = Converter.ToDecimal(row["Discount"]);
+            this.TotalPrice = Converter.ToDecimal(row["TotalPrice"]);
+            this.Status = Converter.ToInt32(row["Status"]);
+            this.ProductId = Converter.ToInt32(row["ProductId"]);
+            this.ProductPrice = Converter.ToDecimal(row["ProductPrice"]);
+            this.ProductDiscount = Converter.ToDecimal(row["ProductDiscount"]);
+            this.ProductName = Converter.ToString(row["ProductName"]);
+            this.Amount = Converter.ToInt32(row["Amount"]);
+            this.CustomerId = Converter.ToInt32(row["CustomerId"]);
+            this.CustomerName = Converter.ToString(row["CustomerName"]);
+            this.StaffId = Converter.ToInt32(row["StaffId"]);
+            this.StaffName = Converter.ToString(row["StaffName"]);
+            if (this.Status == 1)
+            {
+                this.PaymentStatus = Bill.BILL_DA_THANH_TOAN;
+            }
+            else
+            {
+                this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using Shared.Helpers;
 using System;
 using System.Windows.Forms;
 
@@ -43,7 +44,7 @@ namespace GUI
             {
                 if (AccountBUS.Instance.CheckLogin(account))
                 {
-                    Log.WriteLog("----------" + account.UserName + " log in ----------");
+                    Logger.WriteLog("----------" + account.UserName + " log in ----------");
 
                     Account loginAccount = AccountBUS.Instance.GetAccountByUserName(account.UserName);
 
@@ -62,6 +63,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
+                Logger.WriteLog("Error: " + ex);
                 MessageBox.Show("Lỗi: " + ex);
             }
         }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO
 {
@@ -38,25 +35,19 @@ namespace DTO
             this.ProductName = productName;
             this.StaffFullName = staffFullName;
         }
+
         public CampaignView(DataRow row)
         {
-            try
-            {
-                this.CampaignId = Convert.ToInt32(row["campaignId"]);
-                this.Name = Convert.ToString(row["campaignName"]);
-                this.StartDate = Convert.ToDateTime(row["startDate"]);
-                this.EndDate = Convert.ToDateTime(row["endDate"]);
-                this.DiscountPercentage = Convert.ToDecimal(row["discountPercentage"]);
-                this.MinimumQuantity = Convert.ToInt32(row["minimumQuantity"]);
-                this.ProductId = Convert.ToInt32(row["productId"]);
-                this.StaffId = Convert.ToInt32(row["staffId"]);
-                this.ProductName = Convert.ToString(row["productName"]);
-                this.StaffFullName = Convert.ToString(row["staffFullName"]);
-            }
-            catch
-            {
-
-            }
+            this.CampaignId = Converter.ToInt32(row["campaignId"]);
+            this.Name = Converter.ToString(row["campaignName"]);
+            this.StartDate = Converter.ToDateTime(row["startDate"]);
+            this.EndDate = Converter.ToDateTime(row["endDate"]);
+            this.DiscountPercentage = Converter.ToDecimal(row["discountPercentage"]);
+            this.MinimumQuantity = Converter.ToInt32(row["minimumQuantity"]);
+            this.ProductId = Converter.ToInt32(row["productId"]);
+            this.StaffId = Converter.ToInt32(row["staffId"]);
+            this.ProductName = Converter.ToString(row["productName"]);
+            this.StaffFullName = Converter.ToString(row["staffFullName"]);
         }
     }
 }

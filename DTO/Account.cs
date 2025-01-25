@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
@@ -12,7 +13,7 @@ namespace DTO
 
         // Kết nối tới DB
         public static string ConnectionString { get; set; }
-        
+
         public static string connectionStringUser = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public static string connectionStringAdmin = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public const string connectionStringStaff = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShopManagement;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -44,7 +45,8 @@ namespace DTO
             this.Password = password;
         }
 
-        public Account(int id, string userName, string displayName, int typeID, string password, string phoneNumber, string email, string firebaseId)
+        public Account(int id, string userName, string displayName, int typeID,
+            string password, string phoneNumber, string email, string firebaseId)
         {
             this.Id = id;
             this.UserName = userName;
@@ -58,17 +60,16 @@ namespace DTO
 
         public Account(DataRow row)
         {
-            this.Id = Convert.ToInt32(row["Id"]);
-            this.UserName = Convert.ToString(row["UserName"]);
-            this.DisplayName = Convert.ToString(row["DisplayName"]);
-            this.TypeID = Convert.ToInt32(row["TypeID"]);
-            this.Password = Convert.ToString(row["Password"]);
-            this.PhoneNumber = Convert.ToString(row["PhoneNumber"]);
-            this.Email = Convert.ToString(row["Email"]);
-            this.FirebaseId = Convert.ToString(row["FirebaseId"]);
-            this.OTP = Convert.ToString(row["OTP"]);
-            this.OTPExpiration = Convert.ToDateTime(row["OTPExpiration"]);
+            this.Id = Converter.ToInt32(row["Id"]);
+            this.UserName = Converter.ToString(row["UserName"]);
+            this.DisplayName = Converter.ToString(row["DisplayName"]);
+            this.TypeID = Converter.ToInt32(row["TypeID"]);
+            this.Password = Converter.ToString(row["Password"]);
+            this.PhoneNumber = Converter.ToString(row["PhoneNumber"]);
+            this.Email = Converter.ToString(row["Email"]);
+            this.FirebaseId = Converter.ToString(row["FirebaseId"]);
+            this.OTP = Converter.ToString(row["OTP"]);
+            this.OTPExpiration = Converter.ToDateTimeNullable(row["OTPExpiration"]);
         }
-
     }
 }

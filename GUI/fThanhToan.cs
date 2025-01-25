@@ -44,7 +44,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Không thể tải ảnh QR Code");
             }
         }
 

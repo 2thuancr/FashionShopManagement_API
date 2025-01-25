@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Data;
 
 namespace DTO
@@ -24,18 +25,10 @@ namespace DTO
 
         public BillPriceInfo(DataRow row)
         {
-            try
-            {
-                this.BillID = Convert.ToInt32(row["billID"]);
-                this.TongTien = Convert.ToDecimal(row["TongTien"]);
-                this.GiamGia = Convert.ToDecimal(row["GiamGia"]);
-                this.ThanhTien = Convert.ToDecimal(row["ThanhTien"]);
-            }
-            catch
-            {
-
-            }
-
+            this.BillID = Converter.ToInt32(row["billID"]);
+            this.TongTien = Converter.ToDecimal(row["TongTien"]);
+            this.GiamGia = Converter.ToDecimal(row["GiamGia"]);
+            this.ThanhTien = Converter.ToDecimal(row["ThanhTien"]);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace DTO
         {
 
         }
+
         public Shift(int shiftId, TimeSpan startTime, TimeSpan endTime, string code)
         {
             this.ShiftId = shiftId;
@@ -25,12 +27,13 @@ namespace DTO
             this.EndTime = endTime;
             this.Code = code;
         }
+
         public Shift(DataRow row)
         {
-            this.ShiftId = Convert.ToInt32(row["shiftId"]);
-            this.StartTime = TimeSpan.Parse(Convert.ToString(row["StartTime"]));
-            this.EndTime = TimeSpan.Parse(Convert.ToString(row["EndTime"]));
-            this.Code = Convert.ToString(row["Code"]);
+            this.ShiftId = Converter.ToInt32(row["shiftId"]);
+            this.StartTime = TimeSpan.Parse(Converter.ToString(row["StartTime"]));
+            this.EndTime = TimeSpan.Parse(Converter.ToString(row["EndTime"]));
+            this.Code = Converter.ToString(row["Code"]);
         }
     }
 }
