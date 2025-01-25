@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DTO.Accounts
 {
-    public class AccountLoginResponse
+    public class AccountVerifyOtpByUserNameRequest
     {
+        [Required]
         public string UserName { get; set; }
-        public string DisplayName { get; set; }
-        public int TypeID { get; set; }
+
+        [Required]
+        public string Otp { get; set; }
     }
 }

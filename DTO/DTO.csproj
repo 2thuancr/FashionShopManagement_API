@@ -48,6 +48,8 @@
     <Compile Include="Accounts\AccountGenerateOtpRequest.cs" />
     <Compile Include="Accounts\AccountLoginRequest.cs" />
     <Compile Include="Accounts\AccountLoginResponse.cs" />
+    <Compile Include="Accounts\AccountVerifyOtpByUserNameRequest.cs" />
+    <Compile Include="Accounts\AccountVerifyOtpByUserNameResponse.cs" />
     <Compile Include="AccountType.cs" />
     <Compile Include="AccountTypePermissionDetail.cs" />
     <Compile Include="Bill.cs" />

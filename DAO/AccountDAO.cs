@@ -116,6 +116,25 @@ namespace DAO
             }
         }
 
+        public DataTable VerifyOtpByUsername(AccountVerifyOtpByUserNameRequest input)
+        {
+            var isUserNameExists = this.IsUserNameExists(input.UserName);
+            if (!isUserNameExists)
+            {
+                throw new Exception("Username not found");
+            }
+            string query = $"USP_VerifyOTP @UserName = '{input.UserName}', @OTP = '{input.Otp}' ";
+            try
+            {
+                DataTable table = DataProvider.Instance.ExecuteQuery(query);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable GetAllAcount()
         {
             try

@@ -131,6 +131,31 @@ namespace BUS
             }
         }
 
+        public AccountVerifyOtpByUserNameResponse VerifyOtpByUserName(AccountVerifyOtpByUserNameRequest request)
+        {
+            try
+            {
+                var table = AccountDAO.Instance.VerifyOtpByUsername(request);
+                if (table.Rows.Count == 0)
+                {
+                    throw new Exception("Cannot verify OTP");
+                }
+                var response = new AccountVerifyOtpByUserNameResponse
+                {
+                    Status = Converter.ToString(table.Rows[0]["Status"]),
+                    UserName = Converter.ToString(table.Rows[0]["UserName"]),
+                    OTP = Converter.ToString(table.Rows[0]["OTP"]),
+                    VerifiedOTP = Converter.ToString(table.Rows[0]["VerifiedOTP"]),
+                    ExpirationTime = Converter.ToDateTimeNullable(table.Rows[0]["ExpirationTime"])
+                };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable GetAllAcount()
         {
             try

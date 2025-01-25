@@ -1,10 +1,8 @@
 ﻿using BUS;
-using DTO;
 using DTO.Accounts;
 using DTO.ApiResponses;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Helpers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace API.Controllers
 {
@@ -22,21 +20,17 @@ namespace API.Controllers
 
                 if (account == null)
                 {
-                    var response = new AccountLoginResponse
-                    {
-                        IsSuccess = false
-                    };
-                    return Unauthorized(response);
+                    return Unauthorized(default(ApiRepose<AccountLoginResponse>));
                 }
                 else
                 {
-                    var response = new AccountLoginResponse
+                    var data = new AccountLoginResponse
                     {
-                        IsSuccess = true,
                         UserName = account.UserName,
                         DisplayName = account.DisplayName,
                         TypeID = account.TypeID
                     };
+                    var response = new ApiRepose<AccountLoginResponse>(isSuccess: true, data);
                     return Ok(response);
                 }
             }
@@ -59,7 +53,7 @@ namespace API.Controllers
                 var account = AccountBUS.Instance.RegisterCustomerAccount(request);
                 if (account == null)
                 {
-                    return BadRequest(new AccountGenerateOtpRequest());
+                    return BadRequest(default(ApiRepose<AccountGenerateOtpRequest>));
                 }
                 else
                 {
@@ -107,10 +101,37 @@ namespace API.Controllers
                 var response = AccountBUS.Instance.UpdateOTPByUsername(request);
                 if (response == null)
                 {
-                    return BadRequest();
+                    return BadRequest(default(ApiRepose<AccountGenerateOtpResponse>));
                 }
                 else
                 {
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "Unexpected Error"
+                );
+            }
+        }
+
+        [HttpPost]
+        [Route("VerifyOtp")]
+        public IActionResult VerifyOtp(AccountVerifyOtpByUserNameRequest request)
+        {
+            try
+            {
+                var data = AccountBUS.Instance.VerifyOtpByUserName(request);
+                if (data == null)
+                {
+                    return BadRequest(default(ApiRepose<AccountVerifyOtpByUserNameResponse>));
+                }
+                else
+                {
+                    var response = new ApiRepose<AccountVerifyOtpByUserNameResponse>(isSuccess: true, data);
                     return Ok(response);
                 }
             }
