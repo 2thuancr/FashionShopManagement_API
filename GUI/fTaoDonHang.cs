@@ -1,8 +1,9 @@
 ﻿using BUS;
-using DTO;
+using DTO.Bills;
+using DTO.Customers;
+using DTO.Products;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -80,8 +81,6 @@ namespace GUI
                 this.textBox_TenKhachHang.TextButton = this.customer.CustomerName;
                 this.textBox_SDT.TextButton = this.customer.PhoneNumber;
             }
-
-
         }
 
         private void comboBox_SanPham_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,7 +183,7 @@ namespace GUI
                 this.data_DSSanPham.Refresh();
                 this.data_DSSanPham.Invalidate();
             }
-           catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Có lỗi phát sinh");
                 return;
@@ -233,7 +232,7 @@ namespace GUI
                     this.bill.TotalPrice = this.billPriceInfo.ThanhTien;
                 }
             }
-            catch (SqlException ex)
+            catch
             {
                 MessageBox.Show("Có lỗi phát sinh khi lấy thông tin từ database");
             }
@@ -250,11 +249,11 @@ namespace GUI
             this.bill.Status = 0;
             this.bill.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
 
-            try 
+            try
             {
                 billID = BillBUS.Instance.InsertBill(bill);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi tạo hóa đơn");
                 return;
@@ -336,7 +335,7 @@ namespace GUI
             }
             catch (Exception)
             {
-                MessageBox.Show( "Lỗi khi cập nhật Chi tiết hóa đơn");
+                MessageBox.Show("Lỗi khi cập nhật Chi tiết hóa đơn");
             }
         }
 
@@ -361,7 +360,7 @@ namespace GUI
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show( "Lỗi cập nhật trạng thái thanh toán hóa đơn");
+                        MessageBox.Show("Lỗi cập nhật trạng thái thanh toán hóa đơn");
                     }
                 }
                 else
@@ -416,7 +415,7 @@ namespace GUI
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show( "Lỗi cập nhật chi tiết hóa đơn");
+                    MessageBox.Show("Lỗi cập nhật chi tiết hóa đơn");
                 }
             }
         }
@@ -445,7 +444,7 @@ namespace GUI
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show( "Lỗi xóa hóa đơn");
+                    MessageBox.Show("Lỗi xóa hóa đơn");
                 }
             }
         }
@@ -471,7 +470,8 @@ namespace GUI
                     this.textbox_SoLuong.TextButton = productAmount.ToString();
                 }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 MessageBox.Show("Lỗi chọn sản phẩm");
             }
         }

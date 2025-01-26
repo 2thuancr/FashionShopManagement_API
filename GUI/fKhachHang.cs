@@ -1,13 +1,7 @@
 ﻿using BUS;
-using DTO;
+using DTO.Customers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -21,17 +15,17 @@ namespace GUI
             try
             {
                 this.listCustomer = CustomerBUS.Instance.GetAllCustomer();
-                if(this.listCustomer.Count > 0)
+                if (this.listCustomer.Count > 0)
                 {
                     this.data_DSKhachHang.DataSource = this.listCustomer;
-                }    
+                }
             }
             catch
             {
                 MessageBox.Show("lỗi lấy danh sách khách hàng");
             }
         }
-        
+
         public fKhachHang()
         {
             InitializeComponent();
@@ -65,7 +59,7 @@ namespace GUI
                 // Hiện thị ra danh sách khách hàng với số điện thoại đã nhập
                 this.data_DSKhachHang.DataSource = this.listCustomer;
             }
-           catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Không tìm thấy");
             }

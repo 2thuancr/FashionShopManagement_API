@@ -1,5 +1,6 @@
 ﻿using BUS;
-using DTO;
+using DTO.Campaigns;
+using DTO.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

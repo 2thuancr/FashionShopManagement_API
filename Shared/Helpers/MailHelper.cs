@@ -4,7 +4,6 @@ using Shared.Dtos;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -138,7 +137,7 @@ namespace Shared.Helpers
                 Recipient = new List<string> { "ngotienhoang09@gmail.com" }
             };
             var output = MailHelper.SendEmailBySMTP(input);
-            
+
             return output;
         }
     }

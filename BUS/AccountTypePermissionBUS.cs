@@ -1,11 +1,8 @@
 ﻿using DAO;
-using DTO;
+using DTO.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BUS
 {
@@ -22,6 +19,7 @@ namespace BUS
                 return AccountTypePermissionBUS.instance;
             }
         }
+
         public List<AccountTypePermissionDetail> GetPermissionByAccountTypeId(int accountTypeId)
         {
             DataTable table;
@@ -62,14 +60,7 @@ namespace BUS
             else
             {
                 int index = listPermissions.FindIndex(x => x.PermissionName == permissionName);
-                if (index == -1)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return index != -1;
             }
         }
     }

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-
-using DTO;
+using DTO.Bills;
 
 namespace DAO
 {
@@ -22,163 +21,93 @@ namespace DAO
 
         private BillDAO() { }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tableID"></param>
-        /// <returns>Bill ID, if Bill ID is null, this function will return -1</returns>
-        public int GetUnCheckBillIDByTableID(int tableID)
-        {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("GetUnCheckBillIDByTableID @TableID", new object[] { tableID });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            if (table.Rows.Count > 0)
-            {
-                Bill bill = new Bill(table.Rows[0]);
-                return bill.ID;
-            }
-            return -1;
-        }
-
         public DataTable GetAllBills()
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("Select * from ViewAllBills", new object[] { });
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "SELECT * FROM ViewAllBills";
+            
+            DataTable table = DataProvider.Instance.ExecuteQuery(query);
+            return table;
         }
 
         public DataTable GetBillById(int Id)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("USP_GetBillById @Id", new object[] { Id });
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "USP_GetBillById @Id";
+            var parameters = new object[] { Id };
+
+            DataTable table = DataProvider.Instance.ExecuteQuery(query, parameters);
+            return table;
         }
 
         public DataTable GetBillByCustomerId(int CustomerId)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("USP_GetBillByCustomerId @CustomerId", new object[] { CustomerId });
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "USP_GetBillByCustomerId @CustomerId";
+            var parameters = new object[] { CustomerId };
+
+            DataTable table = DataProvider.Instance.ExecuteQuery(query, parameters);
+            return table;
         }
 
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
-            try
+            var query = "USP_InsertBill @CustomerID , @StaffID , @Discount , @TotalPrice , @Status";
+            var parameters = new object[]
             {
-                var parameters = new object[]
-                {
-                    customerId,
-                    staffId,
-                    discount,
-                    totalPrice,
-                    status,
-                };
-                var result = DataProvider.Instance.ExecuteScalar("[USP_InsertBill] @CustomerID, @StaffID, @Discount, @TotalPrice, @Status", parameters);
-                return Convert.ToInt32(result);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                customerId,
+                staffId,
+                discount,
+                totalPrice,
+                status,
+            };
+
+            var result = DataProvider.Instance.ExecuteScalar(query, parameters);
+            return Convert.ToInt32(result);
         }
 
         public int InsertBill(Bill bill)
         {
-            try
+            var parameters = new object[]
             {
-                var parameters = new object[]
-                {
-                    bill.CustomerId,
-                    bill.StaffId,
-                    bill.TotalPrice,
-                    bill.Status,
-                };
-                string query = $@"[USP_InsertBill] 
+                bill.CustomerId,
+                bill.StaffId,
+                bill.TotalPrice,
+                bill.Status,
+            };
+            string query = $@"[USP_InsertBill] 
                     @CustomerID = {bill.CustomerId}, 
                     @StaffID = {bill.StaffId}, 
                     @TotalPrice = {bill.TotalPrice}, 
                     @Status = {bill.Status}
                     ";
-                var result = DataProvider.Instance.ExecuteScalar(query, parameters);
-                return Convert.ToInt32(result);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            var result = DataProvider.Instance.ExecuteScalar(query, parameters);
+            return Convert.ToInt32(result);
         }
 
         public DataTable GetBillPriceInfo(int billId)
         {
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery($"select * from GetBillPriceInfo({billId})");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = $"select * from GetBillPriceInfo({billId})";
+            return DataProvider.Instance.ExecuteQuery(query);
         }
 
         public void UpdateBillStatus(Bill bill)
         {
-            try
-            {
-                string query = $@"[USP_UpdateBillStatus] 
+            string query = $@"[USP_UpdateBillStatus] 
                     @BillID = {bill.ID},
                     @Status = {bill.Status}
                     ";
-                DataProvider.Instance.ExecuteScalar(query, null);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            DataProvider.Instance.ExecuteScalar(query);
         }
 
         public void UpdateBill(Bill bill)
         {
-            try
-            {
-                string query = $@"[USP_UpdateBill] 
+            string query = $@"[USP_UpdateBill] 
                     @ID = {bill.ID},
                     @TotalPrice = {bill.TotalPrice},
                     @Status = {bill.Status}
                     ";
-                DataProvider.Instance.ExecuteScalar(query, null);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            DataProvider.Instance.ExecuteScalar(query);
         }
 
         public int GetMaxBillID()
@@ -196,41 +125,26 @@ namespace DAO
         public void CheckOut(int billID, int discount, int totalPrice)
         {
             string query = "USP_CheckOut @ID , @Discount , @TotalPrice";
-            try
-            {
-                DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, discount, totalPrice });
-            }
-            catch { }
+            var parameters = new object[] { billID, discount, totalPrice };
+
+            DataProvider.Instance.ExecuteNonQuery(query, parameters);
         }
 
         public DataTable GetListBillByDate(DateTime fromDate, DateTime toDate)
         {
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery("USP_GetListBillByDay @fromDate , @toDate",
-                    new object[] { fromDate, toDate });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "USP_GetListBillByDate @fromDate , @toDate";
+            var parameters = new object[] { fromDate, toDate };
+
+            return DataProvider.Instance.ExecuteQuery(query, parameters);
         }
 
         public bool DeleteBill(int id)
         {
             string query = string.Format("USP_DeleteBill @ID");
-            int result;
-            try
-            {
-                result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { id });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var parameters = new object[] { id };
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
             return result > 0;
         }
-        
-
     }
 }

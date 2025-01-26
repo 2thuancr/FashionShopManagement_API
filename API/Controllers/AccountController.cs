@@ -10,6 +10,12 @@ namespace API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(ILogger<AccountController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpPost]
         [Route("Login")]
         public IActionResult Login(AccountLoginRequest request)
@@ -36,6 +42,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[Login] Error while login: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
@@ -84,6 +92,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[Register] Error while register: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
@@ -110,6 +120,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[GenerateOtp] Error while generate OTP: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
@@ -137,6 +149,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[VerifyOtp] Error while verify OTP: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,

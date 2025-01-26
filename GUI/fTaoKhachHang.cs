@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using DTO.Customers;
 using System;
 using System.Linq;
 using System.Windows.Forms;

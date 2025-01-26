@@ -1,9 +1,6 @@
 ﻿using BUS;
-using DAO;
-using DTO;
-using Microsoft.AspNetCore.Http;
+using DTO.Products;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace API.Controllers
 {
@@ -11,6 +8,12 @@ namespace API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly ILogger<ProductController> _logger;
+        public ProductController(ILogger<ProductController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         [Route("GetAllProducts")]
         public IActionResult GetAllProducts()
@@ -22,6 +25,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[GetAllProducts] Error: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
@@ -42,11 +47,13 @@ namespace API.Controllers
             try
             {
                 List<Product> listProducts = ProductBUS.Instance.SearchProductByName(name);
-                
+
                 return Ok(listProducts);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[SearchProductByName] Error: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
@@ -71,6 +78,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[GetProductById] Error: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,

@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-namespace DTO
+namespace DTO.Campaigns
 {
     public class CampaignView
     {

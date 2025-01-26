@@ -23,14 +23,8 @@ namespace DAO
         public DataTable GetPermissionByAccountTypeId(int accountTypeId)
         {
             string query = $"USP_GetPermissionByAccountTypeId @AccountTypeId = {accountTypeId}";
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery(query);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            return DataProvider.Instance.ExecuteQuery(query);
         }
 
     }

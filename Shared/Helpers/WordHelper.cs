@@ -99,7 +99,7 @@ namespace Shared.Helpers
         //            }
         //        }
         //    }
-        //    catch (Exception ex)
+        //    catch
         //    {
         //        UCMessageBox.Show(ex.Message, "Lỗi xuất file", UCMessageBox.MessageBoxButtons.OK);
         //        return null;

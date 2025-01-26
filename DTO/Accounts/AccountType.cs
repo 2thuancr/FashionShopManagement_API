@@ -1,7 +1,7 @@
 ﻿using Shared.Helpers;
 using System.Data;
 
-namespace DTO
+namespace DTO.Accounts
 {
     public class AccountType
     {

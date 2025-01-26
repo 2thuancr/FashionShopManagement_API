@@ -1,13 +1,8 @@
 ﻿using BUS;
-using DTO;
+using DTO.Bills;
+using DTO.Customers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -15,7 +10,7 @@ namespace GUI
     public partial class fChiTietKhachHang : Form
     {
         private Customer customer = new Customer();
-        private List<Bill> listBills = new List<Bill>(); 
+        private List<Bill> listBills = new List<Bill>();
         private Bill selectedBill = null;
         public fChiTietKhachHang()
         {
@@ -52,7 +47,7 @@ namespace GUI
                 // Hiện thị lên dataGrid
                 this.data_DonHangCuaKhachHang.DataSource = listBills;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Lỗi hiển thị danh sách đơn hàng");
             }
@@ -77,23 +72,23 @@ namespace GUI
                 {
                     var billId = this.selectedBill.ID;
                     var result = BillBUS.Instance.DeleteBill(this.selectedBill.ID);
-                    if(result == true)
+                    if (result == true)
                     {
                         this.selectedBill = null;
                         LoadDanhSachDonHang();
                         MessageBox.Show($"Đã xóa đơn {billId} thành công");
-                    }    
+                    }
                     else
                     {
                         MessageBox.Show("Đã xóa đơn thất bại");
                     }
-                }   
+                }
                 else
                 {
                     MessageBox.Show("Vui lòng chọn đơn hàng để xóa");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Lỗi xóa đơn");
             }
@@ -109,7 +104,7 @@ namespace GUI
                 // Lấy dữ liệu ở hàng selectedIndex
                 this.selectedBill = this.listBills[selectedIndex];
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Có lỗi phát sinh");
             }

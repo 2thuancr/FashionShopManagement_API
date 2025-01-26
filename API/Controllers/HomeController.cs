@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shared.Dtos;
 using Shared.Helpers;
 
@@ -44,6 +43,8 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"[SendEmailBySMTP] Error: {ex.Message}");
+
                 return Problem(
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,

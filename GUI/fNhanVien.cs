@@ -1,14 +1,8 @@
 ﻿using BUS;
-using DTO;
-using NPOI.SS.Formula.Functions;
+using DTO.Staffs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -18,16 +12,19 @@ namespace GUI
         private Staff staff = new Staff();
         private List<Staff> listStaff = new List<Staff>();
         private Staff selectedStaff = new Staff();
+
         public fNhanVien()
         {
             InitializeComponent();
         }
+
         public fNhanVien(Staff staff)
         {
             InitializeComponent();
             this.staff = staff;
             this.ShowCustomer();
         }
+
         private void ShowCustomer()
         {
             this.textBox_MaNV.Text = this.staff.StaffId.ToString();
@@ -42,42 +39,6 @@ namespace GUI
             this.textBox_SDT.Text = this.staff.PhoneNumber.ToString();
         }
 
-        private void poisonDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void TextBox_Ten_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void fNhanVien_Load(object sender, EventArgs e)
         {
             try
@@ -88,12 +49,10 @@ namespace GUI
                     this.data_DSNhanVien.DataSource = this.listStaff;
                 }
             }
-            catch(Exception) 
+            catch (Exception)
             {
-               
+
             }
-                
-            
         }
 
         private void btn_Them_Click(object sender, EventArgs e)
@@ -146,16 +105,16 @@ namespace GUI
                     MessageBox.Show("Lỗi");
                 }
             }
-            catch(Exception) 
+            catch (Exception)
             {
                 MessageBox.Show("Bạn không có quyền này!");
             }
-            
+
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void data_DSNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)

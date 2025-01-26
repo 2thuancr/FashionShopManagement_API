@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using DTO.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,6 @@ namespace DAO
 {
     public class DataProvider
     {
-        
         private static DataProvider instance;
         public static DataProvider Instance
         {
@@ -21,10 +20,9 @@ namespace DAO
             }
         }
 
-        // Hàm khởi tao
         private DataProvider() { }
-        
-        public DataTable ExecuteQuery(string query, object[] parameter = null, List<SqlParameter> sqlParameters = null, bool isStoredProcedure = false)
+
+        public DataTable ExecuteQuery(string query, object[] parameters = null, List<SqlParameter> sqlParameters = null, bool isStoredProcedure = false)
         {
             DataTable table = new DataTable();
             using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
@@ -36,7 +34,7 @@ namespace DAO
                     command.CommandType = CommandType.StoredProcedure;
                 }
 
-                if (parameter != null)
+                if (parameters != null)
                 {
                     var listPara = query.Split(' ').Where(x => x.StartsWith("@")).Distinct().ToList();
                     int i = 0;
@@ -44,7 +42,7 @@ namespace DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.AddWithValue(item, parameter[i] ?? DBNull.Value);
+                            command.Parameters.AddWithValue(item, parameters[i] ?? DBNull.Value);
                             i++;
                         }
                     }
@@ -65,7 +63,7 @@ namespace DAO
             return table;
         }
 
-        public int ExecuteNonQuery(string query, object[] parameter = null)
+        public int ExecuteNonQuery(string query, object[] parameters = null)
         {
             int row = 0;
             using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
@@ -73,7 +71,7 @@ namespace DAO
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
 
-                if (parameter != null)
+                if (parameters != null)
                 {
                     string[] listPara = query.Split(' ');
                     int i = 0;
@@ -81,7 +79,7 @@ namespace DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.AddWithValue(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameters[i]);
                             i++;
                         }
                     }
@@ -93,7 +91,7 @@ namespace DAO
             return row;
         }
 
-        public object ExecuteScalar(string query, object[] parameter = null)
+        public object ExecuteScalar(string query, object[] parameters = null)
         {
             object data = 0;
             using (SqlConnection connection = new SqlConnection(Account.ConnectionString))
@@ -101,7 +99,7 @@ namespace DAO
                 connection.Open();
                 SqlCommand command = new SqlCommand(query, connection);
 
-                if (parameter != null)
+                if (parameters != null)
                 {
                     string[] listPara = query.Split(' ');
                     int i = 0;
@@ -109,7 +107,7 @@ namespace DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.AddWithValue(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameters[i]);
                             i++;
                         }
                     }
@@ -119,5 +117,5 @@ namespace DAO
             }
             return data;
         }
-	}
+    }
 }

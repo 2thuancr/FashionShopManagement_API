@@ -35,13 +35,31 @@ namespace Shared.Helpers
             return Convert.ToInt32(value);
         }
 
-        public static int? ToIntNullable(this object value)
+        public static long ToInt64(this object value)
+        {
+            if (value == null || value == DBNull.Value)
+            {
+                return 0;
+            }
+            return Convert.ToInt64(value);
+        }
+
+        public static int? ToInt32Nullable(this object value)
         {
             if (value == null || value == DBNull.Value)
             {
                 return null;
             }
             return Convert.ToInt32(value);
+        }
+
+        public static long? ToInt64Nullable(this object value)
+        {
+            if (value == null || value == DBNull.Value)
+            {
+                return null;
+            }
+            return Convert.ToInt64(value);
         }
 
         public static bool ToBoolean(this object value)

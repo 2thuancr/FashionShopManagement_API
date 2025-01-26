@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DTO.Bills;
 using System.Data;
-
-using DTO;
 
 namespace DAO
 {
@@ -31,68 +28,36 @@ namespace DAO
                 @Price = {billInfo.Price},
                 @Discount = {billInfo.Discount}";
 
-            try
-            {
-                DataProvider.Instance.ExecuteNonQuery(query);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public DataTable GetBillInfoDetailByBillId(int billId)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery($"[USP_GetBillInfoDetailByBillId] @BillId = {billId}");
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = $"USP_GetBillInfoDetailByBillId @BillId = {billId}";
+            DataTable table = DataProvider.Instance.ExecuteQuery(query);
+            return table;
         }
 
         public DataTable GetBillInfoDetailByMonth(int year, int month)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery($"[USP_GetBillInfoDetailByMonth] @year = {year}, @month = {month}");
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = $"USP_GetBillInfoDetailByMonth @year = {year}, @month = {month}";
+            DataTable table = DataProvider.Instance.ExecuteQuery(query);
+            return table;
         }
 
         public void DeleteBillInfoByBillID(int billID)
         {
             string query = string.Format("USP_DeleteBillInfoByBillID @BillID");
-            try
-            {
-                DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID });
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var parameters = new object[] { billID };
+
+            DataProvider.Instance.ExecuteNonQuery(query, parameters);
         }
 
         public void DeleteBillInfo(int billID, int productID)
         {
             string query = $"[USP_DeleteBillInfo] @BillID = {billID}, @ProductID = {productID}";
-            try
-            {
-                DataProvider.Instance.ExecuteNonQuery(query, null);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
     }
 }

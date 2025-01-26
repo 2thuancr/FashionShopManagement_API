@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices.WindowsRuntime;
 using DAO;
-using DTO;
+using DTO.Customers;
 
 namespace BUS
 {
@@ -22,7 +22,6 @@ namespace BUS
         }
 
         private CustomerBUS() { }
-
 
         public List<Customer> GetAllCustomer() 
         {
@@ -67,6 +66,7 @@ namespace BUS
             }
             return listCustomer;
         }
+
         public Customer GetCustomerById(int customerId)
         {
             DataTable table;
@@ -86,6 +86,7 @@ namespace BUS
             }
             return customer;
         }
+
         public bool InsertCustomer(Customer newCustomer)
         {
             return CustomerDAO.Instance.InsertCustomer(newCustomer);

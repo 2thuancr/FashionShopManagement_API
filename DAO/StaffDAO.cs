@@ -1,10 +1,5 @@
-﻿using DTO;
-using System;
-using System.Collections.Generic;
+﻿using DTO.Staffs;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
@@ -21,22 +16,15 @@ namespace DAO
                 return StaffDAO.instance;
             }
         }
+
         public DataTable GetAllStaff()
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("Select * from [dbo].[ViewAllStaffs]", new object[] { });
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "SELECT * FROM dbo.ViewAllStaffs";
+            return DataProvider.Instance.ExecuteQuery(query);
         }
+
         public bool InsertStaff(Staff newStaff)
         {
-            
             string query = $@"USP_InsertStaff 
                 @StaffId = {newStaff.StaffId}, 
                 @SurNameStaff = '{newStaff.SurNameStaff}', 
@@ -49,15 +37,8 @@ namespace DAO
                 @Reward = {newStaff.Reward ?? 0}, 
                 @JobId = '{newStaff.JobId}', 
                 @PhoneNumber = '{newStaff.PhoneNumber}'";
-            int result;
-            try
-            {
-                result = DataProvider.Instance.ExecuteNonQuery(query, null);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
     }

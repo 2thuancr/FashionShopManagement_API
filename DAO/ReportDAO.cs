@@ -1,6 +1,4 @@
-﻿using DTO;
-using System;
-using System.Data;
+﻿using Shared.Helpers;
 
 namespace DAO
 {
@@ -22,38 +20,16 @@ namespace DAO
 
         public long CountBillsInMonth(int year, int month)
         {
-            string query = $"select dbo.CountBillsInMonth({year}, {month});";
-            try
-            {
-                var result = DataProvider.Instance.ExecuteScalar(query);
-                if (result == DBNull.Value)
-                {
-                    return 0;
-                }
-                return Convert.ToInt64(result);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            string query = $"SELECT dbo.CountBillsInMonth({year}, {month});";
+            var result = DataProvider.Instance.ExecuteScalar(query);
+            return Converter.ToInt64(result);
         }
 
         public long TotalRevenueByMonth(int year, int month)
         {
-            string query = $"select dbo.TotalRevenueByMonth({year}, {month});";
-            try
-            {
-                var result = DataProvider.Instance.ExecuteScalar(query);
-                if (result == DBNull.Value)
-                {
-                    return 0;
-                }
-                return Convert.ToInt64(result);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            string query = $"SELECT dbo.TotalRevenueByMonth({year}, {month});";
+            var result = DataProvider.Instance.ExecuteScalar(query);
+            return Converter.ToInt64(result);
         }
     }
 }
