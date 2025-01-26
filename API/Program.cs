@@ -1,6 +1,7 @@
 ﻿using DTO.Accounts;
 using DTO.ApiResponses;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace API
 {
@@ -45,12 +46,8 @@ namespace API
                 //options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
             });
 
-            // Redirect root ("/") đến Swagger UI
-            app.MapGet("/", context =>
-            {
-                context.Response.Redirect("/swagger");
-                return Task.CompletedTask;
-            });
+            // Cấu hình để tự động redirect tới /swagger
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
 
             app.UseHttpsRedirection();
 

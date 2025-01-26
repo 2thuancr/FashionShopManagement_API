@@ -5,8 +5,8 @@ using Shared.Helpers;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("")]
     public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,13 +14,6 @@ namespace API.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
-
-        [HttpGet]
-        [Route("")]
-        public ActionResult<string> Get()
-        {
-            return Ok($"[{DateTime.UtcNow:O}] API is running...");
         }
 
         [HttpPost]

@@ -17,12 +17,20 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("GetAllProducts")]
-        public IActionResult GetAllProducts()
+        public ActionResult<ApiResponse<List<Product>>> GetAllProducts()
         {
             try
             {
                 List<Product> listProducts = ProductBUS.Instance.GetAllProduct();
-                return Ok(listProducts);
+
+                var response = new ApiResponse<List<Product>>
+                {
+                    IsSuccess = true,
+                    Data = listProducts,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+                return Ok(response);
             }
             catch (Exception ex)
             {
