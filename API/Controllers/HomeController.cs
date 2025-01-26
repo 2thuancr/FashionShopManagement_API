@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DTO.ApiResponses;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Dtos;
 using Shared.Helpers;
 
@@ -17,14 +18,14 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult Get()
+        public ActionResult<string> Get()
         {
             return Ok($"[{DateTime.UtcNow:O}] API is running...");
         }
 
         [HttpPost]
         [Route("SendEmailBySMTP")]
-        public async Task<IActionResult> SendEmailBySMTP(SendEmailBySMTPInput input)
+        public async Task<ActionResult<ApiResponse<SendEmailBySMTPOutput>>> SendEmailBySMTP(SendEmailBySMTPInput input)
         {
             try
             {
@@ -39,17 +40,26 @@ namespace API.Controllers
                 }
 
                 var result = await MailHelper.SendEmailBySMTPAsync(input);
-                return Ok(result);
+                var response = new ApiResponse<SendEmailBySMTPOutput>
+                {
+                    Data = result,
+                    IsSuccess = result.IsSuccess,
+                    Message = result.IsSuccess ? "Send email successfully" : "Send email failed",
+                    ErrorCode = result.IsSuccess ? null : "SEND_EMAIL_FAILED"
+                };
+                return Ok(response);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"[SendEmailBySMTP] Error: {ex.Message}");
 
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<SendEmailBySMTPOutput>
+                {
+                    IsSuccess = false,
+                    Message = "Internal server error",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
     }

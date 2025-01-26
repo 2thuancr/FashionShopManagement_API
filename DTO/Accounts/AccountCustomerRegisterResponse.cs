@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO.Accounts
 {
-    public class AccountCustomerRegisterResponse : ApiRepose<AccountCustomerRegisterResponseDto>
+    public class AccountCustomerRegisterResponse : ApiResponse<AccountCustomerRegisterResponseDto>
     {
     }
 

@@ -18,7 +18,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login(AccountLoginRequest request)
+        public ActionResult<ApiResponse<AccountLoginResponse>> Login(AccountLoginRequest request)
         {
             try
             {
@@ -26,7 +26,13 @@ namespace API.Controllers
 
                 if (account == null)
                 {
-                    return Unauthorized(default(ApiRepose<AccountLoginResponse>));
+                    var response = new ApiResponse<AccountLoginResponse>
+                    {
+                        IsSuccess = false,
+                        Message = "Login failed",
+                        ErrorCode = "UNAUTHORIZED",
+                    };
+                    return Unauthorized(response);
                 }
                 else
                 {
@@ -36,7 +42,13 @@ namespace API.Controllers
                         DisplayName = account.DisplayName,
                         TypeID = account.TypeID
                     };
-                    var response = new ApiRepose<AccountLoginResponse>(isSuccess: true, data);
+                    var response = new ApiResponse<AccountLoginResponse>
+                    {
+                        IsSuccess = true,
+                        Message = "Login successfully",
+                        ErrorCode = null,
+                        Data = data,
+                    };
                     return Ok(response);
                 }
             }
@@ -44,24 +56,32 @@ namespace API.Controllers
             {
                 _logger.LogError(ex, $"[Login] Error while login: {ex.Message}");
 
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountLoginResponse>
+                {
+                    IsSuccess = false,
+                    Message = "Login failed",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
 
         [HttpPost]
         [Route("Register")]
-        public IActionResult Register(AccountCustomerRegisterRequest request)
+        public ActionResult<ApiResponse<AccountCustomerRegisterResponseDto>> Register(AccountCustomerRegisterRequest request)
         {
             try
             {
                 var account = AccountBUS.Instance.RegisterCustomerAccount(request);
                 if (account == null)
                 {
-                    return BadRequest(default(ApiRepose<AccountGenerateOtpRequest>));
+                    var response = new ApiResponse<AccountCustomerRegisterResponseDto>
+                    {
+                        IsSuccess = false,
+                        Message = "Register failed",
+                        ErrorCode = "BAD_REQUEST",
+                    };
+                    return BadRequest(response);
                 }
                 else
                 {
@@ -86,7 +106,13 @@ namespace API.Controllers
                         Otp = otpResponse?.OTP,
                         OtpExpiration = otpResponse?.OTPExpiration,
                     };
-                    var response = new ApiRepose<AccountCustomerRegisterResponseDto>(isSuccess: true, data);
+                    var response = new ApiResponse<AccountCustomerRegisterResponseDto>
+                    {
+                        IsSuccess = true,
+                        Message = "Register successfully",
+                        ErrorCode = null,
+                        Data = data,
+                    };
                     return Ok(response);
                 }
             }
@@ -94,27 +120,42 @@ namespace API.Controllers
             {
                 _logger.LogError(ex, $"[Register] Error while register: {ex.Message}");
 
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountCustomerRegisterResponseDto>
+                {
+                    IsSuccess = false,
+                    Message = "Register failed",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
 
         [HttpPost]
         [Route("GenerateOtp")]
-        public IActionResult GenerateOtp(AccountGenerateOtpRequest request)
+        public ActionResult<ApiResponse<AccountGenerateOtpResponse>> GenerateOtp(AccountGenerateOtpRequest request)
         {
             try
             {
-                var response = AccountBUS.Instance.UpdateOTPByUsername(request);
-                if (response == null)
+                var data = AccountBUS.Instance.UpdateOTPByUsername(request);
+                if (data == null)
                 {
-                    return BadRequest(default(ApiRepose<AccountGenerateOtpResponse>));
+                    var response = new ApiResponse<AccountGenerateOtpResponse>
+                    {
+                        IsSuccess = false,
+                        Message = "Generate OTP failed",
+                        ErrorCode = "BAD_REQUEST",
+                    };
+                    return BadRequest(response);
                 }
                 else
                 {
+                    var response = new ApiResponse<AccountGenerateOtpResponse>
+                    {
+                        IsSuccess = true,
+                        Message = "Generate OTP successfully",
+                        ErrorCode = null,
+                        Data = data,
+                    };
                     return Ok(response);
                 }
             }
@@ -122,28 +163,42 @@ namespace API.Controllers
             {
                 _logger.LogError(ex, $"[GenerateOtp] Error while generate OTP: {ex.Message}");
 
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountGenerateOtpResponse>
+                {
+                    IsSuccess = false,
+                    Message = "Generate OTP failed",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
 
         [HttpPost]
         [Route("VerifyOtp")]
-        public IActionResult VerifyOtp(AccountVerifyOtpByUserNameRequest request)
+        public ActionResult<ApiResponse<AccountVerifyOtpByUserNameResponse>> VerifyOtp(AccountVerifyOtpByUserNameRequest request)
         {
             try
             {
                 var data = AccountBUS.Instance.VerifyOtpByUserName(request);
                 if (data == null)
                 {
-                    return BadRequest(default(ApiRepose<AccountVerifyOtpByUserNameResponse>));
+                    var response = new ApiResponse<AccountVerifyOtpByUserNameResponse>
+                    {
+                        IsSuccess = false,
+                        Message = "Verify OTP failed",
+                        ErrorCode = "BAD_REQUEST",
+                    };
+                    return BadRequest(response);
                 }
                 else
                 {
-                    var response = new ApiRepose<AccountVerifyOtpByUserNameResponse>(isSuccess: true, data);
+                    var response = new ApiResponse<AccountVerifyOtpByUserNameResponse>
+                    {
+                        IsSuccess = true,
+                        Message = "Verify OTP successfully",
+                        ErrorCode = null,
+                        Data = data,
+                    };
                     return Ok(response);
                 }
             }
@@ -151,11 +206,13 @@ namespace API.Controllers
             {
                 _logger.LogError(ex, $"[VerifyOtp] Error while verify OTP: {ex.Message}");
 
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountVerifyOtpByUserNameResponse>
+                {
+                    IsSuccess = false,
+                    Message = "Verify OTP failed",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
     }

@@ -62,7 +62,7 @@
     <Compile Include="Products\ProductInBill.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ApiResponses\ApiRepose.cs" />
+    <Compile Include="ApiResponses\ApiResponse.cs" />
     <Compile Include="Staffs\Shift.cs" />
     <Compile Include="Staffs\StaffShift.cs" />
     <Compile Include="Staffs\Staff.cs" />

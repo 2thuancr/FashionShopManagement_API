@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace DTO.ApiResponses
 {
-    public class ApiRepose<T>
+    public class ApiResponse<T>
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
         public string ErrorCode { get; set; }
+        public string ExceptionDetail { get; set; }
         public T Data { get; set; }
 
-        public ApiRepose()
+        public ApiResponse()
         {
             IsSuccess = false;
-            Message = string.Empty;
-            ErrorCode = string.Empty;
             Data = default(T);
         }
 
-        public ApiRepose(bool isSuccess, T data, string message = null, string errorCode = null)
+        public ApiResponse(bool isSuccess, T data, string message = null, string errorCode = null, string exceptionDetail = null)
         {
             IsSuccess = isSuccess;
             Message = message;
             ErrorCode = errorCode;
             Data = data;
+            ExceptionDetail = exceptionDetail;
         }
     }
 }
