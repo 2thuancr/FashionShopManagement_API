@@ -1,10 +1,5 @@
-﻿using DTO;
-using System;
-using System.Collections.Generic;
+﻿using DTO.Customers;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
@@ -21,47 +16,29 @@ namespace DAO
                 return CustomerDAO.instance;
             }
         }
+
         private CustomerDAO() { }
 
         public DataTable GetAllCustomer()
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("SELECT * FROM [dbo].[ViewAllCustomers]", new object[] { } );
-                return table;
-            }
-            catch( Exception ex) 
-            {    
-                throw ex;
-            }
+            var query = "SELECT * FROM [dbo].[ViewAllCustomers]";
+            return DataProvider.Instance.ExecuteQuery(query);
         }
+
         public DataTable GetCustomerById(int customerId)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery("USP_GetCustomerById @CustomerId", new object[] { customerId });
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = "USP_GetCustomerById @CustomerId";
+            var parameters = new object[] { customerId };
+
+            return DataProvider.Instance.ExecuteQuery(query, parameters);
         }
+
         public DataTable GetCustomerByPhone(string phoneNumber)
         {
-            DataTable table;
-            try
-            {
-                table = DataProvider.Instance.ExecuteQuery($"select * from SearchCustomers('{phoneNumber}')");
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var query = $"SELECT * FROM SearchCustomers('{phoneNumber}')";
+            return DataProvider.Instance.ExecuteQuery(query);
         }
+
         public bool InsertCustomer(Customer newCustomer)
         {
 
@@ -70,24 +47,9 @@ namespace DAO
                 @DoB = '{newCustomer.DoB}', 
                 @Address = '{newCustomer.Address}', 
                 @PhoneNumber = '{newCustomer.PhoneNumber}'";
-            int result;
-            try
-            {
-                result = DataProvider.Instance.ExecuteNonQuery(query, null);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
-
-
-
-
-
-
-
-
     }
 }

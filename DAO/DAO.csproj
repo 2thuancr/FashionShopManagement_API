@@ -60,6 +60,13 @@
       <Project>{78dd72ae-8ca4-4660-87f1-1bbf08b4115c}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{EB2EF756-0CAF-4790-BCDC-8423CD84046B}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

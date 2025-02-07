@@ -1,32 +1,16 @@
 ﻿using BUS;
-using DTO;
+using DTO.Products;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class fThemSanPham : Form
     {
+        private const string DEFAULT_PRODUCT_IMAGE = "https://product.hstatic.net/1000284478/product/z4429178934158_aada2cc3203de7d297a76f3507509257_c84bff2d4ef14a9bb9a6a0ae4cfd446e.jpg";
         public fThemSanPham()
         {
             InitializeComponent();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
@@ -56,7 +40,7 @@ namespace GUI
                 }
                 product.Size = textbox_KichCo.TextButton;
                 product.Description = textBox_ChiTietSanPham.TextButton;
-                product.Image = "https://product.hstatic.net/1000284478/product/z4429178934158_aada2cc3203de7d297a76f3507509257_c84bff2d4ef14a9bb9a6a0ae4cfd446e.jpg";
+                product.Image = DEFAULT_PRODUCT_IMAGE;
 
                 var result = ProductBUS.Instance.InsertProduct(product);
                 if (result == true)
@@ -68,13 +52,12 @@ namespace GUI
                 {
                     MessageBox.Show("Lỗi");
                 }
-               
+
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Bạn không có quyền này!");
             }
-           
         }
     }
 }

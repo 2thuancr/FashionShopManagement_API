@@ -1,5 +1,5 @@
 ﻿using DAO;
-using DTO;
+using DTO.Staffs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,18 +45,7 @@ namespace BUS
             return listStaff;
 
         }
-        //public int InsertStaff(int staffId, string surNameStaff , string nameStaff, DateTime doB, string sex, 
-        //    string address, DateTime recruitmentDay, int noS, decimal reward, int jobId, string phoneNumber)
-        //{
-        //    try
-        //    {
-        //        return StaffDAO.Instance.InsertStaff(staffId, surNameStaff, nameStaff, doB, sex, address, recruitmentDay, noS, reward, jobId, phoneNumber);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+
         public bool InsertStaff(Staff newStaff)
         {
             return StaffDAO.Instance.InsertStaff(newStaff);

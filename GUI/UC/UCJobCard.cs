@@ -28,7 +28,7 @@ namespace GUI.UC
         //private Color buttonMenuBackground = Color.LightCyan;
         private Color jobNameTextColor = SystemColors.Highlight;
         private Image bgImage;
-        private Image buttonViewImage;
+        //private Image buttonViewImage;
         //private Image buttonMenuImage;
         #endregion Fields
 

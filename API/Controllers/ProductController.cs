@@ -1,9 +1,7 @@
 ﻿using BUS;
-using DAO;
-using DTO;
-using Microsoft.AspNetCore.Http;
+using DTO.ApiResponses;
+using DTO.Products;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace API.Controllers
 {
@@ -11,71 +9,114 @@ namespace API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly ILogger<ProductController> _logger;
+        public ProductController(ILogger<ProductController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         [Route("GetAllProducts")]
-        public IActionResult GetAllProducts()
+        public ActionResult<ApiResponse<List<Product>>> GetAllProducts()
         {
             try
             {
                 List<Product> listProducts = ProductBUS.Instance.GetAllProduct();
-                return Ok(listProducts);
+
+                var response = new ApiResponse<List<Product>>
+                {
+                    IsSuccess = true,
+                    Data = listProducts,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                _logger.LogError(ex, $"[GetAllProducts] Error: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
 
         [HttpGet]
         [Route("SearchProductByName")]
-        public IActionResult SearchProductByName(string name)
+        public ActionResult<ApiResponse<List<Product>>> SearchProductByName(string name)
         {
-            if (name == null || name == "")
-            {
-                throw new ArgumentNullException("name is required");
-            }
-
             try
             {
                 List<Product> listProducts = ProductBUS.Instance.SearchProductByName(name);
-                
-                return Ok(listProducts);
+
+                var response = new ApiResponse<List<Product>>
+                {
+                    IsSuccess = true,
+                    Data = listProducts,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                _logger.LogError(ex, $"[SearchProductByName] Error: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
+
         [HttpGet]
         [Route("GetProductById")]
-        public IActionResult GetProductById(int id)
+        public ActionResult<ApiResponse<Product>> GetProductById(int id)
         {
             if (id <= 0)
             {
-                throw new ArgumentNullException("id must greater than 0");
+                return BadRequest(new ApiResponse<Product>
+                {
+                    IsSuccess = false,
+                    Message = "Id must greater than 0",
+                    ErrorCode = "INVALID_ID"
+                });
             }
 
             try
             {
                 Product product = ProductBUS.Instance.GetProductById(id);
 
-                return Ok(product);
+                var response = new ApiResponse<Product>
+                {
+                    IsSuccess = true,
+                    Data = product,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                return Problem(
-                    detail: ex.Message,
-                    statusCode: StatusCodes.Status500InternalServerError,
-                    title: "Unexpected Error"
-                );
+                _logger.LogError(ex, $"[GetProductById] Error: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Product>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 
 namespace DAO
 {
@@ -21,14 +20,7 @@ namespace DAO
 
         public DataTable GetAllAccountType()
         {
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery("select * from AccountType");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return DataProvider.Instance.ExecuteQuery("select * from AccountType");
         }
     }
 }

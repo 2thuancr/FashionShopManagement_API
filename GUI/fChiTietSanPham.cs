@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using DTO.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +39,7 @@ namespace GUI
                 this.picture_SanPham.Load(this.product.Image);
                 this.picture_SanPham.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch (Exception ex)
+            catch
             {
 
             }

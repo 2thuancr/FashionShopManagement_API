@@ -1,5 +1,5 @@
 ﻿using DAO;
-using DTO;
+using DTO.Campaigns;
 using System;
 using System.Collections.Generic;
 using System.Data;

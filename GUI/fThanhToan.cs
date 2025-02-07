@@ -1,13 +1,6 @@
 ﻿using BUS;
-using DTO;
+using DTO.Bills;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -33,7 +26,7 @@ namespace GUI
 
         private void fThanhToan_Load(object sender, EventArgs e)
         {
-            string amount = (bill.TotalPrice).ToString();
+            string amount = bill.TotalPrice.ToString();
             string addInfo = $"Thanh toan hoa don {bill.ID}";
 
             var url = BillBUS.Instance.GetQrPayment("print", bankName, bankAccountID, bankAccountName, addInfo, amount);
@@ -42,7 +35,7 @@ namespace GUI
                 this.picture_QRCode.Load(url);
                 this.picture_QRCode.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch (Exception ex)
+            catch
             {
 
             }

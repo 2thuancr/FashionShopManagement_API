@@ -1,5 +1,5 @@
 ﻿using BUS;
-using DTO;
+using DTO.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

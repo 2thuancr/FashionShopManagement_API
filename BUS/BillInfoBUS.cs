@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using DAO;
-using DTO;
+using DTO.Bills;
 
 namespace BUS
 {
@@ -57,6 +57,7 @@ namespace BUS
                 throw ex;
             }
         }
+
         public List<BillInfoDetail> GetBillInfoDetailByBillId(int billId)
         {
             DataTable table;

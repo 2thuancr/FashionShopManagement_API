@@ -1,14 +1,7 @@
 ﻿using BUS;
-using DTO;
-using NPOI.XSSF.Extractor;
+using DTO.Staffs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -29,7 +22,7 @@ namespace GUI
 
         private void FPhanCa_Load(object sender, EventArgs e)
         {
-           this.LoadData();
+            this.LoadData();
         }
 
         private void LoadData()
@@ -43,7 +36,7 @@ namespace GUI
         {
             try
             {
-                // Xacs ddinhj index dang duoc chon 
+                // Xác định cell vừa click
                 var selectedIndex = data_CaLamViec.SelectedCells[0].RowIndex;
                 var staffShift = this.lstStaffShift[selectedIndex];
                 // show form sua ca len
@@ -52,10 +45,10 @@ namespace GUI
                 // load lai data
                 this.LoadData();
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 MessageBox.Show("Lỗi lấy thông tin ca làm việc");
             }
-
         }
     }
 }

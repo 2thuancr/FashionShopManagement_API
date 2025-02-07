@@ -1,10 +1,4 @@
-﻿using DTO;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace DAO
 {
@@ -21,45 +15,25 @@ namespace DAO
                 return ShiftDAO.instance;
             }
         }
+
         private ShiftDAO() { }
+
         public DataTable GetAllStaffShift()
         {
             string query = "USP_GetAllStaffShift";
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery(query);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return DataProvider.Instance.ExecuteQuery(query);
         }
 
-        public DataTable GetAllShift() 
+        public DataTable GetAllShift()
         {
             string query = "SELECT * FROM ViewAllShifts";
-            try
-            {
-                return DataProvider.Instance.ExecuteQuery(query);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return DataProvider.Instance.ExecuteQuery(query);
         }
 
         public bool UpdateStaffShift(int staffId, int shiftId)
         {
             string query = string.Format($"USP_UpdateStaffShift @StaffId ={staffId}, @ShiftId = {shiftId} ");
-            int result;
-            try
-            {
-                result = DataProvider.Instance.ExecuteNonQuery(query);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
     }

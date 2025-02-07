@@ -1,9 +1,8 @@
-﻿using System;
+﻿using DAO;
+using DTO.Bills;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Runtime.InteropServices.WindowsRuntime;
-using DAO;
-using DTO;
 
 namespace BUS
 {
@@ -22,18 +21,6 @@ namespace BUS
         }
 
         private BillBUS() { }
-
-        public int GetUnCheckBillIDByTableID(int id)
-        {
-            try
-            {
-                return BillDAO.Instance.GetUnCheckBillIDByTableID(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
@@ -56,7 +43,7 @@ namespace BUS
             catch (Exception ex)
             {
                 throw ex;
-            } 
+            }
         }
 
         public void UpdateBillStatus(Bill bill)
@@ -101,7 +88,10 @@ namespace BUS
             {
                 BillDAO.Instance.CheckOut(billID, discount, totalPrice);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Bill> GetListBillByDate(DateTime fromDate, DateTime toDate)
@@ -189,7 +179,7 @@ namespace BUS
             {
                 return null;
             }
-            
+
         }
         public Bill GetBillById(int Id)
         {
@@ -204,7 +194,7 @@ namespace BUS
             }
 
             Bill bill = new Bill();
-            if(table != null && table.Rows.Count > 0)
+            if (table != null && table.Rows.Count > 0)
             {
                 bill = new Bill(table.Rows[0]);
             }
@@ -229,7 +219,7 @@ namespace BUS
         /// <param name="bill"></param>
         public string GetQrPayment(string qrType, string bankName, string bankAccountID, string bankAccountName, string addInfo, string amount)
         {
-          
+
             string url = $"https://img.vietqr.io/image/{bankName}-{bankAccountID}-{qrType}.png?amount={amount}&accountName={bankAccountName}&addInfo={addInfo}";
             return url;
         }

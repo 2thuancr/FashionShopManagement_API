@@ -1,13 +1,7 @@
 ﻿using BUS;
-using DTO;
+using DTO.Bills;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -38,13 +32,13 @@ namespace GUI
                 this.label_SoLuongDon.Text = result.ToString();
 
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show("Lỗi đếm số lượng đơn hàng theo tháng");            
+                MessageBox.Show("Lỗi đếm số lượng đơn hàng theo tháng");
             }
         }
 
-        private void LoadTongDoanhThu() 
+        private void LoadTongDoanhThu()
         {
             try
             {

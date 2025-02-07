@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-using DTO;
+using DTO.Products;
 using DAO;
 using System.Linq;
 

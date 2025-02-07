@@ -1,5 +1,7 @@
 ﻿using BUS;
 using DTO;
+using DTO.Bills;
+using DTO.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,7 +93,7 @@ namespace GUI
                 this.picture_QRCode.Load(url);
                 this.picture_QRCode.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            catch (Exception ex)
+            catch
             {
 
             }

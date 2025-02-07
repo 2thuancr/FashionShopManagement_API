@@ -229,7 +229,6 @@
             this.data_DSDonHang.Size = new System.Drawing.Size(1136, 454);
             this.data_DSDonHang.TabIndex = 38;
             this.data_DSDonHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DSDonHang_CellClick);
-            this.data_DSDonHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_DSDonHang_CellContentClick);
             // 
             // fDonHang
             // 

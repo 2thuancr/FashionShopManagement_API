@@ -1,4 +1,7 @@
-﻿using DTO;
+﻿using DTO.Accounts;
+using DTO.ApiResponses;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace API
 {
@@ -6,7 +9,6 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            ConfigDatabase();
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,9 @@ namespace API
                                       .AllowAnyMethod());
             });
 
+            ConfigDatabase();
+            ConfigApiResponse(builder);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,12 +46,8 @@ namespace API
                 //options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
             });
 
-            // Redirect root ("/") đến Swagger UI
-            app.MapGet("/", context =>
-            {
-                context.Response.Redirect("/swagger");
-                return Task.CompletedTask;
-            });
+            // Cấu hình để tự động redirect tới /swagger
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
 
             app.UseHttpsRedirection();
 
@@ -59,10 +60,51 @@ namespace API
             app.Run();
         }
 
-        private static void ConfigDatabase()
+        public static void ConfigDatabase()
         {
             Account.ConnectionString = Account.connectionStringUser;
             Account.ConnectionName = Account.connectionNameUser;
+        }
+
+        public static void ConfigApiResponse(WebApplicationBuilder? builder)
+        {
+            if (builder == null)
+            {
+                return;
+            }
+
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    // Sử dụng ValidationProblemDetails của ASP.NET Core
+                    var validationProblemDetails = new ValidationProblemDetails(context.ModelState)
+                    {
+                        //Type = "https://example.com/validation-error",
+                        Title = "Validation Error",
+                        Status = StatusCodes.Status400BadRequest,
+                        Detail = "One or more validation errors occurred.",
+                        Instance = context.HttpContext.Request.Path
+                    };
+
+                    var exceptionDetail = context.ModelState.Values.SelectMany(e => e.Errors.Select(e => e.ErrorMessage)).ToList();
+
+                    // Bao bọc ValidationProblemDetails trong cấu trúc tùy chỉnh
+                    var response = new ApiResponse<ValidationProblemDetails>
+                    {
+                        IsSuccess = false,
+                        Message = "Validation failed",
+                        ErrorCode = "VALIDATION_ERROR",
+                        ExceptionDetail = string.Join("\n", exceptionDetail),
+                        Data = validationProblemDetails
+                    };
+
+                    return new BadRequestObjectResult(response)
+                    {
+                        ContentTypes = { "application/json" }
+                    };
+                };
+            });
         }
     }
 }

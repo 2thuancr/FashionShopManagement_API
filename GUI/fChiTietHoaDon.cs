@@ -1,20 +1,15 @@
 ﻿using BUS;
-using DTO;
+using DTO.Bills;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class fChiTietHoaDon : Form
     {
-        private Bill bill = new Bill(); 
+        private Bill bill = new Bill();
         public fChiTietHoaDon()
         {
             InitializeComponent();
@@ -25,6 +20,7 @@ namespace GUI
             this.bill = bill;
             this.ShowBill();
         }
+
         private void ShowBill()
         {
 
@@ -43,9 +39,9 @@ namespace GUI
                     this.textBox_TenKhachHang.TextButton = item.CustomerName;
                     this.data_ChiTietHoaDon.DataSource = null;
                     this.data_ChiTietHoaDon.DataSource = listBillInfoDetails;
-                }    
+                }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Lỗi lấy danh sách chi tiết hóa đơn");
             }

@@ -26,7 +26,7 @@ namespace BUS
 
         private AccountBUS() { }
 
-        public AccountCustomerRegisterResponse RegisterCustomerAccount(AccountCustomerRegisterRequest request)
+        public AccountCustomerRegisterResponseDto RegisterCustomerAccount(AccountCustomerRegisterRequest request)
         {
             try
             {
@@ -43,10 +43,10 @@ namespace BUS
                 if (table.Rows.Count == 0)
                     return null;
 
-                var result = new AccountCustomerRegisterResponse
+                var result = new AccountCustomerRegisterResponseDto
                 {
-                    AccountId = Convert.ToInt32(table.Rows[0]["AccountId"]),
-                    CustomerId = Convert.ToInt32(table.Rows[0]["CustomerId"])
+                    AccountId = System.Convert.ToInt32(table.Rows[0]["AccountId"]),
+                    CustomerId = System.Convert.ToInt32(table.Rows[0]["CustomerId"])
                 };
 
                 return result;
@@ -122,6 +122,31 @@ namespace BUS
                 {
                     OTP = otpObject,
                     OTPExpiration = otpExpiration
+                };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public AccountVerifyOtpByUserNameResponse VerifyOtpByUserName(AccountVerifyOtpByUserNameRequest request)
+        {
+            try
+            {
+                var table = AccountDAO.Instance.VerifyOtpByUsername(request);
+                if (table.Rows.Count == 0)
+                {
+                    throw new Exception("Cannot verify OTP");
+                }
+                var response = new AccountVerifyOtpByUserNameResponse
+                {
+                    Status = Converter.ToString(table.Rows[0]["Status"]),
+                    UserName = Converter.ToString(table.Rows[0]["UserName"]),
+                    OTP = Converter.ToString(table.Rows[0]["OTP"]),
+                    VerifiedOTP = Converter.ToString(table.Rows[0]["VerifiedOTP"]),
+                    ExpirationTime = Converter.ToDateTimeNullable(table.Rows[0]["ExpirationTime"])
                 };
                 return response;
             }
