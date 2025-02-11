@@ -7,6 +7,7 @@ using DTO;
 using DTO.Accounts;
 using Shared.Helpers;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace BUS
 {
@@ -213,6 +214,18 @@ namespace BUS
                 return AccountDAO.Instance.ResetPassword(userName);
             }
             catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
+        public bool UpdatePassword (AccountCustomerUpdatePasswordRequest request)
+        {
+            try
+            {
+                return AccountDAO.Instance.UpdatePassword(request.Email, request.Password);
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }

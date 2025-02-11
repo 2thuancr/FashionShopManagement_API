@@ -126,6 +126,22 @@ namespace DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
             return result > 0;
         }
+        public bool UpdatePassword (string email, string password)
+        {
+            string query = $@"UPDATE Account
+                            SET Password = '{password}'
+                            WHERE Email = '{email}'";
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+
+            //string query = string.Format("USP_UpdatePassword @Email , @NewPassword");
+
+            //var parameter = new object[] { email, password };
+
+            //int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
+            //return result > 0;
+        }
 
         public bool Delete(string userName)
         {
@@ -163,5 +179,6 @@ namespace DAO
 
             return DataProvider.Instance.ExecuteQuery(query, parameter);
         }
+
     }
 }

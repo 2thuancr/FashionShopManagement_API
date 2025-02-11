@@ -131,6 +131,52 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Route("UpdatePassword")]
+        public ActionResult<ApiResponse<AccountCustomerUpdatePasswordResponseDto>> UpdatePassword(AccountCustomerUpdatePasswordRequest request )
+        {
+            try
+            {
+                var account = AccountBUS.Instance.UpdatePassword(request);
+                if (account == false)
+                {
+                    var response = new ApiResponse<AccountCustomerUpdatePasswordResponseDto>
+                    {
+                        IsSuccess = false,
+                        Message = "Update Password failed",
+                        ErrorCode = "BAD_REQUEST",
+                    };
+                    return BadRequest(response);
+                }
+                else
+                {
+                    
+                    var response = new ApiResponse<AccountCustomerUpdatePasswordResponseDto>
+                    {
+                        IsSuccess = true,
+                        Message = "Update Password successfully",
+                        ErrorCode = null,
+                        Data = new AccountCustomerUpdatePasswordResponseDto
+                        {
+                        },
+                    };
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[UpdatePassword] Error while updatePassword: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountCustomerUpdatePasswordResponseDto>
+                {
+                    IsSuccess = false,
+                    Message = "UpdatePassword failed",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
+        [HttpPost]
         [Route("GenerateOtp")]
         public ActionResult<ApiResponse<AccountGenerateOtpResponse>> GenerateOtp(AccountGenerateOtpRequest request)
         {
