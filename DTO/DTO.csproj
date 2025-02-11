@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\Account.cs" />
+    <Compile Include="Accounts\AccountCustomerUpdatePasswordRequest.cs" />
+    <Compile Include="Accounts\AccountCustomerUpdatePasswordResponse.cs" />
     <Compile Include="Accounts\AccountCustomerRegisterResponse.cs" />
     <Compile Include="Accounts\AccountCustomerRegisterRequest.cs" />
     <Compile Include="Accounts\AccountGenerateOtpResponse.cs" />
