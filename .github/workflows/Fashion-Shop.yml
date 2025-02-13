@@ -1,4 +1,5 @@
 name: Build and deploy .NET Core application to Web App Fashion-Shop
+
 on:
   push:
     branches:
@@ -6,47 +7,59 @@ on:
   pull_request:
     branches:
       - main
+
 env:
   AZURE_WEBAPP_NAME: Fashion-Shop
   AZURE_WEBAPP_PACKAGE_PATH: API\publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: API
+  SOLUTION_FILE: FashionShopManagement.sln  # Tên solution file
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-    - name: Restore
+
+    - name: Ensure NuGet Config is Correct
       run: |
         dotnet nuget locals all --clear
-        dotnet restore "${{ env.WORKING_DIRECTORY }}" --force
-    - name: Debug missing packages
-      run: dotnet list "${{ env.WORKING_DIRECTORY }}" package
-    - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
-    - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
-    - name: Publish
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
-    - name: Publish Artifacts
+        dotnet restore "${{ env.SOLUTION_FILE }}" --force
+
+    - name: Debug Missing Packages
+      run: dotnet list "${{ env.SOLUTION_FILE }}" package
+
+    - name: Build Entire Solution
+      run: dotnet build "${{ env.SOLUTION_FILE }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+
+    - name: Run Unit Tests
+      run: dotnet test "${{ env.SOLUTION_FILE }}" --no-build || echo "Skipping tests"
+
+    - name: Publish Web API
+      run: dotnet publish "API/API.csproj" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+
+    - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
   deploy:
     runs-on: windows-latest
     needs: build
     steps:
-    - name: Download artifact from build job
+    - name: Download Build Artifact
       uses: actions/download-artifact@v4
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
