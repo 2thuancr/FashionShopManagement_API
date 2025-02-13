@@ -22,7 +22,11 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}" --force
+      run: |
+        dotnet nuget locals all --clear
+        dotnet restore "${{ env.WORKING_DIRECTORY }}" --force
+    - name: Debug missing packages
+      run: dotnet list "${{ env.WORKING_DIRECTORY }}" package
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Test
