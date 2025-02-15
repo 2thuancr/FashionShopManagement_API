@@ -47,6 +47,7 @@
     <Compile Include="BillDAO.cs" />
     <Compile Include="BillInfoDAO.cs" />
     <Compile Include="CampaignDAO.cs" />
+    <Compile Include="CategoriesDAO.cs" />
     <Compile Include="CustomerDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="ReportDAO.cs" />

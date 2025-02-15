@@ -60,6 +60,7 @@
     <Compile Include="Bills\BillPriceInfo.cs" />
     <Compile Include="Campaigns\CampaignView.cs" />
     <Compile Include="Campaigns\Campaign.cs" />
+    <Compile Include="Categories\Categories.cs" />
     <Compile Include="Customers\Customer.cs" />
     <Compile Include="Products\ProductInBill.cs" />
     <Compile Include="Products\Product.cs" />
