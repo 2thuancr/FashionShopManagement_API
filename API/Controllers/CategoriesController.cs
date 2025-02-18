@@ -180,5 +180,42 @@ namespace API.Controllers
 
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteCategory")]
+        public ActionResult<ApiResponse<CategoriesDeleteResponse>> DeleteCategory(int id)
+        {
+            try
+            {
+                var request = new CategoriesDeleteRequest
+                {
+                    id = id,
+                };
+                CategoriesDeleteResponse result = CategoriesBUS.Instance.DeleteCategory(request);
+
+                var response = new ApiResponse<CategoriesDeleteResponse>
+                {
+                    IsSuccess = true,
+                    Data = result,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[DeleteCategory] Error: {ex.Message}");
+
+                var response = new ApiResponse<CategoriesDeleteResponse>
+                {
+                    IsSuccess = true,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message
+                };
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+            }
+        }
     }
 }

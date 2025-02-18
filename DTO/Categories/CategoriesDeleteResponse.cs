@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DTO.Categories
 {
-    public class CategoriesInsertResponse
+    public class CategoriesDeleteResponse
     {
-        public bool IsCreated { get; set; }
+        public bool Success { get; set; }
     }
 }

@@ -124,5 +124,18 @@ namespace BUS
                 IsUpdated = isUpdated
             };
         }
+        public CategoriesDeleteResponse DeleteCategory(CategoriesDeleteRequest request)
+        {
+            var category = new Categories
+            {
+                id = request.id,
+            };
+            var success = CategoriesDAO.Instance.DeleteCategory(category);
+            return new CategoriesDeleteResponse
+            {
+                Success = success
+            };
+        }
+
     }
 }

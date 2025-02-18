@@ -81,5 +81,18 @@ namespace DAO
                 return result > 0;
             }    
         }
+        public bool DeleteCategory(Categories categories)
+        {
+            if(categories.id > 0)
+            {
+                string query = $"USP_DeleteCategory @id = {categories.id}";
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }
+            else
+            {
+                return false;
+            }    
+        }
     }
 }

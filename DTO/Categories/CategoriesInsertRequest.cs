@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO.Accounts
+namespace DTO.Categories
 {
     public class CategoriesInsertRequest
     {
