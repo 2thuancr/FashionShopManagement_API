@@ -147,5 +147,38 @@ namespace API.Controllers
 
             }
         }
+
+        [HttpPut]
+        [Route("UpdateCategory")]
+        public ActionResult<ApiResponse<CategoriesUpdateResponse>> UpdateCategory(CategoriesUpdateRequest request)
+        {
+            try
+            {
+                CategoriesUpdateResponse result = CategoriesBUS.Instance.UpdateCategory(request);
+
+                var response = new ApiResponse<CategoriesUpdateResponse>
+                {
+                    IsSuccess = true,
+                    Data = result,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[UpdateCategory] Error: {ex.Message}");
+
+                var response = new ApiResponse<CategoriesUpdateResponse>
+                {
+                    IsSuccess = true,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message
+                };
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+            }
+        }
     }
 }

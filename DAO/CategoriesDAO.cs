@@ -59,5 +59,27 @@ namespace DAO
             }
           
         }
+        public bool UpdateCategory(Categories categories)
+        {
+            if(categories.parent_id > 0)
+            {
+                string query = $"USP_UpdateCategory " +
+                $"@id = {categories.id} , " +
+                $"@name = N'{categories.name}' , " +
+                $"@parent_id = {categories.parent_id}";
+
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }    
+            else
+            {
+                string query = $"USP_UpdateCategory " +
+                $"@id = {categories.id} , " +
+                $"@name = N'{categories.name}'";
+
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            }    
+        }
     }
 }

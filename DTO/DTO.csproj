@@ -60,6 +60,8 @@
     <Compile Include="Bills\BillPriceInfo.cs" />
     <Compile Include="Campaigns\CampaignView.cs" />
     <Compile Include="Campaigns\Campaign.cs" />
+    <Compile Include="Categories\CategoriesUpdateRequest.cs" />
+    <Compile Include="Categories\CategoriesUpdateResponse.cs" />
     <Compile Include="Categories\CategoriesInsertResponse.cs" />
     <Compile Include="Categories\CategoriesInsertRequest.cs" />
     <Compile Include="Categories\CategoriesSearchRequest.cs" />

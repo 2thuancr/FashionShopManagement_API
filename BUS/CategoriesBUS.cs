@@ -105,5 +105,24 @@ namespace BUS
                 IsCreated = isCreated
             };
         }
+        public CategoriesUpdateResponse UpdateCategory(CategoriesUpdateRequest request)
+        {
+            if(request.parent_id <= 0)
+            {
+                throw new Exception("Lỗi parent id không hợp lệ");
+            }
+
+            var category = new Categories
+            {
+                id = request.id,
+                name = request.name,
+                parent_id = request.parent_id,
+            };
+            var isUpdated = CategoriesDAO.Instance.UpdateCategory(category);
+            return new CategoriesUpdateResponse
+            {
+                IsUpdated = isUpdated
+            };
+        }
     }
 }
