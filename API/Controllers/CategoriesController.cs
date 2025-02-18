@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO.Accounts;
 using DTO.ApiResponses;
 using DTO.Categories;
 using DTO.Products;
@@ -50,11 +51,11 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("SearchCategories")]
-        public ActionResult<ApiResponse<List<Categories>>> SearchCategories(string name)
+        public ActionResult<ApiResponse<List<Categories>>> SearchCategories(CategoriesSearchRequest request)
         {
             try
             {
-                List<Categories> listCategories = CategoriesBUS.Instance.SearchCategories(name);
+                List<Categories> listCategories = CategoriesBUS.Instance.SearchCategories(request);
 
                 var response = new ApiResponse<List<Categories>>
                 {
@@ -103,6 +104,39 @@ namespace API.Controllers
                 _logger.LogError(ex, $"[GetCategoryById] Error: {ex.Message}");
 
                 var response = new ApiResponse<Categories>
+                {
+                    IsSuccess = true,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message
+                };
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+            }
+        }
+
+        [HttpPost]
+        [Route("InsertCategory")]
+        public ActionResult<ApiResponse<CategoriesInsertResponse>> InsertCategory(CategoriesInsertRequest request)
+        {
+            try
+            {
+                CategoriesInsertResponse result = CategoriesBUS.Instance.InsertCategory(request);
+
+                var response = new ApiResponse<CategoriesInsertResponse>
+                {
+                    IsSuccess = true,
+                    Data = result,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[InsertCategory] Error: {ex.Message}");
+
+                var response = new ApiResponse<CategoriesInsertResponse>
                 {
                     IsSuccess = true,
                     Message = ex.Message,

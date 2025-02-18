@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO.Accounts;
 using DTO.Categories;
 using DTO.Products;
 using System;
@@ -47,12 +48,12 @@ namespace BUS
             return lstCategories;
         }
 
-        public List<Categories> SearchCategories(string name)
+        public List<Categories> SearchCategories(CategoriesSearchRequest request)
         {
             DataTable table = new DataTable();
             try
             {
-                table = CategoriesDAO.Instance.SearchCategories(name);
+                table = CategoriesDAO.Instance.SearchCategories(request.name);
             }
             catch (Exception ex)
             {
@@ -86,6 +87,23 @@ namespace BUS
                 return categories;
             }
             return null;
+        }
+        public CategoriesInsertResponse InsertCategory(CategoriesInsertRequest request)
+        {
+            if (request.parent_id <= 0)
+            {
+                throw new Exception("Lỗi Parent Id không hợp lệ");
+            }    
+            var category = new Categories
+            {
+                name = request.name,
+                parent_id = request.parent_id,
+            };
+            var isCreated = CategoriesDAO.Instance.InsertCategory(category);
+            return new CategoriesInsertResponse
+            {
+                IsCreated = isCreated
+            };
         }
     }
 }
