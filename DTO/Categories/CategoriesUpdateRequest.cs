@@ -9,8 +9,8 @@ namespace DTO.Categories
 {
     public class CategoriesUpdateRequest
     {
-        [Required]
-        public int id { get; set; }
+        //[Required]
+        //public int id { get; set; }
 
         [Required]
         public string name { get; set; }

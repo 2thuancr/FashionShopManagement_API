@@ -19,7 +19,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllCategories")]
+        [Route("list")]
         public ActionResult<ApiResponse<List<Categories>>> GetAllCategories()
         {
             try
@@ -50,7 +50,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("SearchCategories")]
+        [Route("search")]
         public ActionResult<ApiResponse<List<Categories>>> SearchCategories(CategoriesSearchRequest request)
         {
             try
@@ -83,7 +83,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("GetCategoryById")]
+        [Route("{id}")]
         public ActionResult<ApiResponse<Categories>> GetCategoryById(int id)
         {
             try
@@ -116,7 +116,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("InsertCategory")]
+        [Route("create")]
         public ActionResult<ApiResponse<CategoriesInsertResponse>> InsertCategory(CategoriesInsertRequest request)
         {
             try
@@ -149,12 +149,12 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCategory")]
-        public ActionResult<ApiResponse<CategoriesUpdateResponse>> UpdateCategory(CategoriesUpdateRequest request)
+        [Route("update/{id}")]
+        public ActionResult<ApiResponse<CategoriesUpdateResponse>> UpdateCategory(int id, CategoriesUpdateRequest request)
         {
             try
             {
-                CategoriesUpdateResponse result = CategoriesBUS.Instance.UpdateCategory(request);
+                CategoriesUpdateResponse result = CategoriesBUS.Instance.UpdateCategory(id, request);
 
                 var response = new ApiResponse<CategoriesUpdateResponse>
                 {
@@ -182,7 +182,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteCategory")]
+        [Route("delete/{id}")]
         public ActionResult<ApiResponse<CategoriesDeleteResponse>> DeleteCategory(int id)
         {
             try

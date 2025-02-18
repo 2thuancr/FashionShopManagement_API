@@ -105,7 +105,7 @@ namespace BUS
                 IsCreated = isCreated
             };
         }
-        public CategoriesUpdateResponse UpdateCategory(CategoriesUpdateRequest request)
+        public CategoriesUpdateResponse UpdateCategory(int id, CategoriesUpdateRequest request)
         {
             if(request.parent_id <= 0)
             {
@@ -114,7 +114,7 @@ namespace BUS
 
             var category = new Categories
             {
-                id = request.id,
+                id = id,
                 name = request.name,
                 parent_id = request.parent_id,
             };

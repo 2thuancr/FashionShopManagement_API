@@ -16,7 +16,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllProducts")]
+        [Route("list")]
         public ActionResult<ApiResponse<List<Product>>> GetAllProducts()
         {
             try
@@ -47,7 +47,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("SearchProductByName")]
+        [Route("search")]
         public ActionResult<ApiResponse<List<Product>>> SearchProductByName(string name)
         {
             try
@@ -79,7 +79,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("GetProductById")]
+        [Route("{id}")]
         public ActionResult<ApiResponse<Product>> GetProductById(int id)
         {
             if (id <= 0)
