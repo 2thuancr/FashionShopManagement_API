@@ -17,56 +17,6 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("Login")]
-        public ActionResult<ApiResponse<AccountLoginResponse>> Login(AccountLoginRequest request)
-        {
-            try
-            {
-                var account = AccountBUS.Instance.Login(request);
-
-                if (account == null)
-                {
-                    var response = new ApiResponse<AccountLoginResponse>
-                    {
-                        IsSuccess = false,
-                        Message = "Login failed",
-                        ErrorCode = "UNAUTHORIZED",
-                    };
-                    return Unauthorized(response);
-                }
-                else
-                {
-                    var data = new AccountLoginResponse
-                    {
-                        UserName = account.UserName,
-                        DisplayName = account.DisplayName,
-                        TypeID = account.TypeID
-                    };
-                    var response = new ApiResponse<AccountLoginResponse>
-                    {
-                        IsSuccess = true,
-                        Message = "Login successfully",
-                        ErrorCode = null,
-                        Data = data,
-                    };
-                    return Ok(response);
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"[Login] Error while login: {ex.Message}");
-
-                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountLoginResponse>
-                {
-                    IsSuccess = false,
-                    Message = "Login failed",
-                    ErrorCode = "INTERNAL_SERVER_ERROR",
-                    ExceptionDetail = ex.Message,
-                });
-            }
-        }
-
-        [HttpPost]
         [Route("Register")]
         public ActionResult<ApiResponse<AccountCustomerRegisterResponseDto>> Register(AccountCustomerRegisterRequest request)
         {

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BUS;
+using DTO.Accounts;
+using DTO.ApiResponses;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,16 +20,68 @@ public class AuthController : ControllerBase
         _logger = logger;
     }
 
-    [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginModel login)
+    [HttpPost]
+    [Route("Login")]
+    public ActionResult<ApiResponse<AccountLoginResponse>> Login(AccountLoginRequest request)
     {
-        if (login.Username == "admin" && login.Password == "password") // Giả lập xác thực
+        try
         {
-            var token = GenerateJwtToken(login.Username, "Admin");
-            return Ok(new { token });
+            var account = AccountBUS.Instance.Login(request);
+
+            if (account == null)
+            {
+                var response = new ApiResponse<AccountLoginResponse>
+                {
+                    IsSuccess = false,
+                    Message = "Login failed",
+                    ErrorCode = "UNAUTHORIZED",
+                };
+                return Unauthorized(response);
+            }
+            else
+            {
+                var role = "Customer";
+                if (account.TypeID == 1)
+                {
+                    role = "Staff";
+                }
+                else if (account.TypeID == 2)
+                {
+                    role = "Admin";
+                }
+                var token = GenerateJwtToken(request.UserName, role);
+            
+                var data = new AccountLoginResponse
+                {
+                    UserName = account.UserName,
+                    DisplayName = account.DisplayName,
+                    TypeID = account.TypeID,
+                    Token = token,
+                };
+                var response = new ApiResponse<AccountLoginResponse>
+                {
+                    IsSuccess = true,
+                    Message = "Login successfully",
+                    ErrorCode = null,
+                    Data = data,
+                };
+                return Ok(response);
+            }
         }
-        return Unauthorized();
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"[Login] Error while login: {ex.Message}");
+
+            return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<AccountLoginResponse>
+            {
+                IsSuccess = false,
+                Message = "Login failed",
+                ErrorCode = "INTERNAL_SERVER_ERROR",
+                ExceptionDetail = ex.Message,
+            });
+        }
     }
+
 
     private string GenerateJwtToken(string username, string role)
     {
