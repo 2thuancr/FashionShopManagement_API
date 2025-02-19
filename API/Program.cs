@@ -1,7 +1,10 @@
 ﻿using DTO.Accounts;
 using DTO.ApiResponses;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace API
 {
@@ -12,7 +15,29 @@ namespace API
 
             var builder = WebApplication.CreateBuilder(args);
 
+            // Đọc cấu hình JWT từ appsettings.json
+            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+            var key = Encoding.UTF8.GetBytes(jwtSettings["Secret"]);
+
             // Add services to the container.
+
+            builder.Services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwtSettings["Issuer"],
+                        ValidAudience = jwtSettings["Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(key)
+                    };
+                });
+
+            builder.Services.AddAuthorization();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -31,6 +56,9 @@ namespace API
             ConfigApiResponse(builder);
 
             var app = builder.Build();
+
+            app.UseAuthentication();  // Kích hoạt xác thực JWT
+            app.UseAuthorization();
 
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())

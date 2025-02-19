@@ -3,6 +3,7 @@ using DTO.Accounts;
 using DTO.ApiResponses;
 using DTO.Categories;
 using DTO.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -117,6 +118,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("create")]
+        [Authorize]  // Chỉ cho phép truy cập nếu có token hợp lệ
         public ActionResult<ApiResponse<CategoriesInsertResponse>> InsertCategory(CategoriesInsertRequest request)
         {
             try
@@ -150,6 +152,7 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("update/{id}")]
+        [Authorize]  // Chỉ cho phép truy cập nếu có token hợp lệ
         public ActionResult<ApiResponse<CategoriesUpdateResponse>> UpdateCategory(int id, CategoriesUpdateRequest request)
         {
             try
@@ -183,6 +186,7 @@ namespace API.Controllers
 
         [HttpDelete]
         [Route("delete/{id}")]
+        [Authorize]  // Chỉ cho phép truy cập nếu có token hợp lệ
         public ActionResult<ApiResponse<CategoriesDeleteResponse>> DeleteCategory(int id)
         {
             try
