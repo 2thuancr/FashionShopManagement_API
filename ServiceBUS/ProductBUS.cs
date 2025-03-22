@@ -66,9 +66,9 @@ namespace BUS
             return lstProduct;
         }
 
-        public List<Product> SearchProductByName(string name)
+        public List<Product> SearchProductByName(ProductsSearchRequest input)
         {
-            if (name == null || name == "")
+            if (string.IsNullOrWhiteSpace(input.Name))
             {
                 //throw new ArgumentNullException("name");
                 throw new Exception("Chưa nhập dữ liệu tìm kiếm.");
@@ -77,7 +77,7 @@ namespace BUS
             DataTable table;
             try
             {
-                table = ProductDAO.Instance.SearchProductByName(name);
+                table = ProductDAO.Instance.SearchProductByName(input.Name);
             }
             catch (Exception ex)
             {

@@ -46,13 +46,13 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("search")]
-        public ActionResult<ApiResponse<List<Product>>> SearchProductByName(string name)
+        public ActionResult<ApiResponse<List<Product>>> SearchProductByName(ProductsSearchRequest request)
         {
             try
             {
-                List<Product> listProducts = ProductBUS.Instance.SearchProductByName(name);
+                List<Product> listProducts = ProductBUS.Instance.SearchProductByName(request);
 
                 var response = new ApiResponse<List<Product>>
                 {

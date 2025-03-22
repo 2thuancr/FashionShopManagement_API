@@ -50,7 +50,7 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("search")]
         public ActionResult<ApiResponse<List<Categories>>> SearchCategories(CategoriesSearchRequest request)
         {

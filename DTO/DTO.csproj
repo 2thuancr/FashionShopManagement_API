@@ -71,6 +71,7 @@
     <Compile Include="Customers\Customer.cs" />
     <Compile Include="Products\ProductInBill.cs" />
     <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\ProductsSearchRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApiResponses\ApiResponse.cs" />
     <Compile Include="Staffs\Shift.cs" />
