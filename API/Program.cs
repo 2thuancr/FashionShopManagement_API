@@ -1,10 +1,11 @@
-﻿using DTO.Accounts;
+﻿using System.Text;
+using DTO.Accounts;
 using DTO.ApiResponses;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Microsoft.OpenApi.Models;
 
 namespace API
 {
@@ -12,17 +13,69 @@ namespace API
     {
         public static void Main(string[] args)
         {
-
             var builder = WebApplication.CreateBuilder(args);
+            var configuration = builder.Configuration;
 
-            // Đọc cấu hình JWT từ appsettings.json
-            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+            // Cấu hình Authentication & Authorization
+            ConfigureAuthentication(builder.Services, configuration);
+
+            // Cấu hình Swagger
+            ConfigureSwagger(builder.Services);
+
+            // Cấu hình CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins", policy =>
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+            });
+
+            // Thêm Controllers
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+
+            // Cấu hình Database & API Response
+            ConfigDatabase();
+            ConfigApiResponse(builder);
+
+            var app = builder.Build();
+
+            // Middleware pipeline
+            app.UseHttpsRedirection();
+            app.UseCors("AllowAllOrigins");
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            // Kích hoạt Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
+
+            // Redirect trang chủ đến Swagger UI
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
+
+            // Ánh xạ controller
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            app.Run();
+        }
+
+        /// <summary>
+        /// Cấu hình JWT Authentication
+        /// </summary>
+        private static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
             var key = Encoding.UTF8.GetBytes(jwtSettings["Secret"]);
 
-            // Add services to the container.
-
-            builder.Services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -37,87 +90,79 @@ namespace API
                     };
                 });
 
-            builder.Services.AddAuthorization();
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins",
-                    builder => builder.AllowAnyOrigin()
-                                      .AllowAnyHeader()
-                                      .AllowAnyMethod());
-            });
-
-            ConfigDatabase();
-            ConfigApiResponse(builder);
-
-            var app = builder.Build();
-
-            app.UseAuthentication();  // Kích hoạt xác thực JWT
-            app.UseAuthorization();
-
-            // Configure the HTTP request pipeline.
-            //if (app.Environment.IsDevelopment())
-            //{
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI();
-            //}
-
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-                //options.RoutePrefix = string.Empty; // Đặt Swagger ở root "/"
-            });
-
-            // Cấu hình để tự động redirect tới /swagger
-            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
-
-            app.UseHttpsRedirection();
-
-            app.UseCors("AllowAllOrigins");
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
-            app.Run();
+            services.AddAuthorization();
         }
 
-        public static void ConfigDatabase()
+        /// <summary>
+        /// Cấu hình Swagger với Authentication
+        /// </summary>
+        private static void ConfigureSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API V1", Version = "v1" });
+
+                // Cấu hình xác thực JWT cho Swagger UI
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Nhập JWT token vào ô bên dưới (không cần 'Bearer ' prefix)"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
+        }
+
+        /// <summary>
+        /// Cấu hình Database
+        /// </summary>
+        private static void ConfigDatabase()
         {
             Account.ConnectionString = Account.connectionStringUser;
             Account.ConnectionName = Account.connectionNameUser;
         }
 
-        public static void ConfigApiResponse(WebApplicationBuilder? builder)
+        /// <summary>
+        /// Cấu hình API Response
+        /// </summary>
+        private static void ConfigApiResponse(WebApplicationBuilder? builder)
         {
             if (builder == null)
-            {
                 return;
-            }
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = context =>
                 {
-                    // Sử dụng ValidationProblemDetails của ASP.NET Core
                     var validationProblemDetails = new ValidationProblemDetails(context.ModelState)
                     {
-                        //Type = "https://example.com/validation-error",
                         Title = "Validation Error",
                         Status = StatusCodes.Status400BadRequest,
                         Detail = "One or more validation errors occurred.",
                         Instance = context.HttpContext.Request.Path
                     };
 
-                    var exceptionDetail = context.ModelState.Values.SelectMany(e => e.Errors.Select(e => e.ErrorMessage)).ToList();
+                    var exceptionDetail = context.ModelState.Values
+                        .SelectMany(e => e.Errors.Select(err => err.ErrorMessage))
+                        .ToList();
 
-                    // Bao bọc ValidationProblemDetails trong cấu trúc tùy chỉnh
                     var response = new ApiResponse<ValidationProblemDetails>
                     {
                         IsSuccess = false,
