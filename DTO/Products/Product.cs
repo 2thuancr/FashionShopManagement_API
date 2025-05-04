@@ -13,7 +13,7 @@ namespace DTO.Products
         public decimal Discount { get; set; }
         public int Quantity { get; set; }
         public string Size { get; set; }
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
         public int? CategoryId { get; set; }
@@ -31,7 +31,7 @@ namespace DTO.Products
             this.Discount = Converter.ToDecimal(row["Discount"]);
             this.Category = Converter.ToString(row["Category"]);
             this.Size = Converter.ToString(row["Size"]);
-            this.Image = Converter.ToString(row["Image"]);
+            this.ImageUrl = Converter.ToString(row["Image"]);
             this.Description = Converter.ToString(row["Description"]);
             this.Status = Converter.ToString(row["Status"]);
             this.CategoryId = Converter.ToInt32Nullable(row["CategoryId"]);

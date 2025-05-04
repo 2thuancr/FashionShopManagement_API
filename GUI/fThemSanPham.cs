@@ -40,7 +40,7 @@ namespace GUI
                 }
                 product.Size = textbox_KichCo.TextButton;
                 product.Description = textBox_ChiTietSanPham.TextButton;
-                product.Image = DEFAULT_PRODUCT_IMAGE;
+                product.ImageUrl = DEFAULT_PRODUCT_IMAGE;
 
                 var result = ProductBUS.Instance.InsertProduct(product);
                 if (result == true)

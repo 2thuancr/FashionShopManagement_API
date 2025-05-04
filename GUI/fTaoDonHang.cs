@@ -162,7 +162,7 @@ namespace GUI
                     p.Discount = product.Discount;
                     p.Category = product.Category;
                     p.Size = product.Size;
-                    p.Image = product.Image;
+                    p.Image = product.ImageUrl;
                     p.Description = product.Description;
 
                     listProductInBillDetails.Add(p);

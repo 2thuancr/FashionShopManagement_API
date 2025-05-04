@@ -36,7 +36,7 @@ namespace GUI
         {
             try
             {
-                this.picture_SanPham.Load(this.product.Image);
+                this.picture_SanPham.Load(this.product.ImageUrl);
                 this.picture_SanPham.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             catch

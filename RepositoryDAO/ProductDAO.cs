@@ -50,15 +50,15 @@ namespace DAO
 
         public bool InsertProduct(Product newProduct)
         {
-            //string query = string.Format("USP_InsertProduct '@Name', '@Price', '@Discount', '@Category', '@Quantity', '@Size', '@Image', '@Description'");
-            string query = $"USP_InsertProduct '{newProduct.Name}', '{newProduct.Price}', '{newProduct.Discount}', '{newProduct.Category}', '{newProduct.Quantity}', '{newProduct.Size}', '{newProduct.Image}', '{newProduct.Description}'";
+            //string query = string.Format("USP_InsertProduct '@Name', '@Price', '@Discount', '@Category', '@Quantity', '@Size', '@ImageUrl', '@Description'");
+            string query = $"USP_InsertProduct '{newProduct.Name}', '{newProduct.Price}', '{newProduct.Discount}', '{newProduct.Category}', '{newProduct.Quantity}', '{newProduct.Size}', '{newProduct.ImageUrl}', '{newProduct.Description}'";
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
 
         public bool UpdateProduct(Product product)
         {
-            string query = string.Format("USP_UpdateFood @Id , @Name , @Price, @Discount, @Category , @Quantity, @Size, @Image, @Description");
+            string query = string.Format("USP_UpdateFood @Id , @Name , @Price, @Discount, @Category , @Quantity, @Size, @ImageUrl, @Description");
             var parameters = new object[]
             {
                 product.Id,
@@ -68,7 +68,7 @@ namespace DAO
                 product.Category,
                 product.Quantity,
                 product.Size,
-                product.Image,
+                product.ImageUrl,
                 product.Description
             };
 

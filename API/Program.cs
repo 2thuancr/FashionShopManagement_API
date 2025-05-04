@@ -36,7 +36,7 @@ namespace API
             builder.Services.AddEndpointsApiExplorer();
 
             // Cấu hình Database & API Response
-            ConfigDatabase();
+            ConfigDatabase(builder);
             ConfigApiResponse(builder);
 
             var app = builder.Build();
@@ -133,9 +133,11 @@ namespace API
         /// <summary>
         /// Cấu hình Database
         /// </summary>
-        private static void ConfigDatabase()
+        private static void ConfigDatabase(WebApplicationBuilder builder)
         {
-            Account.ConnectionString = Account.connectionStringUser;
+            var connectionString = builder.Configuration.GetConnectionString("Default");
+
+            Account.ConnectionString = connectionString;
             Account.ConnectionName = Account.connectionNameUser;
         }
 
