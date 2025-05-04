@@ -1,4 +1,6 @@
-﻿using BUS;
+﻿using API.Interfaces;
+using BUS;
+using DTO.ApiRequests;
 using DTO.ApiResponses;
 using DTO.Products;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +9,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : ControllerBase, IProductService
     {
         private readonly ILogger<ProductController> _logger;
         public ProductController(ILogger<ProductController> logger)
@@ -15,13 +17,13 @@ namespace API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("list")]
-        public ActionResult<ApiResponse<List<Product>>> GetAllProducts()
+        public ActionResult<ApiResponse<PagedResult<Product>>> GetAllAsync(ApiRequestPaginationInput input)
         {
             try
             {
-                List<Product> listProducts = ProductBUS.Instance.GetAllProduct();
+                List<Product> listProducts = ProductBUS.Instance.GetAllProduct(input);
 
                 var response = new ApiResponse<List<Product>>
                 {
@@ -34,7 +36,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"[GetAllProducts] Error: {ex.Message}");
+                _logger.LogError(ex, $"[GetAllAsync] Error: {ex.Message}");
 
                 return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
                 {
@@ -48,11 +50,11 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("search")]
-        public ActionResult<ApiResponse<List<Product>>> SearchProductByName(ProductsSearchRequest request)
+        public ActionResult<ApiResponse<PagedResult<Product>>> SearchAndFilterAsync(ProductsSearchRequest request)
         {
             try
             {
-                List<Product> listProducts = ProductBUS.Instance.SearchProductByName(request);
+                List<Product> listProducts = ProductBUS.Instance.SearchAndFilterProducts(request);
 
                 var response = new ApiResponse<List<Product>>
                 {
@@ -66,7 +68,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"[SearchProductByName] Error: {ex.Message}");
+                _logger.LogError(ex, $"[SearchAndFilterAsync] Error: {ex.Message}");
 
                 return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
                 {
@@ -80,7 +82,7 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<ApiResponse<Product>> GetProductById(int id)
+        public ActionResult<ApiResponse<Product>> GetByIdAsync(int id)
         {
             if (id <= 0)
             {
@@ -111,6 +113,70 @@ namespace API.Controllers
                 _logger.LogError(ex, $"[GetProductById] Error: {ex.Message}");
 
                 return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Product>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("by-category/{categoryId}")]
+        public ActionResult<ApiResponse<List<Product>>> GetByCategoryAsync(int categoryId)
+        {
+            try
+            {
+                List<Product> listProducts = ProductBUS.Instance.GetByCategory(categoryId);
+
+                var response = new ApiResponse<List<Product>>
+                {
+                    IsSuccess = true,
+                    Data = listProducts,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[GetByCategoryAsync] Error: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}/related")]
+        public ActionResult<ApiResponse<List<Product>>> GetRelatedAsync(int id)
+        {
+            try
+            {
+                List<Product> listProducts = ProductBUS.Instance.GetRelatedProducts(id);
+
+                var response = new ApiResponse<List<Product>>
+                {
+                    IsSuccess = true,
+                    Data = listProducts,
+                    Message = "Success",
+                    ErrorCode = null
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[GetRelatedProducts] Error: {ex.Message}");
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Product>>
                 {
                     IsSuccess = false,
                     Message = ex.Message,

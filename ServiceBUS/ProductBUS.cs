@@ -5,6 +5,8 @@ using System.Data;
 using DTO.Products;
 using DAO;
 using System.Linq;
+using DTO.ApiRequests;
+using System.Data.SqlClient;
 
 namespace BUS
 {
@@ -45,6 +47,27 @@ namespace BUS
             return lstProduct;
         }
 
+        public List<Product> GetAllProduct(ApiRequestPaginationInput input)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                table = ProductDAO.Instance.GetAllProduct(input.Page, input.PageSize);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Product> lstProduct = new List<Product>();
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                lstProduct.Add(product);
+            }
+            return lstProduct;
+        }
+
         public List<Product> GetListProductByCategory(string category)
         {
             DataTable table;
@@ -66,18 +89,12 @@ namespace BUS
             return lstProduct;
         }
 
-        public List<Product> SearchProductByName(ProductsSearchRequest input)
+        public List<Product> SearchAndFilterProducts(ProductsSearchRequest input)
         {
-            if (string.IsNullOrWhiteSpace(input.Name))
-            {
-                //throw new ArgumentNullException("name");
-                throw new Exception("Chưa nhập dữ liệu tìm kiếm.");
-            }    
-
             DataTable table;
             try
             {
-                table = ProductDAO.Instance.SearchProductByName(input.Name);
+                table = ProductDAO.Instance.SearchAndFilterProducts(input);
             }
             catch (Exception ex)
             {
@@ -117,6 +134,62 @@ namespace BUS
                 product = new Product(table.Rows[0]);
             }
             return product;
+        }
+
+        public List<Product> GetRelatedProducts(int productId)
+        {
+            if (productId <= 0)
+            {
+                throw new Exception("Lỗi tìm kiếm");
+            }
+
+            DataTable table;
+            try
+            {
+                table = ProductDAO.Instance.GetProductById(productId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Product> listProducts = new List<Product>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                listProducts.Add(product);
+            }
+
+            return listProducts;
+        }
+
+        public List<Product> GetByCategory(int categoryId)
+        {
+            if (categoryId <= 0)
+            {
+                throw new Exception("Lỗi tìm kiếm");
+            }
+
+            DataTable table;
+            try
+            {
+                table = ProductDAO.Instance.GetProductsByCategory(categoryId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            List<Product> listProducts = new List<Product>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Product product = new Product(row);
+                listProducts.Add(product);
+            }
+
+            return listProducts;
         }
 
         public bool InsertProduct(Product newProduct)
