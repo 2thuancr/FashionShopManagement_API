@@ -28,10 +28,10 @@ namespace API.Controllers
                 var bill = BillBUS.Instance.CreateBill(request);
                 if (bill == null)
                 {
-                    return BadRequest(new ApiResponse<BillCreateRequest>
+                    return BadRequest(new ApiResponse<Bill>
                     {
                         IsSuccess = false,
-                        Message = "Tạo hóa đơn thất bại.",
+                        Message = "Tạo đơn hàng thất bại.",
                         ErrorCode = "BILL_CREATION_FAILED",
                     });
                 }
@@ -40,7 +40,7 @@ namespace API.Controllers
                 {
                     IsSuccess = true,
                     Data = bill,
-                    Message = "Tạo hóa đơn thành công.",
+                    Message = "Tạo đơn hàng thành công.",
                     ErrorCode = null
                 };
                 return Ok(response);
@@ -48,11 +48,52 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"[Create] Error: {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<BillCreateRequest>
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Bill>
                 {
                     IsSuccess = false,
                     Message = ex.Message,
                     ErrorCode = "INTERNAL_SERVER_ERROR",   
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
+        [HttpPost("update")]
+        public ActionResult<ApiResponse<Bill>> Update([FromBody] BillUpdateRequest request)
+        {
+            if (request == null || request.Items == null || !request.Items.Any())
+                return BadRequest("Giỏ hàng trống.");
+
+            try
+            {
+                var bill = BillBUS.Instance.UpdateBill(request);
+                if (bill == null)
+                {
+                    return BadRequest(new ApiResponse<Bill>
+                    {
+                        IsSuccess = false,
+                        Message = "Cập nhật đơn hàng thất bại.",
+                        ErrorCode = "BILL_CREATION_FAILED",
+                    });
+                }
+
+                var response = new ApiResponse<Bill>
+                {
+                    IsSuccess = true,
+                    Data = bill,
+                    Message = "Cập nhật đơn hàng thành công.",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[Create] Error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Bill>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
                     ExceptionDetail = ex.Message,
                 });
             }
@@ -69,7 +110,7 @@ namespace API.Controllers
                     return NotFound(new ApiResponse<List<Bill>>
                     {
                         IsSuccess = false,
-                        Message = "Không tìm thấy hóa đơn nào.",
+                        Message = "Không tìm thấy đơn hàng nào.",
                         ErrorCode = "BILL_NOT_FOUND",
                     });
                 }
@@ -77,7 +118,7 @@ namespace API.Controllers
                 {
                     IsSuccess = true,
                     Data = bills,
-                    Message = "Lấy danh sách hóa đơn thành công.",
+                    Message = "Lấy danh sách đơn hàng thành công.",
                     ErrorCode = null
                 };
                 return Ok(response);

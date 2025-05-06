@@ -63,6 +63,44 @@ namespace BUS
             }
         }
 
+        public Bill UpdateBill(BillUpdateRequest billUpdateRequest)
+        {
+            try
+            {
+                Bill bill = new Bill
+                {
+                    ID = billUpdateRequest.BillId,
+                    BusinessTime = billUpdateRequest.BusinessTime.Value,
+                    CustomerId = billUpdateRequest.CustomerId,
+                    StaffId = billUpdateRequest.StaffId,
+                    TotalPrice = billUpdateRequest.TotalPrice,
+                    Discount = billUpdateRequest.Discount,
+                    Status = billUpdateRequest.Status
+                };
+                BillDAO.Instance.UpdateBill(bill);
+                foreach (var item in billUpdateRequest.Items)
+                {
+                    BillInfo billInfo = new BillInfo
+                    {
+                        BillID = bill.ID,
+                        ProductID = item.ProductID,
+                        Amount = item.Amount,
+                        Price = item.Price,
+                        Discount = item.Discount,
+                        CampaignDiscountPercent = item.CampaignDiscountPercent,
+                        TotalProductPrice = item.Amount * item.Price - item.Discount - item.CampaignDiscountPercent,
+                    };
+                    BillInfoDAO.Instance.InsertUpdateBillInfo(billInfo);
+                }
+                return bill;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
             try

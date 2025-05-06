@@ -61,7 +61,9 @@
     <Compile Include="Bills\BillInfoCreateRequest.cs" />
     <Compile Include="Bills\BillInfoDetail.cs" />
     <Compile Include="Bills\BillInfo.cs" />
+    <Compile Include="Bills\BillInfoUpdateRequest.cs" />
     <Compile Include="Bills\BillPriceInfo.cs" />
+    <Compile Include="Bills\BillUpdateRequest.cs" />
     <Compile Include="Campaigns\CampaignView.cs" />
     <Compile Include="Campaigns\Campaign.cs" />
     <Compile Include="Categories\CategoriesDeleteResponse.cs" />
