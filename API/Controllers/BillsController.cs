@@ -135,6 +135,43 @@ namespace API.Controllers
                 });
             }
         }
+
+        [HttpPost("checkout/{billId}")]
+        public ActionResult<ApiResponse<Bill>> Checkout(int billId)
+        {
+            try
+            {
+                var bill = BillBUS.Instance.Checkout(billId);
+                if (bill == null)
+                {
+                    return BadRequest(new ApiResponse<Bill>
+                    {
+                        IsSuccess = false,
+                        Message = "Thanh toán thất bại.",
+                        ErrorCode = "BILL_CREATION_FAILED",
+                    });
+                }
+                var response = new ApiResponse<Bill>
+                {
+                    IsSuccess = true,
+                    Data = bill,
+                    Message = "Thanh toán thành công.",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[Checkout] Error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Bill>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
     }
 
 }

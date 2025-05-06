@@ -100,6 +100,29 @@ namespace BUS
             }
         }
 
+        public Bill Checkout(int billId)
+        {
+            try
+            {
+                DataTable dataTable = BillDAO.Instance.GetBillById(billId);
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    Bill bill = new Bill(dataTable.Rows[0]);
+                    bill.Status = 1; // Đã thanh toán
+                    BillDAO.Instance.UpdateBillStatus(bill);
+                    return bill;
+                }
+                else
+                {
+                    throw new Exception("Bill not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
