@@ -57,6 +57,8 @@
     <Compile Include="ApiRequests\ApiRequestPaginationInput.cs" />
     <Compile Include="ApiResponses\PagedResult.cs" />
     <Compile Include="Bills\Bill.cs" />
+    <Compile Include="Bills\BillCreateRequest.cs" />
+    <Compile Include="Bills\BillInfoCreateRequest.cs" />
     <Compile Include="Bills\BillInfoDetail.cs" />
     <Compile Include="Bills\BillInfo.cs" />
     <Compile Include="Bills\BillPriceInfo.cs" />

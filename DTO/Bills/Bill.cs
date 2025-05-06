@@ -14,10 +14,11 @@ namespace DTO.Bills
         public int CustomerId { get; set; }
         public int StaffId { get; set; }
         public decimal TotalPrice { get; set; }
+        public decimal Discount { get; set; }
         public string PaymentStatus { get; set; }
         public int Status { get; set; }
 
-        public Bill(int id, DateTime businessTime, int status, int customerId, int staffId, decimal totalPrice = 0)
+        public Bill(int id, DateTime businessTime, int status, int customerId, int staffId, decimal totalPrice = 0, decimal discount = 0)
         {
             this.ID = id;
             this.BusinessTime = businessTime;
@@ -33,6 +34,7 @@ namespace DTO.Bills
             this.TotalPrice = totalPrice;
             this.CustomerId = customerId;
             this.StaffId = staffId;
+            this.Discount = discount;
         }
 
         public Bill(DataRow row)
@@ -49,6 +51,7 @@ namespace DTO.Bills
                 this.PaymentStatus = Bill.BILL_CHUA_THANH_TOAN;
             }
             this.TotalPrice = Converter.ToDecimal(row["totalPrice"]);
+            this.Discount = Converter.ToDecimal(row["discount"]);
             this.CustomerId = Converter.ToInt32(row["customerId"]);
             this.StaffId = Converter.ToInt32(row["staffId"]);
         }

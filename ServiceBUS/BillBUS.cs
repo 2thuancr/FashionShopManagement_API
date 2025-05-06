@@ -22,6 +22,47 @@ namespace BUS
 
         private BillBUS() { }
 
+        public Bill CreateBill(BillCreateRequest billCreateRequest)
+        {
+            try
+            {
+                Bill bill = new Bill
+                {
+                    BusinessTime = billCreateRequest.BusinessTime.Value,
+                    CustomerId = billCreateRequest.CustomerId,
+                    StaffId = billCreateRequest.StaffId,
+                    TotalPrice = billCreateRequest.TotalPrice,
+                    Discount = billCreateRequest.Discount,
+                    Status = billCreateRequest.Status
+                };
+                int billId = BillDAO.Instance.InsertBill(bill);
+
+                if (billId > 0)
+                {
+                    foreach (var item in billCreateRequest.Items)
+                    {
+                        BillInfo billInfo = new BillInfo
+                        {
+                            BillID = billId,
+                            ProductID = item.ProductID,
+                            Amount = item.Amount,
+                            Price = item.Price,
+                            Discount = item.Discount,
+                            CampaignDiscountPercent = item.CampaignDiscountPercent,
+                            TotalProductPrice = item.Amount * item.Price - item.Discount - item.CampaignDiscountPercent,
+                        };
+                        BillInfoDAO.Instance.InsertUpdateBillInfo(billInfo);
+                    }
+                }
+
+                return bill;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
             try
