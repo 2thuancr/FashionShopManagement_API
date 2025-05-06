@@ -16,6 +16,11 @@ namespace DTO.Bills
         public decimal TotalPrice { get; set; }
         public decimal Discount { get; set; }
         public string PaymentStatus { get; set; }
+
+        /// <summary>
+        /// 1 = Đã thanh toán <br />
+        /// 0 = Chưa thanh toán
+        /// </summary>
         public int Status { get; set; }
 
         public Bill(int id, DateTime businessTime, int status, int customerId, int staffId, decimal totalPrice = 0, decimal discount = 0)

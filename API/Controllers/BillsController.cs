@@ -57,6 +57,43 @@ namespace API.Controllers
                 });
             }
         }
+
+        [HttpGet("history/{customerId}")]
+        public ActionResult<ApiResponse<List<Bill>>> GetHistory(int customerId)
+        {
+            try
+            {
+                var bills = BillBUS.Instance.GetBillByCustomerId(customerId);
+                if (bills == null || !bills.Any())
+                {
+                    return NotFound(new ApiResponse<List<Bill>>
+                    {
+                        IsSuccess = false,
+                        Message = "Không tìm thấy hóa đơn nào.",
+                        ErrorCode = "BILL_NOT_FOUND",
+                    });
+                }
+                var response = new ApiResponse<List<Bill>>
+                {
+                    IsSuccess = true,
+                    Data = bills,
+                    Message = "Lấy danh sách hóa đơn thành công.",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[GetHistory] Error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<List<Bill>>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
     }
 
 }
