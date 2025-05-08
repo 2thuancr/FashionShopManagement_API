@@ -100,6 +100,23 @@ namespace BUS
             }
         }
 
+
+        public bool RemoveProduct(BillUpdateRequest request)
+        {
+            try
+            {
+                foreach (var item in request.Items)
+                {
+                    BillInfoDAO.Instance.DeleteBillInfo(request.BillId, item.ProductID);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Bill Checkout(int billId)
         {
             try

@@ -1,4 +1,5 @@
-﻿using BUS;
+﻿using API.Interfaces;
+using BUS;
 using DTO.ApiResponses;
 using DTO.Bills;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BillsController : ControllerBase
+    public class BillsController : ControllerBase, IBillService
     {
         private ILogger<BillsController> _logger;
 
@@ -98,6 +99,48 @@ namespace API.Controllers
                 });
             }
         }
+
+        [HttpPost("remove-product")]
+        public ActionResult<ApiResponse<Bill>> RemoveProduct([FromBody] BillUpdateRequest request)
+        {
+            if (request == null || request.Items == null || !request.Items.Any())
+                return BadRequest("Giỏ hàng trống.");
+
+            try
+            {
+                var bill = BillBUS.Instance.UpdateBill(request);
+                if (bill == null)
+                {
+                    return BadRequest(new ApiResponse<Bill>
+                    {
+                        IsSuccess = false,
+                        Message = "Cập nhật đơn hàng thất bại.",
+                        ErrorCode = "BILL_CREATION_FAILED",
+                    });
+                }
+
+                var response = new ApiResponse<Bill>
+                {
+                    IsSuccess = true,
+                    Data = bill,
+                    Message = "Cập nhật đơn hàng thành công.",
+                    ErrorCode = null
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[Create] Error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Bill>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
 
         [HttpGet("history/{customerId}")]
         public ActionResult<ApiResponse<List<Bill>>> GetHistory(int customerId)

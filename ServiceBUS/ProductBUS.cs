@@ -7,6 +7,7 @@ using DAO;
 using System.Linq;
 using DTO.ApiRequests;
 using System.Data.SqlClient;
+using DTO.ApiResponses;
 
 namespace BUS
 {
@@ -47,7 +48,7 @@ namespace BUS
             return lstProduct;
         }
 
-        public List<Product> GetAllProduct(ApiRequestPaginationInput input)
+        public PagedResult<Product> GetAllProduct(ApiRequestPaginationInput input)
         {
             DataTable table = new DataTable();
             try
@@ -59,13 +60,20 @@ namespace BUS
                 throw ex;
             }
 
-            List<Product> lstProduct = new List<Product>();
+            List<Product> listProducts = new List<Product>();
             foreach (DataRow row in table.Rows)
             {
                 Product product = new Product(row);
-                lstProduct.Add(product);
+                listProducts.Add(product);
             }
-            return lstProduct;
+            
+            return new PagedResult<Product>
+            {
+                Items = listProducts,
+                TotalCount = ProductDAO.Instance.GetTotalCount(),
+                Page = input.Page,
+                PageSize = input.PageSize
+            };
         }
 
         public List<Product> GetListProductByCategory(string category)
@@ -89,7 +97,7 @@ namespace BUS
             return lstProduct;
         }
 
-        public List<Product> SearchAndFilterProducts(ProductsSearchRequest input)
+        public PagedResult<Product> SearchAndFilterProducts(ProductsSearchRequest input)
         {
             DataTable table;
             try
@@ -101,13 +109,20 @@ namespace BUS
                 throw ex;
             }
 
-            List<Product> lstProduct = new List<Product>();
+            List<Product> listProducts = new List<Product>();
             foreach (DataRow row in table.Rows)
             {
                 Product product = new Product(row);
-                lstProduct.Add(product);
+                listProducts.Add(product);
             }
-            return lstProduct;
+
+            return new PagedResult<Product>
+            {
+                Items = listProducts,
+                TotalCount = ProductDAO.Instance.GetTotalCount(),
+                Page = input.Page,
+                PageSize = input.PageSize
+            };
         }
 
         public Product GetProductById(int id)

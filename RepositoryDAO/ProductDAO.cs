@@ -23,6 +23,12 @@ namespace DAO
 
         private ProductDAO() { }
 
+        public int GetTotalCount()
+        {
+            string query = "SELECT COUNT(*) FROM [dbo].[ViewAllProducts]";
+            return (int)DataProvider.Instance.ExecuteScalar(query);
+        }
+
         public DataTable GetAllProduct()
         {
             string query = "SELECT * FROM [dbo].[ViewAllProducts]";

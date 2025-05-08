@@ -23,12 +23,12 @@ namespace API.Controllers
         {
             try
             {
-                List<Product> listProducts = ProductBUS.Instance.GetAllProduct(input);
+                var data = ProductBUS.Instance.GetAllProduct(input);
 
-                var response = new ApiResponse<List<Product>>
+                var response = new ApiResponse<PagedResult<Product>>
                 {
                     IsSuccess = true,
-                    Data = listProducts,
+                    Data = data,
                     Message = "Success",
                     ErrorCode = null
                 };
@@ -54,12 +54,12 @@ namespace API.Controllers
         {
             try
             {
-                List<Product> listProducts = ProductBUS.Instance.SearchAndFilterProducts(request);
+                var data = ProductBUS.Instance.SearchAndFilterProducts(request);
 
-                var response = new ApiResponse<List<Product>>
+                var response = new ApiResponse<PagedResult<Product>>
                 {
                     IsSuccess = true,
-                    Data = listProducts,
+                    Data = data,
                     Message = "Success",
                     ErrorCode = null
                 };
