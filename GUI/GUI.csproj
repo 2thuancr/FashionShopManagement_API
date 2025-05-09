@@ -453,9 +453,9 @@
     <None Include="Resources\icon-developer-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceBUS\ServiceBUS.csproj">
+    <ProjectReference Include="..\ServiceBUS\BUS.csproj">
       <Project>{07d27bd1-03d4-4e9f-abac-45cd451bccbe}</Project>
-      <Name>ServiceBUS</Name>
+      <Name>BUS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{78dd72ae-8ca4-4660-87f1-1bbf08b4115c}</Project>

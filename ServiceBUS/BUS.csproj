@@ -56,9 +56,9 @@
     <Compile Include="StaffBUS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RepositoryDAO\RepositoryDAO.csproj">
+    <ProjectReference Include="..\RepositoryDAO\DAO.csproj">
       <Project>{c27880c4-f359-48d8-b8e6-9a810769adb4}</Project>
-      <Name>RepositoryDAO</Name>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{78dd72ae-8ca4-4660-87f1-1bbf08b4115c}</Project>
