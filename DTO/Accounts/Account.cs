@@ -61,7 +61,7 @@ namespace DTO.Accounts
         public Account(DataRow row)
         {
             this.Id = Converter.ToInt32(row["Id"]);
-            this.UserName = Converter.ToString(row["UserName"]);
+            this.UserName = Converter.ToString(row["Email"]);
             this.DisplayName = Converter.ToString(row["DisplayName"]);
             this.TypeID = Converter.ToInt32(row["TypeID"]);
             this.Password = Converter.ToString(row["Password"]);

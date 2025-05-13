@@ -228,7 +228,7 @@
             this.label_UserName.Size = new System.Drawing.Size(216, 48);
             this.label_UserName.TabIndex = 4;
             this.label_UserName.TabStop = true;
-            this.label_UserName.Text = "UserName";
+            this.label_UserName.Text = "Email";
             this.label_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label_UserName.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             // 

@@ -33,7 +33,7 @@ namespace DAO
             //    FirebaseId = @FirebaseId , 
             //    DoB = @DoB , 
             //    Address = @Address , 
-            //    UserName = @UserName , 
+            //    Email = @Email , 
             //    Password = @Password";
 
             var query = "USP_RegisterCustomerAccount ";
@@ -43,7 +43,7 @@ namespace DAO
             query += "@FirebaseId = " + (string.IsNullOrWhiteSpace(request.FirebaseId) ? "NULL, " : $"N'{request.FirebaseId}', ");
             query += "@DoB = " + (request.DoB == null ? "NULL, " : $"'{request.DoB:yyyy-MM-dd}', ");
             query += "@Address = " + (string.IsNullOrWhiteSpace(request.Address) ? "NULL, " : $"N'{request.Address}', ");
-            query += "@UserName = " + (string.IsNullOrWhiteSpace(request.UserName) ? "NULL, " : $"N'{request.UserName}', ");
+            query += "@Email = " + (string.IsNullOrWhiteSpace(request.UserName) ? "NULL, " : $"N'{request.UserName}', ");
             query += "@Password = " + (string.IsNullOrWhiteSpace(request.Password) ? "NULL" : $"N'{request.Password}'");
 
             return DataProvider.Instance.ExecuteQuery(query);
@@ -51,14 +51,14 @@ namespace DAO
 
         public DataTable Login(Account account)
         {
-            string query = "USP_Login @UserName , @Password";
+            string query = "USP_Login @Email , @Password";
 
             return DataProvider.Instance.ExecuteQuery(query, new object[] { account.UserName, account.Password });
         }
 
         public bool CheckLogin(Account account)
         {
-            string query = "USP_Login @UserName , @Password";
+            string query = "USP_Login @Email , @Password";
             var parameter = new object[]
             {
                 account.UserName,
@@ -77,7 +77,7 @@ namespace DAO
                 throw new Exception("Username not found");
             }
 
-            string query = $"USP_UpdateOTPByUsername @UserName = '{username}', @NewOTP = '{otp}' ";
+            string query = $"USP_UpdateOTPByUsername @Email = '{username}', @NewOTP = '{otp}' ";
 
             DataTable table = DataProvider.Instance.ExecuteQuery(query);
             return table;
@@ -90,7 +90,7 @@ namespace DAO
             {
                 throw new Exception("Username not found");
             }
-            string query = $"USP_VerifyOTP @UserName = '{input.UserName}', @OTP = '{input.Otp}' ";
+            string query = $"USP_VerifyOTP @Email = '{input.UserName}', @OTP = '{input.Otp}' ";
 
             DataTable table = DataProvider.Instance.ExecuteQuery(query);
             return table;
@@ -103,7 +103,7 @@ namespace DAO
 
         public DataTable GetAccountByUserName(string userName)
         {
-            string query = "USP_GetAccountByUserName @UserName";
+            string query = "USP_GetAccountByUserName @Email";
             var parameter = new object[] { userName };
 
             return DataProvider.Instance.ExecuteQuery(query, parameter);
@@ -111,7 +111,7 @@ namespace DAO
 
         public bool Insert(string userName, string displayName, int typeID)
         {
-            string query = string.Format("USP_InsertAccount @UserName , @DisplayName , @TypeID");
+            string query = string.Format("USP_InsertAccount @Email , @DisplayName , @TypeID");
             var parameter = new object[] { userName, displayName, typeID };
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
@@ -120,7 +120,7 @@ namespace DAO
 
         public bool ResetPassword(string userName)
         {
-            string query = string.Format("USP_ResetPassword @UserName");
+            string query = string.Format("USP_ResetPassword @Email");
             var parameter = new object[] { userName };
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
@@ -145,7 +145,7 @@ namespace DAO
 
         public bool Delete(string userName)
         {
-            string query = string.Format("USP_DeleteAccount @UserName");
+            string query = string.Format("USP_DeleteAccount @Email");
             var parameter = new object[] { userName };
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
@@ -154,7 +154,7 @@ namespace DAO
 
         public bool UpdateInformation(string userName, string displayName, string password, string newPass)
         {
-            string query = "USP_UpdateAccount @UserName , @DisplayName , @Password , @NewPass";
+            string query = "USP_UpdateAccount @Email , @DisplayName , @Password , @NewPass";
             var parameter = new object[] { userName, displayName, password, newPass };
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
@@ -174,7 +174,7 @@ namespace DAO
         public DataTable SearchAccountByUserName(string userName)
         {
 
-            string query = string.Format("USP_SearchAccountByUserName @UserName");
+            string query = string.Format("USP_SearchAccountByUserName @Email");
             var parameter = new object[] { userName };
 
             return DataProvider.Instance.ExecuteQuery(query, parameter);

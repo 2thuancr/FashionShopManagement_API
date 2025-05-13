@@ -48,6 +48,7 @@
     <Compile Include="Accounts\AccountCustomerRegisterRequest.cs" />
     <Compile Include="Accounts\AccountGenerateOtpResponse.cs" />
     <Compile Include="Accounts\AccountGenerateOtpRequest.cs" />
+    <Compile Include="Accounts\AccountGetInfoInput.cs" />
     <Compile Include="Accounts\AccountLoginRequest.cs" />
     <Compile Include="Accounts\AccountLoginResponse.cs" />
     <Compile Include="Accounts\AccountVerifyOtpByUserNameRequest.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Categories\CategoriesSearchRequest.cs" />
     <Compile Include="Categories\Categories.cs" />
     <Compile Include="Customers\Customer.cs" />
+    <Compile Include="Customers\CustomerInfo.cs" />
+    <Compile Include="Customers\GetCustomerInfoInput.cs" />
     <Compile Include="Products\ProductInBill.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Products\ProductsSearchRequest.cs" />

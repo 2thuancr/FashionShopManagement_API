@@ -37,7 +37,7 @@ namespace API.Controllers
                 {
                     var otpRequest = new AccountGenerateOtpRequest
                     {
-                        UserName = request.UserName
+                        Email = request.UserName
                     };
                     var otpResponse = AccountBUS.Instance.UpdateOTPByUsername(otpRequest);
 
@@ -211,5 +211,48 @@ namespace API.Controllers
                 });
             }
         }
+        
+        [HttpPost]
+        [Route("Info")]
+        public ActionResult<ApiResponse<Account>> GetInfo(AccountGetInfoInput request)
+        {
+            try
+            {
+                var data = AccountBUS.Instance.GetAccountByUserName(request.UserName ?? request.Email);
+                if (data == null)
+                {
+                    var response = new ApiResponse<Account>
+                    {
+                        IsSuccess = false,
+                        Message = "Lỗi lấy thông tin tài khoản",
+                        ErrorCode = "BAD_REQUEST",
+                    };
+                    return BadRequest(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<Account>
+                    {
+                        IsSuccess = true,
+                        Message = "Lấy thông tin tài khoản thành công!",
+                        ErrorCode = null,
+                        Data = data,
+                    };
+                    return Ok(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[Info] Error while get account info: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<Account>
+                {
+                    IsSuccess = false,
+                    Message = "Lấy thông tin tài khoản thất bại!",
+                    ErrorCode = "INTERNAL_SERVER_ERROR",
+                    ExceptionDetail = ex.Message,
+                });
+            }
+        }
+
     }
 }

@@ -67,6 +67,25 @@ namespace BUS
             return listCustomer;
         }
 
+        public CustomerInfo GetCustomerInfo(GetCustomerInfoInput input)
+        {
+            DataTable table;
+            try
+            {
+                table = CustomerDAO.Instance.GetCustomerInfo(input.Email ?? input.UserName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            if (table != null && table.Rows.Count > 0)
+            {
+                return new CustomerInfo(table.Rows[0]);
+            }
+            return null;
+        }
+
         public Customer GetCustomerById(int customerId)
         {
             DataTable table;
