@@ -142,12 +142,12 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("history/{customerId}")]
-        public ActionResult<ApiResponse<List<Bill>>> GetHistory(int customerId)
+        [HttpGet("history")]
+        public ActionResult<ApiResponse<List<Bill>>> GetHistory(BillGetOrderHistoryRequest request)
         {
             try
             {
-                var bills = BillBUS.Instance.GetBillByCustomerId(customerId);
+                var bills = BillBUS.Instance.GetBillByCustomerId(request.CustomerId);
                 if (bills == null || !bills.Any())
                 {
                     return NotFound(new ApiResponse<List<Bill>>
@@ -179,12 +179,12 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost("checkout/{billId}")]
-        public ActionResult<ApiResponse<Bill>> Checkout(int billId)
+        [HttpPost("checkout")]
+        public ActionResult<ApiResponse<Bill>> Checkout(Bill request)
         {
             try
             {
-                var bill = BillBUS.Instance.Checkout(billId);
+                var bill = BillBUS.Instance.Checkout(request.Id);
                 if (bill == null)
                 {
                     return BadRequest(new ApiResponse<Bill>

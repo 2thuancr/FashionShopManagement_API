@@ -14,6 +14,6 @@ namespace DTO.Products
         public string Size { get; set; } // Kích thước
         public double? MinPrice { get; set; } // Giá tối thiểu
         public double? MaxPrice { get; set; } // Giá tối đa
-        public int? CategoryId { get; set; } // ID danh mục sản phẩm
+        public int? CategoryId { get; set; } // Id danh mục sản phẩm
     }
 }

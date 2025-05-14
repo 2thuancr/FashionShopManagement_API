@@ -18,7 +18,7 @@ namespace DTO.Accounts
 
         public AccountType(DataRow row)
         {
-            this.ID = Converter.ToInt32(row["ID"]);
+            this.ID = Converter.ToInt32(row["Id"]);
             this.TypeName = Converter.ToString(row["TypeName"]);
         }
     }

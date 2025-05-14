@@ -44,7 +44,7 @@ namespace GUI.UC
         }
 
         [Category("CUSTOMIZE DATA")]
-        [DisplayName("ID")]
+        [DisplayName("Id")]
         public int Id
         {
             get { return id; }
@@ -55,7 +55,7 @@ namespace GUI.UC
         }
 
         [Category("CUSTOMIZE DATA")]
-        [DisplayName("UngTuyen ID")]
+        [DisplayName("UngTuyen Id")]
         public int? UngTuyenId
         {
             get { return ungTuyenId; }

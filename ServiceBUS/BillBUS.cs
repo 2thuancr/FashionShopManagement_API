@@ -32,8 +32,10 @@ namespace BUS
                     CustomerId = billCreateRequest.CustomerId,
                     StaffId = billCreateRequest.StaffId,
                     TotalPrice = billCreateRequest.TotalPrice,
-                    Discount = billCreateRequest.Discount,
-                    Status = billCreateRequest.Status
+                    TotalDiscount = billCreateRequest.TotalDiscount,
+                    Status = billCreateRequest.Status,
+                    DeliveryAddress = billCreateRequest.DeliveryAddress,
+                    PaymentMethod = billCreateRequest.PaymentMethod,
                 };
                 int billId = BillDAO.Instance.InsertBill(bill);
 
@@ -69,20 +71,22 @@ namespace BUS
             {
                 Bill bill = new Bill
                 {
-                    ID = billUpdateRequest.BillId,
+                    Id = billUpdateRequest.Id,
                     BusinessTime = billUpdateRequest.BusinessTime.Value,
                     CustomerId = billUpdateRequest.CustomerId,
                     StaffId = billUpdateRequest.StaffId,
                     TotalPrice = billUpdateRequest.TotalPrice,
-                    Discount = billUpdateRequest.Discount,
-                    Status = billUpdateRequest.Status
+                    TotalDiscount = billUpdateRequest.TotalDiscount,
+                    Status = billUpdateRequest.Status,
+                    DeliveryAddress = billUpdateRequest.DeliveryAddress,
+                    PaymentMethod = billUpdateRequest.PaymentMethod,
                 };
                 BillDAO.Instance.UpdateBill(bill);
                 foreach (var item in billUpdateRequest.Items)
                 {
                     BillInfo billInfo = new BillInfo
                     {
-                        BillID = bill.ID,
+                        BillID = bill.Id,
                         ProductID = item.ProductID,
                         Amount = item.Amount,
                         Price = item.Price,
@@ -107,7 +111,7 @@ namespace BUS
             {
                 foreach (var item in request.Items)
                 {
-                    BillInfoDAO.Instance.DeleteBillInfo(request.BillId, item.ProductID);
+                    BillInfoDAO.Instance.DeleteBillInfo(request.Id, item.ProductID);
                 }
                 return true;
             }

@@ -26,14 +26,14 @@ namespace DAO
                 @ProductID = {billInfo.ProductID}, 
                 @Amount = {billInfo.Amount}, 
                 @Price = {billInfo.Price},
-                @Discount = {billInfo.Discount}";
+                @TotalDiscount = {billInfo.Discount}";
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }
 
         public DataTable GetBillInfoDetailByBillId(int billId)
         {
-            var query = $"USP_GetBillInfoDetailByBillId @BillId = {billId}";
+            var query = $"USP_GetBillInfoDetailByBillId @Id = {billId}";
             DataTable table = DataProvider.Instance.ExecuteQuery(query);
             return table;
         }

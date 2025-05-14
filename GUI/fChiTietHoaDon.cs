@@ -24,14 +24,14 @@ namespace GUI
         private void ShowBill()
         {
 
-            this.textBox_MaHoaDon.TextButton = this.bill.ID.ToString();
+            this.textBox_MaHoaDon.TextButton = this.bill.Id.ToString();
             this.textBox_TongTien.TextButton = this.bill.TotalPrice.ToString();
             this.textBox_ThanhTien.TextButton = (this.bill.TotalPrice).ToString();
 
 
             try
             {
-                List<BillInfoDetail> listBillInfoDetails = BillInfoBUS.Instance.GetBillInfoDetailByBillId(bill.ID);
+                List<BillInfoDetail> listBillInfoDetails = BillInfoBUS.Instance.GetBillInfoDetailByBillId(bill.Id);
                 if (listBillInfoDetails != null && listBillInfoDetails.Count > 0)
                 {
                     var item = listBillInfoDetails.First();
@@ -53,8 +53,8 @@ namespace GUI
             {
                 if (this.bill != null)
                 {
-                    var billId = this.bill.ID;
-                    var result = BillBUS.Instance.DeleteBill(this.bill.ID);
+                    var billId = this.bill.Id;
+                    var result = BillBUS.Instance.DeleteBill(this.bill.Id);
                     if (result == true)
                     {
                         MessageBox.Show("Đã xóa đơn thành công");
