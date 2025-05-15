@@ -277,9 +277,9 @@ namespace GUI
                 {
                     BillInfo billInfo = new BillInfo()
                     {
-                        ProductID = product.ProductId,
+                        ProductId = product.ProductId,
                         Amount = product.Amount,
-                        BillID = billID,
+                        BillId = billID,
                         Price = product.Price,
                         Discount = product.Discount
                     };
@@ -320,9 +320,9 @@ namespace GUI
                 {
                     BillInfo billInfo = new BillInfo()
                     {
-                        ProductID = product.ProductId,
+                        ProductId = product.ProductId,
                         Amount = product.Amount,
-                        BillID = this.bill.Id,
+                        BillId = this.bill.Id,
                         Price = product.Price,
                         Discount = product.Discount
                     };
@@ -404,8 +404,8 @@ namespace GUI
                         {
                             var billInfo = new BillInfo();
                             //billInfo.Id = ...;
-                            billInfo.BillID = this.bill.Id;
-                            billInfo.ProductID = this.selectedProduct.Id;
+                            billInfo.BillId = this.bill.Id;
+                            billInfo.ProductId = this.selectedProduct.Id;
                             billInfo.Amount = amount;
                             // Gọi BUS để xóa product khỏi BillInfo
                             BillInfoBUS.Instance.InsertUpdateBillInfo(billInfo);

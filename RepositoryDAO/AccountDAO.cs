@@ -43,7 +43,8 @@ namespace DAO
             query += "@FirebaseId = " + (string.IsNullOrWhiteSpace(request.FirebaseId) ? "NULL, " : $"N'{request.FirebaseId}', ");
             query += "@DoB = " + (request.DoB == null ? "NULL, " : $"'{request.DoB:yyyy-MM-dd}', ");
             query += "@Address = " + (string.IsNullOrWhiteSpace(request.Address) ? "NULL, " : $"N'{request.Address}', ");
-            query += "@Email = " + (string.IsNullOrWhiteSpace(request.UserName) ? "NULL, " : $"N'{request.UserName}', ");
+            //query += "@Email = " + (string.IsNullOrWhiteSpace(request.Email) ? "NULL, " : $"N'{request.Email}', ");
+            query += "@UserName = " + ($"N'{request.Email ?? request.UserName}', ");
             query += "@Password = " + (string.IsNullOrWhiteSpace(request.Password) ? "NULL" : $"N'{request.Password}'");
 
             return DataProvider.Instance.ExecuteQuery(query);
@@ -77,7 +78,7 @@ namespace DAO
                 throw new Exception("Username not found");
             }
 
-            string query = $"USP_UpdateOTPByUsername @Email = '{username}', @NewOTP = '{otp}' ";
+            string query = $"USP_UpdateOTPByUsername @UserName = '{username}', @NewOTP = '{otp}' ";
 
             DataTable table = DataProvider.Instance.ExecuteQuery(query);
             return table;
@@ -90,7 +91,7 @@ namespace DAO
             {
                 throw new Exception("Username not found");
             }
-            string query = $"USP_VerifyOTP @Email = '{input.UserName}', @OTP = '{input.Otp}' ";
+            string query = $"USP_VerifyOTP @UserName = '{input.UserName}', @OTP = '{input.Otp}' ";
 
             DataTable table = DataProvider.Instance.ExecuteQuery(query);
             return table;

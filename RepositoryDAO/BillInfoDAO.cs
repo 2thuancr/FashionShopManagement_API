@@ -22,8 +22,8 @@ namespace DAO
         public void InsertUpdateBillInfo(BillInfo billInfo)
         {
             string query = $@"[USP_InsertUpdateBillInfo] 
-                @BillID = {billInfo.BillID}, 
-                @ProductID = {billInfo.ProductID}, 
+                @BillId = {billInfo.BillId}, 
+                @ProductId = {billInfo.ProductId}, 
                 @Amount = {billInfo.Amount}, 
                 @Price = {billInfo.Price},
                 @TotalDiscount = {billInfo.Discount}";
@@ -47,7 +47,7 @@ namespace DAO
 
         public void DeleteBillInfoByBillID(int billID)
         {
-            string query = string.Format("USP_DeleteBillInfoByBillID @BillID");
+            string query = string.Format("USP_DeleteBillInfoByBillID @BillId");
             var parameters = new object[] { billID };
 
             DataProvider.Instance.ExecuteNonQuery(query, parameters);
@@ -55,7 +55,7 @@ namespace DAO
 
         public void DeleteBillInfo(int billID, int productID)
         {
-            string query = $"[USP_DeleteBillInfo] @BillID = {billID}, @ProductID = {productID}";
+            string query = $"[USP_DeleteBillInfo] @BillId = {billID}, @ProductId = {productID}";
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

@@ -96,7 +96,7 @@ namespace DAO
         public void UpdateBillStatus(Bill bill)
         {
             string query = $@"[USP_UpdateBillStatus] 
-                    @BillID = {bill.Id},
+                    @BillId = {bill.Id},
                     @Status = {bill.Status}
                     ";
 

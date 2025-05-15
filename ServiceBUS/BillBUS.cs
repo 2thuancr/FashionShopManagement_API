@@ -45,8 +45,8 @@ namespace BUS
                     {
                         BillInfo billInfo = new BillInfo
                         {
-                            BillID = billId,
-                            ProductID = item.ProductID,
+                            BillId = billId,
+                            ProductId = item.ProductID,
                             Amount = item.Amount,
                             Price = item.Price,
                             Discount = item.Discount,
@@ -86,8 +86,8 @@ namespace BUS
                 {
                     BillInfo billInfo = new BillInfo
                     {
-                        BillID = bill.Id,
-                        ProductID = item.ProductID,
+                        BillId = bill.Id,
+                        ProductId = item.ProductID,
                         Amount = item.Amount,
                         Price = item.Price,
                         Discount = item.Discount,

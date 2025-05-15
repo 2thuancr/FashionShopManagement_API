@@ -28,7 +28,7 @@ namespace DTO.Products
             this.Name = Converter.ToString(row["Name"]);
             this.Price = Converter.ToDecimal(row["Price"]);
             this.Brand = Converter.ToString(row["Brand"]);
-            this.Discount = Converter.ToDecimal(row["TotalDiscount"]);
+            this.Discount = Converter.ToDecimal(row["Discount"]);
             this.Category = Converter.ToString(row["Category"]);
             this.Size = Converter.ToString(row["Size"]);
             this.ImageUrl = Converter.ToString(row["Image"]);
