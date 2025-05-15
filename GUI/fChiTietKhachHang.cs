@@ -70,8 +70,8 @@ namespace GUI
             {
                 if (this.selectedBill != null)
                 {
-                    var billId = this.selectedBill.ID;
-                    var result = BillBUS.Instance.DeleteBill(this.selectedBill.ID);
+                    var billId = this.selectedBill.Id;
+                    var result = BillBUS.Instance.DeleteBill(this.selectedBill.Id);
                     if (result == true)
                     {
                         this.selectedBill = null;

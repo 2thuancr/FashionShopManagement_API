@@ -49,7 +49,7 @@ namespace DAO
 
         public int InsertBill(int customerId, int staffId, decimal discount, decimal totalPrice, int status)
         {
-            var query = "USP_InsertBill @CustomerID , @StaffID , @Discount , @TotalPrice , @Status";
+            var query = "USP_InsertBill @CustomerID , @StaffID , @TotalDiscount , @TotalPrice , @Status";
             var parameters = new object[]
             {
                 customerId,
@@ -65,23 +65,25 @@ namespace DAO
 
         public int InsertBill(Bill bill)
         {
-            var parameters = new object[]
-            {
-                bill.CustomerId,
-                bill.StaffId,
-                bill.Discount,
-                bill.TotalPrice,
-                bill.Status,
-            };
+            //var parameters = new object[]
+            //{
+            //    bill.CustomerId,
+            //    bill.StaffId,
+            //    bill.TotalDiscount,
+            //    bill.TotalPrice,
+            //    bill.Status,
+            //};
             string query = $@"[USP_InsertBill] 
                     @CustomerID = {bill.CustomerId}, 
                     @StaffID = {bill.StaffId}, 
-                    @Discount = {bill.Discount},
+                    @TotalDiscount = {bill.TotalDiscount},
                     @TotalPrice = {bill.TotalPrice}, 
-                    @Status = {bill.Status}
+                    @Status = {bill.Status},
+                    @DeliveryAddress = N'{bill.DeliveryAddress}',
+                    @PaymentMethod = N'{bill.PaymentMethod}'
                     ";
 
-            var result = DataProvider.Instance.ExecuteScalar(query, parameters);
+            var result = DataProvider.Instance.ExecuteScalar(query, null);
             return Convert.ToInt32(result);
         }
 
@@ -94,7 +96,7 @@ namespace DAO
         public void UpdateBillStatus(Bill bill)
         {
             string query = $@"[USP_UpdateBillStatus] 
-                    @BillID = {bill.ID},
+                    @BillID = {bill.Id},
                     @Status = {bill.Status}
                     ";
 
@@ -104,7 +106,7 @@ namespace DAO
         public void UpdateBill(Bill bill)
         {
             string query = $@"[USP_UpdateBill] 
-                    @ID = {bill.ID},
+                    @Id = {bill.Id},
                     @TotalPrice = {bill.TotalPrice},
                     @Status = {bill.Status}
                     ";
@@ -126,7 +128,7 @@ namespace DAO
 
         public void CheckOut(int billID, int discount, int totalPrice)
         {
-            string query = "USP_CheckOut @ID , @Discount , @TotalPrice";
+            string query = "USP_CheckOut @Id , @TotalDiscount , @TotalPrice";
             var parameters = new object[] { billID, discount, totalPrice };
 
             DataProvider.Instance.ExecuteNonQuery(query, parameters);
@@ -142,7 +144,7 @@ namespace DAO
 
         public bool DeleteBill(int id)
         {
-            string query = string.Format("USP_DeleteBill @ID");
+            string query = string.Format("USP_DeleteBill @Id");
             var parameters = new object[] { id };
 
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);

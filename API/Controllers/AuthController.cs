@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO.Accounts;
 using DTO.ApiResponses;
+using DTO.Customers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -41,6 +42,7 @@ public class AuthController : ControllerBase
             else
             {
                 var role = "Customer";
+                
                 if (account.TypeID == 1)
                 {
                     role = "Staff";
@@ -50,9 +52,18 @@ public class AuthController : ControllerBase
                     role = "Admin";
                 }
                 var token = GenerateJwtToken(request.UserName, role);
-            
+                
+                var getCustomerInfoInput = new GetCustomerInfoInput
+                {
+                    Email = account.Email,
+                    UserName = account.UserName,
+                };
+                var customer = CustomerBUS.Instance.GetCustomerInfo(getCustomerInfoInput);
+
                 var data = new AccountLoginResponse
                 {
+                    CustomerId = customer?.CustomerId,
+                    Email = account.Email,
                     UserName = account.UserName,
                     DisplayName = account.DisplayName,
                     TypeID = account.TypeID,

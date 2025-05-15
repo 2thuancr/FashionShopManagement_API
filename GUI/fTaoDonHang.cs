@@ -205,7 +205,7 @@ namespace GUI
                 return;
             }
 
-            if (this.bill != null && this.bill.ID > 0)
+            if (this.bill != null && this.bill.Id > 0)
             {
                 UpdateBill();
             }
@@ -221,10 +221,10 @@ namespace GUI
         {
             try
             {
-                if (this.bill != null && this.bill.ID > 0)
+                if (this.bill != null && this.bill.Id > 0)
                 {
 
-                    this.billPriceInfo = BillBUS.Instance.GetBillPriceInfo(this.bill.ID);
+                    this.billPriceInfo = BillBUS.Instance.GetBillPriceInfo(this.bill.Id);
 
                     this.textBox_TongTien.TextButton = this.billPriceInfo.TongTien.ToString();
                     this.textBox_GiamGia.TextButton = this.billPriceInfo.GiamGia.ToString();
@@ -266,7 +266,7 @@ namespace GUI
             }
             else
             {
-                this.bill.ID = billID;
+                this.bill.Id = billID;
                 this.textBox_MaHoaDon.TextButton = billID.ToString();
             }
 
@@ -322,7 +322,7 @@ namespace GUI
                     {
                         ProductID = product.ProductId,
                         Amount = product.Amount,
-                        BillID = this.bill.ID,
+                        BillID = this.bill.Id,
                         Price = product.Price,
                         Discount = product.Discount
                     };
@@ -341,7 +341,7 @@ namespace GUI
 
         private void btn_ThanhToan_Click(object sender, EventArgs e)
         {
-            if (this.bill != null && this.bill.ID > 0)
+            if (this.bill != null && this.bill.Id > 0)
             {
                 fThanhToan fThanhToan = new fThanhToan(this.bill);
                 fThanhToan.ShowDialog();
@@ -400,11 +400,11 @@ namespace GUI
 
                         this.CapNhatBillInfo();
 
-                        if (this.bill != null && this.bill.ID > 0)
+                        if (this.bill != null && this.bill.Id > 0)
                         {
                             var billInfo = new BillInfo();
-                            //billInfo.ID = ...;
-                            billInfo.BillID = this.bill.ID;
+                            //billInfo.Id = ...;
+                            billInfo.BillID = this.bill.Id;
                             billInfo.ProductID = this.selectedProduct.Id;
                             billInfo.Amount = amount;
                             // Gọi BUS để xóa product khỏi BillInfo
@@ -426,10 +426,10 @@ namespace GUI
             {
                 try
                 {
-                    if (this.bill != null && this.bill.ID > 0)
+                    if (this.bill != null && this.bill.Id > 0)
                     {
                         // Gọi BUS để xóa product khỏi BillInfo
-                        BillInfoBUS.Instance.DeleteBillInfo(this.bill.ID, this.selectedProduct.Id);
+                        BillInfoBUS.Instance.DeleteBillInfo(this.bill.Id, this.selectedProduct.Id);
                     }
 
                     // Cập nhật giao diện
@@ -478,7 +478,7 @@ namespace GUI
 
         private void btn_InHoaDon_Click(object sender, EventArgs e)
         {
-            if (this.bill == null || this.bill.ID <= 0)
+            if (this.bill == null || this.bill.Id <= 0)
             {
                 MessageBox.Show("Vui lòng tạo hóa đơn");
                 return;

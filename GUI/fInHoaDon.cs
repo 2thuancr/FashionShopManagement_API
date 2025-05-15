@@ -42,13 +42,13 @@ namespace GUI
 
         private void LoadBill()
         {
-            this.textbox_MaHoaDon.Text = this.bill.ID.ToString();
+            this.textbox_MaHoaDon.Text = this.bill.Id.ToString();
             
         }
 
         private void LoadBillInfo()
         {
-            var result = BillInfoBUS.Instance.GetBillInfoDetailByBillId(this.bill.ID);
+            var result = BillInfoBUS.Instance.GetBillInfoDetailByBillId(this.bill.Id);
 
             if (result != null && result.Count > 0)
             {
@@ -57,7 +57,7 @@ namespace GUI
                 string staffName = result[0].StaffName;
                 string businessTime = result[0].BusinessTime.ToString();
                 decimal totalPrice = result[0].TotalPrice;
-                //decimal discount = result[0].Discount;
+                //decimal discount = result[0].TotalDiscount;
 
                 this.textbox_KhachHang.Text = customerName;
                 this.textbox_NhanVien.Text = staffName;
@@ -85,7 +85,7 @@ namespace GUI
         private void LoadQR()
         {
             string amount = (bill.TotalPrice).ToString();
-            string addInfo = $"Thanh toan hoa don {bill.ID}";
+            string addInfo = $"Thanh toan hoa don {bill.Id}";
 
             var url = BillBUS.Instance.GetQrPayment("qr_only", bankName, bankAccountID, bankAccountName, addInfo, amount);
             try

@@ -39,9 +39,14 @@ namespace DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+        public DataTable GetCustomerInfo(string email)
+        {
+            var query = $"SELECT * FROM Customer c INNER JOIN Account a ON c.AccountId = a.Id WHERE a.Email = '{email}'";
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+
         public bool InsertCustomer(Customer newCustomer)
         {
-
             string query = $@"USP_InsertCustomer 
                 @CustomerName = '{newCustomer.CustomerName}',
                 @DoB = '{newCustomer.DoB}', 

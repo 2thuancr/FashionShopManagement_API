@@ -8,7 +8,7 @@ namespace DTO.Bills
     {
         public int ID { get; set; }
         public DateTime BusinessTime { get; set; }
-        //public decimal Discount { get; set; }
+        //public decimal TotalDiscount { get; set; }
         public decimal TotalPrice { get; set; }
         public string PaymentStatus { get; set; }
         public int Status { get; set; }
@@ -26,9 +26,9 @@ namespace DTO.Bills
 
         public BillInfoDetail(DataRow row)
         {
-            this.ID = Converter.ToInt32(row["ID"]);
+            this.ID = Converter.ToInt32(row["Id"]);
             this.BusinessTime = Converter.ToDateTime(row["BusinessTime"]);
-            //this.Discount = Converter.ToDecimal(row["Discount"]);
+            //this.TotalDiscount = Converter.ToDecimal(row["TotalDiscount"]);
             this.TotalPrice = Converter.ToDecimal(row["TotalPrice"]);
             this.Status = Converter.ToInt32(row["Status"]);
             this.ProductId = Converter.ToInt32(row["ProductId"]);

@@ -14,10 +14,10 @@ namespace DTO.Accounts
         // Kết nối tới DB
         public static string ConnectionString { get; set; }
 
-        public static string connectionStringUser = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        public static string connectionStringAdmin = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        public const string connectionStringStaff = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        public const string connectionStringManager = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User ID=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public static string connectionStringUser = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User Id=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public static string connectionStringAdmin = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User Id=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public const string connectionStringStaff = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User Id=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public const string connectionStringManager = @"Server=tcp:tiennhmit.database.windows.net,1433;Initial Catalog=FashionShop;Persist Security Info=False;User Id=tiennhmit;Password=m1nht13n@HCMUTE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         //public static string connectionStringAdmin = @"Data Source=.;Initial Catalog=FashionShopManagement;Integrated Security=True";
         //public const string connectionStringStaff = "Server=2THUANCR;Database=FashionShopManagement;User Id=staff;Password=DB_staff;";
@@ -61,7 +61,7 @@ namespace DTO.Accounts
         public Account(DataRow row)
         {
             this.Id = Converter.ToInt32(row["Id"]);
-            this.UserName = Converter.ToString(row["UserName"]);
+            this.UserName = Converter.ToString(row["Email"]);
             this.DisplayName = Converter.ToString(row["DisplayName"]);
             this.TypeID = Converter.ToInt32(row["TypeID"]);
             this.Password = Converter.ToString(row["Password"]);
