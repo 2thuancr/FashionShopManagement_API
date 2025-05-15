@@ -1,4 +1,5 @@
 ﻿using DTO.Bills;
+using System;
 using System.Data;
 
 namespace DAO
@@ -22,11 +23,9 @@ namespace DAO
         public void InsertUpdateBillInfo(BillInfo billInfo)
         {
             string query = $@"[USP_InsertUpdateBillInfo] 
-                @BillId = {billInfo.BillId}, 
-                @ProductId = {billInfo.ProductId}, 
-                @Amount = {billInfo.Amount}, 
-                @Price = {billInfo.Price},
-                @TotalDiscount = {billInfo.Discount}";
+                @BillID = {billInfo.BillId}, 
+                @ProductID = {billInfo.ProductId}, 
+                @Amount = {Convert.ToInt32(billInfo.Amount)};";
 
             DataProvider.Instance.ExecuteNonQuery(query);
         }

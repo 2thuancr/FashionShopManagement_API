@@ -76,10 +76,10 @@ namespace DAO
             string query = $@"[USP_InsertBill] 
                     @CustomerID = {bill.CustomerId}, 
                     @StaffID = {bill.StaffId}, 
-                    @TotalDiscount = {bill.TotalDiscount},
-                    @TotalPrice = {bill.TotalPrice}, 
+                    @TotalDiscount = {Convert.ToInt32(bill.TotalDiscount)},
+                    @TotalPrice = {Convert.ToInt32(bill.TotalPrice)}, 
                     @Status = {bill.Status},
-                    @DeliveryAddress = N'{bill.DeliveryAddress}',
+                    @DeliveryAddress = N'{bill.DeliveryAddress?.Replace("\n", " - ")}',
                     @PaymentMethod = N'{bill.PaymentMethod}'
                     ";
 
