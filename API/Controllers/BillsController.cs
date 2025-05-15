@@ -184,7 +184,7 @@ namespace API.Controllers
         {
             try
             {
-                var bill = BillBUS.Instance.Checkout(request.Id);
+                Bill bill = BillBUS.Instance.Checkout(request.Id);
                 if (bill == null)
                 {
                     return BadRequest(new ApiResponse<Bill>

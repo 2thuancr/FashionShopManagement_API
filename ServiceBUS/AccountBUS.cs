@@ -144,7 +144,7 @@ namespace BUS
                 var response = new AccountVerifyOtpByUserNameResponse
                 {
                     Status = Converter.ToString(table.Rows[0]["Status"]),
-                    UserName = Converter.ToString(table.Rows[0]["Email"]),
+                    UserName = Converter.ToString(table.Rows[0]["UserName"]),
                     OTP = Converter.ToString(table.Rows[0]["OTP"]),
                     VerifiedOTP = Converter.ToString(table.Rows[0]["VerifiedOTP"]),
                     ExpirationTime = Converter.ToDateTimeNullable(table.Rows[0]["ExpirationTime"])

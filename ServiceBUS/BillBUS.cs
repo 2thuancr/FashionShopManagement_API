@@ -38,6 +38,7 @@ namespace BUS
                     PaymentMethod = billCreateRequest.PaymentMethod,
                 };
                 int billId = BillDAO.Instance.InsertBill(bill);
+                bill.Id = billId;
 
                 if (billId > 0)
                 {

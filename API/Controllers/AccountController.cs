@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO.Accounts;
 using DTO.ApiResponses;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Helpers;
 
@@ -145,6 +146,15 @@ namespace API.Controllers
                 }
                 else
                 {
+
+                    var input = new Shared.Dtos.SendEmailBySMTPInput()
+                    {
+                        Title = $"OTP xác minh tài khoản",
+                        Content = $"Xin chào bạn, đây là mã OTP xác minh của bạn: {data?.OTP}",
+                        Recipient = new List<string> { request.Email }
+                    };
+                    _ = MailHelper.SendEmailBySMTPAsync(input);
+
                     var response = new ApiResponse<AccountGenerateOtpResponse>
                     {
                         IsSuccess = true,
